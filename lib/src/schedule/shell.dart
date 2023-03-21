@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -251,10 +253,22 @@ class CommonDrawer extends StatelessWidget {
                   DrawerItem(
                     icon: const Icon(Icons.share),
                     title: AppLocalizations.of(context)?.shareApp ?? "",
+                    onTap: () {
+                      Share.share('check out my website https://devxhub.com',
+                          subject: 'Look what I made!');
+                    },
                   ),
                   DrawerItem(
                     icon: const Icon(Icons.star),
                     title: AppLocalizations.of(context)?.rateThisApp ?? "",
+                    onTap: () async {
+                      context.pop();
+                      final InAppReview inAppReview = InAppReview.instance;
+
+                      if (await inAppReview.isAvailable()) {
+                        inAppReview.requestReview();
+                      }
+                    },
                   ),
                   DrawerItem(
                     icon: const Icon(Icons.star),
