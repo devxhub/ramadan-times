@@ -1,0 +1,61 @@
+{
+  "@locale": "bn_Bd",
+  "schedule": "সময়সূচী",
+  "maslaMasail": "মাসআলা- মাসায়েল",
+  "calendar": "ক্যালেন্ডার",
+  "ramadanMubarak": "রমজান মুবারক",
+  "nextPrayer": "পরবতী নামাজ",
+  "sehriTime": "সেহরির সময়",
+  "ifterTime": "ইফতারের সময়",
+  "remaining": "সময় বাকি",
+  "ofIfter": "ইফতারের",
+  "ofSehri": "সেহরির",
+  "nextDay": "পরবর্তী দিনের",
+  "sehri": "সেহরি",
+  "sehriDua": "সেহরির দোয়া",
+  "ifter": "ইফতার",
+  "ifterDua": "ইফতারের দোয়া",
+  "changeAppLanguage": "ভাষা পরিবর্তন করুন",
+  "changeAppLocation": "অবস্থান পরিবর্তন করুন",
+  "shareApp": "শেয়ার করুন",
+  "rateThisApp": "রেটিং দিন",
+  "chooseYourLanguage": "আপনার ভাষা নির্বাচন করুন",
+  "chooseYourLocation": "আপনার অবস্থান নির্বাচন করুন",
+  "save": "সংরক্ষণ করুন",
+  "hijriDate": "হিজরি তারিখ",
+  "greetings": "স্বাগতম {userName}",
+  "@greetings": {
+    "description": "A message of greetings to user",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Hadisur"
+      }
+    }
+  },
+  "arabicDate": "{day} {month, select, 1{মুহররম} 2{সফর} 3{রবিউল আউয়াল} 4{রবিউছ ছানি} 5{জামাদিউল আউয়াল} 6{জামাদিউছ ছানি} 7{রজব} 8{শা’বান} 9{রমাজান} 10{শাওয়াল} 11{জিলক্বদ} 12{জিলহজ্জ} other{}}, {year} হিজরি ",
+  "@arabicDate": {
+    "placeholders": {
+      "day": {
+        "type": "String",
+        "format": "compact"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "String",
+        "format": "compact"
+      }
+    }
+  },
+  "prayerName": "{name, select, Fajr{ফজর} Sunrise{সূর্যোদয়} Dhuhr{যোহর} Asr{আছর} Sunset{সূর্যাস্ত} Maghrib{মাগরিব} Isha{ঈশা} other{name}} ",
+  "@prayerName": {
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "format": "compact"
+      }
+    }
+  }
+}

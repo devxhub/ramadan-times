@@ -1,0 +1,61 @@
+{
+  "@locale": "en_US",
+  "schedule": "সময়সূচী",
+  "maslaMasail": "মাসআলা- মাসায়েল",
+  "calendar": "ক্যালেন্ডার",
+  "ramadanMubarak": "রমজান মুবারক",
+  "nextPrayer": "পরবতী নামাজ",
+  "sehriTime": "সেহরির সময়",
+  "ifterTime": "ইফতারের সময়",
+  "remaining": "সময় বাকি",
+  "ofIfter": "ইফতারের",
+  "ofSehri": "সেহরির",
+  "nextDay": "পরবর্তী দিনের",
+  "sehri": "সেহরি",
+  "sehriDua": "সেহরির দোয়া",
+  "ifter": "ইফতার",
+  "ifterDua": "ইফতারের দোয়া",
+  "changeAppLanguage": "ভাষা পরিবর্তন করুন",
+  "changeAppLocation": "অবস্থান পরিবর্তন করুন",
+  "shareApp": "শেয়ার করুন",
+  "rateThisApp": "রেটিং দিন",
+  "chooseYourLanguage": "আপনার ভাষা নির্বাচন করুন",
+  "chooseYourLocation": "আপনার অবস্থান নির্বাচন করুন",
+  "save": "সংরক্ষণ করুন",
+  "hijriDate": "হিজরি তারিখ",
+  "greetings": "স্বাগতম {userName}",
+  "@greetings": {
+    "description": "A message of greetings to user",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Hadisur"
+      }
+    }
+  },
+  "arabicDate": "{day} {month}, {year} AH",
+  "@arabicDate": {
+    "placeholders": {
+      "day": {
+        "type": "String",
+        "format": "compact"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "String",
+        "format": "compact"
+      }
+    }
+  },
+  "prayerName": "{name, select, Fajr{Fajar} Sunrise{Sunrise} Dhuhr{Dhuhor} Asr{Asor} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} other{name}}, ",
+  "@prayerName": {
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "format": "compact"
+      }
+    }
+  }
+}
