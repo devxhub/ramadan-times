@@ -76,6 +76,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get hijriDate => 'হিজরি তারিখ';
 
   @override
+  String get privacyPolicy => 'গোপনীয়তা নীতি';
+
+  @override
   String greetings(String userName) {
     return 'স্বাগতম $userName';
   }

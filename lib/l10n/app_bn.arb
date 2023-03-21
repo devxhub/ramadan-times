@@ -23,6 +23,7 @@
   "chooseYourLocation": "আপনার অবস্থান নির্বাচন করুন",
   "save": "সংরক্ষণ করুন",
   "hijriDate": "হিজরি তারিখ",
+  "privacyPolicy": "গোপনীয়তা নীতি",
   "greetings": "স্বাগতম {userName}",
   "@greetings": {
     "description": "A message of greetings to user",

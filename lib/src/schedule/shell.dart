@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../bloc/navigation_cubit/navigation_cubit.dart';
 import '../models/named_navigation_bar.dart';
@@ -253,6 +255,18 @@ class CommonDrawer extends StatelessWidget {
                   DrawerItem(
                     icon: const Icon(Icons.star),
                     title: AppLocalizations.of(context)?.rateThisApp ?? "",
+                  ),
+                  DrawerItem(
+                    icon: const Icon(Icons.star),
+                    title: AppLocalizations.of(context)?.privacyPolicy ?? "",
+                    onTap: () async {
+                      if (!await launchUrlString(
+                          "https://devxhub.com/privacy-policy",
+                          mode: LaunchMode.externalApplication)) {
+                        throw Exception(
+                            'Could not launch https://devxhub.com/privacy-policy');
+                      }
+                    },
                   ),
                   // DrawerItem(
                   //   icon: Icon(Icons.feedback),
