@@ -9,6 +9,7 @@ import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_event.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_state.dart';
 import 'package:ramadantimes/src/calender/utils.dart';
 import 'package:ramadantimes/src/models/calendar_model/datum.dart';
+import 'package:ramadantimes/src/models/timing/timings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -210,7 +211,7 @@ class CalendarPageState extends State<CalendarPage> {
                         children: [
                           const LocationPicker(),
                           const SizedBox(
-                            height: 12,
+                            height: 24,
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(
@@ -288,330 +289,137 @@ class CalendarPageState extends State<CalendarPage> {
                           const SizedBox(
                             height: 12,
                           ),
-                          ListView(
-                            shrinkWrap: true,
-                            children: [
-                              AutoSizeText(
-                                AppLocalizations.of(context)?.schedule ?? "",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(
-                                      fontSize: 24,
-                                      color: Colors.black87,
+                          Expanded(
+                            child: ListView(
+                              // shrinkWrap: true,
+                              children: [
+                                AutoSizeText(
+                                  AppLocalizations.of(context)?.schedule ?? "",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                        fontSize: 24,
+                                        color: Colors.black87,
+                                      ),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Positioned(
+                                        top: 45,
+                                        // bottom: 0,
+                                        left: 10,
+                                        child: Column(
+                                          children: List.generate(
+                                              43,
+                                              (index) => Column(
+                                                    children: [
+                                                      Container(
+                                                        height: 6,
+                                                        width: 2,
+                                                        color: Colors.white,
+                                                      ),
+                                                      Container(
+                                                        height: 6,
+                                                        width: 2,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ],
+                                                  )),
+                                        )),
+                                    Column(
+                                      children: [
+                                        TimeCard(
+                                          name: AppLocalizations.of(context)
+                                                  ?.sehri ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.fajr!,
+                                          adjustTime: -5,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        TimeCard(
+                                          icon: "assets/images/sun.png",
+                                          name: AppLocalizations.of(context)
+                                                  ?.ifter ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.maghrib!,
+                                          adjustTime: 4,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        TimeCard(
+                                          name: AppLocalizations.of(context)
+                                                  ?.prayerName("Fajr") ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.fajr!,
+                                          adjustTime: 0,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        TimeCard(
+                                          icon: "assets/images/sun1.png",
+                                          name: AppLocalizations.of(context)
+                                                  ?.prayerName("Dhuhr") ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.dhuhr!,
+                                          adjustTime: 0,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        TimeCard(
+                                          icon: "assets/images/sun1.png",
+                                          name: AppLocalizations.of(context)
+                                                  ?.prayerName("Asr") ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.asr!,
+                                          adjustTime: 0,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        TimeCard(
+                                          icon: "assets/images/sun.png",
+                                          name: AppLocalizations.of(context)
+                                                  ?.prayerName("Maghrib") ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.maghrib!,
+                                          adjustTime: 0,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        TimeCard(
+                                          name: AppLocalizations.of(context)
+                                                  ?.prayerName("Isha") ??
+                                              "",
+                                          startTime: state
+                                              .selectedEvent!.timings!.isha!,
+                                          adjustTime: 0,
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                      ],
                                     ),
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Positioned(
-                                      top: 45,
-                                      // bottom: 0,
-                                      left: 10,
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.white,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.grey,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.white,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.grey,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.white,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.grey,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.white,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.grey,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.white,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.grey,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.white,
-                                          ),
-                                          Container(
-                                            height: 6,
-                                            width: 2,
-                                            color: Colors.grey,
-                                          ),
-                                        ],
-                                      )),
-                                  Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                            height: 20,
-                                            width: 20,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.white,
-                                              border: Border.all(
-                                                  width: 5,
-                                                  color: const Color(
-                                                    0xffFFB82C,
-                                                  )),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Flexible(
-                                            child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 24,
-                                                      vertical: 6),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          24)),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/moon1.png",
-                                                    height: 60,
-                                                    width: 32,
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 24,
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      AutoSizeText(
-                                                        AppLocalizations.of(
-                                                                    context)
-                                                                ?.sehri ??
-                                                            "",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge!
-                                                            .copyWith(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              fontSize: 18,
-                                                              color: Colors
-                                                                  .black87,
-                                                            ),
-                                                      ),
-                                                      AutoSizeText(
-                                                        TimeOfDay(
-                                                          hour: int.tryParse(state
-                                                                      .selectedEvent
-                                                                      ?.timings
-                                                                      ?.fajr
-                                                                      ?.split(
-                                                                          ":")
-                                                                      .first ??
-                                                                  "") ??
-                                                              0,
-                                                          minute: (int.tryParse(state
-                                                                      .selectedEvent
-                                                                      ?.timings
-                                                                      ?.fajr
-                                                                      ?.split(
-                                                                          ":")
-                                                                      .last
-                                                                      .substring(
-                                                                          0,
-                                                                          2) ??
-                                                                  "") ??
-                                                              0),
-                                                        ).format(context),
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge!
-                                                            .copyWith(
-                                                              height: 1,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              fontSize: 16,
-                                                              color: const Color(
-                                                                  0xff75718B),
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 16,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            height: 20,
-                                            width: 20,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.white,
-                                              border: Border.all(
-                                                  width: 5,
-                                                  color: const Color(
-                                                    0xffFFB82C,
-                                                  )),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 20,
-                                          ),
-                                          Flexible(
-                                            child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 24,
-                                                      vertical: 6),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          24)),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Image.asset(
-                                                    "assets/images/sun.png",
-                                                    height: 60,
-                                                    width: 32,
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 24,
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceAround,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      AutoSizeText(
-                                                        AppLocalizations.of(
-                                                                    context)
-                                                                ?.ifter ??
-                                                            "",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge!
-                                                            .copyWith(
-                                                              height: 1,
-                                                              fontSize: 18,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              color: Colors
-                                                                  .black87,
-                                                            ),
-                                                      ),
-                                                      AutoSizeText(
-                                                        TimeOfDay(
-                                                          hour: int.tryParse(state
-                                                                      .selectedEvent
-                                                                      ?.timings
-                                                                      ?.maghrib
-                                                                      ?.split(
-                                                                          ":")
-                                                                      .first ??
-                                                                  "") ??
-                                                              0,
-                                                          minute: int.tryParse(state
-                                                                      .selectedEvent
-                                                                      ?.timings
-                                                                      ?.maghrib
-                                                                      ?.split(
-                                                                          ":")
-                                                                      .last
-                                                                      .substring(
-                                                                          0,
-                                                                          2) ??
-                                                                  "") ??
-                                                              0,
-                                                        ).format(context),
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleLarge!
-                                                            .copyWith(
-                                                              height: 1.4,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              fontSize: 16,
-                                                              color: const Color(
-                                                                  0xff75718B),
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -627,6 +435,98 @@ class CalendarPageState extends State<CalendarPage> {
           }
         },
       ),
+    );
+  }
+}
+
+class TimeCard extends StatelessWidget {
+  const TimeCard({
+    super.key,
+    required this.startTime,
+    this.endTime,
+    this.adjustTime = 0,
+    required this.name,
+    this.icon,
+  });
+  final String name;
+  final String? icon;
+  final String startTime;
+  final String? endTime;
+  final int? adjustTime;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          height: 20,
+          width: 20,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+            border: Border.all(
+                width: 5,
+                color: const Color(
+                  0xffFFB82C,
+                )),
+          ),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        Flexible(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(24)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  icon ?? "assets/images/moon1.png",
+                  height: 60,
+                  width: 32,
+                ),
+                const SizedBox(
+                  width: 24,
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(
+                      name,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Colors.black87,
+                          ),
+                    ),
+                    AutoSizeText(
+                      TimeOfDay(
+                        hour: int.tryParse(startTime.split(":").first) ?? 0,
+                        minute: (int.tryParse(startTime
+                                    .split(":")
+                                    .last
+                                    .substring(0, 2)) ??
+                                0) +
+                            adjustTime!,
+                      ).format(context),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            height: 1,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: const Color(0xff75718B),
+                          ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -696,7 +596,7 @@ class _LocationPickerState extends State<LocationPicker> {
                 lon: "90.4111451",
                 url: "www.dhaka.gov.bd"))));
 
-    print(d.bn_name);
+    // print(d.bn_name);
 
     selectedLocation = d;
   }
@@ -707,9 +607,9 @@ class _LocationPickerState extends State<LocationPicker> {
       alignment: Alignment.centerRight,
       child: Container(
         width: 200,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
         decoration: BoxDecoration(
-          color: const Color(0xffe3deff),
+          // color: const Color(0xffe3deff),
           borderRadius: BorderRadius.circular(24),
         ),
         child: Container(

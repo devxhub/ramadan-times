@@ -39,6 +39,12 @@ class MyApp extends StatelessWidget {
               textTheme:
                   GoogleFonts.anekBanglaTextTheme(Theme.of(context).textTheme),
               primarySwatch: Colors.blue,
+              navigationBarTheme: NavigationBarThemeData(
+                  // indicatorShape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  iconTheme: MaterialStateProperty.resolveWith((states) =>
+                      states.contains(MaterialState.selected)
+                          ? const IconThemeData(size: 32)
+                          : const IconThemeData(size: 32))),
               useMaterial3: true,
             ),
             locale: const Locale("bn", "BD"),

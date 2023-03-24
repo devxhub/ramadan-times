@@ -51,114 +51,13 @@ class _SchedulePageState extends State<SchedulePage> {
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, HomeState state) {
-        // state.when(
-        //   idle: () {
-        //     return Container();
-        //   },
-        //   data: (data) {
-        //     return Scaffold(
-        //         backgroundColor: const Color(0xfff7f5ff),
-        //         appBar: AppBar(
-        //           // toolbarHeight: 70,
-        //           foregroundColor: Colors.black,
-        //           backgroundColor: Colors.transparent,
-        //           elevation: 0,
-        //           actions: [
-        //             Localizations.override(
-        //               context: context,
-        //               locale: const Locale('bn'),
-        //               child: Builder(builder: (context) {
-        //                 return Padding(
-        //                   padding: const EdgeInsets.only(right: 40.0),
-        //                   child: Column(
-        //                     crossAxisAlignment: CrossAxisAlignment.end,
-        //                     children: [
-        //                       AutoSizeText(DateFormat("EEEE, dd MMMM", "bn")
-        //                           .format(DateTime.now())),
-        //                       AutoSizeText(
-        //                         data.data?.date?.hijri?.date ?? "",
-        //                         style: Theme.of(context).textTheme.bodyLarge,
-        //                       ),
-        //                     ],
-        //                   ),
-        //                 );
-        //               }),
-        //             )
-        //           ],
-        //         ),
-        //         body: Container(
-        //           padding: const EdgeInsets.symmetric(horizontal: 40),
-        //           child: CustomScrollView(slivers: [
-        //             const SliverToBoxAdapter(
-        //               child: LocationPicker(),
-        //             ),
-        //             SliverToBoxAdapter(
-        //               child: NextPrayer(
-        //                 data: data,
-        //               ),
-        //             ),
-        //             SliverToBoxAdapter(
-        //               child: GridView(
-        //                 padding: const EdgeInsets.only(top: 24),
-        //                 shrinkWrap: true,
-        //                 physics: const NeverScrollableScrollPhysics(),
-        //                 gridDelegate:
-        //                     const SliverGridDelegateWithFixedCrossAxisCount(
-        //                         crossAxisCount: 2,
-        //                         childAspectRatio: 1.1,
-        //                         crossAxisSpacing: 12,
-        //                         mainAxisSpacing: 12),
-        //                 children: [
-        //                   TimeContainerForSehriTime(
-        //                     time: data.data?.timings?.fajr ?? "",
-        //                   ),
-        //                   RemainingTimeContainerForSehriTime(
-        //                     sehriTime: data.data?.timings?.fajr ?? "",
-        //                   ),
-        //                   RemainingTimeContainerForIftarTime(
-        //                     ifterTime: data.data?.timings?.sunset ?? "",
-        //                   ),
-        //                   TimeContainerForIftarTime(
-        //                     ifterTime: data.data?.timings?.sunset ?? "",
-        //                   ),
-        //                 ],
-        //               ),
-        //             ),
-        //             const SliverToBoxAdapter(
-        //               child: NextSehriIftar(),
-        //             ),
-        //             const SliverToBoxAdapter(
-        //               child: SizedBox(height: 24),
-        //             ),
-        //             const SliverToBoxAdapter(
-        //               child: Dua(),
-        //             ),
-        //             const SliverToBoxAdapter(
-        //               child: SizedBox(height: 200),
-        //             )
-        //           ]),
-        //         ));
-        //   },
-        //   loading: () {
-        //     return const Material(
-        //       child: Center(child: CircularProgressIndicator.adaptive()),
-        //     );
-        //   },
-        //   error: (NetworkExceptions error) {
-        //     return Scaffold(
-        //       body: Center(
-        //           child:
-        //               AutoSizeText(NetworkExceptions.getErrorMessage(error))),
-        //     );
-        //   },
-        // );
         if (state.status == HomeStatus.initial) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
           );
         } else if (state.status == HomeStatus.success) {
           return Scaffold(
-              backgroundColor: const Color(0xfff7f5ff),
+              backgroundColor: const Color(0xfff2f2ef),
               appBar: AppBar(
                 // toolbarHeight: 70,
                 primary: true,
@@ -380,7 +279,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
               // width: 200,
               // height: 48,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 1),
+                // border: Border.all(color: Colors.white, width: 1),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Row(
@@ -407,7 +306,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                         padding: EdgeInsets.symmetric(
                             horizontal: 12.w, vertical: 10),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6.r),
+                          borderRadius: BorderRadius.circular(20.r),
                           color: _selectedTab == 0
                               ? Colors.white
                               : Colors.transparent,
@@ -433,7 +332,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                         padding: EdgeInsets.symmetric(
                             horizontal: 12.w, vertical: 10),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6.r),
+                          borderRadius: BorderRadius.circular(20.r),
                           color: _selectedTab == 1 ? Colors.white : null,
                         ),
                         child: AutoSizeText(
@@ -503,7 +402,7 @@ class _TimeContainerForSehriTimeState extends State<TimeContainerForSehriTime> {
                   TextSpan(
                     text: TimeOfDay(
                       hour: int.parse(widget.time.split(":").first),
-                      minute: int.parse(widget.time.split(":").last),
+                      minute: int.parse(widget.time.split(":").last) - 5,
                     ).format(context),
                     style: Theme.of(context)
                         .textTheme
@@ -582,18 +481,20 @@ class _TimeContainerForIftarTimeState extends State<TimeContainerForIftarTime> {
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: 18.sp,
                       height: 1.47,
+                      color: const Color(0xff1C1646),
                       fontWeight: FontWeight.w700),
                 ),
                 AutoSizeText.rich(
                   TextSpan(
                     text: TimeOfDay(
-                            minute: int.parse(widget.ifterTime.split(":").last),
+                            minute:
+                                int.parse(widget.ifterTime.split(":").last) + 5,
                             hour: int.parse(widget.ifterTime.split(":").first))
                         .format(context),
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
-                        ?.copyWith(height: 1.4, color: const Color(0xffFFBB35)),
+                        ?.copyWith(height: 1.4, color: const Color(0xff674cec)),
                   ),
                 ),
                 const Spacer(),
@@ -709,19 +610,6 @@ class _RemainingTimeContainerForIftarTimeState
                 if (DateTime.now().isBefore(endTime))
                   CountdownTimer(
                     endTime: endTime.millisecondsSinceEpoch,
-                    // onEnd: () {
-                    //   setState(() {
-                    //     endTime = DateTime(
-                    //       DateTime.now().year,
-                    //       DateTime.now().month,
-                    //       DateTime.now().day - 1,
-                    //       int.parse(
-                    //           widget.ifterTime.toString().split(":").first),
-                    //       int.parse(
-                    //           widget.ifterTime.toString().split(":").last),
-                    //     );
-                    //   });
-                    // },
                     widgetBuilder: (_, CurrentRemainingTime? time) {
                       if (time == null) {
                         return const Text("");
@@ -1027,7 +915,7 @@ class NextPrayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 24),
+      margin: const EdgeInsets.only(top: 24, left: 1, right: 1),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(24)),
@@ -1057,7 +945,7 @@ class NextPrayer extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
                 color: const Color(0xfff2f2f7),
                 borderRadius: BorderRadius.circular(15.r)),
@@ -1140,7 +1028,7 @@ class NextSehriIftar extends StatelessWidget {
                 ),
                 const Spacer(),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
                       color: const Color(0xfff2f2f7),
                       borderRadius: BorderRadius.circular(15)),
@@ -1196,7 +1084,7 @@ class NextSehriIftar extends StatelessWidget {
                 ),
                 const Spacer(),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
                       color: const Color(0xfff2f2f7),
                       borderRadius: BorderRadius.circular(15)),

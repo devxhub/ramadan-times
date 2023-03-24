@@ -89,14 +89,14 @@ class ShellPageState extends State<ShellPage> {
         label: AppLocalizations.of(context)?.schedule ?? "",
         icon: Image.asset(
           "assets/images/schedule.png",
-          height: 24,
-          width: 24,
+          height: 32,
+          width: 32,
           color: const Color(0xffC3BEDF),
         ),
         selectedIcon: Image.asset(
           "assets/images/schedule.png",
-          height: 24,
-          width: 24,
+          height: 32,
+          width: 32,
           color: const Color(0xff6348EB),
         ),
         initialLocation: '/',
@@ -105,14 +105,14 @@ class ShellPageState extends State<ShellPage> {
         label: AppLocalizations.of(context)?.maslaMasail ?? "",
         icon: Image.asset(
           "assets/images/masla.png",
-          height: 24,
-          width: 24,
+          height: 32,
+          width: 32,
           // color: Color(0xffC3BEDF),
         ),
         selectedIcon: Image.asset(
           "assets/images/masla1.png",
-          height: 24,
-          width: 24,
+          height: 32,
+          width: 32,
           // color: Color(0xff6348EB),
         ),
         initialLocation: '/masla-masail',
@@ -121,14 +121,14 @@ class ShellPageState extends State<ShellPage> {
         label: AppLocalizations.of(context)?.calendar ?? "",
         icon: Image.asset(
           "assets/images/calendar.png",
-          height: 24,
-          width: 24,
+          height: 32,
+          width: 32,
           color: const Color(0xffC3BEDF),
         ),
         selectedIcon: Image.asset(
           "assets/images/calendar.png",
-          height: 24,
-          width: 24,
+          height: 32,
+          width: 32,
           color: const Color(0xff6348EB),
         ),
         initialLocation: '/calendar',
@@ -140,6 +140,7 @@ class ShellPageState extends State<ShellPage> {
       extendBody: true,
 
       drawer: const CommonDrawer(),
+      backgroundColor: const Color(0xfff2f2ef),
       // appBar: AppBar(
       //   title: Text(widget.title),
       // ),
@@ -153,7 +154,7 @@ class ShellPageState extends State<ShellPage> {
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                          offset: Offset(0, 0),
+                          offset: const Offset(0, 0),
                           color: Colors.grey.withOpacity(.1),
                           blurRadius: 6,
                           spreadRadius: 6)
@@ -345,6 +346,7 @@ BlocBuilder<NavigationCubit, NavigationState> _buildBottomNavigation(
             // surfaceTintColor: Colors.red,
             shadowColor: Colors.transparent,
             elevation: 0,
+            
             selectedIndex: state.index,
             onDestinationSelected: (i) {
               if (state.index != i) {
