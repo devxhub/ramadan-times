@@ -54,56 +54,50 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     DataFetched event,
     Emitter<HomeState> emit,
   ) async {
-    // if (event.) {
-    //   emit(state.copyWith(
-    //     status: CalendarStatus.initial,
-    //     timeOfToday: null,
-    //     timeOfNextDay: null,
-    //   ));
-    // }
+    if (event.isRefreshed) {
+      emit(state.copyWith(
+        status: HomeStatus.initial,
+        timeOfToday: null,
+        timeOfNextDay: null,
+      ));
+    }
 
     try {
-      if (state.status == HomeStatus.initial ||
-          state.status == HomeStatus.success) {
-        SharedPreferences preferences = await SharedPreferences.getInstance();
+      SharedPreferences preferences = await SharedPreferences.getInstance();
 
-        District? d = District.fromJson(jsonDecode(
-            preferences.getString("current_location") ??
-                jsonEncode(District(
-                    id: "47",
-                    division_id: "6",
-                    name: "Dhaka",
-                    bn_name: "ঢাকা",
-                    lat: "23.7115253",
-                    lon: "90.4111451",
-                    url: "www.dhaka.gov.bd"))));
-        sortedProductResp(String sortBy) async {
-          final timeOfToday = await apiService.timingByCity(
-              date: event.date,
-              method: event.method,
-              school: event.school,
-              country: event.country,
-              city: event.city ?? d.name);
-          List<String> temp = event.date.split("-");
-          DateTime nextDate = DateTime(
-                  int.parse(temp[2]), int.parse(temp[1]), int.parse(temp[0]))
+      District? d = District.fromJson(jsonDecode(
+          preferences.getString("current_location") ??
+              jsonEncode(District(
+                  id: "47",
+                  division_id: "6",
+                  name: "Dhaka",
+                  bn_name: "ঢাকা",
+                  lat: "23.7115253",
+                  lon: "90.4111451",
+                  url: "www.dhaka.gov.bd"))));
+
+      final timeOfToday = await apiService.timingByCity(
+          date: event.date,
+          method: event.method,
+          school: event.school,
+          country: event.country,
+          city: event.city ?? d.name);
+      List<String> temp = event.date.split("-");
+      DateTime nextDate =
+          DateTime(int.parse(temp[2]), int.parse(temp[1]), int.parse(temp[0]))
               .add(const Duration(days: 1));
 
-          final timeOfNextDay = await apiService.timingByCity(
-              date: DateFormat("dd-mm-yyyy").format(nextDate),
-              method: event.method,
-              school: event.school,
-              country: event.country,
-              city: event.city ?? d.name);
-          return emit(state.copyWith(
-            status: HomeStatus.success,
-            timeOfToday: timeOfToday,
-            timeOfNextDay: timeOfNextDay,
-          ));
-        }
-
-        await sortedProductResp("recent");
-      }
+      final timeOfNextDay = await apiService.timingByCity(
+          date: DateFormat("dd-MM-yyyy").format(nextDate),
+          method: event.method,
+          school: event.school,
+          country: event.country,
+          city: event.city ?? d.name);
+      return emit(state.copyWith(
+        status: HomeStatus.success,
+        timeOfToday: timeOfToday,
+        timeOfNextDay: timeOfNextDay,
+      ));
     } on Exception catch (_) {
       emit(state.copyWith(status: HomeStatus.failure));
     }

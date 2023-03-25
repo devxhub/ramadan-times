@@ -23,7 +23,9 @@
   "chooseYourLocation": "আপনার অবস্থান নির্বাচন করুন",
   "save": "সংরক্ষণ করুন",
   "hijriDate": "হিজরি তারিখ",
+  "prayer": "নামায",
   "privacyPolicy": "গোপনীয়তা নীতি",
+  "timeRemaining": "সময় বাকি",
   "greetings": "স্বাগতম {userName}",
   "@greetings": {
     "description": "A message of greetings to user",

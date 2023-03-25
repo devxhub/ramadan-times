@@ -76,7 +76,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hijriDate => 'হিজরি তারিখ';
 
   @override
+  String get prayer => 'নামায';
+
+  @override
   String get privacyPolicy => 'গোপনীয়তা নীতি';
+
+  @override
+  String get timeRemaining => 'সময় বাকি';
 
   @override
   String greetings(String userName) {

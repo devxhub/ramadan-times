@@ -231,11 +231,23 @@ abstract class AppLocalizations {
   /// **'হিজরি তারিখ'**
   String get hijriDate;
 
+  /// No description provided for @prayer.
+  ///
+  /// In en, this message translates to:
+  /// **'নামায'**
+  String get prayer;
+
   /// No description provided for @privacyPolicy.
   ///
   /// In en, this message translates to:
   /// **'গোপনীয়তা নীতি'**
   String get privacyPolicy;
+
+  /// No description provided for @timeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'সময় বাকি'**
+  String get timeRemaining;
 
   /// A message of greetings to user
   ///

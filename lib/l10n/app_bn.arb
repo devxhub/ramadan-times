@@ -23,7 +23,9 @@
   "chooseYourLocation": "আপনার অবস্থান নির্বাচন করুন",
   "save": "সংরক্ষণ করুন",
   "hijriDate": "হিজরি তারিখ",
+  "prayer": "নামায",
   "privacyPolicy": "গোপনীয়তা নীতি",
+  "timeRemaining": "সময় বাকি",
   "greetings": "স্বাগতম {userName}",
   "@greetings": {
     "description": "A message of greetings to user",
@@ -34,7 +36,7 @@
       }
     }
   },
-  "arabicDate": "{day} {month, select, 1{মুহররম} 2{সফর} 3{রবিউল আউয়াল} 4{রবিউছ ছানি} 5{জামাদিউল আউয়াল} 6{জামাদিউছ ছানি} 7{রজব} 8{শা’বান} 9{রমাজান} 10{শাওয়াল} 11{জিলক্বদ} 12{জিলহজ্জ} other{}}, {year} হিজরি ",
+  "arabicDate": "{day} {month, select, 1{মুহররম} 2{সফর} 3{রবিউল আউয়াল} 4{রবিউছ ছানি} 5{জামাদিউল আউয়াল} 6{জামাদিউছ ছানি} 7{রজব} 8{শা’বান} 9{রমাজান} 10{শাওয়াল} 11{জিলক্বদ} 12{জিলহজ্জ} other{}}",
   "@arabicDate": {
     "placeholders": {
       "day": {
@@ -50,7 +52,7 @@
       }
     }
   },
-  "prayerName": "{name, select, Fajr{ফজর} Sunrise{সূর্যোদয়} Dhuhr{যোহর} Asr{আছর} Sunset{সূর্যাস্ত} Maghrib{মাগরিব} Isha{ঈশা} other{name}} ",
+  "prayerName": "{name, select, Fajr{ফজর} Sunrise{সূর্যোদয়} Dhuhr{যোহর} Asr{আছর} Sunset{সূর্যাস্ত} Maghrib{মাগরিব} Isha{ঈশা} Ishrak{ইশরাক} other{$name}} ",
   "@prayerName": {
     "placeholders": {
       "name": {

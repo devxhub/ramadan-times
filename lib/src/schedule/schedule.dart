@@ -25,6 +25,7 @@ import '../bloc/home/bloc/calendar_state.dart';
 
 import '../bloc/location/location_cubit.dart';
 import '../bloc/location/location_state.dart';
+import '../models/timing/timing.dart';
 import '../models/timing/timings.dart';
 
 class SchedulePage extends StatefulWidget {
@@ -36,8 +37,11 @@ class SchedulePage extends StatefulWidget {
 
 class _SchedulePageState extends State<SchedulePage> {
   bool setReminderForIftar = true;
+  District? selectedLocation;
   @override
   void initState() {
+    setLocation();
+    context.read<LocationCubit>().loadData();
     context.read<HomeBloc>().add(DataFetched(
             date: DateFormat("dd-MM-yyyy").format(
           DateTime.now(),
@@ -45,79 +49,140 @@ class _SchedulePageState extends State<SchedulePage> {
     super.initState();
   }
 
+  setLocation() async {
+    // Obtain shared preferences.
+    final prefs = await SharedPreferences.getInstance();
+
+    District d = District.fromJson(
+      jsonDecode(
+        prefs.getString("current_location") ??
+            jsonEncode(
+              District(
+                  id: "47",
+                  division_id: "6",
+                  name: "Dhaka",
+                  bn_name: "ঢাকা",
+                  lat: "23.7115253",
+                  lon: "90.4111451",
+                  url: "www.dhaka.gov.bd"),
+            ),
+      ),
+    );
+
+    // print(d.bn_name);
+
+    selectedLocation = d;
+  }
+
   @override
   Widget build(BuildContext context) {
     // Intl.defaultLocale = 'es';
 
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, HomeState state) {
-        if (state.status == HomeStatus.initial) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        } else if (state.status == HomeStatus.success) {
-          return Scaffold(
-              backgroundColor: const Color(0xfff2f2ef),
-              appBar: AppBar(
-                // toolbarHeight: 70,
-                primary: true,
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                elevation: 0,
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 24.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        AutoSizeText(
-                          DateFormat("EEEE, dd MMMM", "bn")
-                              .format(DateTime.now()),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall
-                              ?.copyWith(fontSize: 14.sp),
-                        ),
-                        AutoSizeText(
-                          AppLocalizations.of(context)!.localeName == "bn"
-                              ? engToBn(AppLocalizations.of(context)?.arabicDate(
-                                      state.timeOfToday?.data?.date?.hijri?.day ??
-                                          "",
-                                      state.timeOfToday?.data?.date?.hijri
-                                              ?.month?.number
-                                              .toString() ??
-                                          "",
-                                      state.timeOfToday?.data?.date?.hijri?.year ??
-                                          "") ??
-                                  "")
-                              : AppLocalizations.of(context)?.arabicDate(
-                                      state.timeOfToday?.data?.date?.hijri?.day ??
-                                          "",
-                                      state.timeOfToday?.data?.date?.hijri?.month?.en
-                                              .toString() ??
-                                          "",
-                                      state.timeOfToday?.data?.date?.hijri?.year ??
-                                          "") ??
-                                  "",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(height: 1.4, fontSize: 14.sp),
-                        ),
-                      ],
+    return Scaffold(
+      backgroundColor: const Color(0xfff2f2ef),
+      appBar: AppBar(
+        // toolbarHeight: 70,
+        primary: true,
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: [
+          Container(
+            height: 36,
+            margin: EdgeInsets.only(right: 16.w),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16.r),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(.1),
+                      spreadRadius: 2,
+                      blurRadius: 2)
+                ]),
+            child: BlocBuilder<LocationCubit, LocationState<List<District>>>(
+              builder: (context, state) {
+                return state.when(idle: () {
+                  return Container();
+                }, loading: () {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }, data: (data) {
+                  return DropdownButton<District>(
+                    hint: AutoSizeText(selectedLocation?.bn_name ?? ""),
+                    // value: selectedLocation,
+                    borderRadius: BorderRadius.circular(12.r),
+                    menuMaxHeight: 600.h,
+                    underline: const SizedBox(),
+                    icon: const Icon(Icons.arrow_drop_down_outlined),
+                    items: data.map(
+                      (e) {
+                        return DropdownMenuItem(
+                            value: e, child: AutoSizeText(e.bn_name));
+                      },
+                    ).toList(),
+                    onChanged: (v) async {
+                      setState(() {
+                        selectedLocation = v!;
+                      });
+                      // Obtain shared preferences.
+                      final prefs = await SharedPreferences.getInstance();
+                      String data = jsonEncode(v);
+
+                      prefs.setString("current_location", data);
+                      print("object");
+                      if (!mounted) return;
+                      context.read<HomeBloc>().add(
+                            DataFetched(
+                                date: DateFormat("dd-MM-yyyy").format(
+                                  DateTime.now(),
+                                ),
+                                city: v!.name),
+                          );
+                      print("object1");
+                    },
+                  );
+                }, error: (e) {
+                  return Container();
+                });
+              },
+            ),
+          ),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          SharedPreferences preferences = await SharedPreferences.getInstance();
+          if (!mounted) return;
+          context.read<HomeBloc>().add(
+                DataFetched(
+                    date: DateFormat("dd-MM-yyyy").format(
+                      DateTime.now(),
                     ),
-                  )
-                ],
-              ),
-              body: Container(
+                    city: District.fromJson(jsonDecode(
+                            preferences.getString("current_location")!))
+                        .bn_name),
+              );
+        },
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, HomeState state) {
+            if (state.status == HomeStatus.initial) {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(),
+              );
+            } else if (state.status == HomeStatus.success) {
+              return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(slivers: [
                   SliverToBoxAdapter(
                     child: SizedBox(height: 16.spMin),
                   ),
-                  const SliverToBoxAdapter(
-                    child: LocationPicker(),
+                  SliverToBoxAdapter(
+                    child: TodayInfoCard(
+                      timeOfToday: state.timeOfToday!,
+                      timeOfNextDay: state.timeOfNextDay!,
+                    ),
                   ),
                   if (state.timeOfToday != null)
                     SliverToBoxAdapter(
@@ -144,11 +209,11 @@ class _SchedulePageState extends State<SchedulePage> {
                           sehriTime:
                               state.timeOfToday?.data?.timings?.fajr ?? "",
                         ),
-                        RemainingTimeContainerForIftarTime(
+                        TimeContainerForIftarTime(
                           ifterTime:
                               state.timeOfToday?.data?.timings?.sunset ?? "",
                         ),
-                        TimeContainerForIftarTime(
+                        RemainingTimeContainerForIftarTime(
                           ifterTime:
                               state.timeOfToday?.data?.timings?.sunset ?? "",
                         ),
@@ -171,13 +236,18 @@ class _SchedulePageState extends State<SchedulePage> {
                     child: SizedBox(height: 200),
                   )
                 ]),
-              ));
-        } else {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        }
-      },
+              );
+            } else {
+              return SizedBox(
+                height: 900.h,
+                child: Center(
+                  child: AutoSizeText("Something went Wrong"),
+                ),
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 }
@@ -747,19 +817,6 @@ class _RemainingTimeContainerForSehriTimeState
                 if (DateTime.now().isBefore(endTime))
                   CountdownTimer(
                     endTime: endTime.millisecondsSinceEpoch,
-                    // onEnd: () {
-                    //   setState(() {
-                    //     endTime = DateTime(
-                    //       DateTime.now().year,
-                    //       DateTime.now().month,
-                    //       DateTime.now().day - 1,
-                    //       int.parse(
-                    //           widget.ifterTime.toString().split(":").first),
-                    //       int.parse(
-                    //           widget.ifterTime.toString().split(":").last),
-                    //     );
-                    //   });
-                    // },
                     widgetBuilder: (_, CurrentRemainingTime? time) {
                       if (time == null) {
                         return const Text("");
@@ -990,6 +1047,253 @@ class NextPrayer extends StatelessWidget {
   }
 }
 
+class CurrentPrayer extends StatelessWidget {
+  const CurrentPrayer({
+    super.key,
+    required this.today,
+    required this.nextDay,
+  });
+  final timing.Timing today;
+  final timing.Timing nextDay;
+
+  Map<String, dynamic> getCurrentPrayer(Timings today, Timings nextDay) {
+    if (DateTime.now().isAfter(customHourMinuteOfToday(
+          00,
+          00,
+        )) &&
+        DateTime.now().isBefore(customHourMinuteOfToday(
+          int.parse(
+            today.fajr!.split(":").first,
+          ),
+          int.parse(
+            today.fajr!.split(":").last,
+          ),
+        ))) {
+      return {
+        "start_minute": today.isha?.split(":").last ?? "",
+        "start_hour": today.isha?.split(":").first ?? "",
+        "end_minute": today.fajr?.split(":").last ?? "",
+        "end_hour": today.fajr?.split(":").first ?? "",
+        "name": "Isha"
+      };
+    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
+          int.parse(
+            today.fajr!.split(":").first,
+          ),
+          int.parse(
+            today.fajr!.split(":").last,
+          ),
+        )) &&
+        DateTime.now().isBefore(customHourMinuteOfToday(
+          int.parse(
+            today.sunrise!.split(":").first,
+          ),
+          int.parse(
+            today.sunrise!.split(":").last,
+          ),
+        ))) {
+      return {
+        "start_minute": today.fajr?.split(":").last ?? "",
+        "start_hour": today.fajr?.split(":").first ?? "",
+        "end_minute": today.sunrise?.split(":").last ?? "",
+        "end_hour": today.sunrise?.split(":").first ?? "",
+        "name": "Fajr"
+      };
+    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
+          int.parse(
+            today.sunrise!.split(":").first,
+          ),
+          int.parse(
+            today.sunrise!.split(":").last,
+          ),
+        )) &&
+        DateTime.now().isBefore(customHourMinuteOfToday(
+          int.parse(
+            today.dhuhr!.split(":").first,
+          ),
+          int.parse(
+            today.dhuhr!.split(":").last,
+          ),
+        ))) {
+      return {
+        "start_minute": today.fajr?.split(":").last ?? "",
+        "start_hour": today.fajr?.split(":").first ?? "",
+        "end_minute": today.sunrise?.split(":").last ?? "",
+        "end_hour": today.sunrise?.split(":").first ?? "",
+        "name": "Ishrak"
+      };
+    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
+          int.parse(
+            today.dhuhr!.split(":").first,
+          ),
+          int.parse(
+            today.dhuhr!.split(":").last,
+          ),
+        )) &&
+        DateTime.now().isBefore(customHourMinuteOfToday(
+          int.parse(
+            today.asr!.split(":").first,
+          ),
+          int.parse(
+            today.asr!.split(":").last,
+          ),
+        ))) {
+      return {
+        "start_minute": today.dhuhr?.split(":").last ?? "",
+        "start_hour": today.dhuhr?.split(":").first ?? "",
+        "end_minute": today.asr?.split(":").last ?? "",
+        "end_hour": today.asr?.split(":").first ?? "",
+        "name": "Dhuhr"
+      };
+    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
+          int.parse(
+            today.asr!.split(":").first,
+          ),
+          int.parse(
+            today.asr!.split(":").last,
+          ),
+        )) &&
+        DateTime.now().isBefore(customHourMinuteOfToday(
+          int.parse(
+            today.maghrib!.split(":").first,
+          ),
+          int.parse(
+            today.maghrib!.split(":").last,
+          ),
+        ))) {
+      return {
+        "start_minute": today.asr?.split(":").last ?? "",
+        "start_hour": today.asr?.split(":").first ?? "",
+        "end_minute": today.maghrib?.split(":").last ?? "",
+        "end_hour": today.maghrib?.split(":").first ?? "",
+        "name": "Asr"
+      };
+    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
+          int.parse(
+            today.maghrib!.split(":").first,
+          ),
+          int.parse(
+            today.maghrib!.split(":").last,
+          ),
+        )) &&
+        DateTime.now().isBefore(customHourMinuteOfToday(
+          int.parse(
+            today.isha!.split(":").first,
+          ),
+          int.parse(
+            today.isha!.split(":").last,
+          ),
+        ))) {
+      return {
+        "start_minute": today.maghrib?.split(":").last ?? "",
+        "start_hour": today.maghrib?.split(":").first ?? "",
+        "end_minute": today.isha?.split(":").last ?? "",
+        "end_hour": today.isha?.split(":").first ?? "",
+        "name": "Maghrib"
+      };
+    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
+          int.parse(
+            today.isha!.split(":").first,
+          ),
+          int.parse(
+            today.isha!.split(":").last,
+          ),
+        )) &&
+        DateTime.now().isBefore(
+          customHourMinuteOfToday(
+            00,
+            00,
+          ),
+        )) {
+      return {
+        "start_minute": today.isha?.split(":").last ?? "",
+        "start_hour": today.isha?.split(":").first ?? "",
+        "end_minute": nextDay.fajr?.split(":").last ?? "",
+        "end_hour": nextDay.fajr?.split(":").first ?? "",
+        "name": "Isha"
+      };
+    } else {
+      return {
+        "start_minute": today.isha?.split(":").last ?? "",
+        "start_hour": today.isha?.split(":").first ?? "",
+        "end_minute": nextDay.fajr?.split(":").last ?? "",
+        "end_hour": nextDay.fajr?.split(":").first ?? "",
+        "name": "Isha"
+      };
+    }
+  }
+
+  DateTime customHourMinuteOfToday(int hour, int minute) {
+    return DateTime(DateTime.now().year, DateTime.now().month,
+        DateTime.now().day, hour, minute);
+  }
+
+  DateTime customHourMinuteOfNextDay(int hour, int minute) {
+    return DateTime(DateTime.now().year, DateTime.now().month,
+        DateTime.now().day + 1, hour, minute);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AutoSizeText(
+              "${AppLocalizations.of(context)?.prayerName(
+                    getCurrentPrayer(today.data!.timings!,
+                            nextDay.data!.timings!)['name'] ??
+                        "",
+                  ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: const Color(0xff000000), height: 1, fontSize: 18.sp),
+            ),
+            CountdownTimer(
+              endTime: DateTime(
+                DateTime.now().year,
+                DateTime.now().month,
+                DateTime.now().day,
+                int.parse(getCurrentPrayer(
+                    today.data!.timings!, nextDay.data!.timings!)["end_hour"]),
+                int.parse(getCurrentPrayer(today.data!.timings!,
+                    nextDay.data!.timings!)["end_minute"]),
+              ).millisecondsSinceEpoch,
+              widgetBuilder: (_, CurrentRemainingTime? time) {
+                if (time == null) {
+                  return const Text("");
+                }
+                return Row(
+                  children: [
+                    AutoSizeText(
+                      "${AppLocalizations.of(context)?.timeRemaining ?? ""} ",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(color: const Color(0xff6348EB)),
+                    ),
+                    AutoSizeText(
+                      AppLocalizations.of(context)?.localeName == "bn"
+                          ? engToBn(
+                              '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                          : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(color: const Color(0xff6348EB)),
+                    ),
+                  ],
+                );
+              },
+            )
+          ],
+        ),
+      ],
+    );
+  }
+}
+
 class NextSehriIftar extends StatelessWidget {
   const NextSehriIftar({
     super.key,
@@ -1113,142 +1417,141 @@ class NextSehriIftar extends StatelessWidget {
   }
 }
 
-class LocationPicker extends StatefulWidget {
-  const LocationPicker({
+class TodayInfoCard extends StatefulWidget {
+  final Timing timeOfToday;
+  final Timing timeOfNextDay;
+  const TodayInfoCard({
     super.key,
+    required this.timeOfToday,
+    required this.timeOfNextDay,
   });
 
   @override
-  State<LocationPicker> createState() => _LocationPickerState();
+  State<TodayInfoCard> createState() => _TodayInfoCardState();
 }
 
-class _LocationPickerState extends State<LocationPicker> {
-  District? selectedLocation;
+class _TodayInfoCardState extends State<TodayInfoCard> {
   @override
   void initState() {
-    setLocation();
-    context.read<LocationCubit>().loadData();
-
     super.initState();
-  }
-
-  setLocation() async {
-    // Obtain shared preferences.
-    final prefs = await SharedPreferences.getInstance();
-
-    District d = District.fromJson(
-      jsonDecode(
-        prefs.getString("current_location") ??
-            jsonEncode(
-              District(
-                  id: "47",
-                  division_id: "6",
-                  name: "Dhaka",
-                  bn_name: "ঢাকা",
-                  lat: "23.7115253",
-                  lon: "90.4111451",
-                  url: "www.dhaka.gov.bd"),
-            ),
-      ),
-    );
-
-    // print(d.bn_name);
-
-    selectedLocation = d;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      // height: 200,
+      width: 375.w,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16),
       decoration: BoxDecoration(
         color: const Color(0xffe3deff),
         borderRadius: BorderRadius.circular(24.r),
       ),
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            "assets/images/image1.png",
-            height: 90,
-            width: 110.w,
-          ),
-          const Spacer(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Row(
             children: [
-              AutoSizeText(
-                AppLocalizations.of(context)?.ramadanMubarak ?? "",
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              SizedBox(
-                height: 24.spMin,
-              ),
               Container(
-                height: 32.spMin,
-                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                child: Row(
+                // height: 100,
+                width: 200,
+                padding: EdgeInsets.only(right: 24.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                        child: Icon(
-                      Icons.location_pin,
-                      size: 18.sp,
-                    )),
-                    SizedBox(
-                      width: 4.w,
+                    AutoSizeText(
+                      AppLocalizations.of(context)!.localeName == "bn"
+                          ? engToBn(AppLocalizations.of(context)?.arabicDate(
+                                  widget.timeOfToday.data?.date?.hijri?.day ??
+                                      "",
+                                  widget.timeOfToday.data?.date?.hijri?.month
+                                          ?.number
+                                          .toString() ??
+                                      "",
+                                  widget.timeOfToday.data?.date?.hijri?.year ??
+                                      "") ??
+                              "")
+                          : AppLocalizations.of(context)?.arabicDate(
+                                  widget.timeOfToday.data?.date?.hijri?.day ??
+                                      "",
+                                  widget.timeOfToday.data?.date?.hijri?.month
+                                          ?.en
+                                          .toString() ??
+                                      "",
+                                  widget.timeOfToday.data?.date?.hijri?.year ??
+                                      "") ??
+                              "",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          height: 1.4,
+                          fontSize: 18.sp,
+                          color: Color(0xff36219E)),
                     ),
-                    BlocBuilder<LocationCubit, LocationState<List<District>>>(
-                      builder: (context, state) {
-                        return state.when(idle: () {
-                          return Container();
-                        }, loading: () {
-                          return const Center(
-                            child: CircularProgressIndicator.adaptive(),
-                          );
-                        }, data: (data) {
-                          return DropdownButton<District>(
-                            hint: AutoSizeText(selectedLocation?.bn_name ?? ""),
-                            // value: selectedLocation,
-                            borderRadius: BorderRadius.circular(12.r),
-                            underline: const SizedBox(),
-                            icon: const Icon(Icons.arrow_drop_down_outlined),
-                            items: data.map(
-                              (e) {
-                                return DropdownMenuItem(
-                                    value: e, child: AutoSizeText(e.bn_name));
-                              },
-                            ).toList(),
-                            onChanged: (v) async {
-                              setState(() {
-                                selectedLocation = v!;
-                              });
-                              // Obtain shared preferences.
-                              final prefs =
-                                  await SharedPreferences.getInstance();
-                              String data = jsonEncode(v);
-
-                              prefs.setString("current_location", data);
-                              if (!mounted) return;
-                              context.read<HomeBloc>().add(
-                                    DataFetched(
-                                        date: DateFormat("dd-MM-yyyy").format(
-                                          DateTime.now(),
-                                        ),
-                                        city: v!.name),
-                                  );
-                            },
-                          );
-                        }, error: (e) {
-                          return Container();
-                        });
-                      },
+                    AutoSizeText(
+                      DateFormat("EEEE, dd MMMM", "bn").format(DateTime.now()),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall
+                          ?.copyWith(fontSize: 12.sp),
+                    ),
+                    const SizedBox(
+                      height: 25,
                     ),
                   ],
                 ),
-              )
+              ),
+              const Spacer(),
+              Image.asset(
+                "assets/images/image1.png",
+                height: 80,
+                width: 110.w,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              CurrentPrayer(
+                  today: widget.timeOfToday, nextDay: widget.timeOfNextDay),
+              const Spacer(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      AutoSizeText(
+                        "${AppLocalizations.of(context)?.prayerName("Sunrise") ?? ""}  ",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(color: const Color(0xff6348EB)),
+                      ),
+                      AutoSizeText(
+                        engToBn(
+                          widget.timeOfToday.data?.timings?.sunrise ?? "",
+                        ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(color: const Color(0xff6348EB)),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      AutoSizeText(
+                        "${AppLocalizations.of(context)?.prayerName("Sunset") ?? ""}  ",
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      AutoSizeText(
+                        engToBn(
+                          widget.timeOfToday.data?.timings?.sunset ?? "",
+                        ),
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           )
         ],

@@ -15,6 +15,7 @@ class DataFetched extends HomeEvent {
   final String? city;
   final int school;
   final int method;
+  final bool isRefreshed;
 
   DataFetched({
     required this.date,
@@ -22,6 +23,7 @@ class DataFetched extends HomeEvent {
     this.city,
     this.school = 1,
     this.method = 1,
+    this.isRefreshed = false,
 
     // this.categorySlug,
   });

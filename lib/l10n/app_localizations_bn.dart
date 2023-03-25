@@ -76,7 +76,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get hijriDate => 'হিজরি তারিখ';
 
   @override
+  String get prayer => 'নামায';
+
+  @override
   String get privacyPolicy => 'গোপনীয়তা নীতি';
+
+  @override
+  String get timeRemaining => 'সময় বাকি';
 
   @override
   String greetings(String userName) {
@@ -103,7 +109,7 @@ class AppLocalizationsBn extends AppLocalizations {
         'other': '',
       },
     );
-    return '$day $_temp0, $year হিজরি ';
+    return '$day $_temp0';
   }
 
   @override
@@ -118,7 +124,8 @@ class AppLocalizationsBn extends AppLocalizations {
         'Sunset': 'সূর্যাস্ত',
         'Maghrib': 'মাগরিব',
         'Isha': 'ঈশা',
-        'other': 'name',
+        'Ishrak': 'ইশরাক',
+        'other': '$name',
       },
     );
     return '$_temp0 ';
