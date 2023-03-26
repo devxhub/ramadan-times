@@ -255,6 +255,12 @@ abstract class AppLocalizations {
   /// **'স্বাগতম {userName}'**
   String greetings(String userName);
 
+  /// Formatted Time
+  ///
+  /// In en, this message translates to:
+  /// **'{date}'**
+  String formattedTime(DateTime date);
+
   /// No description provided for @arabicDate.
   ///
   /// In en, this message translates to:

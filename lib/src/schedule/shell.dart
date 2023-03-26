@@ -255,8 +255,9 @@ class CommonDrawer extends StatelessWidget {
                     icon: const Icon(Icons.share),
                     title: AppLocalizations.of(context)?.shareApp ?? "",
                     onTap: () {
-                      Share.share('check out my website https://devxhub.com',
-                          subject: 'Look what I made!');
+                      Share.share(
+                          'check out this App https://play.google.com/store/apps/details?id=com.devxhub.ramadantimes',
+                          subject: 'Look what they made!');
                     },
                   ),
                   DrawerItem(
@@ -346,7 +347,6 @@ BlocBuilder<NavigationCubit, NavigationState> _buildBottomNavigation(
             // surfaceTintColor: Colors.red,
             shadowColor: Colors.transparent,
             elevation: 0,
-            
             selectedIndex: state.index,
             onDestinationSelected: (i) {
               if (state.index != i) {

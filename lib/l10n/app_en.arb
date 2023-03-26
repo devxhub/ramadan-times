@@ -27,6 +27,16 @@
   "privacyPolicy": "গোপনীয়তা নীতি",
   "timeRemaining": "সময় বাকি",
   "greetings": "স্বাগতম {userName}",
+  "formattedTime": "{date}",
+  "@formattedTime": {
+    "description": "Formatted Time",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "jm"
+      }
+    }
+  },
   "@greetings": {
     "description": "A message of greetings to user",
     "placeholders": {

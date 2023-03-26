@@ -90,6 +90,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String formattedTime(DateTime date) {
+    final intl.DateFormat dateDateFormat = intl.DateFormat.jm(localeName);
+    final String dateString = dateDateFormat.format(date);
+
+    return '$dateString';
+  }
+
+  @override
   String arabicDate(String day, String month, String year) {
     return '$day $month, $year AH';
   }

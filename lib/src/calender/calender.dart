@@ -4,6 +4,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hijri/hijri_array.dart';
+import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_event.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_state.dart';
@@ -504,15 +506,15 @@ class TimeCard extends StatelessWidget {
                           ),
                     ),
                     AutoSizeText(
-                      TimeOfDay(
-                        hour: int.tryParse(startTime.split(":").first) ?? 0,
-                        minute: (int.tryParse(startTime
-                                    .split(":")
-                                    .last
-                                    .substring(0, 2)) ??
-                                0) +
-                            adjustTime!,
-                      ).format(context),
+                      DateFormat.jm("bn_BD").format(
+                        DateTime(
+                          2023,
+                          1,
+                          1,
+                          int.parse(startTime.split(":").first),
+                          int.parse(startTime.split(":").last.substring(0, 2)),
+                        ).add(Duration(minutes: adjustTime ?? 0)),
+                      ),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             height: 1,
                             fontWeight: FontWeight.w700,

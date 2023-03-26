@@ -84,16 +84,16 @@ class _SchedulePageState extends State<SchedulePage> {
         // toolbarHeight: 70,
         primary: true,
         foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           Container(
             height: 36,
             margin: EdgeInsets.only(right: 16.w),
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(16.r),
+                borderRadius: BorderRadius.circular(8.r),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(.1),
@@ -109,39 +109,47 @@ class _SchedulePageState extends State<SchedulePage> {
                     child: CircularProgressIndicator.adaptive(),
                   );
                 }, data: (data) {
-                  return DropdownButton<District>(
-                    hint: AutoSizeText(selectedLocation?.bn_name ?? ""),
-                    // value: selectedLocation,
-                    borderRadius: BorderRadius.circular(12.r),
-                    menuMaxHeight: 600.h,
-                    underline: const SizedBox(),
-                    icon: const Icon(Icons.arrow_drop_down_outlined),
-                    items: data.map(
-                      (e) {
-                        return DropdownMenuItem(
-                            value: e, child: AutoSizeText(e.bn_name));
-                      },
-                    ).toList(),
-                    onChanged: (v) async {
-                      setState(() {
-                        selectedLocation = v!;
-                      });
-                      // Obtain shared preferences.
-                      final prefs = await SharedPreferences.getInstance();
-                      String data = jsonEncode(v);
+                  return Row(
+                    children: [
+                      const Icon(Icons.location_pin),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      DropdownButton<District>(
+                        hint: AutoSizeText(selectedLocation?.bn_name ?? ""),
+                        // value: selectedLocation,
+                        borderRadius: BorderRadius.circular(12.r),
+                        menuMaxHeight: 600.h,
+                        underline: const SizedBox(),
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        items: data.map(
+                          (e) {
+                            return DropdownMenuItem(
+                                value: e, child: AutoSizeText(e.bn_name));
+                          },
+                        ).toList(),
+                        onChanged: (v) async {
+                          setState(() {
+                            selectedLocation = v!;
+                          });
+                          // Obtain shared preferences.
+                          final prefs = await SharedPreferences.getInstance();
+                          String data = jsonEncode(v);
 
-                      prefs.setString("current_location", data);
-                      print("object");
-                      if (!mounted) return;
-                      context.read<HomeBloc>().add(
-                            DataFetched(
-                                date: DateFormat("dd-MM-yyyy").format(
-                                  DateTime.now(),
-                                ),
-                                city: v!.name),
-                          );
-                      print("object1");
-                    },
+                          prefs.setString("current_location", data);
+                          print("object");
+                          if (!mounted) return;
+                          context.read<HomeBloc>().add(
+                                DataFetched(
+                                    date: DateFormat("dd-MM-yyyy").format(
+                                      DateTime.now(),
+                                    ),
+                                    city: v!.name),
+                              );
+                          print("object1");
+                        },
+                      ),
+                    ],
                   );
                 }, error: (e) {
                   return Container();
@@ -240,7 +248,7 @@ class _SchedulePageState extends State<SchedulePage> {
             } else {
               return SizedBox(
                 height: 900.h,
-                child: Center(
+                child: const Center(
                   child: AutoSizeText("Something went Wrong"),
                 ),
               );
@@ -338,6 +346,10 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
       ),
       // height: ,
       decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          const Color(0xff6348EB),
+          const Color(0xff6348EB).withOpacity(0),
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         color: const Color(0xff6348eb),
         borderRadius: BorderRadius.circular(30.r),
       ),
@@ -374,7 +386,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                     },
                     child: Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 12.w, vertical: 10),
+                            horizontal: 16.w, vertical: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
                           color: _selectedTab == 0
@@ -387,6 +399,8 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                               .textTheme
                               .bodyLarge
                               ?.copyWith(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
                                   color: _selectedTab == 0
                                       ? const Color(0xff6348EB)
                                       : Colors.white),
@@ -400,7 +414,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                     },
                     child: Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 12.w, vertical: 10),
+                            horizontal: 16.w, vertical: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
                           color: _selectedTab == 1 ? Colors.white : null,
@@ -409,8 +423,10 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                           AppLocalizations.of(context)?.ifterDua ?? "",
                           style: Theme.of(context)
                               .textTheme
-                              .bodyLarge
+                              .titleLarge
                               ?.copyWith(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
                                   color: _selectedTab == 1
                                       ? const Color(0xff6348EB)
                                       : Colors.white),
@@ -470,14 +486,20 @@ class _TimeContainerForSehriTimeState extends State<TimeContainerForSehriTime> {
                 ),
                 AutoSizeText.rich(
                   TextSpan(
-                    text: TimeOfDay(
-                      hour: int.parse(widget.time.split(":").first),
-                      minute: int.parse(widget.time.split(":").last) - 5,
-                    ).format(context),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(height: 1.4, color: const Color(0xff674CEC)),
+                    text: DateFormat.jm("bn_BD").format(
+                      DateTime(
+                              2023,
+                              1,
+                              1,
+                              int.parse(widget.time.split(":").first),
+                              int.parse(widget.time.split(":").last))
+                          .subtract(const Duration(minutes: 5)),
+                    ),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        height: 1.4,
+                        color: const Color(0xff674CEC),
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
                 const Spacer(),
@@ -556,15 +578,20 @@ class _TimeContainerForIftarTimeState extends State<TimeContainerForIftarTime> {
                 ),
                 AutoSizeText.rich(
                   TextSpan(
-                    text: TimeOfDay(
-                            minute:
-                                int.parse(widget.ifterTime.split(":").last) + 5,
-                            hour: int.parse(widget.ifterTime.split(":").first))
-                        .format(context),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(height: 1.4, color: const Color(0xff674cec)),
+                    text: DateFormat.jm("bn_BD").format(
+                      DateTime(
+                              2023,
+                              1,
+                              1,
+                              int.parse(widget.ifterTime.split(":").first),
+                              int.parse(widget.ifterTime.split(":").last))
+                          .add(const Duration(minutes: 4)),
+                    ),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        height: 1.4,
+                        color: const Color(0xff674cec),
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w700),
                   ),
                 ),
                 const Spacer(),
@@ -626,14 +653,14 @@ class _RemainingTimeContainerForIftarTimeState
       DateTime.now().month,
       DateTime.now().day,
       int.parse(widget.ifterTime.toString().split(":").first),
-      int.parse(widget.ifterTime.toString().split(":").last),
+      int.parse(widget.ifterTime.toString().split(":").last) + 4,
     );
     nextDayEndTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day + 1,
       int.parse(widget.ifterTime.toString().split(":").first),
-      int.parse(widget.ifterTime.toString().split(":").last),
+      int.parse(widget.ifterTime.toString().split(":").last) + 4,
     );
 
     controller =
@@ -689,10 +716,10 @@ class _RemainingTimeContainerForIftarTimeState
                             ? engToBn(
                                 '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: Colors.white),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700),
                       );
                     },
                   ),
@@ -708,10 +735,10 @@ class _RemainingTimeContainerForIftarTimeState
                             ? engToBn(
                                 '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: Colors.white),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700),
                       );
                     },
                   ),
@@ -758,14 +785,14 @@ class _RemainingTimeContainerForSehriTimeState
       DateTime.now().month,
       DateTime.now().day,
       int.parse(widget.sehriTime.toString().split(":").first),
-      int.parse(widget.sehriTime.toString().split(":").last),
+      int.parse(widget.sehriTime.toString().split(":").last) - 5,
     );
     nextDayEndTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day + 1,
       int.parse(widget.sehriTime.toString().split(":").first),
-      int.parse(widget.sehriTime.toString().split(":").last),
+      int.parse(widget.sehriTime.toString().split(":").last) - 5,
     );
 
     controller =
@@ -826,10 +853,10 @@ class _RemainingTimeContainerForSehriTimeState
                             ? engToBn(
                                 '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: Colors.white),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700),
                       );
                     },
                   ),
@@ -845,10 +872,10 @@ class _RemainingTimeContainerForSehriTimeState
                             ? engToBn(
                                 '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: Colors.white),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700),
                       );
                     },
                   ),
@@ -975,7 +1002,12 @@ class NextPrayer extends StatelessWidget {
       margin: const EdgeInsets.only(top: 24, left: 1, right: 1),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(24)),
+          gradient: LinearGradient(colors: [
+            const Color(0xffD9DFE0),
+            const Color(0xffD9DFE0).withOpacity(0),
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24)),
       child: Row(
         children: [
           Column(
@@ -993,10 +1025,8 @@ class NextPrayer extends StatelessWidget {
                           "",
                     ) ??
                     "",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(color: const Color(0xffffa600), height: 1),
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: const Color(0xffffa600), height: 1, fontSize: 20.sp),
               )
             ],
           ),
@@ -1008,15 +1038,23 @@ class NextPrayer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.r)),
             child: AutoSizeText.rich(
               TextSpan(
-                  text: TimeOfDay(
-                    hour: int.tryParse(getNextPrayer(today.data!.timings!,
-                            nextDay.data!.timings!)["start_hour"]) ??
-                        0,
-                    minute: int.tryParse(getNextPrayer(today.data!.timings!,
-                            nextDay.data!.timings!)["start_minute"]) ??
-                        0,
-                  ).format(context),
-                  style: Theme.of(context).textTheme.titleLarge,
+                  text: DateFormat.jm("bn_BD").format(
+                    DateTime(
+                      2023,
+                      1,
+                      1,
+                      int.tryParse(getNextPrayer(today.data!.timings!,
+                              nextDay.data!.timings!)["start_hour"]) ??
+                          0,
+                      int.tryParse(getNextPrayer(today.data!.timings!,
+                              nextDay.data!.timings!)["start_minute"]) ??
+                          0,
+                    ),
+                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w700, fontSize: 16.sp),
                   children: [
                     // TextSpan(
                     //     text: "AM",
@@ -1025,19 +1063,20 @@ class NextPrayer extends StatelessWidget {
                         text: " - ",
                         style: Theme.of(context).textTheme.titleLarge),
                     TextSpan(
-                        text: TimeOfDay(
-                          hour: int.tryParse(getNextPrayer(today.data!.timings!,
+                      text: DateFormat.jm("bn_BD").format(
+                        DateTime(
+                          2023,
+                          1,
+                          1,
+                          int.tryParse(getNextPrayer(today.data!.timings!,
                                   nextDay.data!.timings!)["end_hour"]) ??
                               0,
-                          minute: int.tryParse(getNextPrayer(
-                                  today.data!.timings!,
-                                  nextDay.data!.timings!)["end_hour"]) ??
+                          int.tryParse(getNextPrayer(today.data!.timings!,
+                                  nextDay.data!.timings!)["end_minute"]) ??
                               0,
-                        ).format(context),
-                        style: Theme.of(context).textTheme.titleLarge),
-                    // TextSpan(
-                    //     text: "AM",
-                    //     style: Theme.of(context).textTheme.bodySmall),
+                        ),
+                      ),
+                    ),
                   ]),
             ),
           )
@@ -1116,10 +1155,10 @@ class CurrentPrayer extends StatelessWidget {
           ),
         ))) {
       return {
-        "start_minute": today.fajr?.split(":").last ?? "",
-        "start_hour": today.fajr?.split(":").first ?? "",
-        "end_minute": today.sunrise?.split(":").last ?? "",
-        "end_hour": today.sunrise?.split(":").first ?? "",
+        "start_minute": today.sunrise?.split(":").last ?? "",
+        "start_hour": today.sunrise?.split(":").first ?? "",
+        "end_minute": today.dhuhr?.split(":").last ?? "",
+        "end_hour": today.dhuhr?.split(":").first ?? "",
         "name": "Ishrak"
       };
     } else if (DateTime.now().isAfter(customHourMinuteOfToday(
@@ -1248,7 +1287,9 @@ class CurrentPrayer extends StatelessWidget {
                         "",
                   ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: const Color(0xff000000), height: 1, fontSize: 18.sp),
+                  color: const Color(0xff000000),
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600),
             ),
             CountdownTimer(
               endTime: DateTime(
@@ -1260,6 +1301,20 @@ class CurrentPrayer extends StatelessWidget {
                 int.parse(getCurrentPrayer(today.data!.timings!,
                     nextDay.data!.timings!)["end_minute"]),
               ).millisecondsSinceEpoch,
+              onEnd: () async {
+                SharedPreferences preferences =
+                    await SharedPreferences.getInstance();
+
+                context.read<HomeBloc>().add(
+                      DataFetched(
+                          date: DateFormat("dd-MM-yyyy").format(
+                            DateTime.now(),
+                          ),
+                          city: District.fromJson(jsonDecode(
+                                  preferences.getString("current_location")!))
+                              .bn_name),
+                    );
+              },
               widgetBuilder: (_, CurrentRemainingTime? time) {
                 if (time == null) {
                   return const Text("");
@@ -1268,20 +1323,19 @@ class CurrentPrayer extends StatelessWidget {
                   children: [
                     AutoSizeText(
                       "${AppLocalizations.of(context)?.timeRemaining ?? ""} ",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(color: const Color(0xff6348EB)),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: const Color(0xff6348EB),
+                          fontWeight: FontWeight.w600),
                     ),
                     AutoSizeText(
                       AppLocalizations.of(context)?.localeName == "bn"
                           ? engToBn(
                               '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
                           : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(color: const Color(0xff6348EB)),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: const Color(0xff6348EB),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 );
@@ -1308,7 +1362,12 @@ class NextSehriIftar extends StatelessWidget {
         margin: const EdgeInsets.only(top: 24),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(24)),
+            gradient: LinearGradient(colors: [
+              const Color(0xffD9DFE0),
+              const Color(0xffFFFFFF).withOpacity(0),
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(24)),
         child: Column(
           children: [
             Row(
@@ -1319,14 +1378,15 @@ class NextSehriIftar extends StatelessWidget {
                   children: [
                     AutoSizeText(
                       AppLocalizations.of(context)?.nextDay ?? "",
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(),
                     ),
                     AutoSizeText(
                       AppLocalizations.of(context)?.sehri ?? "",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(color: const Color(0xffffa600), height: 1),
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: const Color(0xffffa600),
+                          height: 1,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700),
                     )
                   ],
                 ),
@@ -1338,20 +1398,25 @@ class NextSehriIftar extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: AutoSizeText.rich(
                     TextSpan(
-                      text: TimeOfDay(
-                              minute: int.parse(data.data?.timings?.fajr
-                                          ?.split(":")
-                                          .last ??
-                                      "0") -
-                                  5,
-                              hour: int.parse(
-                                  data.data?.timings?.fajr?.split(":").first ??
-                                      "0"))
-                          .format(context),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(color: const Color(0xffffa600)),
+                      text: DateFormat.jm("bn_BD").format(
+                        DateTime(
+                                2023,
+                                1,
+                                1,
+                                int.parse(data.data?.timings?.fajr
+                                        ?.split(":")
+                                        .first ??
+                                    "0"),
+                                int.parse(
+                                    data.data?.timings?.fajr?.split(":").last ??
+                                        "0"))
+                            .subtract(const Duration(minutes: 5)),
+                      ),
+
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: const Color(0xffffa600),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20.sp),
                       // children: [
                       // TextSpan(
                       //     text: "AM",
@@ -1379,10 +1444,11 @@ class NextSehriIftar extends StatelessWidget {
                     ),
                     AutoSizeText(
                       AppLocalizations.of(context)?.ifter ?? "",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(color: const Color(0xff674cec), height: 1),
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: const Color(0xff674cec),
+                          height: 1,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20.sp),
                     )
                   ],
                 ),
@@ -1390,23 +1456,29 @@ class NextSehriIftar extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
-                      color: const Color(0xfff2f2f7),
+                      color: const Color(0xffD9DFE0).withOpacity(.54),
                       borderRadius: BorderRadius.circular(15)),
                   child: AutoSizeText.rich(
                     TextSpan(
-                      text: TimeOfDay(
-                              minute: int.parse(
-                                  data.data?.timings?.sunset?.split(":").last ??
-                                      "0"),
-                              hour: int.parse(data.data?.timings?.sunset
-                                      ?.split(":")
-                                      .first ??
-                                  "0"))
-                          .format(context),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(color: const Color(0xff674cec)),
+                      text: DateFormat.jm("bn_BD").format(
+                        DateTime(
+                                2023,
+                                1,
+                                1,
+                                int.parse(data.data?.timings?.maghrib
+                                        ?.split(":")
+                                        .first ??
+                                    "0"),
+                                int.parse(data.data?.timings?.maghrib
+                                        ?.split(":")
+                                        .last ??
+                                    "0"))
+                            .add(const Duration(minutes: 4)),
+                      ),
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: const Color(0xff674cec),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20.sp),
                     ),
                   ),
                 )
@@ -1443,6 +1515,10 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
       width: 375.w,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16),
       decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          const Color(0xffC2CFF2),
+          const Color(0xffF8E99B).withOpacity(0)
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         color: const Color(0xffe3deff),
         borderRadius: BorderRadius.circular(24.r),
       ),
@@ -1451,19 +1527,22 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
         children: [
           Row(
             children: [
+              const Spacer(),
+
               Container(
                 // height: 100,
                 width: 200,
-                padding: EdgeInsets.only(right: 24.w),
+                padding: EdgeInsets.only(right: 0.w),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     AutoSizeText(
                       AppLocalizations.of(context)!.localeName == "bn"
                           ? engToBn(AppLocalizations.of(context)?.arabicDate(
-                                  widget.timeOfToday.data?.date?.hijri?.day ??
-                                      "",
+                                  (int.parse(widget.timeOfToday.data?.date?.hijri?.day ?? "") -
+                                          1)
+                                      .toString(),
                                   widget.timeOfToday.data?.date?.hijri?.month
                                           ?.number
                                           .toString() ??
@@ -1474,8 +1553,7 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                           : AppLocalizations.of(context)?.arabicDate(
                                   widget.timeOfToday.data?.date?.hijri?.day ??
                                       "",
-                                  widget.timeOfToday.data?.date?.hijri?.month
-                                          ?.en
+                                  widget.timeOfToday.data?.date?.hijri?.month?.en
                                           .toString() ??
                                       "",
                                   widget.timeOfToday.data?.date?.hijri?.year ??
@@ -1483,28 +1561,23 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                               "",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           height: 1.4,
-                          fontSize: 18.sp,
-                          color: Color(0xff36219E)),
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xff36219E)),
                     ),
                     AutoSizeText(
                       DateFormat("EEEE, dd MMMM", "bn").format(DateTime.now()),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(fontSize: 12.sp),
-                    ),
-                    const SizedBox(
-                      height: 25,
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontSize: 12.sp, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
               ),
-              const Spacer(),
-              Image.asset(
-                "assets/images/image1.png",
-                height: 80,
-                width: 110.w,
-              ),
+              // Image.asset(
+              //   "assets/images/image1.png",
+              //   height: 80,
+              //   width: 110.w,
+              // ),
             ],
           ),
           Row(
@@ -1520,19 +1593,28 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                     children: [
                       AutoSizeText(
                         "${AppLocalizations.of(context)?.prayerName("Sunrise") ?? ""}  ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(color: const Color(0xff6348EB)),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: const Color(0xff6348EB),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp),
                       ),
                       AutoSizeText(
-                        engToBn(
-                          widget.timeOfToday.data?.timings?.sunrise ?? "",
-                        ),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(color: const Color(0xff6348EB)),
+                        DateFormat.jm("bn_BD").format(DateTime(
+                            2023,
+                            1,
+                            1,
+                            int.parse(widget.timeOfToday.data?.timings?.sunrise
+                                    ?.split(":")
+                                    .first ??
+                                "0"),
+                            int.parse(widget.timeOfToday.data?.timings?.sunrise
+                                    ?.split(":")
+                                    .last ??
+                                "0"))),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: const Color(0xff6348EB),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14.sp),
                       ),
                     ],
                   ),
@@ -1540,13 +1622,28 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                     children: [
                       AutoSizeText(
                         "${AppLocalizations.of(context)?.prayerName("Sunset") ?? ""}  ",
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600, fontSize: 14.sp),
                       ),
                       AutoSizeText(
-                        engToBn(
-                          widget.timeOfToday.data?.timings?.sunset ?? "",
-                        ),
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        DateFormat.jm("bn_BD").format(DateTime(
+                            2023,
+                            1,
+                            1,
+                            int.parse(widget.timeOfToday.data?.timings?.sunset
+                                    ?.split(":")
+                                    .first ??
+                                "0"),
+                            int.parse(widget.timeOfToday.data?.timings?.sunset
+                                    ?.split(":")
+                                    .last ??
+                                "0")))
+                        // engToBn(
+                        //   widget.timeOfToday.data?.timings?.sunset ?? "",
+                        // ),
+                        ,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.bold, fontSize: 14.sp),
                       ),
                     ],
                   ),
