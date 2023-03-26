@@ -4,14 +4,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hijri/hijri_array.dart';
 import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_event.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_state.dart';
 import 'package:ramadantimes/src/calender/utils.dart';
 import 'package:ramadantimes/src/models/calendar_model/datum.dart';
-import 'package:ramadantimes/src/models/timing/timings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -251,22 +249,22 @@ class CalendarPageState extends State<CalendarPage> {
                                     ),
                                     AutoSizeText(
                                       AppLocalizations.of(context)!.localeName == "bn"
-                                          ? engToBn(AppLocalizations.of(context)
-                                                  ?.arabicDate(
-                                                      state.selectedEvent?.date
-                                                              ?.hijri?.day ??
-                                                          "",
-                                                      state
+                                          ? engToBn(AppLocalizations.of(context)?.arabicDate(
+                                                  state.selectedEvent?.date?.hijri?.month?.number == 9
+                                                      ? (int.parse(state.selectedEvent?.date?.hijri?.day ?? "") - 1)
+                                                          .toString()
+                                                      : state
                                                               .selectedEvent
                                                               ?.date
                                                               ?.hijri
-                                                              ?.month
-                                                              ?.number
-                                                              .toString() ??
+                                                              ?.day ??
                                                           "",
-                                                      state.selectedEvent?.date
-                                                              ?.hijri?.year ??
-                                                          "") ??
+                                                  state.selectedEvent?.date
+                                                          ?.hijri?.month?.number
+                                                          .toString() ??
+                                                      "",
+                                                  state.selectedEvent?.date?.hijri?.year ??
+                                                      "") ??
                                               "")
                                           : AppLocalizations.of(context)?.arabicDate(
                                                   state.selectedEvent?.date?.hijri?.day ?? "",
