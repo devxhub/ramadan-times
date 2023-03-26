@@ -21,6 +21,11 @@ void main() {
     final license = await rootBundle.loadString('fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.blue,
+    statusBarColor: Colors.pink,
+  ));
   // Intl.defaultLocale = 'bn_BD';
   runApp(MultiBlocProvider(providers: [
     BlocProvider<NavigationCubit>(

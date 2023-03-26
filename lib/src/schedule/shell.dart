@@ -70,17 +70,6 @@ class ShellPageState extends State<ShellPage> {
   //   }
   // }
 
-// Login - Signs a user in and returns the logged in user's (WooUser object) details.
-
-  // final customer =
-  //     wooCommerce.loginCustomer(username: email, password: password);
-  // print(customer);
-
-// Check if a user is Logged In.
-
-// Fetch Logged in user Id
-//     int id = await fetchLoggedInUserId();
-
   @override
   Widget build(BuildContext context) {
     final tabs = [
