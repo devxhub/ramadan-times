@@ -22,7 +22,7 @@ class _RemainingTimeContainerForSehriTimeState
     extends State<RemainingTimeContainerForSehriTime> {
   bool setReminderForSehri = true;
 
-  late CountdownTimerController controller;
+  // late CountdownTimerController controller;
   late DateTime endTime;
   late DateTime nextDayEndTime;
 
@@ -35,7 +35,7 @@ class _RemainingTimeContainerForSehriTimeState
 
   @override
   void dispose() {
-    controller.dispose();
+    // controller.dispose();
     super.dispose();
   }
 

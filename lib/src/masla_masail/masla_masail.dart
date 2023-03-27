@@ -24,13 +24,13 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
   // CategoryWiseArticleBloc _categoryWiseArticleBloc;
   @override
   void initState() {
-    _scrollController.addListener(_onScroll);
     _masailBloc = BlocProvider.of<MasailBloc>(context);
     // _categoryWiseArticleBloc =
     //     BlocProvider.of<CategoryWiseArticleBloc>(context);
     _masailBloc?.add(MasailFetched(
       isRefreshed: true,
     ));
+    _scrollController.addListener(_onScroll);
     super.initState();
   }
 
@@ -158,7 +158,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height * .05),
+                          vertical: MediaQuery.of(context).viewPadding.bottom),
                     ),
                   ],
                 ))));

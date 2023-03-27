@@ -43,23 +43,26 @@ class MasailBloc extends Bloc<MasailEvent, MasailState> {
         status: MasailStatus.initial,
         posts: [],
         hasReachedMax: false,
-        page: 1,
+        page: 0,
       ));
     }
     if (state.hasReachedMax) return;
     try {
       if (state.status == MasailStatus.initial) {
-        Masail masails = await masailApi.getAllMaslaMasail(limit: 10);
+        Masail masails = await masailApi.getAllMaslaMasail(
+          limit: 14,
+          offset: 0,
+        );
 
         return emit(state.copyWith(
             status: MasailStatus.success,
             posts: masails.results,
             hasReachedMax: false,
-            page: state.page + 1));
+            page: state.page + 14));
       }
       // print(state.articleFilter);
       final posts =
-          await masailApi.getAllMaslaMasail(page: state.page, limit: 10);
+          await masailApi.getAllMaslaMasail(offset: state.page, limit: 14);
       posts.results?.isEmpty == true
           ? emit(state.copyWith(hasReachedMax: true))
           : emit(
@@ -67,7 +70,7 @@ class MasailBloc extends Bloc<MasailEvent, MasailState> {
                   status: MasailStatus.success,
                   posts: List.of(state.posts)..addAll(posts.results ?? []),
                   hasReachedMax: false,
-                  page: state.page + 1),
+                  page: state.page + 14),
             );
     } catch (_) {
       emit(state.copyWith(status: MasailStatus.failure));
