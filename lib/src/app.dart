@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return MaterialApp.router(
             routerConfig: _router,
-            title: 'Flutter Demo',
+            title: 'Ramadan Times',
             debugShowCheckedModeBanner: false,
             useInheritedMediaQuery: true,
             theme: ThemeData(
