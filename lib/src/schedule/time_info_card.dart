@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
 import 'package:ramadantimes/src/schedule/schedule.dart';
 
 import '../../l10n/app_localizations.dart';
@@ -12,10 +16,12 @@ import 'current_prayer.dart';
 class TodayInfoCard extends StatefulWidget {
   final Timing timeOfToday;
   final Timing timeOfNextDay;
+  final Main weatherMap;
   const TodayInfoCard({
     super.key,
     required this.timeOfToday,
     required this.timeOfNextDay,
+    required this.weatherMap,
   });
 
   @override
@@ -30,6 +36,8 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       // height: 200,
       width: 375.w,
@@ -47,38 +55,63 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
         children: [
           Row(
             children: [
+
+              //"${weatherMap!["main"]["temp"]}\u2103",
+              Container(
+                //height: 100,
+                width: 80.w,
+                padding: EdgeInsets.only(right: 0.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    //Text("00\u2103"),
+                    AutoSizeText(
+                      AppLocalizations.of(context)!.localeName == "bn" ? engToBn("${widget.weatherMap.temp!.toStringAsFixed(0)}°"):"",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          height: 1.4,
+                          fontSize: 40.sp,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xff36219E)),
+                    ),
+                  ],
+                ),
+              ),
               const Spacer(),
 
               Container(
                 // height: 100,
+
                 width: 200,
                 padding: EdgeInsets.only(right: 0.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
+
                     AutoSizeText(
+
                       AppLocalizations.of(context)!.localeName == "bn"
                           ? engToBn(AppLocalizations.of(context)?.arabicDate(
-                                  (int.parse(widget.timeOfToday.data?.date?.hijri?.day ?? "") -
-                                          1)
-                                      .toString(),
-                                  widget.timeOfToday.data?.date?.hijri?.month
-                                          ?.number
-                                          .toString() ??
-                                      "",
-                                  widget.timeOfToday.data?.date?.hijri?.year ??
-                                      "") ??
-                              "")
-                          : AppLocalizations.of(context)?.arabicDate(
-                                  widget.timeOfToday.data?.date?.hijri?.day ??
-                                      "",
-                                  widget.timeOfToday.data?.date?.hijri?.month?.en
-                                          .toString() ??
-                                      "",
-                                  widget.timeOfToday.data?.date?.hijri?.year ??
-                                      "") ??
+                          (int.parse(widget.timeOfToday.data?.date?.hijri?.day ?? "") -
+                              1)
+                              .toString(),
+                          widget.timeOfToday.data?.date?.hijri?.month
+                              ?.number
+                              .toString() ??
                               "",
+                          widget.timeOfToday.data?.date?.hijri?.year ??
+                              "") ??
+                          "")
+                          : AppLocalizations.of(context)?.arabicDate(
+                          widget.timeOfToday.data?.date?.hijri?.day ??
+                              "",
+                          widget.timeOfToday.data?.date?.hijri?.month?.en
+                              .toString() ??
+                              "",
+                          widget.timeOfToday.data?.date?.hijri?.year ??
+                              "") ??
+                          "",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           height: 1.4,
                           fontSize: 20.sp,
@@ -103,6 +136,7 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
+
               CurrentPrayer(
                   today: widget.timeOfToday, nextDay: widget.timeOfNextDay),
               const Spacer(),

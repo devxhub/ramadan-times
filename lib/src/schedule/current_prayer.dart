@@ -247,7 +247,7 @@ class CurrentPrayer extends StatelessWidget {
                           ),
                           city: District.fromJson(jsonDecode(
                                   preferences.getString("current_location")!))
-                              .bn_name),
+                              .bn_name,),
                     );
               },
               widgetBuilder: (_, CurrentRemainingTime? time) {

@@ -16,8 +16,10 @@ class DataFetched extends HomeEvent {
   final int school;
   final int method;
   final bool isRefreshed;
+ // final bool isFromDB;
 
-  DataFetched({
+  DataFetched( {
+    //required this.isFromDB,
     required this.date,
     this.country = "Bangladesh",
     this.city,

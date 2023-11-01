@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -20,6 +22,12 @@ class Masail extends Equatable {
   }
 
   Map<String, dynamic> toJson() => _$MasailToJson(this);
+  Map<String, dynamic> toMap() => {
+
+    'results': json.encode(results!.map((e) => e.toJson()).toList()),
+    'meta': json.encode(meta!.toJson()),
+    'links': json.encode(links!.toJson())
+      };
 
   Masail copyWith({
     List<Result>? results,
@@ -32,6 +40,14 @@ class Masail extends Equatable {
       links: links ?? this.links,
     );
   }
+
+  factory Masail.fromMap(Map<String, dynamic> sMasala) => Masail(
+    results: List<Result>.from(
+        json.decode(sMasala['results']).map((x) => Result.fromJson(x))),
+    meta: Meta.fromJson(json.decode(sMasala['meta'])),
+    links: Links.fromJson(json.decode(sMasala['links'])),
+
+  );
 
   @override
   bool get stringify => true;

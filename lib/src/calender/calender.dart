@@ -77,7 +77,136 @@ class CalendarPageState extends State<CalendarPage> {
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   decoration: const BoxDecoration(color: Color(0xff6348EB)),
                   child: TableCalendar<Datum>(
+                    calendarBuilders: CalendarBuilders(
+                      headerTitleBuilder: (BuildContext context,DateTime dateTime){
+                        return Row(
+                          children: [
+                            Text(DateFormat('MMMM  yyyy','bn_bd').format(dateTime),
+                              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              //height: 1,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color:  Colors.white,
+                            ),),
+                            const Spacer(),
+                            GestureDetector(
+                              onTap: (){
+                                if(_calendarFormat==CalendarFormat.month){
+                                  setState(() {
+                                    _calendarFormat=CalendarFormat.twoWeeks;
+                                  });
+                                }
+                                else if (_calendarFormat==CalendarFormat.twoWeeks ){
+                                  setState(() {
+                                    _calendarFormat=CalendarFormat.week;
+                                  });
+                                }
+                                else {
+                                  setState(() {
+                                    _calendarFormat=CalendarFormat.month;
+                                  });
+                                }
+
+
+                        },
+                              child: Container(
+                                height:32,
+                                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0) ,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                  border: Border.all(
+                                    color: Colors.white70
+                                  )
+                                ),
+
+                                child: Text(
+                                  _calendarFormat == CalendarFormat.month ? "মাস" : _calendarFormat == CalendarFormat.twoWeeks ? "২ সপ্তাহ" : "সপ্তাহ",
+                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                  //height: 1,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                  color:  Colors.white,
+                                ),),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                      // dowBuilder: (BuildContext context,DateTime dateTime){
+                      //   return Text("12");
+                      // }
+                      defaultBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
+                        return Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent
+                          ),
+                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              //height: 1,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                            color: Colors.white,
+                          ),),
+                        );
+
+                      },
+
+                      todayBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
+                        return Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white54
+                          ),
+                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              //height: 1,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                            color: Colors.black,
+
+                          ),),
+                        );
+                      },
+                      selectedBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
+                        return Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white
+                          ),
+                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                             // height: 1,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                            color: Colors.black,
+                          ),),
+                        );
+                      },
+                      outsideBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
+                        return Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent
+                          ),
+                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                           // height: 1,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color:  Colors.grey,
+                          ),
+                          ),
+                        );
+                      },
+
+                    ),
                     headerStyle: HeaderStyle(
+                      formatButtonVisible: false,
                       headerMargin: EdgeInsets.zero,
                       headerPadding: EdgeInsets.zero,
                       leftChevronIcon: DecoratedBox(
@@ -209,10 +338,10 @@ class CalendarPageState extends State<CalendarPage> {
                           borderRadius: BorderRadius.circular(48)),
                       child: Column(
                         children: [
-                          const LocationPicker(),
-                          const SizedBox(
-                            height: 24,
-                          ),
+                          // const LocationPicker(),
+                          // const SizedBox(
+                          //   height: 24,
+                          // ),
                           Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 24, vertical: 6),
@@ -428,9 +557,55 @@ class CalendarPageState extends State<CalendarPage> {
                 ),
               ],
             );
-          } else {
-            return const Center(
-              child: AutoSizeText("Something went wrong"),
+          }
+          else if (state.status == CalendarStatus.noData) {
+          // showDialog(context: context, builder: (context) => const AlertDialog(
+          // content: Text("Please Connect to the internet "),
+          // ),);
+          return SizedBox(
+
+          height: 900.h,
+          child:  Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/nowifi.png",
+                  fit: BoxFit.cover,
+                  height: 300.h,
+                  width: 300.h,
+                ),
+                AutoSizeText(
+                  "Please connect to the internet!!!",
+                  style: TextStyle(fontSize: 24.sp),
+                ),
+              ],
+            ),
+          ),
+          );
+          }
+          else {
+            return SizedBox(
+              height: 900.h,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/error.png",
+                      fit: BoxFit.cover,
+                      height: 300.h,
+                      width: 300.h,
+                    ),
+                    AutoSizeText(
+                      "Something went wrong...",
+                      style: TextStyle(fontSize: 24.sp),
+                    ),
+                  ],
+                ),
+              ),
             );
           }
         },
@@ -539,8 +714,8 @@ class DateCellCustom extends StatelessWidget {
     required this.color,
     required this.day,
     this.boxDecoration,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

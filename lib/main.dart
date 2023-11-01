@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/bloc/NextDayTiming/next_day_timing_cubit.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
@@ -24,7 +23,7 @@ void main() {
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.blue,
-    statusBarColor: Colors.pink,
+    statusBarColor: Colors.transparent,
   ));
   // Intl.defaultLocale = 'bn_BD';
   runApp(MultiBlocProvider(providers: [

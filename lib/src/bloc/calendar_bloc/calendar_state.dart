@@ -3,7 +3,7 @@ import 'package:ramadantimes/src/models/calendar_model/datum.dart';
 
 import 'calendar_bloc.dart';
 
-enum CalendarStatus { initial, success, failure }
+enum CalendarStatus { initial, success, failure ,noData }
 
 class CalendarState {
   CalendarState({
