@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ramadantimes/src/bloc/network_exceptions.dart';
 import 'package:ramadantimes/src/models/timing/timing.dart';
+import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
 
 import '../bloc/api_result.dart';
 import '../models/address/district.dart';
 import '../models/calendar_model/calendar_model.dart';
+import '../models/timing/timeofmonth.dart';
 import 'dio_client.dart';
+
+import 'package:http/http.dart' as http;
 
 class ApiServices {
   late DioClient dioClient;
@@ -104,4 +108,41 @@ class ApiServices {
       rethrow;
     }
   }
+
+  Future<TimeOfMonth> timingByMonth(
+      {required String year,
+        required String month,
+        required String city,
+        required String? country,
+        int method = 2,
+        school = 1}) async {
+    // SharedPreferences preferences = await SharedPreferences.getInstance();
+    try {
+      final response = await dioClient.get(
+        "/calendarByCity/$year/$month?city=$city&country=$country&method=$method",
+        // queryParameters: {"per_page": 4},
+      );
+      TimeOfMonth calendar = TimeOfMonth.fromJson(response);
+      return calendar;
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+
+ late WeatherModelFinal weatherMap;
+
+  Future< WeatherModelFinal> fetchWeatherData(String latitude,String longatute) async {
+
+    String weatherUrl =
+        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longatute&units=metric&appid=f92bf340ade13c087f6334ed434f9761&fbclid=IwAR2MIhWnKnisutHJ1y1dgxc-XbFFbVlG_T_f8F9_fhd6ZFC4PRI3oNAWgMc";
+
+    var weatherResponce = await http.get(Uri.parse(weatherUrl));
+
+    weatherMap = WeatherModelFinal.fromJson(jsonDecode(weatherResponce.body));
+
+    return weatherMap;
+
+  }
+
 }

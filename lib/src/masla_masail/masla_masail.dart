@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_bloc.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_event.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
@@ -99,14 +100,73 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                           );
                         }
                         if (state.status == MasailStatus.failure) {
-                          return const Center(
-                            child: AutoSizeText('Failed to Fetch Articles'),
+                          return  SizedBox(
+                            height: 900.h,
+                            child:Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/error.png",
+                                    fit: BoxFit.cover,
+                                    height: 300.h,
+                                    width: 300.h,
+                                  ),
+                                  AutoSizeText(
+                                    "Failed to Fetch Articles!!!",
+                                    style: TextStyle(fontSize: 20.sp),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }
+                        else if (state.status == MasailStatus.noData) {
+                          return SizedBox(
+                            height: 900.h,
+                            child:Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/nowifi.png",
+                                    fit: BoxFit.cover,
+                                    height: 300.h,
+                                    width: 300.h,
+                                  ),
+                                  AutoSizeText(
+                                    "Please connect to the internet!!!",
+                                    style: TextStyle(fontSize: 20.sp),
+                                  ),
+                                ],
+                              ),
+                            ),
                           );
                         }
                         if (state.status == MasailStatus.success) {
                           if (state.posts.isEmpty) {
-                            return const Center(
-                              child: AutoSizeText('No Articles'),
+                            return SizedBox(
+                              height: 900.h,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/failed.png",
+                                      fit: BoxFit.cover,
+                                      height: 300.h,
+                                      width: 300.h,
+                                    ),
+                                    AutoSizeText(
+                                      "No Articles !!!",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             );
                           }
                           // print(state.posts.length);

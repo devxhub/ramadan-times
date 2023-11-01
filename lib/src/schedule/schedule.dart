@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
+import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
 
 import 'package:ramadantimes/src/models/address/district.dart';
 
@@ -92,6 +93,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     child: TodayInfoCard(
                       timeOfToday: state.timeOfToday!,
                       timeOfNextDay: state.timeOfNextDay!,
+                      weatherMap: state!.weatherData!,
                     ),
                   ),
                   if (state.timeOfToday != null)
@@ -147,11 +149,51 @@ class _SchedulePageState extends State<SchedulePage> {
                   )
                 ]),
               );
+            } else if (state.status == HomeStatus.noData) {
+              // showDialog(context: context, builder: (context) => const AlertDialog(
+              // content: Text("Please Connect to the internet "),
+              // ),);
+              return SizedBox(
+                  height: 900.h,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/nowifi.png",
+                          fit: BoxFit.cover,
+                          height: 300.h,
+                          width: 300.h,
+                        ),
+                        AutoSizeText(
+                          "Please connect to the internet!!!",
+                          style: TextStyle(fontSize: 24.sp),
+                        ),
+                      ],
+                    ),
+                  ),
+              );
             } else {
               return SizedBox(
                 height: 900.h,
-                child: const Center(
-                  child: AutoSizeText("Something went Wrong"),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/error.png",
+                        fit: BoxFit.cover,
+                        height: 300.h,
+                        width: 300.h,
+                      ),
+                      AutoSizeText(
+                        "Something went wrong...",
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }

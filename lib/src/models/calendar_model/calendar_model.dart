@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -19,6 +21,13 @@ class CalendarModel extends Equatable {
 
   Map<String, dynamic> toJson() => _$CalendarModelToJson(this);
 
+  Map<String, dynamic> toMap() => {
+    'code': code,
+    'status': status,
+    'data': json.encode(data!.map((e) => e.toJson()).toList()),
+  };
+
+
   CalendarModel copyWith({
     int? code,
     String? status,
@@ -30,6 +39,13 @@ class CalendarModel extends Equatable {
       data: data ?? this.data,
     );
   }
+  factory CalendarModel.fromMap(Map<String, dynamic> sCalendar) => CalendarModel(
+    code: sCalendar['code'],
+    status: sCalendar['status'],
+    data:List<Datum>.from(
+        json.decode(sCalendar['data']).map((x) => Datum.fromJson(x))),
+  );
+
 
   @override
   bool get stringify => true;

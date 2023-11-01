@@ -1,7 +1,7 @@
 import 'package:ramadantimes/src/models/masail/masail/masail.dart';
 import 'package:ramadantimes/src/models/masail/masail/result.dart';
 
-enum MasailStatus { initial, success, failure }
+enum MasailStatus { initial, success, failure ,noData}
 
 class MasailState {
   const MasailState({
