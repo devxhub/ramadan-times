@@ -85,94 +85,97 @@ class _SchedulePageState extends State<SchedulePage> {
             } else if (state.status == HomeStatus.success) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: CustomScrollView(slivers: [
-                  SliverToBoxAdapter(
-                    child: SizedBox(height: 16.spMin),
-                  ),
-                  SliverToBoxAdapter(
-                    child: TodayInfoCard(
-                      timeOfToday: state.timeOfToday!,
-                      timeOfNextDay: state.timeOfNextDay!,
-                      weatherMap: state!.weatherData!,
-                    ),
-                  ),
-                  if (state.timeOfToday != null)
+                child: CustomScrollView(
+                  physics: BouncingScrollPhysics(),
+                  slivers: [
                     SliverToBoxAdapter(
-                      child: NextPrayer(
-                        today: state.timeOfToday!,
-                        nextDay: state.timeOfNextDay!,
+                      child: SizedBox(height: 16.spMin),
+                    ),
+                    SliverToBoxAdapter(
+                      child: TodayInfoCard(
+                        timeOfToday: state.timeOfToday!,
+                        timeOfNextDay: state.timeOfNextDay!,
+                        weatherMap: state.weatherData!,
                       ),
                     ),
-                  SliverToBoxAdapter(
-                    child: GridView(
-                      padding: EdgeInsets.only(top: 24.spMin),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1.1,
-                          crossAxisSpacing: 12.w,
-                          mainAxisSpacing: 12),
-                      children: [
-                        TimeContainerForSehriTime(
-                          time: state.timeOfToday?.data?.timings?.fajr ?? "",
+                    if (state.timeOfToday != null)
+                      SliverToBoxAdapter(
+                        child: NextPrayer(
+                          today: state.timeOfToday!,
+                          nextDay: state.timeOfNextDay!,
                         ),
-                        RemainingTimeContainerForSehriTime(
-                          sehriTime:
-                              state.timeOfToday?.data?.timings?.fajr ?? "",
-                        ),
-                        TimeContainerForIftarTime(
-                          ifterTime:
-                              state.timeOfToday?.data?.timings?.sunset ?? "",
-                        ),
-                        RemainingTimeContainerForIftarTime(
-                          ifterTime:
-                              state.timeOfToday?.data?.timings?.sunset ?? "",
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (state.timeOfNextDay != null)
+                      ),
                     SliverToBoxAdapter(
-                      child: NextSehriIftar(
-                        data: state.timeOfNextDay!,
+                      child: GridView(
+                        padding: EdgeInsets.only(top: 24.spMin),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1.1,
+                            crossAxisSpacing: 12.w,
+                            mainAxisSpacing: 12),
+                        children: [
+                          TimeContainerForSehriTime(
+                            time: state.timeOfToday?.data?.timings?.fajr ?? "",
+                          ),
+                          RemainingTimeContainerForSehriTime(
+                            sehriTime:
+                                state.timeOfToday?.data?.timings?.fajr ?? "",
+                          ),
+                          TimeContainerForIftarTime(
+                            ifterTime:
+                                state.timeOfToday?.data?.timings?.sunset ?? "",
+                          ),
+                          RemainingTimeContainerForIftarTime(
+                            ifterTime:
+                                state.timeOfToday?.data?.timings?.sunset ?? "",
+                          ),
+                        ],
                       ),
                     ),
-                  const SliverToBoxAdapter(
-                    child: SizedBox(height: 24),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: Dua(),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: SizedBox(height: 200),
-                  )
-                ]),
+                    if (state.timeOfNextDay != null)
+                      SliverToBoxAdapter(
+                        child: NextSehriIftar(
+                          data: state.timeOfNextDay!,
+                        ),
+                      ),
+                    const SliverToBoxAdapter(
+                      child: SizedBox(height: 24),
+                    ),
+                    const SliverToBoxAdapter(
+                      child: Dua(),
+                    ),
+                     SliverToBoxAdapter(
+                      child: SizedBox(height: MediaQuery.of(context).viewPadding.bottom + 80.sp),
+                    ),
+                  ],
+                ),
               );
             } else if (state.status == HomeStatus.noData) {
               // showDialog(context: context, builder: (context) => const AlertDialog(
               // content: Text("Please Connect to the internet "),
               // ),);
               return SizedBox(
-                  height: 900.h,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/nowifi.png",
-                          fit: BoxFit.cover,
-                          height: 300.h,
-                          width: 300.h,
-                        ),
-                        AutoSizeText(
-                          "Please connect to the internet!!!",
-                          style: TextStyle(fontSize: 24.sp),
-                        ),
-                      ],
-                    ),
+                height: 900.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/nowifi.png",
+                        fit: BoxFit.cover,
+                        height: 300.h,
+                        width: 300.h,
+                      ),
+                      AutoSizeText(
+                        "Please connect to the internet!!!",
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                    ],
                   ),
+                ),
               );
             } else {
               return SizedBox(
