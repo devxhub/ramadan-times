@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
+import 'package:location/location.dart' as loc;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../bloc/home/bloc/calendar_bloc.dart';
@@ -14,22 +17,87 @@ import '../bloc/location/location_state.dart';
 import '../models/address/district.dart';
 
 class LocationPicker extends StatefulWidget {
-  const LocationPicker({
-    super.key,
-  });
-
-  // final bool mounted;
+  const LocationPicker({super.key});
 
   @override
   State<LocationPicker> createState() => _LocationPickerState();
 }
 
 class _LocationPickerState extends State<LocationPicker> {
+  double initialLat = 0.0;
+  double initialLong = 0.0;
+  final loc.Location location =
+      loc.Location();
+
+  Future<bool> requestPermission() async {
+    final permission = await location.requestPermission();
+    return permission ==
+        loc.PermissionStatus.granted;
+  }
+
+  Future<loc.LocationData> getCurrentLocation() async {
+    final locationData = await location.getLocation();
+    if (kDebugMode) {
+      print("Calling LocationPicker locationData $locationData}");
+    }
+    return locationData;
+  }
+
+  Future<Map<String, dynamic>> getCurrentLocationDetails() async {
+    final locationData = await location.getLocation();
+    if (kDebugMode) {
+      print("Calling LocationPicker locationData $locationData}");
+    }
+
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        locationData.latitude!, locationData.longitude!);
+
+    // Extracting place name and district name
+    String? placeName = placemarks.isNotEmpty ? placemarks[0].name : null;
+    String? district =
+        placemarks.isNotEmpty ? placemarks[0].subAdministrativeArea : null;
+
+    // Create a map to hold all the location data
+    Map<String, dynamic> locationDetails = {
+      'latitude': locationData.latitude,
+      'longitude': locationData.longitude,
+      'placeName': placeName,
+      'district': district,
+      // Add more data as needed
+    };
+    if (kDebugMode) {
+      print("locationDetails:$locationDetails");
+    }
+    return locationDetails;
+  }
+
   @override
   void initState() {
+    super.initState();
     setLocation();
     context.read<LocationCubit>().loadData();
-    super.initState();
+    requestPermission().then((granted) {
+      if (granted) {
+        getCurrentLocation().then((locationData) {
+          setState(() {
+            initialLat = locationData.latitude ?? 0.0;
+            initialLong = locationData.longitude ?? 0.0;
+          });
+          if (kDebugMode) {
+            print("Calling LocationPicker $initialLat ====== $initialLong");
+          }
+          getCurrentLocationDetails().then((details) {
+            if (kDebugMode) {
+              print("Details: $details");
+            }
+          }).catchError((error) {
+            if (kDebugMode) {
+              print("Error getting location details: $error");
+            }
+          });
+        });
+      }
+    });
   }
 
   setLocation() async {
@@ -111,7 +179,9 @@ class _LocationPickerState extends State<LocationPicker> {
                     String data = jsonEncode(v);
 
                     prefs.setString("current_location", data);
-                    print("object");
+                    if (kDebugMode) {
+                      print("object");
+                    }
                     if (!mounted) return;
                     context.read<HomeBloc>().add(
                           DataFetched(
@@ -120,7 +190,9 @@ class _LocationPickerState extends State<LocationPicker> {
                               ),
                               city: v!.name),
                         );
-                    print("object1");
+                    if (kDebugMode) {
+                      print("object1");
+                    }
                   },
                 ),
               ],

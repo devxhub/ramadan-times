@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
+
 
 import 'package:ramadantimes/src/models/address/district.dart';
 
@@ -56,7 +56,7 @@ class _SchedulePageState extends State<SchedulePage> {
       appBar: AppBar(
         primary: true,
         foregroundColor: Colors.black,
-        backgroundColor: Color(0xfff2f2ef),
+        backgroundColor: const Color(0xfff2f2ef),
         elevation: 0,
         actions: const [
           LocationPicker(),
@@ -86,7 +86,7 @@ class _SchedulePageState extends State<SchedulePage> {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   slivers: [
                     SliverToBoxAdapter(
                       child: SizedBox(height: 16.spMin),
