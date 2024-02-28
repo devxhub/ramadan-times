@@ -26,13 +26,11 @@ class LocationPicker extends StatefulWidget {
 class _LocationPickerState extends State<LocationPicker> {
   double initialLat = 0.0;
   double initialLong = 0.0;
-  final loc.Location location =
-      loc.Location();
+  final loc.Location location = loc.Location();
 
   Future<bool> requestPermission() async {
     final permission = await location.requestPermission();
-    return permission ==
-        loc.PermissionStatus.granted;
+    return permission == loc.PermissionStatus.granted;
   }
 
   Future<loc.LocationData> getCurrentLocation() async {
@@ -74,7 +72,6 @@ class _LocationPickerState extends State<LocationPicker> {
   @override
   void initState() {
     super.initState();
-    setLocation();
     context.read<LocationCubit>().loadData();
     requestPermission().then((granted) {
       if (granted) {
@@ -89,6 +86,17 @@ class _LocationPickerState extends State<LocationPicker> {
           getCurrentLocationDetails().then((details) {
             if (kDebugMode) {
               print("Details: $details");
+            }
+            if (details['district'] != null) {
+              String districtName = details['district'].split(' ').first;
+
+              if (kDebugMode) {
+                print("District Name from Location Data: $districtName");
+              }
+            } else {
+              if (kDebugMode) {
+                print("No district information found in location details.");
+              }
             }
           }).catchError((error) {
             if (kDebugMode) {
