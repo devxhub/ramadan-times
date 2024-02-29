@@ -60,6 +60,8 @@ dependencies:
   url_launcher: ^6.2.1
   share_plus: ^7.2.1
   in_app_review: ^2.0.8
+  location: ^5.0.3
+  geocoding: ^2.2.0
 
   #for offline mode
 

@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../l10n/app_localizations.dart';
@@ -15,15 +18,38 @@ class Dua extends StatefulWidget {
 
 class _DuaState extends State<Dua> with TickerProviderStateMixin {
   // late TabController _tabController;
+  DateTime now = DateTime.now();
+ // DateTime now = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 17, 0);
 
+
+
+  int _selectedTab = 0;
   @override
   void initState() {
     // _tabController = TabController(length: 2, vsync: this);
-
+    _updateTab();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Duration oneMinute = const Duration(minutes: 1);
+      Timer.periodic(oneMinute, (Timer t) => _updateTab());
+    });
     super.initState();
   }
-
-  int _selectedTab = 0;
+  void _updateTab() {
+    if (now.hour < 4 || (now.hour == 4 && now.minute < 30)) {
+      setState(() {
+        _selectedTab = 0; /// Sehri tab
+      });
+    } else if(now.hour>=20){
+      setState(() {
+        _selectedTab = 0; /// Sehri tab
+      });
+    }
+    else if (now.hour >= 17) {
+      setState(() {
+        _selectedTab = 1; /// Iftar tab
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
