@@ -682,8 +682,7 @@ class _LocationPickerState extends State<LocationPicker> {
                     print("-----------------------------");
                   }
                   final prefs = await SharedPreferences.getInstance();
-                  // await prefs.setString(
-                  //     "current_location", jsonEncode(selectedLocation!.toJson()));
+
                   District d = District.fromJson(
                     jsonDecode(
                       prefs.getString("current_location") ??
@@ -702,6 +701,8 @@ class _LocationPickerState extends State<LocationPicker> {
                   );
                  setState(() {
                    selectedLocation = d;
+                    prefs.setString(
+                       "current_location", jsonEncode(selectedLocation!.toJson()));
                  });
                   if (kDebugMode) {
                     print("selectedLocation:${jsonDecode(jsonEncode(selectedLocation))}");
