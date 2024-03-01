@@ -144,53 +144,92 @@ class NextPrayer extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding:  EdgeInsets.symmetric(horizontal: 7.sp),
             decoration: BoxDecoration(
                 color: const Color(0xfff2f2f7),
                 borderRadius: BorderRadius.circular(15.r)),
-            child: AutoSizeText.rich(
-              TextSpan(
-                  text: DateFormat.jm("bn_BD").format(
-                    DateTime(
-                      2023,
-                      1,
-                      1,
-                      int.tryParse(getNextPrayer(today.data!.timings!,
-                              nextDay.data!.timings!)["start_hour"]) ??
-                          0,
-                      int.tryParse(getNextPrayer(today.data!.timings!,
-                              nextDay.data!.timings!)["start_minute"]) ??
-                          0,
-                    ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(DateFormat.jm("bn_BD").format(
+                  DateTime(
+                    2023,
+                    1,
+                    1,
+                    int.tryParse(getNextPrayer(today.data!.timings!,
+                        nextDay.data!.timings!)["start_hour"]) ??
+                        0,
+                    int.tryParse(getNextPrayer(today.data!.timings!,
+                        nextDay.data!.timings!)["start_minute"]) ??
+                        0,
                   ),
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
-                      color: const Color(0xff674cec)),
-                  children: [
-                    // TextSpan(
-                    //     text: "AM",
-                    //     style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(
-                        text: " - ",
-                        style: Theme.of(context).textTheme.titleLarge),
-                    TextSpan(
-                      text: DateFormat.jm("bn_BD").format(
-                        DateTime(
-                          2023,
-                          1,
-                          1,
-                          int.tryParse(getNextPrayer(today.data!.timings!,
-                                  nextDay.data!.timings!)["end_hour"]) ??
-                              0,
-                          int.tryParse(getNextPrayer(today.data!.timings!,
-                                  nextDay.data!.timings!)["end_minute"]) ??
-                              0,
-                        ),
-                      ),
-                    ),
-                  ]),
-            ),
+                ),   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                    color: const Color(0xff674cec)),),
+                Text('-' , style: Theme.of(context).textTheme.titleLarge,),
+
+                Text(DateFormat.jm("bn_BD").format(
+                  DateTime(
+                    2023,
+                    1,
+                    1,
+                    int.tryParse(getNextPrayer(today.data!.timings!,
+                        nextDay.data!.timings!)["end_hour"]) ??
+                        0,
+                    int.tryParse(getNextPrayer(today.data!.timings!,
+                        nextDay.data!.timings!)["end_minute"]) ??
+                        0,
+                  ),),   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                    color: const Color(0xff674cec),),),
+              ],
+            )
+
+            // AutoSizeText.rich(
+            //   TextSpan(
+            //       text: DateFormat.jm("bn_BD").format(
+            //         DateTime(
+            //           2023,
+            //           1,
+            //           1,
+            //           int.tryParse(getNextPrayer(today.data!.timings!,
+            //                   nextDay.data!.timings!)["start_hour"]) ??
+            //               0,
+            //           int.tryParse(getNextPrayer(today.data!.timings!,
+            //                   nextDay.data!.timings!)["start_minute"]) ??
+            //               0,
+            //         ),
+            //       ),
+            //       style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            //           fontWeight: FontWeight.w700,
+            //           fontSize: 16.sp,
+            //           color: const Color(0xff674cec)),
+            //       children: [
+            //         // TextSpan(
+            //         //     text: "AM",
+            //         //     style: Theme.of(context).textTheme.bodySmall),
+            //         TextSpan(
+            //             text: " - ",
+            //             style: Theme.of(context).textTheme.titleLarge),
+            //         TextSpan(
+            //           text: DateFormat.jm("bn_BD").format(
+            //             DateTime(
+            //               2023,
+            //               1,
+            //               1,
+            //               int.tryParse(getNextPrayer(today.data!.timings!,
+            //                       nextDay.data!.timings!)["end_hour"]) ??
+            //                   0,
+            //               int.tryParse(getNextPrayer(today.data!.timings!,
+            //                       nextDay.data!.timings!)["end_minute"]) ??
+            //                   0,
+            //             ),
+            //           ),
+            //         ),
+            //       ]),
+            // ),
           )
         ],
       ),
