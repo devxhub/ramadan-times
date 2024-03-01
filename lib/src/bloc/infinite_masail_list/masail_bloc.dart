@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_event.dart';
 import 'package:ramadantimes/src/models/masail/masail/masail.dart';
 import 'package:ramadantimes/src/models/masail/masail/result.dart';
