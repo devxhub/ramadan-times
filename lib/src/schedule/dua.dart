@@ -19,7 +19,7 @@ class Dua extends StatefulWidget {
 class _DuaState extends State<Dua> with TickerProviderStateMixin {
   // late TabController _tabController;
   DateTime now = DateTime.now();
- // DateTime now = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 17, 0);
+ // DateTime now = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0);
 
 
 
@@ -39,12 +39,13 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
       setState(() {
         _selectedTab = 0; /// Sehri tab
       });
-    } else if(now.hour>=20){
+    }
+    else if(now.hour>=24){
       setState(() {
         _selectedTab = 0; /// Sehri tab
       });
     }
-    else if (now.hour >= 17) {
+    else if (now.hour >= 12) {
       setState(() {
         _selectedTab = 1; /// Iftar tab
       });
