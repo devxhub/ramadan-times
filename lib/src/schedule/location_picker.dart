@@ -12,6 +12,7 @@ import '../bloc/home/bloc/calendar_event.dart';
 import '../bloc/location/location_cubit.dart';
 import '../bloc/location/location_state.dart';
 import '../models/address/district.dart';
+import '../prayer_times/presentation/bloc/prayer_time_bloc.dart';
 
 class LocationPicker extends StatefulWidget {
   const LocationPicker({
@@ -103,6 +104,7 @@ class _LocationPickerState extends State<LocationPicker> {
                     },
                   ).toList(),
                   onChanged: (v) async {
+                    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: double.parse(v?.lat.toString()??"23.7115253"),longitude:double.parse(v?.lon.toString()??"90.4111451"), ));
                     setState(() {
                       selectedLocation = v!;
                     });
