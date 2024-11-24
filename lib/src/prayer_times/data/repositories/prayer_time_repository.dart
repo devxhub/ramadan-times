@@ -79,7 +79,7 @@ class PrayerTimeRepository {
             eveningStart: eveningStart.toString(),
             eveningEnd: eveningEnd.toString(), tahajjudEnd: tahajjudEnd.toString());
       }catch(e){
-        print("settingsGetUserModelDataLoadedResponse: $e");
+
         rethrow;
       }
 
