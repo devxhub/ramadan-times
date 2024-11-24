@@ -7,7 +7,7 @@ part of 'result.dart';
 // **************************************************************************
 
 Result _$ResultFromJson(Map<String, dynamic> json) => Result(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       content: json['content'] as String?,
       title: json['title'] as String?,
       createdAt: json['created_at'] == null
@@ -16,7 +16,7 @@ Result _$ResultFromJson(Map<String, dynamic> json) => Result(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      lang: json['lang'] as int?,
+      lang: (json['lang'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{

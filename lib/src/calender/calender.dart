@@ -10,6 +10,7 @@ import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_event.dart';
 import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_state.dart';
 import 'package:ramadantimes/src/calender/utils.dart';
 import 'package:ramadantimes/src/models/calendar_model/datum.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_times.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -545,6 +546,9 @@ class CalendarPageState extends State<CalendarPage> {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(height: 200,
+                                    child: PrayerTimesScreen(),
+                                    )
                                   ],
                                 ),
                               ],
@@ -752,7 +756,6 @@ class _LocationPickerState extends State<LocationPicker> {
   void initState() {
     context.read<LocationCubit>().loadData();
     setLocation();
-
     super.initState();
   }
 

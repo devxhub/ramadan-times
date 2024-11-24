@@ -8,6 +8,9 @@ import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/home_cubit.dart';
 
 import 'package:ramadantimes/src/bloc/navigation_cubit/navigation_cubit.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
+import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/services/api_service.dart';
 import 'package:ramadantimes/src/services/api_service_masail.dart';
 
@@ -27,6 +30,11 @@ void main() {
   ));
   // Intl.defaultLocale = 'bn_BD';
   runApp(MultiBlocProvider(providers: [
+    BlocProvider<PrayerTimeBloc>(
+      create: (BuildContext context) {
+        return PrayerTimeBloc(prayerTimeRepository: PrayerTimeRepository());
+      },
+    ),
     BlocProvider<NavigationCubit>(
       create: (BuildContext context) {
         return NavigationCubit();

@@ -8,7 +8,7 @@ part of 'hijri_calender.dart';
 
 HijriCalender _$HijriCalenderFromJson(Map<String, dynamic> json) =>
     HijriCalender(
-      code: json['code'] as int?,
+      code: (json['code'] as num?)?.toInt(),
       status: json['status'] as String?,
       data: (json['data'] as List<dynamic>?)
           ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))

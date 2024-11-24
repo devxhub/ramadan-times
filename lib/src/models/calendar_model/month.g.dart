@@ -7,7 +7,7 @@ part of 'month.dart';
 // **************************************************************************
 
 Month _$MonthFromJson(Map<String, dynamic> json) => Month(
-      number: json['number'] as int?,
+      number: (json['number'] as num?)?.toInt(),
       en: json['en'] as String?,
     );
 

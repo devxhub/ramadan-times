@@ -7,8 +7,8 @@ part of 'params.dart';
 // **************************************************************************
 
 Params _$ParamsFromJson(Map<String, dynamic> json) => Params(
-      fajr: json['Fajr'] as int?,
-      isha: json['Isha'] as int?,
+      fajr: (json['Fajr'] as num?)?.toInt(),
+      isha: (json['Isha'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ParamsToJson(Params instance) => <String, dynamic>{

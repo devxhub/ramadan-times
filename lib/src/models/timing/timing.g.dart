@@ -7,7 +7,7 @@ part of 'timing.dart';
 // **************************************************************************
 
 Timing _$TimingFromJson(Map<String, dynamic> json) => Timing(
-      code: json['code'] as int?,
+      code: (json['code'] as num?)?.toInt(),
       status: json['status'] as String?,
       data: json['data'] == null
           ? null

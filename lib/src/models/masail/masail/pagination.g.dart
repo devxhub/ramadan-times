@@ -7,9 +7,9 @@ part of 'pagination.dart';
 // **************************************************************************
 
 Pagination _$PaginationFromJson(Map<String, dynamic> json) => Pagination(
-      count: json['count'] as int?,
-      limit: json['limit'] as int?,
-      offset: json['offset'] as int?,
+      count: (json['count'] as num?)?.toInt(),
+      limit: (json['limit'] as num?)?.toInt(),
+      offset: (json['offset'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$PaginationToJson(Pagination instance) =>

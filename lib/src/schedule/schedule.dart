@@ -12,6 +12,7 @@ import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
 
 import 'package:ramadantimes/src/models/address/district.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,6 +44,7 @@ class _SchedulePageState extends State<SchedulePage> {
             date: DateFormat("dd-MM-yyyy").format(
           DateTime.now(),
         )));
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded());
     super.initState();
   }
 

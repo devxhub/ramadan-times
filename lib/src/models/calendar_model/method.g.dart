@@ -7,7 +7,7 @@ part of 'method.dart';
 // **************************************************************************
 
 Method _$MethodFromJson(Map<String, dynamic> json) => Method(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       params: json['params'] == null
           ? null
