@@ -13,6 +13,7 @@ import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
 
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
 
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -105,6 +106,9 @@ class _SchedulePageState extends State<SchedulePage> {
                         nextDay: state.timeOfNextDay!,
                       ),
                     ),
+                  SliverToBoxAdapter(
+                    child: PrayerTimeWidget(),
+                  ),
                   SliverToBoxAdapter(
                     child: GridView(
                       padding: EdgeInsets.only(top: 24.spMin),
