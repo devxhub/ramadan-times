@@ -546,9 +546,6 @@ class CalendarPageState extends State<CalendarPage> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 200,
-                                    child: PrayerTimesScreen(),
-                                    )
                                   ],
                                 ),
                               ],
