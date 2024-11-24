@@ -7,8 +7,7 @@ import '../../../services/dio_client.dart';
 
 class PrayerTimeRepository {
   late DioClient dioClient;
-  //final String _baseUrl = dotenv.env["BASE_URL"]!;
-  final String _baseUrl = "https://skate-api.fabienkeller.com";
+  final String _baseUrl = "";
 
   PrayerTimeRepository() {
     var dio = Dio();
