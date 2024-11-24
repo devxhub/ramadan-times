@@ -45,7 +45,7 @@ class _SchedulePageState extends State<SchedulePage> {
             date: DateFormat("dd-MM-yyyy").format(
           DateTime.now(),
         )));
-    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded());
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
     super.initState();
   }
 

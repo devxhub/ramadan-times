@@ -34,7 +34,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       ),
     );
     try {
-      final prayerTimeDataResponse=await prayerTimeRepository.generatePrayerTimes();
+      final prayerTimeDataResponse=await prayerTimeRepository.generatePrayerTimes(latitude:event.latitude,longitude: event.longitude);
       emit(
         state.copyWith(
           prayerTimesResponse: prayerTimeDataResponse,

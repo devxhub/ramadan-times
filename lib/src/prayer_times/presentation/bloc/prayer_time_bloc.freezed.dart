@@ -16,19 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PrayerTimeEvent {
+  double get latitude => throw _privateConstructorUsedError;
+  double get longitude => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() prayerTimesDataLoaded,
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? prayerTimesDataLoaded,
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? prayerTimesDataLoaded,
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +52,12 @@ mixin _$PrayerTimeEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $PrayerTimeEventCopyWith<PrayerTimeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -56,6 +65,8 @@ abstract class $PrayerTimeEventCopyWith<$Res> {
   factory $PrayerTimeEventCopyWith(
           PrayerTimeEvent value, $Res Function(PrayerTimeEvent) then) =
       _$PrayerTimeEventCopyWithImpl<$Res, PrayerTimeEvent>;
+  @useResult
+  $Res call({double latitude, double longitude});
 }
 
 /// @nodoc
@@ -70,14 +81,35 @@ class _$PrayerTimeEventCopyWithImpl<$Res, $Val extends PrayerTimeEvent>
 
   /// Create a copy of PrayerTimeEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_value.copyWith(
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$PrayerTimesDataLoadedImplCopyWith<$Res> {
+abstract class _$$PrayerTimesDataLoadedImplCopyWith<$Res>
+    implements $PrayerTimeEventCopyWith<$Res> {
   factory _$$PrayerTimesDataLoadedImplCopyWith(
           _$PrayerTimesDataLoadedImpl value,
           $Res Function(_$PrayerTimesDataLoadedImpl) then) =
       __$$PrayerTimesDataLoadedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({double latitude, double longitude});
 }
 
 /// @nodoc
@@ -90,6 +122,23 @@ class __$$PrayerTimesDataLoadedImplCopyWithImpl<$Res>
 
   /// Create a copy of PrayerTimeEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_$PrayerTimesDataLoadedImpl(
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
 }
 
 /// @nodoc
@@ -97,54 +146,77 @@ class __$$PrayerTimesDataLoadedImplCopyWithImpl<$Res>
 class _$PrayerTimesDataLoadedImpl
     with DiagnosticableTreeMixin
     implements _PrayerTimesDataLoaded {
-  const _$PrayerTimesDataLoadedImpl();
+  const _$PrayerTimesDataLoadedImpl(
+      {required this.latitude, required this.longitude});
+
+  @override
+  final double latitude;
+  @override
+  final double longitude;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrayerTimeEvent.prayerTimesDataLoaded()';
+    return 'PrayerTimeEvent.prayerTimesDataLoaded(latitude: $latitude, longitude: $longitude)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'PrayerTimeEvent.prayerTimesDataLoaded'));
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'PrayerTimeEvent.prayerTimesDataLoaded'))
+      ..add(DiagnosticsProperty('latitude', latitude))
+      ..add(DiagnosticsProperty('longitude', longitude));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PrayerTimesDataLoadedImpl);
+            other is _$PrayerTimesDataLoadedImpl &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, latitude, longitude);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PrayerTimesDataLoadedImplCopyWith<_$PrayerTimesDataLoadedImpl>
+      get copyWith => __$$PrayerTimesDataLoadedImplCopyWithImpl<
+          _$PrayerTimesDataLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() prayerTimesDataLoaded,
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
   }) {
-    return prayerTimesDataLoaded();
+    return prayerTimesDataLoaded(latitude, longitude);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? prayerTimesDataLoaded,
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
   }) {
-    return prayerTimesDataLoaded?.call();
+    return prayerTimesDataLoaded?.call(latitude, longitude);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? prayerTimesDataLoaded,
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
     required TResult orElse(),
   }) {
     if (prayerTimesDataLoaded != null) {
-      return prayerTimesDataLoaded();
+      return prayerTimesDataLoaded(latitude, longitude);
     }
     return orElse();
   }
@@ -180,7 +252,21 @@ class _$PrayerTimesDataLoadedImpl
 }
 
 abstract class _PrayerTimesDataLoaded implements PrayerTimeEvent {
-  const factory _PrayerTimesDataLoaded() = _$PrayerTimesDataLoadedImpl;
+  const factory _PrayerTimesDataLoaded(
+      {required final double latitude,
+      required final double longitude}) = _$PrayerTimesDataLoadedImpl;
+
+  @override
+  double get latitude;
+  @override
+  double get longitude;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PrayerTimesDataLoadedImplCopyWith<_$PrayerTimesDataLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

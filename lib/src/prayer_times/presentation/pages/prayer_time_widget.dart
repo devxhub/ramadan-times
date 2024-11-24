@@ -7,7 +7,8 @@ import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc
 class PrayerTimeWidget extends StatelessWidget {
   const PrayerTimeWidget({super.key});
   String convertUtcToLocalTime(String utcDate) {
-    final utcDateTime=DateTime.parse(utcDate);
+    print("Uts data $utcDate");
+    final utcDateTime=DateTime.parse(utcDate.toString());
     // Convert the UTC time to local time
     DateTime localDate = utcDateTime.toLocal();
 
