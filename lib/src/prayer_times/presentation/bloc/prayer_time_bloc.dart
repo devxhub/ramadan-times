@@ -42,6 +42,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         ),
       );
     } on DioException catch (e) {
+      print("Errros $e");
       emit(
         state.copyWith(
           prayerTimeStatus: PrayerTimeStatus.initial,
