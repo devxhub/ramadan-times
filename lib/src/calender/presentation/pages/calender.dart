@@ -1,24 +1,16 @@
-import 'dart:convert';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_bloc.dart';
-import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_event.dart';
-import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_state.dart';
+import 'package:ramadantimes/src/calender/presentation/bloc/calendar_bloc.dart';
+import 'package:ramadantimes/src/calender/presentation/bloc/calendar_event.dart';
+import 'package:ramadantimes/src/calender/presentation/bloc/calendar_state.dart';
 import 'package:ramadantimes/src/calender/utils.dart';
 import 'package:ramadantimes/src/models/calendar_model/datum.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
-
-import '../../l10n/app_localizations.dart';
-import '../bloc/location/location_cubit.dart';
-import '../bloc/location/location_state.dart';
-import '../component/eng_to_bn.dart';
-import '../models/address/district.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -28,14 +20,19 @@ class CalendarPage extends StatefulWidget {
 }
 
 class CalendarPageState extends State<CalendarPage> {
-  // late final ValueNotifier<List<Event>> _selectedEvents;
   CalendarFormat _calendarFormat = CalendarFormat.week;
 
   @override
   void initState() {
     super.initState();
-    context.read<CalendarBloc>().add(CalendarDataFetched(
-        isRefreshed: true, country: "Bangladesh", school: 1, method: 1));
+    // context.read<CalendarBloc>().add(CalendarDataFetched(
+    //     isRefreshed: true, country: "Bangladesh", school: 1, method: 1));
+    context.read<CalendarBloc>().add(CalendarDaySelected(
+          selectedDay: DateTime.now(),
+          focusDay: DateTime.now(),
+          latitude: 23.7115253,
+          longitude: 90.4111451,
+        ));
   }
 
   @override
@@ -47,6 +44,8 @@ class CalendarPageState extends State<CalendarPage> {
     context.read<CalendarBloc>().add(CalendarDaySelected(
           selectedDay: selectedDay,
           focusDay: focusedDay,
+          latitude: 23.7115253,
+          longitude: 90.4111451,
         ));
 
     setState(() {});
@@ -72,6 +71,7 @@ class CalendarPageState extends State<CalendarPage> {
               child: CircularProgressIndicator.adaptive(),
             );
           } else if (state.status == CalendarStatus.success) {
+            var hijriDate = HijriCalendar.fromDate(state.selectedEvent!.date!);
             return Column(
               children: [
                 Container(
@@ -79,132 +79,148 @@ class CalendarPageState extends State<CalendarPage> {
                   decoration: const BoxDecoration(color: Color(0xff6348EB)),
                   child: TableCalendar<Datum>(
                     calendarBuilders: CalendarBuilders(
-                      headerTitleBuilder: (BuildContext context,DateTime dateTime){
+                      headerTitleBuilder:
+                          (BuildContext context, DateTime dateTime) {
                         return Row(
                           children: [
-                            Text(DateFormat('MMMM  yyyy','bn_bd').format(dateTime),
-                              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              //height: 1,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                              color:  Colors.white,
-                            ),),
+                            Text(
+                              DateFormat('MMMM  yyyy', 'bn_bd')
+                                  .format(dateTime),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    //height: 1,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                            ),
                             const Spacer(),
                             GestureDetector(
-                              onTap: (){
-                                if(_calendarFormat==CalendarFormat.month){
+                              onTap: () {
+                                if (_calendarFormat == CalendarFormat.month) {
                                   setState(() {
-                                    _calendarFormat=CalendarFormat.twoWeeks;
+                                    _calendarFormat = CalendarFormat.twoWeeks;
+                                  });
+                                } else if (_calendarFormat ==
+                                    CalendarFormat.twoWeeks) {
+                                  setState(() {
+                                    _calendarFormat = CalendarFormat.week;
+                                  });
+                                } else {
+                                  setState(() {
+                                    _calendarFormat = CalendarFormat.month;
                                   });
                                 }
-                                else if (_calendarFormat==CalendarFormat.twoWeeks ){
-                                  setState(() {
-                                    _calendarFormat=CalendarFormat.week;
-                                  });
-                                }
-                                else {
-                                  setState(() {
-                                    _calendarFormat=CalendarFormat.month;
-                                  });
-                                }
-
-
-                        },
+                              },
                               child: Container(
-                                height:32,
-                                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0) ,
+                                height: 32,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 0),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(18),
-                                  border: Border.all(
-                                    color: Colors.white70
-                                  )
-                                ),
-
+                                    borderRadius: BorderRadius.circular(18),
+                                    border: Border.all(color: Colors.white70)),
                                 child: Text(
-                                  _calendarFormat == CalendarFormat.month ? "মাস" : _calendarFormat == CalendarFormat.twoWeeks ? "২ সপ্তাহ" : "সপ্তাহ",
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                  //height: 1,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color:  Colors.white,
-                                ),),
+                                  _calendarFormat == CalendarFormat.month
+                                      ? "মাস"
+                                      : _calendarFormat ==
+                                              CalendarFormat.twoWeeks
+                                          ? "২ সপ্তাহ"
+                                          : "সপ্তাহ",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                      ),
+                                ),
                               ),
                             ),
                           ],
                         );
                       },
-                      // dowBuilder: (BuildContext context,DateTime dateTime){
-                      //   return Text("12");
-                      // }
-                      defaultBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
+                      defaultBuilder: (BuildContext context, DateTime dateTime,
+                          DateTime dateTime2) {
                         return Container(
                           padding: const EdgeInsets.all(6),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.transparent
+                              color: Colors.transparent),
+                          child: Text(
+                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
                           ),
-                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              //height: 1,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                            color: Colors.white,
-                          ),),
                         );
-
                       },
-
-                      todayBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
+                      todayBuilder: (BuildContext context, DateTime dateTime,
+                          DateTime dateTime2) {
+                        return Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white54),
+                          child: Text(
+                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                          ),
+                        );
+                      },
+                      selectedBuilder: (BuildContext context, DateTime dateTime,
+                          DateTime dateTime2) {
+                        return Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                          child: Text(
+                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  // height: 1,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                          ),
+                        );
+                      },
+                      outsideBuilder: (BuildContext context, DateTime dateTime,
+                          DateTime dateTime2) {
                         return Container(
                           padding: const EdgeInsets.all(6),
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white54
-                          ),
-                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              //height: 1,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                            color: Colors.black,
-
-                          ),),
-                        );
-                      },
-                      selectedBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
-                        return Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white
-                          ),
-                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                             // height: 1,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                            color: Colors.black,
-                          ),),
-                        );
-                      },
-                      outsideBuilder: (BuildContext context,DateTime dateTime,DateTime dateTime2){
-                        return Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.transparent
-                          ),
-                          child: Text(DateFormat('dd','bn_bd').format(dateTime),
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                           // height: 1,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color:  Colors.grey,
-                          ),
+                              color: Colors.transparent),
+                          child: Text(
+                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
                           ),
                         );
                       },
-
                     ),
                     headerStyle: HeaderStyle(
                       formatButtonVisible: false,
@@ -245,7 +261,6 @@ class CalendarPageState extends State<CalendarPage> {
                     firstDay: kFirstDay,
                     lastDay: kLastDay,
                     locale: "bn_BD",
-
                     daysOfWeekStyle: DaysOfWeekStyle(
                         weekendStyle: Theme.of(context)
                             .textTheme
@@ -256,27 +271,11 @@ class CalendarPageState extends State<CalendarPage> {
                             .titleLarge!
                             .copyWith(color: Colors.white70)),
                     daysOfWeekHeight: 32.spMin,
-
                     // pageJumpingEnabled: true,
                     focusedDay: state.focusDay ?? DateTime.now(),
                     selectedDayPredicate: (day) =>
                         isSameDay(day, state.selectedDay),
-                    // rangeStartDay: _rangeStart,
-                    // rangeEndDay: _rangeEnd,
                     calendarFormat: _calendarFormat,
-                    // rangeSelectionMode: _rangeSelectionMode,
-                    eventLoader: (day) {
-                      return state.datum
-                              ?.where((element) =>
-                                  element.date?.gregorian?.year ==
-                                      day.year.toString() &&
-                                  element.date?.gregorian?.month?.number ==
-                                      day.month &&
-                                  element.date?.gregorian?.day ==
-                                      day.day.toString())
-                              .toList() ??
-                          [];
-                    },
                     startingDayOfWeek: StartingDayOfWeek.friday,
                     calendarStyle: CalendarStyle(
                         selectedTextStyle: Theme.of(context)
@@ -326,7 +325,6 @@ class CalendarPageState extends State<CalendarPage> {
                     },
                   ),
                 ),
-                // const SizedBox(height: 8.0),
                 Expanded(
                   child: Container(
                     decoration: const BoxDecoration(color: Color(0xff6348EB)),
@@ -339,10 +337,6 @@ class CalendarPageState extends State<CalendarPage> {
                           borderRadius: BorderRadius.circular(48)),
                       child: Column(
                         children: [
-                          // const LocationPicker(),
-                          // const SizedBox(
-                          //   height: 24,
-                          // ),
                           Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 24, vertical: 6),
@@ -378,29 +372,7 @@ class CalendarPageState extends State<CalendarPage> {
                                           ),
                                     ),
                                     AutoSizeText(
-                                      AppLocalizations.of(context)!.localeName == "bn"
-                                          ? engToBn(AppLocalizations.of(context)?.arabicDate(
-                                                  state.selectedEvent?.date?.hijri?.month?.number == 9
-                                                      ? (int.parse(state.selectedEvent?.date?.hijri?.day ?? "") - 1)
-                                                          .toString()
-                                                      : state
-                                                              .selectedEvent
-                                                              ?.date
-                                                              ?.hijri
-                                                              ?.day ??
-                                                          "",
-                                                  state.selectedEvent?.date
-                                                          ?.hijri?.month?.number
-                                                          .toString() ??
-                                                      "",
-                                                  state.selectedEvent?.date?.hijri?.year ??
-                                                      "") ??
-                                              "")
-                                          : AppLocalizations.of(context)?.arabicDate(
-                                                  state.selectedEvent?.date?.hijri?.day ?? "",
-                                                  state.selectedEvent?.date?.hijri?.month?.en.toString() ?? "",
-                                                  state.selectedEvent?.date?.hijri?.year ?? "") ??
-                                              "",
+                                      "${hijriDate.hDay} ${hijriDate.longMonthName} ${hijriDate.hYear}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleLarge!
@@ -421,7 +393,6 @@ class CalendarPageState extends State<CalendarPage> {
                           ),
                           Expanded(
                             child: ListView(
-                              // shrinkWrap: true,
                               children: [
                                 AutoSizeText(
                                   AppLocalizations.of(context)?.schedule ?? "",
@@ -441,7 +412,6 @@ class CalendarPageState extends State<CalendarPage> {
                                   children: [
                                     Positioned(
                                         top: 45,
-                                        // bottom: 0,
                                         left: 10,
                                         child: Column(
                                           children: List.generate(
@@ -467,8 +437,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           name: AppLocalizations.of(context)
                                                   ?.sehri ??
                                               "",
-                                          startTime: state
-                                              .selectedEvent!.timings!.fajr!,
+                                          startTime:
+                                              state.selectedEvent!.fajrStart!,
                                           adjustTime: -5,
                                         ),
                                         const SizedBox(
@@ -480,7 +450,7 @@ class CalendarPageState extends State<CalendarPage> {
                                                   ?.ifter ??
                                               "",
                                           startTime: state
-                                              .selectedEvent!.timings!.maghrib!,
+                                              .selectedEvent!.maghribStart!,
                                           adjustTime: 4,
                                         ),
                                         const SizedBox(
@@ -490,8 +460,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           name: AppLocalizations.of(context)
                                                   ?.prayerName("Fajr") ??
                                               "",
-                                          startTime: state
-                                              .selectedEvent!.timings!.fajr!,
+                                          startTime:
+                                              state.selectedEvent!.fajrStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -502,8 +472,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           name: AppLocalizations.of(context)
                                                   ?.prayerName("Dhuhr") ??
                                               "",
-                                          startTime: state
-                                              .selectedEvent!.timings!.dhuhr!,
+                                          startTime:
+                                              state.selectedEvent!.dhuhrStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -514,8 +484,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           name: AppLocalizations.of(context)
                                                   ?.prayerName("Asr") ??
                                               "",
-                                          startTime: state
-                                              .selectedEvent!.timings!.asr!,
+                                          startTime:
+                                              state.selectedEvent!.asrStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -527,7 +497,7 @@ class CalendarPageState extends State<CalendarPage> {
                                                   ?.prayerName("Maghrib") ??
                                               "",
                                           startTime: state
-                                              .selectedEvent!.timings!.maghrib!,
+                                              .selectedEvent!.maghribStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -537,8 +507,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           name: AppLocalizations.of(context)
                                                   ?.prayerName("Isha") ??
                                               "",
-                                          startTime: state
-                                              .selectedEvent!.timings!.isha!,
+                                          startTime:
+                                              state.selectedEvent!.ishaStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -558,35 +528,29 @@ class CalendarPageState extends State<CalendarPage> {
                 ),
               ],
             );
-          }
-          else if (state.status == CalendarStatus.noData) {
-          // showDialog(context: context, builder: (context) => const AlertDialog(
-          // content: Text("Please Connect to the internet "),
-          // ),);
-          return SizedBox(
-
-          height: 900.h,
-          child:  Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/nowifi.png",
-                  fit: BoxFit.cover,
-                  height: 300.h,
-                  width: 300.h,
+          } else if (state.status == CalendarStatus.noData) {
+            return SizedBox(
+              height: 900.h,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/nowifi.png",
+                      fit: BoxFit.cover,
+                      height: 300.h,
+                      width: 300.h,
+                    ),
+                    AutoSizeText(
+                      "Please connect to the internet!!!",
+                      style: TextStyle(fontSize: 24.sp),
+                    ),
+                  ],
                 ),
-                AutoSizeText(
-                  "Please connect to the internet!!!",
-                  style: TextStyle(fontSize: 24.sp),
-                ),
-              ],
-            ),
-          ),
-          );
-          }
-          else {
+              ),
+            );
+          } else {
             return SizedBox(
               height: 900.h,
               child: Padding(
@@ -597,8 +561,8 @@ class CalendarPageState extends State<CalendarPage> {
                     Image.asset(
                       "assets/images/error.png",
                       fit: BoxFit.cover,
-                      height: 300.h,
-                      width: 300.h,
+                      height: 250.h,
+                      width: 250.h,
                     ),
                     AutoSizeText(
                       "Something went wrong...",
@@ -632,6 +596,13 @@ class TimeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String formatTime(String utcTime, {int adjustTime = 0}) {
+      DateTime utcDateTime = DateTime.parse(utcTime);
+      DateTime adjustedDateTime =
+          utcDateTime.add(Duration(minutes: adjustTime));
+      return DateFormat.jm("bn_BD").format(adjustedDateTime);
+    }
+
     return Row(
       children: [
         Container(
@@ -680,15 +651,7 @@ class TimeCard extends StatelessWidget {
                           ),
                     ),
                     AutoSizeText(
-                      DateFormat.jm("bn_BD").format(
-                        DateTime(
-                          2023,
-                          1,
-                          1,
-                          int.parse(startTime.split(":").first),
-                          int.parse(startTime.split(":").last.substring(0, 2)),
-                        ).add(Duration(minutes: adjustTime ?? 0)),
-                      ),
+                      formatTime(startTime),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             height: 1,
                             fontWeight: FontWeight.w700,
@@ -703,157 +666,6 @@ class TimeCard extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class DateCellCustom extends StatelessWidget {
-  final Color color;
-  final DateTime day;
-  final BoxDecoration? boxDecoration;
-  const DateCellCustom({
-    required this.color,
-    required this.day,
-    this.boxDecoration,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ExcludeSemantics(
-      child: Container(
-        height: 40,
-        width: 40,
-        margin: const EdgeInsets.only(bottom: 6),
-        alignment: Alignment.center,
-        // padding: EdgeInsets.all(12),
-        decoration: boxDecoration ??
-            BoxDecoration(shape: BoxShape.circle, color: color),
-        child: AutoSizeText(
-          day.day.toString(),
-          style: const TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
-}
-
-class LocationPicker extends StatefulWidget {
-  const LocationPicker({
-    super.key,
-  });
-
-  @override
-  State<LocationPicker> createState() => _LocationPickerState();
-}
-
-class _LocationPickerState extends State<LocationPicker> {
-  District? selectedLocation;
-  @override
-  void initState() {
-    context.read<LocationCubit>().loadData();
-    setLocation();
-    super.initState();
-  }
-
-  setLocation() async {
-    // Obtain shared preferences.
-    final prefs = await SharedPreferences.getInstance();
-
-    District? d = District.fromJson(jsonDecode(
-        prefs.getString("current_location") ??
-            jsonEncode(District(
-                id: "47",
-                division_id: "6",
-                name: "Dhaka",
-                bn_name: "ঢাকা",
-                lat: "23.7115253",
-                lon: "90.4111451",
-                url: "www.dhaka.gov.bd"))));
-
-    // print(d.bn_name);
-
-    selectedLocation = d;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Container(
-        width: 200,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
-        decoration: BoxDecoration(
-          // color: const Color(0xffe3deff),
-          borderRadius: BorderRadius.circular(24),
-        ),
-        child: Container(
-          // width: MediaQuery.of(context).size.width/2,
-          height: 32,
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            children: [
-              const SizedBox(
-                  child: Icon(
-                Icons.location_pin,
-                size: 18,
-              )),
-              const SizedBox(
-                width: 8,
-              ),
-              BlocBuilder<LocationCubit, LocationState<List<District>>>(
-                builder: (context, state) {
-                  return state.when(idle: () {
-                    return Container();
-                  }, loading: () {
-                    return const Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    );
-                  }, data: (data) {
-                    return DropdownButton<District>(
-                      hint: AutoSizeText(selectedLocation?.bn_name ?? ""),
-                      // value: selectedLocation,
-                      borderRadius: BorderRadius.circular(12),
-                      underline: const SizedBox(),
-                      icon: const Icon(Icons.arrow_drop_down_outlined),
-                      items: data.map(
-                        (e) {
-                          return DropdownMenuItem(
-                              value: e, child: AutoSizeText(e.bn_name.toString()));
-                        },
-                      ).toList(),
-                      onChanged: (v) async {
-                        setState(() {
-                          selectedLocation = v!;
-                        });
-                        // Obtain shared preferences.
-                        final prefs = await SharedPreferences.getInstance();
-                        String data = jsonEncode(v);
-
-                        prefs.setString("current_location", data);
-                        if (!mounted) return;
-                        context.read<CalendarBloc>().add(
-                              CalendarDataFetched(
-                                city: v!.name,
-                                year: DateTime.now().year,
-                                month: DateTime.now().month,
-                              ),
-                            );
-                      },
-                    );
-                  }, error: (e) {
-                    return Container();
-                  });
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

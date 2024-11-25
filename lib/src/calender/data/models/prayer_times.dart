@@ -1,6 +1,4 @@
-import 'package:intl/intl.dart';
-
-class PrayerTimesResponse {
+class CalenderResponse {
   final String? fajrStart;
   final String? fajrEnd;
   final String? sunrise;
@@ -16,16 +14,17 @@ class PrayerTimesResponse {
   final String? tahajjudEnd;
   final String? sehri;
   final String? iftar;
-  final String? awabinStart;
-  final String? awabinEnd;
+  final String? awwabinStart;
+  final String? awwabinEnd;
   final String? dawnStart;
   final String? dawnEnd;
   final String? noonStart;
   final String? noonEnd;
   final String? eveningStart;
   final String? eveningEnd;
+  final DateTime? date;
 
-  const PrayerTimesResponse({
+  const CalenderResponse({
     this.fajrStart,
     this.fajrEnd,
     this.sunrise,
@@ -41,13 +40,14 @@ class PrayerTimesResponse {
     this.tahajjudEnd,
     this.sehri,
     this.iftar,
-    this.awabinStart,
-    this.awabinEnd,
+    this.awwabinStart,
+    this.awwabinEnd,
     this.dawnStart,
     this.dawnEnd,
     this.noonStart,
     this.noonEnd,
     this.eveningStart,
     this.eveningEnd,
+    this.date,
   });
 }
