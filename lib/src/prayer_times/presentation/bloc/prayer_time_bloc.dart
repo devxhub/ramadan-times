@@ -113,18 +113,43 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
-        throw Exception("Location services are disabled.");
+        await Geolocator.requestPermission();
       }
 
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          throw Exception("Location permissions are denied.");
+          emit(
+            state.copyWith(
+              userCoordinator: UserCoordinator(
+                  userLat: 23.7115253,
+                  userLng: 90.4111451,
+                  userCountry: "Bangladesh",
+                  userCity: "Dhaka",
+                  userCountryIso:"BD"
+              ),
+              prayerTimeStatus: PrayerTimeStatus.success,
+            ),
+
+          );
         }
       }
 
       if (permission == LocationPermission.deniedForever) {
+        emit(
+          state.copyWith(
+            userCoordinator: UserCoordinator(
+                userLat: 23.7115253,
+                userLng: 90.4111451,
+                userCountry: "Bangladesh",
+                userCity: "Dhaka",
+                userCountryIso:"BD"
+            ),
+            prayerTimeStatus: PrayerTimeStatus.success,
+          ),
+
+        );
         throw Exception("Location permissions are permanently denied.");
       }
 
