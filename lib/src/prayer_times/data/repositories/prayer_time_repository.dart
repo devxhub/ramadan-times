@@ -22,10 +22,9 @@ class PrayerTimeRepository {
     dioClient = DioClient(_baseUrl, dio);
   }
 
-  Future<PrayerTimesResponse> generatePrayerTimes({
-    required double latitude,
-    required double longitude,
-  }) async {
+  Future<PrayerTimesResponse> generatePrayerTimes(
+      {required double latitude, required double longitude}) async {
+    print("Final state is lat lng$latitude===$longitude");
     if (latitude.isFinite) {
       final coordinates = Coordinates(latitude, longitude); // Example: London
       CalculationParameters calculationMethod = CalculationParameters(

@@ -15,6 +15,7 @@ import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
