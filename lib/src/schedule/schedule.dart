@@ -45,7 +45,10 @@ class _SchedulePageState extends State<SchedulePage> {
             date: DateFormat("dd-MM-yyyy").format(
           DateTime.now(),
         )));
-    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(
+          latitude: 23.7115253,
+          longitude: 90.4111451,
+        ));
     super.initState();
   }
 
@@ -160,25 +163,25 @@ class _SchedulePageState extends State<SchedulePage> {
               // content: Text("Please Connect to the internet "),
               // ),);
               return SizedBox(
-                  height: 900.h,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/nowifi.png",
-                          fit: BoxFit.cover,
-                          height: 300.h,
-                          width: 300.h,
-                        ),
-                        AutoSizeText(
-                          "Please connect to the internet!!!",
-                          style: TextStyle(fontSize: 24.sp),
-                        ),
-                      ],
-                    ),
+                height: 900.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/nowifi.png",
+                        fit: BoxFit.cover,
+                        height: 300.h,
+                        width: 300.h,
+                      ),
+                      AutoSizeText(
+                        "Please connect to the internet!!!",
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                    ],
                   ),
+                ),
               );
             } else {
               return SizedBox(

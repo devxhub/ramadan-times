@@ -1,16 +1,10 @@
-import 'package:ramadantimes/src/models/calendar_model/calendar_model.dart';
-import 'package:ramadantimes/src/models/calendar_model/datum.dart';
+import '../../data/models/prayer_times.dart';
 
-import 'calendar_bloc.dart';
-
-enum CalendarStatus { initial, success, failure ,noData }
+enum CalendarStatus { initial, success, failure, noData }
 
 class CalendarState {
   CalendarState({
     this.status = CalendarStatus.initial,
-    this.data,
-    this.datum = const [],
-    this.hasReachedMax = false,
     this.page = 1,
     this.focusDay,
     this.selectedDay,
@@ -18,20 +12,15 @@ class CalendarState {
   });
 
   final CalendarStatus status;
-  final CalendarModel? data;
   final int page;
-  final List<Datum>? datum;
   DateTime? focusDay;
   final DateTime? selectedDay;
-  final Datum? selectedEvent;
-  final bool hasReachedMax;
+  final CalenderResponse? selectedEvent;
 
   CalendarState copyWith({
     CalendarStatus? status,
-    CalendarModel? data,
     bool? hasReachedMax,
-    List<Datum>? datum,
-    Datum? selectedEvent,
+    CalenderResponse? selectedEvent,
     DateTime? focusDay,
     DateTime? selectedDay,
     int? page,
@@ -41,10 +30,7 @@ class CalendarState {
       focusDay: focusDay ?? this.focusDay,
       selectedDay: selectedDay ?? this.selectedDay,
       selectedEvent: selectedEvent ?? this.selectedEvent,
-      data: data ?? this.data,
       page: page ?? this.page,
-      datum: datum ?? this.datum,
-      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
     );
   }
 
@@ -53,6 +39,9 @@ class CalendarState {
     return '''productState { status: $status, data: $selectedDay,}''';
   }
 
-  List<Object> get props =>
-      [status, data!, hasReachedMax, selectedDay!, selectedEvent!];
+  List<Object> get props => [
+        status,
+        selectedDay!,
+        selectedEvent!,
+      ];
 }
