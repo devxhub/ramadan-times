@@ -112,13 +112,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             method: event.method,
             school: event.school,
             country: event.country,
-            city: event.city ?? d.name);
+            city: event.city ?? d.name.toString());
         final timeOfNextDay = await apiService.timingByCity(
             date: DateFormat("dd-MM-yyyy").format(nextDate),
             method: event.method,
             school: event.school,
             country: event.country,
-            city: event.city ?? d.name);
+            city: event.city ?? d.name.toString());
 
         //weather
 

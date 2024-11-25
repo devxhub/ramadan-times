@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:adhan/adhan.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 
+import '../../../bloc/api_result.dart';
 import '../../../services/dio_client.dart';
 
 class PrayerTimeRepository {
@@ -14,10 +19,9 @@ class PrayerTimeRepository {
     dioClient = DioClient(_baseUrl, dio);
   }
 
-  Future<PrayerTimesResponse> generatePrayerTimes({
-    required double latitude,
-    required double longitude,
-  }) async {
+  Future<PrayerTimesResponse> generatePrayerTimes(
+      {required double latitude, required double longitude}) async {
+    print("Final state is lat lng$latitude===$longitude");
     if (latitude.isFinite) {
       final coordinates = Coordinates(latitude, longitude); // Example: London
       CalculationParameters calculationMethod = CalculationParameters(
@@ -94,6 +98,17 @@ class PrayerTimeRepository {
       }
     } else {
       return PrayerTimesResponse();
+    }
+  }
+
+  Future<CountryResponse> countryResponseDataLoaded() async {
+    try {
+      var response =
+          await rootBundle.loadString('assets/locations/countries.json');
+      final map = jsonDecode(response);
+      return CountryResponse.fromJson(map);
+    } catch (e) {
+      rethrow;
     }
   }
 }
