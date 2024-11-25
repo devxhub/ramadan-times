@@ -11,22 +11,22 @@ part 'district.g.dart';
 /// JSON serialization logic to be generated.
 @JsonSerializable()
 class District {
-  District({
-    required this.name,
-    required this.id,
-    required this.bn_name,
-    required this.url,
-    required this.division_id,
+ const District({
+ this.name,
+ this.id,
+    this.bn_name,
+  this.url,
+     this.division_id,
     this.lat,
     this.lon,
   });
-  String id;
-  String division_id;
-  String name;
-  String bn_name;
-  String url;
-  String? lat;
-  String? lon;
+  final String? id;
+ final String? division_id;
+  final String? name;
+  final String? bn_name;
+  final String? url;
+ final String? lat;
+  final String? lon;
 
   /// A necessary factory constructor for creating a new District instance
   /// from a map. Pass the map to the generated `_$DistrictFromJson()` constructor.

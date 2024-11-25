@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +23,9 @@ class PrayerTimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
       builder: (context, state) {
-        return PhysicalModel(
+        return state.prayerStatus==PrayerStatus.initial||state.prayerTimesResponse.fajrStart==null?
+        CircularProgressIndicator.adaptive():
+        PhysicalModel(
           color: Color.fromARGB(255, 218, 218, 249),
           borderRadius: BorderRadius.circular(15.w),
           elevation: 2,
@@ -77,6 +81,16 @@ class PrayerTimeWidget extends StatelessWidget {
                     PrayerTimeRow(
                       prayerName: "Isha",
                       timeRange: "${convertUtcToLocalTime(state.prayerTimesResponse.ishaStart.toString())} - ${convertUtcToLocalTime(state.prayerTimesResponse.ishaEnd.toString())}",
+                      isCurrentPrayer: false,
+                    ),
+                    PrayerTimeRow(
+                      prayerName: "Awabin",
+                      timeRange: "${convertUtcToLocalTime(state.prayerTimesResponse.awwabinStart.toString())} - ${convertUtcToLocalTime(state.prayerTimesResponse.awwabinEnd.toString())}",
+                      isCurrentPrayer: false,
+                    ),
+                    PrayerTimeRow(
+                      prayerName: "Tahajjud",
+                      timeRange: "After Isha - ${convertUtcToLocalTime(state.prayerTimesResponse.tahajjudEnd.toString())}",
                       isCurrentPrayer: false,
                     ),
                   ],

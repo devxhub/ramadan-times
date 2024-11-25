@@ -823,7 +823,7 @@ class _LocationPickerState extends State<LocationPicker> {
                       items: data.map(
                         (e) {
                           return DropdownMenuItem(
-                              value: e, child: AutoSizeText(e.bn_name));
+                              value: e, child: AutoSizeText(e.bn_name.toString()));
                         },
                       ).toList(),
                       onChanged: (v) async {

@@ -1,0 +1,2384 @@
+{
+  "countries": [
+    {
+      "countryCode": "AD",
+      "name": "Andorra",
+      "nativeName": "Andorra",
+      "currencySymbol": "€",
+      "capitalCity": "Andorra la Vella",
+      "lat": 42.50779,
+      "long": 1.52109,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AE",
+      "name": "United Arab Emirates",
+      "nativeName": "الإمارات العربية المتحدة",
+      "currencySymbol": "د.إ.‏",
+      "capitalCity": "Abu Dhabi",
+      "lat": 24.45118,
+      "long": 54.39696,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "AF",
+      "name": "Afghanistan",
+      "nativeName": "افغانستان",
+      "currencySymbol": "؋",
+      "capitalCity": "Kabul",
+      "lat": 34.52813,
+      "long": 69.17233,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "AG",
+      "name": "Antigua & Barbuda",
+      "nativeName": "Antigua & Barbuda",
+      "currencySymbol": "$",
+      "capitalCity": "St. John's",
+      "lat": 17.12096,
+      "long": -61.84329,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "AI",
+      "name": "Anguilla",
+      "nativeName": "Anguilla",
+      "currencySymbol": "$",
+      "capitalCity": "The Valley",
+      "lat": 18.21704,
+      "long": -63.05783,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AL",
+      "name": "Albania",
+      "nativeName": "Shqipëri",
+      "currencySymbol": "Lekë",
+      "capitalCity": "Tirana",
+      "lat": 41.3275,
+      "long": 19.81889,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AM",
+      "name": "Armenia",
+      "nativeName": "Հայաստան",
+      "currencySymbol": "֏",
+      "capitalCity": "Yerevan",
+      "lat": 40.18111,
+      "long": 44.51361,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AO",
+      "name": "Angola",
+      "nativeName": "Angola",
+      "currencySymbol": "Kz",
+      "capitalCity": "Luanda",
+      "lat": -8.83682,
+      "long": 13.23432,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AR",
+      "name": "Argentina",
+      "nativeName": "Argentina",
+      "currencySymbol": "$",
+      "capitalCity": "Buenos Aires",
+      "lat": -34.61315,
+      "long": -58.37723,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "AS",
+      "name": "American Samoa",
+      "nativeName": "American Samoa",
+      "currencySymbol": "$",
+      "capitalCity": "Pago Pago",
+      "lat": -14.27806,
+      "long": -170.7025,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "AT",
+      "name": "Austria",
+      "nativeName": "Österreich",
+      "currencySymbol": "€",
+      "capitalCity": "Vienna",
+      "lat": 48.20849,
+      "long": 16.37208,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AU",
+      "name": "Australia",
+      "nativeName": "Australia",
+      "currencySymbol": "$",
+      "capitalCity": "Canberra",
+      "lat": -35.28346,
+      "long": 149.12807,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "AW",
+      "name": "Aruba",
+      "nativeName": "Aruba",
+      "currencySymbol": "Afl.",
+      "capitalCity": "Oranjestad",
+      "lat": 12.52398,
+      "long": -70.02703,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AX",
+      "name": "Åland Islands",
+      "nativeName": "Åland",
+      "currencySymbol": "€",
+      "capitalCity": "Mariehamn",
+      "lat": 60.09726,
+      "long": 19.93481,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "AZ",
+      "name": "Azerbaijan",
+      "nativeName": "Азәрбајҹан",
+      "currencySymbol": "₼",
+      "capitalCity": "Baku",
+      "lat": 40.37767,
+      "long": 49.89201,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BA",
+      "name": "Bosnia & Herzegovina",
+      "nativeName": "Bosna i Hercegovina",
+      "currencySymbol": "KM",
+      "capitalCity": "Sarajevo",
+      "lat": 43.84864,
+      "long": 18.35644,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BB",
+      "name": "Barbados",
+      "nativeName": "Barbados",
+      "currencySymbol": "$",
+      "capitalCity": "Bridgetown",
+      "lat": 13.10732,
+      "long": -59.62021,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BD",
+      "name": "Bangladesh",
+      "nativeName": "বাংলাদেশ",
+      "currencySymbol": "৳",
+      "capitalCity": "Dhaka",
+      "lat": 23.7104,
+      "long": 90.40744,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "BE",
+      "name": "Belgium",
+      "nativeName": "België",
+      "currencySymbol": "€",
+      "capitalCity": "Brussels",
+      "lat": 50.85045,
+      "long": 4.34878,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BF",
+      "name": "Burkina Faso",
+      "nativeName": "Burkina Faso",
+      "currencySymbol": "CFA",
+      "capitalCity": "Ouagadougou",
+      "lat": 12.36566,
+      "long": -1.53388,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BG",
+      "name": "Bulgaria",
+      "nativeName": "България",
+      "currencySymbol": "лв.",
+      "capitalCity": "Sofia",
+      "lat": 42.69751,
+      "long": 23.32415,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BH",
+      "name": "Bahrain",
+      "nativeName": "البحرين",
+      "currencySymbol": "د.ب.‏",
+      "capitalCity": "Manama",
+      "lat": 26.22787,
+      "long": 50.58565,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "BI",
+      "name": "Burundi",
+      "nativeName": "Uburundi",
+      "currencySymbol": "FBu",
+      "capitalCity": "Bujumbura",
+      "lat": -3.38193,
+      "long": 29.36142,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BJ",
+      "name": "Benin",
+      "nativeName": "Bénin",
+      "currencySymbol": "CFA",
+      "capitalCity": "Porto-Novo",
+      "lat": 6.36536,
+      "long": 2.41833,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BL",
+      "name": "St. Barthélemy",
+      "nativeName": "Saint-Barthélemy",
+      "currencySymbol": "€",
+      "capitalCity": "Gustavia",
+      "lat": 17.89618,
+      "long": -62.84978,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BM",
+      "name": "Bermuda",
+      "nativeName": "Bermuda",
+      "currencySymbol": "$",
+      "capitalCity": "Hamilton",
+      "lat": 32.2949,
+      "long": -64.78303,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BN",
+      "name": "Brunei",
+      "nativeName": "Brunei",
+      "currencySymbol": "$",
+      "capitalCity": "Bandar Seri Begawan",
+      "lat": 4.89035,
+      "long": 114.94006,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BO",
+      "name": "Bolivia",
+      "nativeName": "Bolivia",
+      "currencySymbol": "Bs",
+      "capitalCity": "Sucre",
+      "lat": -19.03332,
+      "long": -65.26274,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BR",
+      "name": "Brazil",
+      "nativeName": "Brasil",
+      "currencySymbol": "R$",
+      "capitalCity": "Brasilia",
+      "lat": -15.77972,
+      "long": -47.92972,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "BS",
+      "name": "Bahamas",
+      "nativeName": "Bahamas",
+      "currencySymbol": "$",
+      "capitalCity": "Nassau",
+      "lat": 25.05823,
+      "long": -77.34306,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "BT",
+      "name": "Bhutan",
+      "nativeName": "འབྲུག",
+      "currencySymbol": "Nu.",
+      "capitalCity": "Thimphu",
+      "lat": 27.46609,
+      "long": 89.64191,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "BW",
+      "name": "Botswana",
+      "nativeName": "Botswana",
+      "currencySymbol": "P",
+      "capitalCity": "Gaborone",
+      "lat": -24.65451,
+      "long": 25.90859,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "BY",
+      "name": "Belarus",
+      "nativeName": "Беларусь",
+      "currencySymbol": "Br",
+      "capitalCity": "Minsk",
+      "lat": 53.9,
+      "long": 27.56667,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "BZ",
+      "name": "Belize",
+      "nativeName": "Belize",
+      "currencySymbol": "$",
+      "capitalCity": "Belmopan",
+      "lat": 17.25,
+      "long": -88.76667,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "CA",
+      "name": "Canada",
+      "nativeName": "Canada",
+      "currencySymbol": "$",
+      "capitalCity": "Ottawa",
+      "lat": 45.41117,
+      "long": -75.69812,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "CC",
+      "name": "Cocos (Keeling) Islands",
+      "nativeName": "Cocos (Keeling) Islands",
+      "currencySymbol": "$",
+      "capitalCity": "West Island",
+      "lat": -12.15681,
+      "long": 96.82251,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CD",
+      "name": "Congo (DRC)",
+      "nativeName": "Congo (République démocratique du)",
+      "currencySymbol": "FC",
+      "capitalCity": "Kinshasa",
+      "lat": -4.32758,
+      "long": 15.31357,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CF",
+      "name": "Central African Republic",
+      "nativeName": "Ködörösêse tî Bêafrîka",
+      "currencySymbol": "FCFA",
+      "capitalCity": "Bangui",
+      "lat": 4.36122,
+      "long": 18.55496,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CG",
+      "name": "Congo",
+      "nativeName": "Congo",
+      "currencySymbol": "FCFA",
+      "capitalCity": "Brazzaville",
+      "lat": -4.26613,
+      "long": 15.28318,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CH",
+      "name": "Switzerland",
+      "nativeName": "Svizzera",
+      "currencySymbol": "CHF",
+      "capitalCity": "Bern",
+      "lat": 46.94809,
+      "long": 7.44744,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CI",
+      "name": "Côte d’Ivoire",
+      "nativeName": "Côte d’Ivoire",
+      "currencySymbol": "CFA",
+      "capitalCity": "Yamoussoukro",
+      "lat": 6.82055,
+      "long": -5.27674,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CK",
+      "name": "Cook Islands",
+      "nativeName": "Cook Islands",
+      "currencySymbol": "$",
+      "capitalCity": "Avarua",
+      "lat": -21.2075,
+      "long": -159.77545,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CL",
+      "name": "Chile",
+      "nativeName": "Chile",
+      "currencySymbol": "$",
+      "capitalCity": "Santiago",
+      "lat": -33.45694,
+      "long": -70.64827,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CN",
+      "name": "China",
+      "nativeName": "中国",
+      "currencySymbol": "￥",
+      "capitalCity": "Beijing",
+      "lat": 39.9075,
+      "long": 116.39723,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "CO",
+      "name": "Colombia",
+      "nativeName": "Colombia",
+      "currencySymbol": "$",
+      "capitalCity": "Bogota",
+      "lat": 4.60971,
+      "long": -74.08175,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "CR",
+      "name": "Costa Rica",
+      "nativeName": "Costa Rica",
+      "currencySymbol": "₡",
+      "capitalCity": "San Jose",
+      "lat": 9.93333,
+      "long": -84.08333,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CU",
+      "name": "Cuba",
+      "nativeName": "Cuba",
+      "currencySymbol": "$",
+      "capitalCity": "Havana",
+      "lat": 23.13302,
+      "long": -82.38304,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CV",
+      "name": "Cabo Verde",
+      "nativeName": "Cabo Verde",
+      "currencySymbol": "​",
+      "capitalCity": "Praia",
+      "lat": 14.93152,
+      "long": -23.51254,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CW",
+      "name": "Curaçao",
+      "nativeName": "Curaçao",
+      "currencySymbol": "NAf.",
+      "capitalCity": "Willemstad",
+      "lat": 12.116667,
+      "long": -68.933333,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CX",
+      "name": "Christmas Island",
+      "nativeName": "Christmas Island",
+      "currencySymbol": "$",
+      "capitalCity": "Flying Fish Cove",
+      "lat": -10.42172,
+      "long": 105.67912,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CY",
+      "name": "Cyprus",
+      "nativeName": "Κύπρος",
+      "currencySymbol": "€",
+      "capitalCity": "Nicosia",
+      "lat": 35.17531,
+      "long": 33.3642,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "CZ",
+      "name": "Czechia",
+      "nativeName": "Česko",
+      "currencySymbol": "Kč",
+      "capitalCity": "Prague",
+      "lat": 50.08804,
+      "long": 14.42076,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "DE",
+      "name": "Germany",
+      "nativeName": "Deutschland",
+      "currencySymbol": "€",
+      "capitalCity": "Berlin",
+      "lat": 52.52437,
+      "long": 13.41053,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "DJ",
+      "name": "Djibouti",
+      "nativeName": "Djibouti",
+      "currencySymbol": "Fdj",
+      "capitalCity": "Djibouti",
+      "lat": 11.58901,
+      "long": 43.14503,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "DK",
+      "name": "Denmark",
+      "nativeName": "Danmark",
+      "currencySymbol": "kr.",
+      "capitalCity": "Copenhagen",
+      "lat": 55.67594,
+      "long": 12.56553,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "DM",
+      "name": "Dominica",
+      "nativeName": "Dominica",
+      "currencySymbol": "$",
+      "capitalCity": "Roseau",
+      "lat": 15.30174,
+      "long": -61.38808,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "DO",
+      "name": "Dominican Republic",
+      "nativeName": "República Dominicana",
+      "currencySymbol": "RD$",
+      "capitalCity": "Santo Domingo",
+      "lat": 18.47186,
+      "long": -69.89232,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "DZ",
+      "name": "Algeria",
+      "nativeName": "الجزائر",
+      "currencySymbol": "د.ج.‏",
+      "capitalCity": "Algiers",
+      "lat": 36.73225,
+      "long": 3.08746,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "EC",
+      "name": "Ecuador",
+      "nativeName": "Ecuador",
+      "currencySymbol": "$",
+      "capitalCity": "Quito",
+      "lat": -0.22985,
+      "long": -78.52495,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "EE",
+      "name": "Estonia",
+      "nativeName": "Eesti",
+      "currencySymbol": "€",
+      "capitalCity": "Tallinn",
+      "lat": 59.43696,
+      "long": 24.75353,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "EG",
+      "name": "Egypt",
+      "nativeName": "مصر",
+      "currencySymbol": "ج.م.‏",
+      "capitalCity": "Cairo",
+      "lat": 30.06263,
+      "long": 31.24967,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "ER",
+      "name": "Eritrea",
+      "nativeName": "ER",
+      "currencySymbol": "Nfk",
+      "capitalCity": "Asmara",
+      "lat": 15.33805,
+      "long": 38.93184,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ES",
+      "name": "Spain",
+      "nativeName": "España",
+      "currencySymbol": "€",
+      "capitalCity": "Madrid",
+      "lat": 40.4165,
+      "long": -3.70256,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ET",
+      "name": "Ethiopia",
+      "nativeName": "ኢትዮጵያ",
+      "currencySymbol": "ብር",
+      "capitalCity": "Addis Ababa",
+      "lat": 9.02497,
+      "long": 38.74689,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "FI",
+      "name": "Finland",
+      "nativeName": "Suomi",
+      "currencySymbol": "€",
+      "capitalCity": "Helsinki",
+      "lat": 60.16952,
+      "long": 24.93545,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "FJ",
+      "name": "Fiji",
+      "nativeName": "Fiji",
+      "currencySymbol": "$",
+      "capitalCity": "Suva",
+      "lat": -18.14161,
+      "long": 178.44149,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "FK",
+      "name": "Falkland Islands",
+      "nativeName": "Falkland Islands",
+      "currencySymbol": "£",
+      "capitalCity": "Stanley",
+      "lat": -51.69382,
+      "long": -57.85701,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "FM",
+      "name": "Micronesia",
+      "nativeName": "Micronesia",
+      "currencySymbol": "US$",
+      "capitalCity": "Palikir",
+      "lat": 6.92477,
+      "long": 158.16109,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "FO",
+      "name": "Faroe Islands",
+      "nativeName": "Føroyar",
+      "currencySymbol": "kr",
+      "capitalCity": "Torshavn",
+      "lat": 62.00973,
+      "long": -6.77164,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "FR",
+      "name": "France",
+      "nativeName": "France",
+      "currencySymbol": "€",
+      "capitalCity": "Paris",
+      "lat": 48.85341,
+      "long": 2.3488,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GA",
+      "name": "Gabon",
+      "nativeName": "Gabon",
+      "currencySymbol": "FCFA",
+      "capitalCity": "Libreville",
+      "lat": 0.39241,
+      "long": 9.45356,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GB",
+      "name": "United Kingdom",
+      "nativeName": "United Kingdom",
+      "currencySymbol": "£",
+      "capitalCity": "London",
+      "lat": 51.50853,
+      "long": -0.12574,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GD",
+      "name": "Grenada",
+      "nativeName": "Grenada",
+      "currencySymbol": "$",
+      "capitalCity": "St. George's",
+      "lat": 12.05288,
+      "long": -61.75226,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GE",
+      "name": "Georgia",
+      "nativeName": "საქართველო",
+      "currencySymbol": "₾",
+      "capitalCity": "Tbilisi",
+      "lat": 41.69411,
+      "long": 44.83368,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GF",
+      "name": "French Guiana",
+      "nativeName": "Guyane française",
+      "currencySymbol": "€",
+      "capitalCity": "Cayenne",
+      "lat": 4.93333,
+      "long": -52.33333,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GG",
+      "name": "Guernsey",
+      "nativeName": "Guernsey",
+      "currencySymbol": "£",
+      "capitalCity": "St Peter Port",
+      "lat": 49.45981,
+      "long": -2.53527,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GH",
+      "name": "Ghana",
+      "nativeName": "Ghana",
+      "currencySymbol": "GH₵",
+      "capitalCity": "Accra",
+      "lat": 5.55602,
+      "long": -0.1969,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GI",
+      "name": "Gibraltar",
+      "nativeName": "Gibraltar",
+      "currencySymbol": "£",
+      "capitalCity": "Gibraltar",
+      "lat": 36.14474,
+      "long": -5.35257,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GL",
+      "name": "Greenland",
+      "nativeName": "Kalaallit Nunaat",
+      "currencySymbol": "kr.",
+      "capitalCity": "Nuuk",
+      "lat": 64.18347,
+      "long": -51.72157,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GM",
+      "name": "Gambia",
+      "nativeName": "Gambia",
+      "currencySymbol": "D",
+      "capitalCity": "Banjul",
+      "lat": 13.43833,
+      "long": -16.67806,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GN",
+      "name": "Guinea",
+      "nativeName": "Guinée",
+      "currencySymbol": "FG",
+      "capitalCity": "Conakry",
+      "lat": 9.535,
+      "long": -13.68778,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GP",
+      "name": "Guadeloupe",
+      "nativeName": "Guadeloupe",
+      "currencySymbol": "€",
+      "capitalCity": "Basse-Terre",
+      "lat": 15.99714,
+      "long": -61.73214,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GQ",
+      "name": "Equatorial Guinea",
+      "nativeName": "Guinea Ecuatorial",
+      "currencySymbol": "FCFA",
+      "capitalCity": "Malabo",
+      "lat": 1.86391,
+      "long": 9.76582,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GR",
+      "name": "Greece",
+      "nativeName": "Ελλάδα",
+      "currencySymbol": "€",
+      "capitalCity": "Athens",
+      "lat": 37.98376,
+      "long": 23.72784,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GT",
+      "name": "Guatemala",
+      "nativeName": "Guatemala",
+      "currencySymbol": "Q",
+      "capitalCity": "Guatemala City",
+      "lat": 14.64072,
+      "long": -90.51327,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "GU",
+      "name": "Guam",
+      "nativeName": "Guam",
+      "currencySymbol": "$",
+      "capitalCity": "Hagatna",
+      "lat": 13.46559,
+      "long": 144.74795,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "GW",
+      "name": "Guinea-Bissau",
+      "nativeName": "Guiné-Bissau",
+      "currencySymbol": "CFA",
+      "capitalCity": "Bissau",
+      "lat": 11.86357,
+      "long": -15.59767,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "GY",
+      "name": "Guyana",
+      "nativeName": "Guyana",
+      "currencySymbol": "$",
+      "capitalCity": "Georgetown",
+      "lat": 6.80448,
+      "long": -58.15527,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "HK",
+      "name": "Hong Kong SAR",
+      "nativeName": "香港特別行政區",
+      "currencySymbol": "HK$",
+      "capitalCity": "Hong Kong",
+      "lat": 22.27832,
+      "long": 114.17469,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "HN",
+      "name": "Honduras",
+      "nativeName": "Honduras",
+      "currencySymbol": "L",
+      "capitalCity": "Tegucigalpa",
+      "lat": 14.0818,
+      "long": -87.20681,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "HR",
+      "name": "Croatia",
+      "nativeName": "Hrvatska",
+      "currencySymbol": "HRK",
+      "capitalCity": "Zagreb",
+      "lat": 45.81444,
+      "long": 15.97798,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "HT",
+      "name": "Haiti",
+      "nativeName": "Haïti",
+      "currencySymbol": "G",
+      "capitalCity": "Port-au-Prince",
+      "lat": 18.54349,
+      "long": -72.33881,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "HU",
+      "name": "Hungary",
+      "nativeName": "Magyarország",
+      "currencySymbol": "Ft",
+      "capitalCity": "Budapest",
+      "lat": 47.49835,
+      "long": 19.04045,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ID",
+      "name": "Indonesia",
+      "nativeName": "Indonesia",
+      "currencySymbol": "Rp",
+      "capitalCity": "Jakarta",
+      "lat": -6.21462,
+      "long": 106.84513,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "IE",
+      "name": "Ireland",
+      "nativeName": "Ireland",
+      "currencySymbol": "€",
+      "capitalCity": "Dublin",
+      "lat": 53.33306,
+      "long": -6.24889,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "IL",
+      "name": "Israel",
+      "nativeName": "ישראל",
+      "currencySymbol": "₪",
+      "capitalCity": "Jerusalem",
+      "lat": 31.76904,
+      "long": 35.21633,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "IM",
+      "name": "Isle of Man",
+      "nativeName": "Ellan Vannin",
+      "currencySymbol": "£",
+      "capitalCity": "Douglas",
+      "lat": 54.15,
+      "long": -4.48333,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "IN",
+      "name": "India",
+      "nativeName": "भारत",
+      "currencySymbol": "₹",
+      "capitalCity": "New Delhi",
+      "lat": 28.65195,
+      "long": 77.23149,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "IQ",
+      "name": "Iraq",
+      "nativeName": "العراق",
+      "currencySymbol": "د.ع.‏",
+      "capitalCity": "Baghdad",
+      "lat": 33.34058,
+      "long": 44.40088,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "IR",
+      "name": "Iran",
+      "nativeName": "ایران",
+      "currencySymbol": "ریال",
+      "capitalCity": "Tehran",
+      "lat": 35.69439,
+      "long": 51.42151,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "IS",
+      "name": "Iceland",
+      "nativeName": "Ísland",
+      "currencySymbol": "ISK",
+      "capitalCity": "Reykjavik",
+      "lat": 64.13548,
+      "long": -21.89541,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "IT",
+      "name": "Italy",
+      "nativeName": "Italia",
+      "currencySymbol": "€",
+      "capitalCity": "Rome",
+      "lat": 41.89193,
+      "long": 12.51133,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "JE",
+      "name": "Jersey",
+      "nativeName": "Jersey",
+      "currencySymbol": "£",
+      "capitalCity": "Saint Helier",
+      "lat": 49.18804,
+      "long": -2.10491,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "JO",
+      "name": "Jordan",
+      "nativeName": "الأردن",
+      "currencySymbol": "د.أ.‏",
+      "capitalCity": "Amman",
+      "lat": 31.95522,
+      "long": 35.94503,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "JP",
+      "name": "Japan",
+      "nativeName": "日本",
+      "currencySymbol": "￥",
+      "capitalCity": "Tokyo",
+      "lat": 35.6895,
+      "long": 139.69171,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "KE",
+      "name": "Kenya",
+      "nativeName": "Kenya",
+      "currencySymbol": "Ksh",
+      "capitalCity": "Nairobi",
+      "lat": -1.28333,
+      "long": 36.81667,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "KG",
+      "name": "Kyrgyzstan",
+      "nativeName": "Кыргызстан",
+      "currencySymbol": "сом",
+      "capitalCity": "Bishkek",
+      "lat": 42.87,
+      "long": 74.59,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "KH",
+      "name": "Cambodia",
+      "nativeName": "កម្ពុជា",
+      "currencySymbol": "៛",
+      "capitalCity": "Phnom Penh",
+      "lat": 11.56245,
+      "long": 104.91601,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "KI",
+      "name": "Kiribati",
+      "nativeName": "Kiribati",
+      "currencySymbol": "$",
+      "capitalCity": "Tarawa",
+      "lat": 1.3278,
+      "long": 172.97696,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "KM",
+      "name": "Comoros",
+      "nativeName": "جزر القمر",
+      "currencySymbol": "CF",
+      "capitalCity": "Moroni",
+      "lat": -11.70216,
+      "long": 43.25506,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "KN",
+      "name": "St. Kitts & Nevis",
+      "nativeName": "St. Kitts & Nevis",
+      "currencySymbol": "$",
+      "capitalCity": "Basseterre",
+      "lat": 17.2955,
+      "long": -62.72499,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "KP",
+      "name": "North Korea",
+      "nativeName": "조선민주주의인민공화국",
+      "currencySymbol": "KPW",
+      "capitalCity": "Pyongyang",
+      "lat": 39.03385,
+      "long": 125.75432,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "KR",
+      "name": "Korea",
+      "nativeName": "대한민국",
+      "currencySymbol": "₩",
+      "capitalCity": "Seoul",
+      "lat": 37.566,
+      "long": 126.9784,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "KW",
+      "name": "Kuwait",
+      "nativeName": "الكويت",
+      "currencySymbol": "د.ك.‏",
+      "capitalCity": "Kuwait City",
+      "lat": 29.36972,
+      "long": 47.97833,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "KY",
+      "name": "Cayman Islands",
+      "nativeName": "Cayman Islands",
+      "currencySymbol": "$",
+      "capitalCity": "George Town",
+      "lat": 19.2866,
+      "long": -81.37436,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "KZ",
+      "name": "Kazakhstan",
+      "nativeName": "Қазақстан",
+      "currencySymbol": "₸",
+      "capitalCity": "Nur-Sultan",
+      "lat": 51.1801,
+      "long": 71.44598,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LA",
+      "name": "Laos",
+      "nativeName": "ລາວ",
+      "currencySymbol": "₭",
+      "capitalCity": "Vientiane",
+      "lat": 17.96667,
+      "long": 102.6,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "LB",
+      "name": "Lebanon",
+      "nativeName": "لبنان",
+      "currencySymbol": "ل.ل.‏",
+      "capitalCity": "Beirut",
+      "lat": 33.89332,
+      "long": 35.50157,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LC",
+      "name": "St. Lucia",
+      "nativeName": "St. Lucia",
+      "currencySymbol": "$",
+      "capitalCity": "Castries",
+      "lat": 13.9957,
+      "long": -61.00614,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LI",
+      "name": "Liechtenstein",
+      "nativeName": "Liechtenstein",
+      "currencySymbol": "CHF",
+      "capitalCity": "Vaduz",
+      "lat": 47.16498,
+      "long": 9.50867,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LK",
+      "name": "Sri Lanka",
+      "nativeName": "ශ්‍රී ලංකාව",
+      "currencySymbol": "රු.",
+      "capitalCity": "Colombo",
+      "lat": 6.93548,
+      "long": 79.84868,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LR",
+      "name": "Liberia",
+      "nativeName": "Liberia",
+      "currencySymbol": "$",
+      "capitalCity": "Monrovia",
+      "lat": 6.30054,
+      "long": -10.7969,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LS",
+      "name": "Lesotho",
+      "nativeName": "LS",
+      "currencySymbol": "R",
+      "capitalCity": "Maseru",
+      "lat": -29.31667,
+      "long": 27.48333,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LT",
+      "name": "Lithuania",
+      "nativeName": "Lietuva",
+      "currencySymbol": "€",
+      "capitalCity": "Vilnius",
+      "lat": 54.68916,
+      "long": 25.2798,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LU",
+      "name": "Luxembourg",
+      "nativeName": "Lëtzebuerg",
+      "currencySymbol": "€",
+      "capitalCity": "Luxembourg",
+      "lat": 49.61167,
+      "long": 6.13,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LV",
+      "name": "Latvia",
+      "nativeName": "Latvija",
+      "currencySymbol": "€",
+      "capitalCity": "Riga",
+      "lat": 56.946,
+      "long": 24.10589,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "LY",
+      "name": "Libya",
+      "nativeName": "ليبيا",
+      "currencySymbol": "د.ل.‏",
+      "capitalCity": "Tripoli",
+      "lat": 32.88743,
+      "long": 13.18733,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "MA",
+      "name": "Morocco",
+      "nativeName": "المغرب",
+      "currencySymbol": "د.م.‏",
+      "capitalCity": "Rabat",
+      "lat": 34.01325,
+      "long": -6.83255,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MC",
+      "name": "Monaco",
+      "nativeName": "Monaco",
+      "currencySymbol": "€",
+      "capitalCity": "Monaco",
+      "lat": 43.73333,
+      "long": 7.41667,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MD",
+      "name": "Moldova",
+      "nativeName": "Republica Moldova",
+      "currencySymbol": "L",
+      "capitalCity": "Chisinau",
+      "lat": 47.00556,
+      "long": 28.8575,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ME",
+      "name": "Montenegro",
+      "nativeName": "Crna Gora",
+      "currencySymbol": "€",
+      "capitalCity": "Podgorica",
+      "lat": 42.44111,
+      "long": 19.26361,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MF",
+      "name": "St. Martin",
+      "nativeName": "Saint-Martin",
+      "currencySymbol": "€",
+      "capitalCity": "Marigot",
+      "lat": 18.06819,
+      "long": -63.08302,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MG",
+      "name": "Madagascar",
+      "nativeName": "Madagasikara",
+      "currencySymbol": "Ar",
+      "capitalCity": "Antananarivo",
+      "lat": -18.91368,
+      "long": 47.53613,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MH",
+      "name": "Marshall Islands",
+      "nativeName": "Marshall Islands",
+      "currencySymbol": "$",
+      "capitalCity": "Majuro",
+      "lat": 7.08971,
+      "long": 171.38027,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "MK",
+      "name": "North Macedonia",
+      "nativeName": "Северна Македонија",
+      "currencySymbol": "ден",
+      "capitalCity": "Skopje",
+      "lat": 41.99646,
+      "long": 21.43141,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ML",
+      "name": "Mali",
+      "nativeName": "Mali",
+      "currencySymbol": "CFA",
+      "capitalCity": "Bamako",
+      "lat": 12.65,
+      "long": -8,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MM",
+      "name": "Myanmar",
+      "nativeName": "မြန်မာ",
+      "currencySymbol": "K",
+      "capitalCity": "Nay Pyi Taw",
+      "lat": 19.745,
+      "long": 96.12972,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "MN",
+      "name": "Mongolia",
+      "nativeName": "Монгол",
+      "currencySymbol": "₮",
+      "capitalCity": "Ulaanbaatar",
+      "lat": 47.90771,
+      "long": 106.88324,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MO",
+      "name": "Macao SAR",
+      "nativeName": "澳門特別行政區",
+      "currencySymbol": "MOP$",
+      "capitalCity": "Macao",
+      "lat": 22.20056,
+      "long": 113.54611,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "MP",
+      "name": "Northern Mariana Islands",
+      "nativeName": "Northern Mariana Islands",
+      "currencySymbol": "$",
+      "capitalCity": "Saipan",
+      "lat": 15.21233,
+      "long": 145.7545,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MQ",
+      "name": "Martinique",
+      "nativeName": "Martinique",
+      "currencySymbol": "€",
+      "capitalCity": "Fort-de-France",
+      "lat": 14.60365,
+      "long": -61.07418,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MR",
+      "name": "Mauritania",
+      "nativeName": "موريتانيا",
+      "currencySymbol": "أ.م.",
+      "capitalCity": "Nouakchott",
+      "lat": 18.08581,
+      "long": -15.9785,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MS",
+      "name": "Montserrat",
+      "nativeName": "Montserrat",
+      "currencySymbol": "$",
+      "capitalCity": "Plymouth",
+      "lat": 16.70555,
+      "long": -62.21292,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MT",
+      "name": "Malta",
+      "nativeName": "Malta",
+      "currencySymbol": "€",
+      "capitalCity": "Valletta",
+      "lat": 35.89968,
+      "long": 14.5148,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "MU",
+      "name": "Mauritius",
+      "nativeName": "Mauritius",
+      "currencySymbol": "Rs",
+      "capitalCity": "Port Louis",
+      "lat": -20.16194,
+      "long": 57.49889,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MV",
+      "name": "Maldives",
+      "nativeName": "MV",
+      "currencySymbol": "ރ.",
+      "capitalCity": "Male",
+      "lat": 4.17521,
+      "long": 73.50916,
+      "firstDayOfWeek": 5
+    },
+    {
+      "countryCode": "MW",
+      "name": "Malawi",
+      "nativeName": "Malawi",
+      "currencySymbol": "MK",
+      "capitalCity": "Lilongwe",
+      "lat": -13.96692,
+      "long": 33.78725,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MX",
+      "name": "Mexico",
+      "nativeName": "México",
+      "currencySymbol": "$",
+      "capitalCity": "Mexico City",
+      "lat": 19.42847,
+      "long": -99.12766,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "MY",
+      "name": "Malaysia",
+      "nativeName": "Malaysia",
+      "currencySymbol": "RM",
+      "capitalCity": "Kuala Lumpur",
+      "lat": 3.1412,
+      "long": 101.68653,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "MZ",
+      "name": "Mozambique",
+      "nativeName": "Moçambique",
+      "currencySymbol": "MTn",
+      "capitalCity": "Maputo",
+      "lat": -25.96553,
+      "long": 32.58322,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "NA",
+      "name": "Namibia",
+      "nativeName": "Namibia",
+      "currencySymbol": "$",
+      "capitalCity": "Windhoek",
+      "lat": -22.55941,
+      "long": 17.08323,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NC",
+      "name": "New Caledonia",
+      "nativeName": "Nouvelle-Calédonie",
+      "currencySymbol": "FCFP",
+      "capitalCity": "Noumea",
+      "lat": -22.27407,
+      "long": 166.44884,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NE",
+      "name": "Niger",
+      "nativeName": "Niger",
+      "currencySymbol": "CFA",
+      "capitalCity": "Niamey",
+      "lat": 13.51366,
+      "long": 2.1098,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NF",
+      "name": "Norfolk Island",
+      "nativeName": "Norfolk Island",
+      "currencySymbol": "$",
+      "capitalCity": "Kingston",
+      "lat": -29.05459,
+      "long": 167.96628,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NG",
+      "name": "Nigeria",
+      "nativeName": "Naịjịrịa",
+      "currencySymbol": "₦",
+      "capitalCity": "Abuja",
+      "lat": 9.05785,
+      "long": 7.49508,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NI",
+      "name": "Nicaragua",
+      "nativeName": "Nicaragua",
+      "currencySymbol": "C$",
+      "capitalCity": "Managua",
+      "lat": 12.13282,
+      "long": -86.2504,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "NL",
+      "name": "Netherlands",
+      "nativeName": "Nederland",
+      "currencySymbol": "€",
+      "capitalCity": "Amsterdam",
+      "lat": 52.37403,
+      "long": 4.88969,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NO",
+      "name": "Norway",
+      "nativeName": "Noreg",
+      "currencySymbol": "kr",
+      "capitalCity": "Oslo",
+      "lat": 59.91273,
+      "long": 10.74609,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NP",
+      "name": "Nepal",
+      "nativeName": "नेपाल",
+      "currencySymbol": "नेरू",
+      "capitalCity": "Kathmandu",
+      "lat": 27.70169,
+      "long": 85.3206,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "NR",
+      "name": "Nauru",
+      "nativeName": "Nauru",
+      "currencySymbol": "$",
+      "capitalCity": "Yaren",
+      "lat": -0.55085,
+      "long": 166.9252,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NU",
+      "name": "Niue",
+      "nativeName": "Niue",
+      "currencySymbol": "$",
+      "capitalCity": "Alofi",
+      "lat": -19.05451,
+      "long": -169.91768,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "NZ",
+      "name": "New Zealand",
+      "nativeName": "New Zealand",
+      "currencySymbol": "$",
+      "capitalCity": "Wellington",
+      "lat": -41.28664,
+      "long": 174.77557,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "OM",
+      "name": "Oman",
+      "nativeName": "عُمان",
+      "currencySymbol": "ر.ع.‏",
+      "capitalCity": "Muscat",
+      "lat": 23.58413,
+      "long": 58.40778,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "PA",
+      "name": "Panama",
+      "nativeName": "Panamá",
+      "currencySymbol": "B/.",
+      "capitalCity": "Panama City",
+      "lat": 8.9936,
+      "long": -79.51973,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "PE",
+      "name": "Peru",
+      "nativeName": "Perú",
+      "currencySymbol": "S/",
+      "capitalCity": "Lima",
+      "lat": -12.04318,
+      "long": -77.02824,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "PF",
+      "name": "French Polynesia",
+      "nativeName": "Polynésie française",
+      "currencySymbol": "FCFP",
+      "capitalCity": "Papeete",
+      "lat": -17.5347,
+      "long": -149.56843,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PG",
+      "name": "Papua New Guinea",
+      "nativeName": "Papua New Guinea",
+      "currencySymbol": "K",
+      "capitalCity": "Port Moresby",
+      "lat": -9.47723,
+      "long": 147.15089,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PH",
+      "name": "Philippines",
+      "nativeName": "Philippines",
+      "currencySymbol": "₱",
+      "capitalCity": "Manila",
+      "lat": 14.6488,
+      "long": 121.0509,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "PK",
+      "name": "Pakistan",
+      "nativeName": "پاکستان",
+      "currencySymbol": "Rs",
+      "capitalCity": "Islamabad",
+      "lat": 33.72148,
+      "long": 73.04329,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "PL",
+      "name": "Poland",
+      "nativeName": "Polska",
+      "currencySymbol": "zł",
+      "capitalCity": "Warsaw",
+      "lat": 52.22977,
+      "long": 21.01178,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PM",
+      "name": "St. Pierre & Miquelon",
+      "nativeName": "Saint-Pierre-et-Miquelon",
+      "currencySymbol": "€",
+      "capitalCity": "Saint-Pierre",
+      "lat": 46.77914,
+      "long": -56.1773,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PN",
+      "name": "Pitcairn Islands",
+      "nativeName": "Pitcairn Islands",
+      "currencySymbol": "$",
+      "capitalCity": "Adamstown",
+      "lat": -25.06597,
+      "long": -130.10147,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PR",
+      "name": "Puerto Rico",
+      "nativeName": "Puerto Rico",
+      "currencySymbol": "$",
+      "capitalCity": "San Juan",
+      "lat": 18.46633,
+      "long": -66.10572,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "PS",
+      "name": "Palestinian Authority",
+      "nativeName": "السلطة الفلسطينية",
+      "currencySymbol": "₪",
+      "capitalCity": "East Jerusalem",
+      "lat": 31.78336,
+      "long": 35.23388,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PT",
+      "name": "Portugal",
+      "nativeName": "Portugal",
+      "currencySymbol": "€",
+      "capitalCity": "Lisbon",
+      "lat": 38.71667,
+      "long": -9.13333,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "PW",
+      "name": "Palau",
+      "nativeName": "Palau",
+      "currencySymbol": "US$",
+      "capitalCity": "Melekeok",
+      "lat": 7.49567,
+      "long": 134.63671,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "PY",
+      "name": "Paraguay",
+      "nativeName": "Paraguay",
+      "currencySymbol": "Gs.",
+      "capitalCity": "Asuncion",
+      "lat": -25.28646,
+      "long": -57.647,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "QA",
+      "name": "Qatar",
+      "nativeName": "قطر",
+      "currencySymbol": "ر.ق.‏",
+      "capitalCity": "Doha",
+      "lat": 25.28545,
+      "long": 51.53096,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "RE",
+      "name": "Réunion",
+      "nativeName": "La Réunion",
+      "currencySymbol": "€",
+      "capitalCity": "Saint-Denis",
+      "lat": -20.88231,
+      "long": 55.4504,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "RO",
+      "name": "Romania",
+      "nativeName": "România",
+      "currencySymbol": "RON",
+      "capitalCity": "Bucharest",
+      "lat": 44.43225,
+      "long": 26.10626,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "RS",
+      "name": "Serbia",
+      "nativeName": "Srbija",
+      "currencySymbol": "RSD",
+      "capitalCity": "Belgrade",
+      "lat": 44.80401,
+      "long": 20.46513,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "RU",
+      "name": "Russia",
+      "nativeName": "Россия",
+      "currencySymbol": "₽",
+      "capitalCity": "Moscow",
+      "lat": 55.75222,
+      "long": 37.61556,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "RW",
+      "name": "Rwanda",
+      "nativeName": "U Rwanda",
+      "currencySymbol": "RF",
+      "capitalCity": "Kigali",
+      "lat": -1.94995,
+      "long": 30.05885,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SA",
+      "name": "Saudi Arabia",
+      "nativeName": "المملكة العربية السعودية",
+      "currencySymbol": "ر.س.‏",
+      "capitalCity": "Riyadh",
+      "lat": 24.68773,
+      "long": 46.72185,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "SB",
+      "name": "Solomon Islands",
+      "nativeName": "Solomon Islands",
+      "currencySymbol": "$",
+      "capitalCity": "Honiara",
+      "lat": -9.43333,
+      "long": 159.95,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SC",
+      "name": "Seychelles",
+      "nativeName": "Seychelles",
+      "currencySymbol": "SR",
+      "capitalCity": "Victoria",
+      "lat": -4.62001,
+      "long": 55.45501,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SD",
+      "name": "Sudan",
+      "nativeName": "السودان",
+      "currencySymbol": "ج.س.",
+      "capitalCity": "Khartoum",
+      "lat": 15.55177,
+      "long": 32.53241,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "SE",
+      "name": "Sweden",
+      "nativeName": "Sverige",
+      "currencySymbol": "kr",
+      "capitalCity": "Stockholm",
+      "lat": 59.32938,
+      "long": 18.06871,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SG",
+      "name": "Singapore",
+      "nativeName": "新加坡",
+      "currencySymbol": "$",
+      "capitalCity": "Singapore",
+      "lat": 1.28967,
+      "long": 103.85007,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "SH",
+      "name": "St Helena; Ascension; Tristan da Cunha",
+      "nativeName": "St Helena; Ascension; Tristan da Cunha",
+      "currencySymbol": "£",
+      "capitalCity": "Jamestown",
+      "lat": -15.93872,
+      "long": -5.71675,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SI",
+      "name": "Slovenia",
+      "nativeName": "Slovenija",
+      "currencySymbol": "€",
+      "capitalCity": "Ljubljana",
+      "lat": 46.05108,
+      "long": 14.50513,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SJ",
+      "name": "Svalbard & Jan Mayen",
+      "nativeName": "Svalbard og Jan Mayen",
+      "currencySymbol": "kr",
+      "capitalCity": "Longyearbyen",
+      "lat": 78.22334,
+      "long": 15.64689,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SK",
+      "name": "Slovakia",
+      "nativeName": "Slovensko",
+      "currencySymbol": "€",
+      "capitalCity": "Bratislava",
+      "lat": 48.14816,
+      "long": 17.10674,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SL",
+      "name": "Sierra Leone",
+      "nativeName": "Sierra Leone",
+      "currencySymbol": "Le",
+      "capitalCity": "Freetown",
+      "lat": 8.48714,
+      "long": -13.2356,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SM",
+      "name": "San Marino",
+      "nativeName": "San Marino",
+      "currencySymbol": "€",
+      "capitalCity": "San Marino",
+      "lat": 43.96897,
+      "long": 12.48167,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SN",
+      "name": "Senegal",
+      "nativeName": "Senegaal",
+      "currencySymbol": "CFA",
+      "capitalCity": "Dakar",
+      "lat": 14.6937,
+      "long": -17.44406,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SO",
+      "name": "Somalia",
+      "nativeName": "Soomaaliya",
+      "currencySymbol": "S",
+      "capitalCity": "Mogadishu",
+      "lat": 2.03711,
+      "long": 45.34375,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SR",
+      "name": "Suriname",
+      "nativeName": "Suriname",
+      "currencySymbol": "$",
+      "capitalCity": "Paramaribo",
+      "lat": 5.86638,
+      "long": -55.16682,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SS",
+      "name": "South Sudan",
+      "nativeName": "South Sudan",
+      "currencySymbol": "£",
+      "capitalCity": "Juba",
+      "lat": 4.85165,
+      "long": 31.58247,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ST",
+      "name": "São Tomé & Príncipe",
+      "nativeName": "São Tomé e Príncipe",
+      "currencySymbol": "Db",
+      "capitalCity": "Sao Tome",
+      "lat": 0.33654,
+      "long": 6.72732,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SV",
+      "name": "El Salvador",
+      "nativeName": "El Salvador",
+      "currencySymbol": "$",
+      "capitalCity": "San Salvador",
+      "lat": 13.68935,
+      "long": -89.18718,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "SX",
+      "name": "Sint Maarten",
+      "nativeName": "Sint-Maarten",
+      "currencySymbol": "NAf.",
+      "capitalCity": "Philipsburg",
+      "lat": 18.026,
+      "long": -63.04582,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "SY",
+      "name": "Syria",
+      "nativeName": "سوريا",
+      "currencySymbol": "ل.س.‏",
+      "capitalCity": "Damascus",
+      "lat": 36.20124,
+      "long": 37.16117,
+      "firstDayOfWeek": 6
+    },
+    {
+      "countryCode": "SZ",
+      "name": "Eswatini",
+      "nativeName": "eSwatini",
+      "currencySymbol": "E",
+      "capitalCity": "Mbabane",
+      "lat": -26.49884,
+      "long": 31.38004,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TC",
+      "name": "Turks & Caicos Islands",
+      "nativeName": "Turks & Caicos Islands",
+      "currencySymbol": "US$",
+      "capitalCity": "Cockburn Town",
+      "lat": 21.46122,
+      "long": -71.14188,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TD",
+      "name": "Chad",
+      "nativeName": "Tchad",
+      "currencySymbol": "FCFA",
+      "capitalCity": "N'Djamena",
+      "lat": 12.10672,
+      "long": 15.0444,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TG",
+      "name": "Togo",
+      "nativeName": "Togo",
+      "currencySymbol": "CFA",
+      "capitalCity": "Lome",
+      "lat": 6.12874,
+      "long": 1.22154,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TH",
+      "name": "Thailand",
+      "nativeName": "ไทย",
+      "currencySymbol": "฿",
+      "capitalCity": "Bangkok",
+      "lat": 13.75398,
+      "long": 100.50144,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "TJ",
+      "name": "Tajikistan",
+      "nativeName": "Тоҷикистон",
+      "currencySymbol": "сом.",
+      "capitalCity": "Dushanbe",
+      "lat": 38.53575,
+      "long": 68.77905,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TL",
+      "name": "Timor-Leste",
+      "nativeName": "Timor-Leste",
+      "currencySymbol": "US$",
+      "capitalCity": "Dili",
+      "lat": -8.55861,
+      "long": 125.57361,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TM",
+      "name": "Turkmenistan",
+      "nativeName": "Türkmenistan",
+      "currencySymbol": "TMT",
+      "capitalCity": "Ashgabat",
+      "lat": 37.95,
+      "long": 58.38333,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TN",
+      "name": "Tunisia",
+      "nativeName": "تونس",
+      "currencySymbol": "د.ت.‏",
+      "capitalCity": "Tunis",
+      "lat": 36.81897,
+      "long": 10.16579,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TO",
+      "name": "Tonga",
+      "nativeName": "Tonga",
+      "currencySymbol": "T$",
+      "capitalCity": "Nuku'alofa",
+      "lat": -21.13938,
+      "long": -175.2018,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TR",
+      "name": "Turkey",
+      "nativeName": "Türkiye",
+      "currencySymbol": "₺",
+      "capitalCity": "Ankara",
+      "lat": 39.91987,
+      "long": 32.85427,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TT",
+      "name": "Trinidad & Tobago",
+      "nativeName": "Trinidad & Tobago",
+      "currencySymbol": "$",
+      "capitalCity": "Port of Spain",
+      "lat": 10.66668,
+      "long": -61.51889,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "TV",
+      "name": "Tuvalu",
+      "nativeName": "Tuvalu",
+      "currencySymbol": "$",
+      "capitalCity": "Funafuti",
+      "lat": -8.52425,
+      "long": 179.19417,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "TW",
+      "name": "Taiwan",
+      "nativeName": "台灣",
+      "currencySymbol": "$",
+      "capitalCity": "Taipei",
+      "lat": 25.04776,
+      "long": 121.53185,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "TZ",
+      "name": "Tanzania",
+      "nativeName": "Tanzania",
+      "currencySymbol": "TSh",
+      "capitalCity": "Dodoma",
+      "lat": -6.17221,
+      "long": 35.73947,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "UA",
+      "name": "Ukraine",
+      "nativeName": "Україна",
+      "currencySymbol": "₴",
+      "capitalCity": "Kyiv",
+      "lat": 50.45466,
+      "long": 30.5238,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "UG",
+      "name": "Uganda",
+      "nativeName": "Uganda",
+      "currencySymbol": "USh",
+      "capitalCity": "Kampala",
+      "lat": 0.31628,
+      "long": 32.58219,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "US",
+      "name": "United States",
+      "nativeName": "United States",
+      "currencySymbol": "$",
+      "capitalCity": "Washington",
+      "lat": 38.89511,
+      "long": -77.03637,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "UY",
+      "name": "Uruguay",
+      "nativeName": "Uruguay",
+      "currencySymbol": "$",
+      "capitalCity": "Montevideo",
+      "lat": -34.90328,
+      "long": -56.18816,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "UZ",
+      "name": "Uzbekistan",
+      "nativeName": "Ўзбекистон",
+      "currencySymbol": "сўм",
+      "capitalCity": "Tashkent",
+      "lat": 41.26465,
+      "long": 69.21627,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "VA",
+      "name": "Vatican City",
+      "nativeName": "Città del Vaticano",
+      "currencySymbol": "€",
+      "capitalCity": "Vatican City",
+      "lat": 41.90268,
+      "long": 12.45414,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "VC",
+      "name": "St. Vincent & Grenadines",
+      "nativeName": "St. Vincent & Grenadines",
+      "currencySymbol": "$",
+      "capitalCity": "Kingstown",
+      "lat": 13.15527,
+      "long": -61.22742,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "VE",
+      "name": "Venezuela",
+      "nativeName": "Venezuela",
+      "currencySymbol": "Bs.S",
+      "capitalCity": "Caracas",
+      "lat": 10.48801,
+      "long": -66.87919,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "VG",
+      "name": "British Virgin Islands",
+      "nativeName": "British Virgin Islands",
+      "currencySymbol": "US$",
+      "capitalCity": "Road Town",
+      "lat": 18.42693,
+      "long": -64.62079,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "VI",
+      "name": "U.S. Virgin Islands",
+      "nativeName": "U.S. Virgin Islands",
+      "currencySymbol": "$",
+      "capitalCity": "Charlotte Amalie",
+      "lat": 18.3419,
+      "long": -64.9307,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "VN",
+      "name": "Vietnam",
+      "nativeName": "Việt Nam",
+      "currencySymbol": "₫",
+      "capitalCity": "Hanoi",
+      "lat": 21.0245,
+      "long": 105.84117,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "VU",
+      "name": "Vanuatu",
+      "nativeName": "Vanuatu",
+      "currencySymbol": "VT",
+      "capitalCity": "Port Vila",
+      "lat": -17.73648,
+      "long": 168.31366,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "WF",
+      "name": "Wallis & Futuna",
+      "nativeName": "Wallis-et-Futuna",
+      "currencySymbol": "FCFP",
+      "capitalCity": "Mata Utu",
+      "lat": -13.28163,
+      "long": -176.17453,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "WS",
+      "name": "Samoa",
+      "nativeName": "Samoa",
+      "currencySymbol": "WS$",
+      "capitalCity": "Apia",
+      "lat": -13.83333,
+      "long": -171.76666,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "XK",
+      "name": "Kosovo",
+      "nativeName": "Kosovë",
+      "currencySymbol": "€",
+      "capitalCity": "Pristina",
+      "lat": 42.67272,
+      "long": 21.16688,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "YE",
+      "name": "Yemen",
+      "nativeName": "اليمن",
+      "currencySymbol": "ر.ي.‏",
+      "capitalCity": "Sanaa",
+      "lat": 15.35472,
+      "long": 44.20667,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "YT",
+      "name": "Mayotte",
+      "nativeName": "Mayotte",
+      "currencySymbol": "€",
+      "capitalCity": "Mamoudzou",
+      "lat": -12.78234,
+      "long": 45.22878,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ZA",
+      "name": "South Africa",
+      "nativeName": "Suid-Afrika",
+      "currencySymbol": "R",
+      "capitalCity": "Pretoria",
+      "lat": -25.74486,
+      "long": 28.18783,
+      "firstDayOfWeek": 0
+    },
+    {
+      "countryCode": "ZM",
+      "name": "Zambia",
+      "nativeName": "Zambia",
+      "currencySymbol": "K",
+      "capitalCity": "Lusaka",
+      "lat": -15.40669,
+      "long": 28.28713,
+      "firstDayOfWeek": 1
+    },
+    {
+      "countryCode": "ZW",
+      "name": "Zimbabwe",
+      "nativeName": "Zimbabwe",
+      "currencySymbol": "US$",
+      "capitalCity": "Harare",
+      "lat": -17.82772,
+      "long": 31.05337,
+      "firstDayOfWeek": 0
+    }
+  ]
+}

@@ -7,11 +7,11 @@ part of 'district.dart';
 // **************************************************************************
 
 District _$DistrictFromJson(Map<String, dynamic> json) => District(
-      name: json['name'] as String,
-      id: json['id'] as String,
-      bn_name: json['bn_name'] as String,
-      url: json['url'] as String,
-      division_id: json['division_id'] as String,
+      name: json['name'] as String?,
+      id: json['id'] as String?,
+      bn_name: json['bn_name'] as String?,
+      url: json['url'] as String?,
+      division_id: json['division_id'] as String?,
       lat: json['lat'] as String?,
       lon: json['lon'] as String?,
     );

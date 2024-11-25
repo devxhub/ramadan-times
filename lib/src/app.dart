@@ -7,6 +7,8 @@ import 'package:ramadantimes/src/calender/calender.dart';
 import 'package:ramadantimes/src/component/splash_page.dart';
 import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/pages/location_select.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 
 import '../l10n/app_localizations.dart';
 import 'schedule/schedule.dart';
@@ -95,7 +97,15 @@ final GoRouter _router = GoRouter(
             return const CalendarPage();
           },
         ),
+
       ],
+    ),
+    GoRoute(
+      path: '/location_select',
+      name: "location_select",
+      builder: (BuildContext context, GoRouterState state) {
+        return const UserLocationSelect();
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

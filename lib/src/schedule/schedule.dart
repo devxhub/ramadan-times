@@ -14,6 +14,7 @@ import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,7 +46,9 @@ class _SchedulePageState extends State<SchedulePage> {
             date: DateFormat("dd-MM-yyyy").format(
           DateTime.now(),
         )));
-    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
+    //context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.locationPermission(context: context));
     super.initState();
   }
 
@@ -62,7 +65,8 @@ class _SchedulePageState extends State<SchedulePage> {
         backgroundColor: Color(0xfff2f2ef),
         elevation: 0,
         actions: const [
-          LocationPicker(),
+          // LocationPicker(),
+        UserLocation()
         ],
       ),
       body: RefreshIndicator(

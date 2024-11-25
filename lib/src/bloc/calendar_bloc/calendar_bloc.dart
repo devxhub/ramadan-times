@@ -192,7 +192,7 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
                        lat: "23.7115253",
                        lon: "90.4111451",
                        url: "www.dhaka.gov.bd"))));
-           final result = await apiService.timingByMonth(year: DateTime.now().year.toString(), month: DateTime.now().month.toString(), city: d.name, country: "Bangladesh");
+           final result = await apiService.timingByMonth(year: DateTime.now().year.toString(), month: DateTime.now().month.toString(), city: d.name.toString(), country: "Bangladesh");
            // db.saveCalendarData(productResp);
            dbHelperCalendar.createCalendar(result);
            //calendar data store or save data
