@@ -794,6 +794,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  nextgen_button:
+    dependency: "direct main"
+    description:
+      name: nextgen_button
+      sha256: "350fec2cc25f5b05c6a1cd43f6b4705cd53730fea18192cf4e565ce01a1d3b9a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   package_config:
     dependency: transitive
     description:

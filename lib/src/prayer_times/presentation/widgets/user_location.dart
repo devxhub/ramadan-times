@@ -19,34 +19,38 @@ class _UserLocationState extends State<UserLocation> {
   builder: (context, state) {
     return Padding(
       padding: EdgeInsets.only(right: 8.0.w),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(state.userCoordinator.userCity??"",
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  //height: 1,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color:  Colors.black,
-                ),),
-              Text(state.userCoordinator.userCountry??"",
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  //height: 1,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color:  Colors.black,
-                ),),
-            ],
-          ),
-          SizedBox(width: 4.w,),
-          IconButton(onPressed: (){
-            GoRouter.of(context).push('/location_select');
-          }, icon:Icon(Icons.arrow_drop_down_outlined,size: 30,))
-        ],
+      child: InkWell(
+        onTap:(){
+          GoRouter.of(context).push('/location_select');
+        } ,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(state.userCoordinator.userCity??"",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    //height: 1,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color:  Colors.black,
+                  ),),
+                Text(state.userCoordinator.userCountry??"",
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    //height: 1,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color:  Colors.black,
+                  ),),
+              ],
+            ),
+            SizedBox(width: 4.w,),
+            Icon(Icons.arrow_drop_down_outlined,size: 30,),
+
+          ],
+        ),
       ),
     );
   },
