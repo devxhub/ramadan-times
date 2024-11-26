@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ramadantimes/src/calender/data/repositories/calender_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../dbHelper/dbErrorHelper.dart';
 import '../../../models/calendar_model/datum.dart';
 import '../../../models/timing/timeofmonth.dart';
@@ -51,10 +52,20 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         status: CalendarStatus.initial,
       ));
       try {
+        double? latitude;
+        double? longitude;
+        getLatLongFromStorage() async {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          latitude = prefs.getDouble('latitude');
+          longitude = prefs.getDouble('longitude');
+        }
+
+        await getLatLongFromStorage();
+
         final calenderDataResponse =
             await calenderRepository.generatePrayerTimes(
-          latitude: event.latitude!,
-          longitude: event.longitude!,
+          latitude: latitude!,
+          longitude: longitude!,
           date: event.selectedDay,
         );
         emit(

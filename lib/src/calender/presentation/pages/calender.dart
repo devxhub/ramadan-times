@@ -25,14 +25,13 @@ class CalendarPageState extends State<CalendarPage> {
   @override
   void initState() {
     super.initState();
-    // context.read<CalendarBloc>().add(CalendarDataFetched(
-    //     isRefreshed: true, country: "Bangladesh", school: 1, method: 1));
-    context.read<CalendarBloc>().add(CalendarDaySelected(
-          selectedDay: DateTime.now(),
-          focusDay: DateTime.now(),
-          latitude: 23.7115253,
-          longitude: 90.4111451,
-        ));
+
+    context.read<CalendarBloc>().add(
+          CalendarDaySelected(
+            selectedDay: DateTime.now(),
+            focusDay: DateTime.now(),
+          ),
+        );
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 part 'prayer_time_event.dart';
 part 'prayer_time_state.dart';
 part 'prayer_time_bloc.freezed.dart';
@@ -127,9 +129,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       }
 
       LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
+      ConnectivityResult connection = await Connectivity().checkConnectivity();
+
+      if (connection == ConnectivityResult.none) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
+          _saveLocationToPreferences(23.7115253, 90.4111451);
           emit(
             state.copyWith(
               userCoordinator: UserCoordinator(
@@ -141,10 +146,31 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
               prayerTimeStatus: PrayerTimeStatus.success,
             ),
           );
+          return;
+        }
+      }
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          _saveLocationToPreferences(
+              23.7115253, 90.4111451); // Default location
+          emit(
+            state.copyWith(
+              userCoordinator: UserCoordinator(
+                  userLat: 23.7115253,
+                  userLng: 90.4111451,
+                  userCountry: "Bangladesh",
+                  userCity: "Dhaka",
+                  userCountryIso: "BD"),
+              prayerTimeStatus: PrayerTimeStatus.success,
+            ),
+          );
+          return;
         }
       }
 
       if (permission == LocationPermission.deniedForever) {
+        _saveLocationToPreferences(23.7115253, 90.4111451); // Default location
         emit(
           state.copyWith(
             userCoordinator: UserCoordinator(
@@ -170,35 +196,31 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         position.latitude,
         position.longitude,
       );
-      if (placemarks.isNotEmpty) {
-        Placemark place = placemarks.first;
-        String? city = place.locality;
-        String? country = place.country;
-      }
+      String? city = placemarks.first.locality;
+      String? country = placemarks.first.country;
+
+      _saveLocationToPreferences(position.latitude, position.longitude);
+
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-        latitude: position.latitude ?? 0.0,
+        latitude: position.latitude,
         longitude: position.longitude,
       ));
       prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
-        latitude: position.latitude ?? 0.0,
+        latitude: position.latitude,
         longitude: position.longitude,
         context: event.context,
       ));
-      print("Final state is 111");
       emit(
         state.copyWith(
           userCoordinator: UserCoordinator(
               userLat: position.latitude,
               userLng: position.longitude,
-              userCountry: placemarks.first.country,
-              userCity: placemarks.first.locality,
+              userCountry: country,
+              userCity: city,
               userCountryIso: placemarks.first.isoCountryCode),
           prayerTimeStatus: PrayerTimeStatus.success,
         ),
       );
-
-      print(
-          "Final state is ${state.userCoordinator.userLat}====${state.userCoordinator.userLng}");
     } catch (e) {
       if (kDebugMode) {
         print("Error fetching location: $e");
@@ -211,8 +233,26 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     }
   }
 
+  Future<void> _saveLocationToPreferences(double lat, double lng) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('latitude', lat);
+    await prefs.setDouble('longitude', lng);
+  }
+
+  Future<Map<String, double>> loadSavedLocation() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final double lat = prefs.getDouble('latitude') ?? 23.7115253;
+    final double lng = prefs.getDouble('longitude') ?? 90.4111451;
+    return {'latitude': lat, 'longitude': lng};
+  }
+
   Future<void> _weatherDataLoaded(
       _WeatherDataLoaded event, Emitter<PrayerTimeState> emit) async {
+    Future<void> saveWeatherTemp(double temp) async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setDouble('weatherTemperature', temp);
+    }
+
     emit(
       state.copyWith(
         prayerTimeStatus: PrayerTimeStatus.initial,
@@ -228,6 +268,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           prayerTimeStatus: PrayerTimeStatus.success,
         ),
       );
+      await saveWeatherTemp(response.main?.temp ?? 0.0);
     } catch (e) {
       if (kDebugMode) {
         print("Error fetching location: $e");

@@ -127,14 +127,15 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.selectLogic(
       name,
       {
-        'Fajr': 'Fajar',
+        'Fajr': 'Fajr',
         'Sunrise': 'Sunrise',
-        'Dhuhr': 'Dhuhor',
-        'Asr': 'Asor',
+        'Dhuhr': 'Dhuhr',
+        'Asr': 'Asr',
         'Sunset': 'Sunset',
         'Maghrib': 'Maghrib',
         'Isha': 'Isha',
-        'other': 'name',
+        'FajrNext': 'Fajr (Next Day)',
+        'other': 'Fajr',
       },
     );
     return '$_temp0, ';

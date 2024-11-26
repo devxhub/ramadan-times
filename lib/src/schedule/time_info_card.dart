@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../l10n/app_localizations.dart';
 import '../component/eng_to_bn.dart';
 import '../prayer_times/data/models/prayer_times.dart';
@@ -32,6 +33,7 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
   @override
   Widget build(BuildContext context) {
     var hijriDate = HijriCalendar.fromDate(DateTime.now());
+
     return Container(
       // height: 200,
       width: 375.w,
@@ -49,7 +51,6 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
         children: [
           Row(
             children: [
-              //"${weatherMap!["main"]["temp"]}\u2103",
               Container(
                 //height: 100,
                 width: 80.w,
@@ -81,7 +82,6 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                 ),
               ),
               const Spacer(),
-
               Container(
                 // height: 100,
 
@@ -133,7 +133,7 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                         DateFormat.jm("bn_BD").format(
                           () {
                             DateTime sunsetTime =
-                                DateTime.parse(widget.timeOfToday.sunset!);
+                                DateTime.parse(widget.timeOfToday.sunrise!);
                             return DateTime(
                                 2023, 1, 1, sunsetTime.hour, sunsetTime.minute);
                           }(),

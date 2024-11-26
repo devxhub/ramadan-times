@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import '../../l10n/app_localizations.dart';
 import '../prayer_times/data/models/prayer_time_format_model.dart';
 import '../prayer_times/presentation/bloc/prayer_time_bloc.dart';
@@ -57,8 +56,16 @@ class NextPrayer extends StatelessWidget {
     ];
 
     var nextPrayer = prayerTimes.firstWhere(
-      (prayer) => now.isBefore(convertToDate(
-          today['${prayer.name.toLowerCase().split(' ')[0]}Start']!)),
+      (prayer) {
+        return now.isBefore(
+          convertToDate(
+              today['${prayer.name.toLowerCase().split(' ')[0]}Start']!),
+        );
+      },
+      orElse: () {
+        // Return a default or next day's Fajr if no prayer is found today
+        return prayerTimes.last;
+      },
     );
 
     return nextPrayer;

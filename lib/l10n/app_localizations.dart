@@ -272,7 +272,7 @@ abstract class AppLocalizations {
   /// No description provided for @prayerName.
   ///
   /// In en, this message translates to:
-  /// **'{name, select, Fajr{Fajar} Sunrise{Sunrise} Dhuhr{Dhuhor} Asr{Asor} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} other{name}}, '**
+  /// **'{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr (Next Day)} other{Fajr}}, '**
   String prayerName(String name);
 }
 

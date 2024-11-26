@@ -62,7 +62,7 @@
       }
     }
   },
-  "prayerName": "{name, select, Fajr{Fajar} Sunrise{Sunrise} Dhuhr{Dhuhor} Asr{Asor} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} other{name}}, ",
+  "prayerName": "{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr (Next Day)} other{Fajr}}, ",
   "@prayerName": {
     "placeholders": {
       "name": {
