@@ -41,19 +41,23 @@ class _RemainingTimeContainerForSehriTimeState
 
   @override
   Widget build(BuildContext context) {
-    endTime = DateTime(
+    DateTime sehriDateTime =
+        DateTime.parse(widget.sehriTime.toString().replaceFirst(' ', 'T'));
+
+    DateTime endTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day,
-      int.parse(widget.sehriTime.toString().split(":").first),
-      int.parse(widget.sehriTime.toString().split(":").last) - 5,
+      sehriDateTime.hour,
+      sehriDateTime.minute - 5,
     );
-    nextDayEndTime = DateTime(
+
+    DateTime nextDayEndTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day + 1,
-      int.parse(widget.sehriTime.toString().split(":").first),
-      int.parse(widget.sehriTime.toString().split(":").last) - 5,
+      sehriDateTime.hour,
+      sehriDateTime.minute - 5,
     );
     return Stack(
       alignment: Alignment.center,

@@ -29,42 +29,52 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     on<PrayerTimeEvent>((events, emit) async {
       await events.map(
         prayerTimesDataLoaded: (event) async =>
-        await _prayerTimesDataLoaded(event, emit),
+            await _prayerTimesDataLoaded(event, emit),
         countryDataLoaded: (event) async =>
-        await _countryDataLoaded(event, emit),
-       locationPermission: (event) async =>
-        await _locationPermission(event, emit),
-        selectCountry: (event) async =>
-        await _selectCountry(event, emit),
-        selectCity: (event) async =>
-        await _selectCity(event, emit),
-        submitLocation: (event) async =>
-        await _submitLocation(event, emit),
+            await _countryDataLoaded(event, emit),
+        locationPermission: (event) async =>
+            await _locationPermission(event, emit),
+        selectCountry: (event) async => await _selectCountry(event, emit),
+        selectCity: (event) async => await _selectCity(event, emit),
+        submitLocation: (event) async => await _submitLocation(event, emit),
         isDistrictSelected: (event) async =>
-        await _isDistrictSelected(event, emit),
-
+            await _isDistrictSelected(event, emit),
       );
     });
   }
   Future<void> _prayerTimesDataLoaded(
-      _PrayerTimesDataLoaded event,
-      Emitter<PrayerTimeState> emit) async {
+      _PrayerTimesDataLoaded event, Emitter<PrayerTimeState> emit) async {
+    DateTime now = DateTime.now();
+    DateTime nextDay = now.add(Duration(days: 1));
     emit(
       state.copyWith(
         prayerStatus: PrayerStatus.initial,
       ),
     );
     try {
-
-      final prayerTimeDataResponse=await prayerTimeRepository.generatePrayerTimes(latitude:event.latitude,longitude: event.longitude);
+      final prayerTimeDataResponse =
+          await prayerTimeRepository.generatePrayerTimes(
+        latitude: event.latitude,
+        longitude: event.longitude,
+        date: DateTime.now(),
+      );
+      final prayerTimeDataResponseNextDay =
+          await prayerTimeRepository.generatePrayerTimes(
+        latitude: event.latitude,
+        longitude: event.longitude,
+        date: nextDay,
+      );
       emit(
         state.copyWith(
           prayerTimesResponse: prayerTimeDataResponse,
+          prayerTimesResponseNextDay: prayerTimeDataResponseNextDay,
           prayerStatus: PrayerStatus.success,
         ),
       );
     } catch (e) {
-      print("Errros $e");
+      if (kDebugMode) {
+        print("Error $e");
+      }
       emit(
         state.copyWith(
           prayerStatus: PrayerStatus.failure,
@@ -73,20 +83,20 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       rethrow;
     }
   }
+
   Future<void> _countryDataLoaded(
-      _CountryDataLoaded event,
-      Emitter<PrayerTimeState> emit) async
-  {
+      _CountryDataLoaded event, Emitter<PrayerTimeState> emit) async {
     emit(
       state.copyWith(
         prayerTimeStatus: PrayerTimeStatus.initial,
       ),
     );
     try {
-      final countryDataLoaded=await prayerTimeRepository.countryResponseDataLoaded();
+      final countryDataLoaded =
+          await prayerTimeRepository.countryResponseDataLoaded();
       emit(
         state.copyWith(
-         countryResponse: countryDataLoaded,
+          countryResponse: countryDataLoaded,
           prayerTimeStatus: PrayerTimeStatus.success,
         ),
       );
@@ -100,11 +110,10 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       rethrow;
     }
   }
+
   Future<void> _locationPermission(
-      _LocationPermission event,
-      Emitter<PrayerTimeState> emit) async
-  {
-final prayerBloc= event.context.read<PrayerTimeBloc>();
+      _LocationPermission event, Emitter<PrayerTimeState> emit) async {
+    final prayerBloc = event.context.read<PrayerTimeBloc>();
     emit(
       state.copyWith(
         prayerTimeStatus: PrayerTimeStatus.initial,
@@ -127,11 +136,9 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
                   userLng: 90.4111451,
                   userCountry: "Bangladesh",
                   userCity: "Dhaka",
-                  userCountryIso:"BD"
-              ),
+                  userCountryIso: "BD"),
               prayerTimeStatus: PrayerTimeStatus.success,
             ),
-
           );
         }
       }
@@ -144,11 +151,9 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
                 userLng: 90.4111451,
                 userCountry: "Bangladesh",
                 userCity: "Dhaka",
-                userCountryIso:"BD"
-            ),
+                userCountryIso: "BD"),
             prayerTimeStatus: PrayerTimeStatus.success,
           ),
-
         );
         throw Exception("Location permissions are permanently denied.");
       }
@@ -168,29 +173,27 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
         Placemark place = placemarks.first;
         String? city = place.locality;
         String? country = place.country;
-
       }
-      prayerBloc.add(  PrayerTimeEvent.prayerTimesDataLoaded(latitude:  position.latitude??0.0, longitude: position.longitude,));
+      prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+        latitude: position.latitude ?? 0.0,
+        longitude: position.longitude,
+      ));
       print("Final state is 111");
       emit(
-
         state.copyWith(
           userCoordinator: UserCoordinator(
-            userLat: position.latitude,
-            userLng: position.longitude,
-            userCountry: placemarks.first.country,
-            userCity: placemarks.first.locality,
-            userCountryIso: placemarks.first.isoCountryCode
-          ),
+              userLat: position.latitude,
+              userLng: position.longitude,
+              userCountry: placemarks.first.country,
+              userCity: placemarks.first.locality,
+              userCountryIso: placemarks.first.isoCountryCode),
           prayerTimeStatus: PrayerTimeStatus.success,
         ),
-
       );
 
-
-      print("Final state is ${state.userCoordinator.userLat}====${state.userCoordinator.userLng}");
-    }
-    catch (e) {
+      print(
+          "Final state is ${state.userCoordinator.userLat}====${state.userCoordinator.userLng}");
+    } catch (e) {
       if (kDebugMode) {
         print("Error fetching location: $e");
       }
@@ -199,29 +202,23 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
-
     }
   }
 
   Future<void> _selectCountry(
-      _SelectCountry event,
-      Emitter<PrayerTimeState> emit) async
-  {
+      _SelectCountry event, Emitter<PrayerTimeState> emit) async {
     emit(
-
       state.copyWith(
         isDistrictSelected: true,
         selectedDistrict: null,
         selectedCountry: event.country,
         prayerTimeStatus: PrayerTimeStatus.success,
       ),
-
     );
   }
+
   Future<void> _selectCity(
-      _SelectCity event,
-      Emitter<PrayerTimeState> emit) async
-  {
+      _SelectCity event, Emitter<PrayerTimeState> emit) async {
     emit(
       state.copyWith(
         isDistrictSelected: true,
@@ -230,26 +227,26 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
       ),
     );
   }
+
   Future<void> _submitLocation(
-      _SubmitLocation event,
-      Emitter<PrayerTimeState> emit) async
-  {
-    final prayerBloc= event.context.read<PrayerTimeBloc>();
-    prayerBloc.add(  PrayerTimeEvent.prayerTimesDataLoaded(latitude:  event.userCoordinator.userLat??0.0, longitude: event.userCoordinator.userLng??0.0,));
+      _SubmitLocation event, Emitter<PrayerTimeState> emit) async {
+    final prayerBloc = event.context.read<PrayerTimeBloc>();
+    prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+      latitude: event.userCoordinator.userLat ?? 0.0,
+      longitude: event.userCoordinator.userLng ?? 0.0,
+    ));
     emit(
       state.copyWith(
-        userCoordinator: event.userCoordinator,
-        prayerTimeStatus: PrayerTimeStatus.success,
-        selectedCountry: null,
-        selectedDistrict: null
-      ),
+          userCoordinator: event.userCoordinator,
+          prayerTimeStatus: PrayerTimeStatus.success,
+          selectedCountry: null,
+          selectedDistrict: null),
     );
     event.context.goNamed("schedule");
   }
+
   Future<void> _isDistrictSelected(
-      _IsDistrictSelected event,
-      Emitter<PrayerTimeState> emit) async
-  {
+      _IsDistrictSelected event, Emitter<PrayerTimeState> emit) async {
     emit(
       state.copyWith(
         isDistrictSelected: event.isDistrictSelected,
@@ -257,5 +254,4 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
       ),
     );
   }
-
 }

@@ -20,7 +20,9 @@ class PrayerTimeRepository {
   }
 
   Future<PrayerTimesResponse> generatePrayerTimes(
-      {required double latitude, required double longitude}) async {
+      {required double latitude,
+      required double longitude,
+      required date}) async {
     print("Final state is lat lng$latitude===$longitude");
     if (latitude.isFinite) {
       final coordinates = Coordinates(latitude, longitude); // Example: London
@@ -33,11 +35,11 @@ class PrayerTimeRepository {
         highLatitudeRule: HighLatitudeRule.middle_of_the_night,
       );
       try {
-        final today = DateTime.now();
+        final date = DateTime.now();
 
         final prayerTimesForDay = PrayerTimes(
             coordinates,
-            DateComponents(today.year, today.month, today.day),
+            DateComponents(date.year, date.month, date.day),
             calculationMethod); // 5 mins before and after Dhuhr
         final tahajjudEnd = prayerTimesForDay.fajr
             .subtract(Duration(minutes: 10)); // End 10 minutes before Fajr
@@ -61,6 +63,10 @@ class PrayerTimeRepository {
         final sunrise = prayerTimesForDay.sunrise;
         final sunset = prayerTimesForDay.maghrib;
 
+        final year = prayerTimesForDay.dateComponents.year;
+        final month = prayerTimesForDay.dateComponents.month;
+        final day = prayerTimesForDay.dateComponents.day;
+
         ///prohibitted time
 
         final dawnStart = fajrEnd;
@@ -70,29 +76,31 @@ class PrayerTimeRepository {
         final eveningStart = maghribStart.subtract(Duration(minutes: 19));
         final eveningEnd = maghribStart.subtract(Duration(minutes: 4));
         return PrayerTimesResponse(
-            fajrStart: fajrStart.toString(),
-            fajrEnd: fajrEnd.toString(),
-            sunrise: sunrise.toString(),
-            sunset: sunset.toString(),
-            dhuhrStart: dhuhrStart.toString(),
-            dhuhrEnd: dhuhrEnd.toString(),
-            asrStart: asrStart.toString(),
-            asrEnd: asrEnd.toString(),
-            maghribStart: maghribStart.toString(),
-            maghribEnd: maghribEnd.toString(),
-            ishaStart: ishaStart.toString(),
-            ishaEnd: ishaEnd.toString(),
-            sehri: fajrStart.toString(),
-            iftar: maghribStart.toString(),
-            awabinStart: awwabinStart.toString(),
-            awabinEnd: awwabinEnd.toString(),
-            dawnStart: dawnStart.toString(),
-            dawnEnd: dawnEnd.toString(),
-            noonStart: noonStart.toString(),
-            noonEnd: noonEnd.toString(),
-            eveningStart: eveningStart.toString(),
-            eveningEnd: eveningEnd.toString(),
-            tahajjudEnd: tahajjudEnd.toString());
+          fajrStart: fajrStart.toString(),
+          fajrEnd: fajrEnd.toString(),
+          sunrise: sunrise.toString(),
+          sunset: sunset.toString(),
+          dhuhrStart: dhuhrStart.toString(),
+          dhuhrEnd: dhuhrEnd.toString(),
+          asrStart: asrStart.toString(),
+          asrEnd: asrEnd.toString(),
+          maghribStart: maghribStart.toString(),
+          maghribEnd: maghribEnd.toString(),
+          ishaStart: ishaStart.toString(),
+          ishaEnd: ishaEnd.toString(),
+          sehri: fajrStart.toString(),
+          iftar: maghribStart.toString(),
+          awwabinStart: awwabinStart.toString(),
+          awwabinEnd: awwabinEnd.toString(),
+          dawnStart: dawnStart.toString(),
+          dawnEnd: dawnEnd.toString(),
+          noonStart: noonStart.toString(),
+          noonEnd: noonEnd.toString(),
+          eveningStart: eveningStart.toString(),
+          eveningEnd: eveningEnd.toString(),
+          tahajjudEnd: tahajjudEnd.toString(),
+          date: DateTime(year, month, day),
+        );
       } catch (e) {
         rethrow;
       }

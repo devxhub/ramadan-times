@@ -2,20 +2,19 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/models/timing/timing.dart' as timing;
-
+import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import '../../l10n/app_localizations.dart';
+import '../services/utility.dart';
 
 class NextSehriIftar extends StatelessWidget {
   const NextSehriIftar({
     super.key,
     required this.data,
   });
-  final timing.Timing data;
+  final PrayerTimesResponse data;
 
   @override
   Widget build(BuildContext context) {
-    // context.read<NextDayTimingCubit>().loadNextData();
     return Container(
         margin: const EdgeInsets.only(top: 24),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -56,21 +55,7 @@ class NextSehriIftar extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: AutoSizeText.rich(
                     TextSpan(
-                      text: DateFormat.jm("bn_BD").format(
-                        DateTime(
-                                2023,
-                                1,
-                                1,
-                                int.parse(data.data?.timings?.fajr
-                                        ?.split(":")
-                                        .first ??
-                                    "0"),
-                                int.parse(
-                                    data.data?.timings?.fajr?.split(":").last ??
-                                        "0"))
-                            .subtract(const Duration(minutes: 5)),
-                      ),
-
+                      text: formatTo12Hour(data.fajrStart!),
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: const Color(0xff674cec),
                           fontWeight: FontWeight.w700,
@@ -118,21 +103,7 @@ class NextSehriIftar extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: AutoSizeText.rich(
                     TextSpan(
-                      text: DateFormat.jm("bn_BD").format(
-                        DateTime(
-                                2023,
-                                1,
-                                1,
-                                int.parse(data.data?.timings?.maghrib
-                                        ?.split(":")
-                                        .first ??
-                                    "0"),
-                                int.parse(data.data?.timings?.maghrib
-                                        ?.split(":")
-                                        .last ??
-                                    "0"))
-                            .add(const Duration(minutes: 4)),
-                      ),
+                      text: formatTo12Hour(data.maghribStart!),
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: const Color(0xff674cec),
                           fontWeight: FontWeight.w700,

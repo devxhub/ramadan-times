@@ -4,25 +4,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:intl/intl.dart';
-
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
-
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
-
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../bloc/home/bloc/calendar_state.dart';
-
 import 'dua.dart';
-import 'location_picker.dart';
 import 'next_prayer.dart';
 import 'next_sehri_ifter.dart';
 import 'remaining_time_for_ifter.dart';
@@ -85,13 +77,14 @@ class _SchedulePageState extends State<SchedulePage> {
                         .bn_name),
               );
         },
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, HomeState state) {
-            if (state.status == HomeStatus.initial) {
+        child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+          builder: (context, state) {
+            if (state.prayerStatus == PrayerStatus.initial ||
+                state.prayerTimesResponse.fajrStart == null) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
-            } else if (state.status == HomeStatus.success) {
+            } else if (state.prayerStatus == PrayerStatus.success) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(slivers: [
@@ -100,18 +93,16 @@ class _SchedulePageState extends State<SchedulePage> {
                   ),
                   SliverToBoxAdapter(
                     child: TodayInfoCard(
-                      timeOfToday: state.timeOfToday!,
-                      timeOfNextDay: state.timeOfNextDay!,
-                      weatherMap: state.weatherData!,
+                      timeOfToday: state.prayerTimesResponse,
+                      timeOfNextDay: state.prayerTimesResponseNextDay,
                     ),
                   ),
-                  if (state.timeOfToday != null)
-                    SliverToBoxAdapter(
-                      child: NextPrayer(
-                        today: state.timeOfToday!,
-                        nextDay: state.timeOfNextDay!,
-                      ),
+                  SliverToBoxAdapter(
+                    child: NextPrayer(
+                      today: state.prayerTimesResponse,
+                      nextDay: state.prayerTimesResponseNextDay,
                     ),
+                  ),
                   SliverToBoxAdapter(
                     child: PrayerTimeWidget(),
                   ),
@@ -127,29 +118,27 @@ class _SchedulePageState extends State<SchedulePage> {
                           mainAxisSpacing: 12),
                       children: [
                         TimeContainerForSehriTime(
-                          time: state.timeOfToday?.data?.timings?.fajr ?? "",
+                          time: state.prayerTimesResponse.fajrStart ?? "",
                         ),
                         RemainingTimeContainerForSehriTime(
-                          sehriTime:
-                              state.timeOfToday?.data?.timings?.fajr ?? "",
+                          sehriTime: state.prayerTimesResponse.fajrStart ?? "",
                         ),
                         TimeContainerForIftarTime(
                           ifterTime:
-                              state.timeOfToday?.data?.timings?.sunset ?? "",
+                              state.prayerTimesResponse.maghribStart ?? "",
                         ),
                         RemainingTimeContainerForIftarTime(
                           ifterTime:
-                              state.timeOfToday?.data?.timings?.sunset ?? "",
+                              state.prayerTimesResponse.maghribStart ?? "",
                         ),
                       ],
                     ),
                   ),
-                  if (state.timeOfNextDay != null)
-                    SliverToBoxAdapter(
-                      child: NextSehriIftar(
-                        data: state.timeOfNextDay!,
-                      ),
+                  SliverToBoxAdapter(
+                    child: NextSehriIftar(
+                      data: state.prayerTimesResponseNextDay,
                     ),
+                  ),
                   const SliverToBoxAdapter(
                     child: SizedBox(height: 24),
                   ),
@@ -161,7 +150,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   )
                 ]),
               );
-            } else if (state.status == HomeStatus.noData) {
+            } else if (state.prayerStatus == PrayerStatus.failure) {
               // showDialog(context: context, builder: (context) => const AlertDialog(
               // content: Text("Please Connect to the internet "),
               // ),);

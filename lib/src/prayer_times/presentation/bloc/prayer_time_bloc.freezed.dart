@@ -1496,6 +1496,8 @@ abstract class _IsDistrictSelected implements PrayerTimeEvent {
 mixin _$PrayerTimeState {
   PrayerTimesResponse get prayerTimesResponse =>
       throw _privateConstructorUsedError;
+  PrayerTimesResponse get prayerTimesResponseNextDay =>
+      throw _privateConstructorUsedError;
   CountryResponse get countryResponse => throw _privateConstructorUsedError;
   UserCoordinator get userCoordinator => throw _privateConstructorUsedError;
   Country? get selectedCountry => throw _privateConstructorUsedError;
@@ -1519,6 +1521,7 @@ abstract class $PrayerTimeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {PrayerTimesResponse prayerTimesResponse,
+      PrayerTimesResponse prayerTimesResponseNextDay,
       CountryResponse countryResponse,
       UserCoordinator userCoordinator,
       Country? selectedCountry,
@@ -1544,6 +1547,7 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
   @override
   $Res call({
     Object? prayerTimesResponse = null,
+    Object? prayerTimesResponseNextDay = null,
     Object? countryResponse = null,
     Object? userCoordinator = null,
     Object? selectedCountry = freezed,
@@ -1556,6 +1560,10 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
       prayerTimesResponse: null == prayerTimesResponse
           ? _value.prayerTimesResponse
           : prayerTimesResponse // ignore: cast_nullable_to_non_nullable
+              as PrayerTimesResponse,
+      prayerTimesResponseNextDay: null == prayerTimesResponseNextDay
+          ? _value.prayerTimesResponseNextDay
+          : prayerTimesResponseNextDay // ignore: cast_nullable_to_non_nullable
               as PrayerTimesResponse,
       countryResponse: null == countryResponse
           ? _value.countryResponse
@@ -1599,6 +1607,7 @@ abstract class _$$PrayerTimeStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {PrayerTimesResponse prayerTimesResponse,
+      PrayerTimesResponse prayerTimesResponseNextDay,
       CountryResponse countryResponse,
       UserCoordinator userCoordinator,
       Country? selectedCountry,
@@ -1622,6 +1631,7 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? prayerTimesResponse = null,
+    Object? prayerTimesResponseNextDay = null,
     Object? countryResponse = null,
     Object? userCoordinator = null,
     Object? selectedCountry = freezed,
@@ -1634,6 +1644,10 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
       prayerTimesResponse: null == prayerTimesResponse
           ? _value.prayerTimesResponse
           : prayerTimesResponse // ignore: cast_nullable_to_non_nullable
+              as PrayerTimesResponse,
+      prayerTimesResponseNextDay: null == prayerTimesResponseNextDay
+          ? _value.prayerTimesResponseNextDay
+          : prayerTimesResponseNextDay // ignore: cast_nullable_to_non_nullable
               as PrayerTimesResponse,
       countryResponse: null == countryResponse
           ? _value.countryResponse
@@ -1674,6 +1688,7 @@ class _$PrayerTimeStateImpl
     implements _PrayerTimeState {
   const _$PrayerTimeStateImpl(
       {this.prayerTimesResponse = const PrayerTimesResponse(),
+      this.prayerTimesResponseNextDay = const PrayerTimesResponse(),
       this.countryResponse = const CountryResponse(),
       this.userCoordinator = const UserCoordinator(),
       this.selectedCountry,
@@ -1685,6 +1700,9 @@ class _$PrayerTimeStateImpl
   @override
   @JsonKey()
   final PrayerTimesResponse prayerTimesResponse;
+  @override
+  @JsonKey()
+  final PrayerTimesResponse prayerTimesResponseNextDay;
   @override
   @JsonKey()
   final CountryResponse countryResponse;
@@ -1707,7 +1725,7 @@ class _$PrayerTimeStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, countryResponse: $countryResponse, userCoordinator: $userCoordinator, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus)';
+    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus)';
   }
 
   @override
@@ -1716,6 +1734,8 @@ class _$PrayerTimeStateImpl
     properties
       ..add(DiagnosticsProperty('type', 'PrayerTimeState'))
       ..add(DiagnosticsProperty('prayerTimesResponse', prayerTimesResponse))
+      ..add(DiagnosticsProperty(
+          'prayerTimesResponseNextDay', prayerTimesResponseNextDay))
       ..add(DiagnosticsProperty('countryResponse', countryResponse))
       ..add(DiagnosticsProperty('userCoordinator', userCoordinator))
       ..add(DiagnosticsProperty('selectedCountry', selectedCountry))
@@ -1732,6 +1752,10 @@ class _$PrayerTimeStateImpl
             other is _$PrayerTimeStateImpl &&
             (identical(other.prayerTimesResponse, prayerTimesResponse) ||
                 other.prayerTimesResponse == prayerTimesResponse) &&
+            (identical(other.prayerTimesResponseNextDay,
+                    prayerTimesResponseNextDay) ||
+                other.prayerTimesResponseNextDay ==
+                    prayerTimesResponseNextDay) &&
             (identical(other.countryResponse, countryResponse) ||
                 other.countryResponse == countryResponse) &&
             (identical(other.userCoordinator, userCoordinator) ||
@@ -1752,6 +1776,7 @@ class _$PrayerTimeStateImpl
   int get hashCode => Object.hash(
       runtimeType,
       prayerTimesResponse,
+      prayerTimesResponseNextDay,
       countryResponse,
       userCoordinator,
       selectedCountry,
@@ -1773,6 +1798,7 @@ class _$PrayerTimeStateImpl
 abstract class _PrayerTimeState implements PrayerTimeState {
   const factory _PrayerTimeState(
       {final PrayerTimesResponse prayerTimesResponse,
+      final PrayerTimesResponse prayerTimesResponseNextDay,
       final CountryResponse countryResponse,
       final UserCoordinator userCoordinator,
       final Country? selectedCountry,
@@ -1783,6 +1809,8 @@ abstract class _PrayerTimeState implements PrayerTimeState {
 
   @override
   PrayerTimesResponse get prayerTimesResponse;
+  @override
+  PrayerTimesResponse get prayerTimesResponseNextDay;
   @override
   CountryResponse get countryResponse;
   @override
