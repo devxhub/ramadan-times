@@ -4,12 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
-import 'package:ramadantimes/src/schedule/schedule.dart';
-
 import '../../l10n/app_localizations.dart';
-
+import '../component/eng_to_bn.dart';
 import '../prayer_times/data/models/prayer_times.dart';
 import 'current_prayer.dart';
 

@@ -82,11 +82,13 @@ class _SchedulePageState extends State<SchedulePage> {
         child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
           builder: (context, state) {
             if (state.prayerStatus == PrayerStatus.initial ||
-                state.prayerTimesResponse.fajrStart == null) {
+                state.prayerTimesResponse.fajrStart == null ||
+                state.prayerTimeStatus == PrayerTimeStatus.initial) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
-            } else if (state.prayerStatus == PrayerStatus.success) {
+            } else if (state.prayerStatus == PrayerStatus.success ||
+                state.prayerTimeStatus == PrayerTimeStatus.success) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(slivers: [
@@ -100,10 +102,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     ),
                   ),
                   SliverToBoxAdapter(
-                    child: NextPrayer(
-                      today: state.prayerTimesResponse,
-                      nextDay: state.prayerTimesResponseNextDay,
-                    ),
+                    child: NextPrayer(),
                   ),
                   SliverToBoxAdapter(
                     child: PrayerTimeWidget(),
@@ -114,10 +113,11 @@ class _SchedulePageState extends State<SchedulePage> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1.1,
-                          crossAxisSpacing: 12.w,
-                          mainAxisSpacing: 12),
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.1,
+                        crossAxisSpacing: 12.w,
+                        mainAxisSpacing: 12,
+                      ),
                       children: [
                         TimeContainerForSehriTime(
                           time: state.prayerTimesResponse.fajrStart ?? "",

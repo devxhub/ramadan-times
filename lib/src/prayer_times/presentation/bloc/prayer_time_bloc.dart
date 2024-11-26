@@ -10,16 +10,12 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meta/meta.dart';
-import 'package:ramadantimes/main.dart';
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
-
-import '../../../models/weather/weather_model_final.dart';
-
 part 'prayer_time_event.dart';
 part 'prayer_time_state.dart';
 part 'prayer_time_bloc.freezed.dart';

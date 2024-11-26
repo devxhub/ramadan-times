@@ -24,7 +24,7 @@ class PrayerTimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
       builder: (context, state) {
-        return state.prayerStatus == PrayerStatus.initial ||
+        return state.prayerTimeStatus == PrayerTimeStatus.initial ||
                 state.prayerTimesResponse.fajrStart == null
             ? SizedBox(
                 height: 20.h,

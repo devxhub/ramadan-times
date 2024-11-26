@@ -1865,7 +1865,7 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
     Object? selectedDistrict = freezed,
     Object? isDistrictSelected = null,
     Object? prayerTimeStatus = null,
-    Object? prayerStatus = null,
+    Object? prayerStatus = freezed,
   }) {
     return _then(_value.copyWith(
       prayerTimesResponse: null == prayerTimesResponse
@@ -1904,7 +1904,7 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
           ? _value.prayerTimeStatus
           : prayerTimeStatus // ignore: cast_nullable_to_non_nullable
               as PrayerTimeStatus,
-      prayerStatus: null == prayerStatus
+      prayerStatus: freezed == prayerStatus
           ? _value.prayerStatus
           : prayerStatus // ignore: cast_nullable_to_non_nullable
               as PrayerStatus,
@@ -1955,7 +1955,7 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
     Object? selectedDistrict = freezed,
     Object? isDistrictSelected = null,
     Object? prayerTimeStatus = null,
-    Object? prayerStatus = null,
+    Object? prayerStatus = freezed,
   }) {
     return _then(_$PrayerTimeStateImpl(
       prayerTimesResponse: null == prayerTimesResponse
@@ -1994,7 +1994,7 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
           ? _value.prayerTimeStatus
           : prayerTimeStatus // ignore: cast_nullable_to_non_nullable
               as PrayerTimeStatus,
-      prayerStatus: null == prayerStatus
+      prayerStatus: freezed == prayerStatus
           ? _value.prayerStatus
           : prayerStatus // ignore: cast_nullable_to_non_nullable
               as PrayerStatus,
@@ -2050,7 +2050,7 @@ class _$PrayerTimeStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus)';
+    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, weatherResponse: $weatherResponse, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus)';
   }
 
   @override
@@ -2096,8 +2096,8 @@ class _$PrayerTimeStateImpl
                 other.isDistrictSelected == isDistrictSelected) &&
             (identical(other.prayerTimeStatus, prayerTimeStatus) ||
                 other.prayerTimeStatus == prayerTimeStatus) &&
-            (identical(other.prayerStatus, prayerStatus) ||
-                other.prayerStatus == prayerStatus));
+            const DeepCollectionEquality()
+                .equals(other.prayerStatus, prayerStatus));
   }
 
   @override
@@ -2112,7 +2112,7 @@ class _$PrayerTimeStateImpl
       selectedDistrict,
       isDistrictSelected,
       prayerTimeStatus,
-      prayerStatus);
+      const DeepCollectionEquality().hash(prayerStatus));
 
   /// Create a copy of PrayerTimeState
   /// with the given fields replaced by the non-null parameter values.
