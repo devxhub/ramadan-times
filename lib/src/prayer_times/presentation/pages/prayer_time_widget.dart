@@ -24,7 +24,10 @@ class PrayerTimeWidget extends StatelessWidget {
     return BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
       builder: (context, state) {
         return state.prayerStatus==PrayerStatus.initial||state.prayerTimesResponse.fajrStart==null?
-        CircularProgressIndicator.adaptive():
+        SizedBox(
+            height: 20.h,
+            width: 20.w,
+            child: Center(child: CircularProgressIndicator.adaptive())):
         PhysicalModel(
           color: Color.fromARGB(255, 218, 218, 249),
           borderRadius: BorderRadius.circular(15.w),

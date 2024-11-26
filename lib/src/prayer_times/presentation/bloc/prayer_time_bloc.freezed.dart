@@ -31,6 +31,9 @@ mixin _$PrayerTimeEvent {
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +47,8 @@ mixin _$PrayerTimeEvent {
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,8 @@ mixin _$PrayerTimeEvent {
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +77,7 @@ mixin _$PrayerTimeEvent {
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +89,7 @@ mixin _$PrayerTimeEvent {
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +101,7 @@ mixin _$PrayerTimeEvent {
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -224,6 +234,9 @@ class _$PrayerTimesDataLoadedImpl
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return prayerTimesDataLoaded(latitude, longitude);
   }
@@ -240,6 +253,8 @@ class _$PrayerTimesDataLoadedImpl
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return prayerTimesDataLoaded?.call(latitude, longitude);
   }
@@ -256,6 +271,8 @@ class _$PrayerTimesDataLoadedImpl
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (prayerTimesDataLoaded != null) {
@@ -275,6 +292,7 @@ class _$PrayerTimesDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return prayerTimesDataLoaded(this);
   }
@@ -289,6 +307,7 @@ class _$PrayerTimesDataLoadedImpl
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return prayerTimesDataLoaded?.call(this);
   }
@@ -303,6 +322,7 @@ class _$PrayerTimesDataLoadedImpl
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (prayerTimesDataLoaded != null) {
@@ -390,6 +410,9 @@ class _$CountryDataLoadedImpl
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return countryDataLoaded();
   }
@@ -406,6 +429,8 @@ class _$CountryDataLoadedImpl
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return countryDataLoaded?.call();
   }
@@ -422,6 +447,8 @@ class _$CountryDataLoadedImpl
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (countryDataLoaded != null) {
@@ -441,6 +468,7 @@ class _$CountryDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return countryDataLoaded(this);
   }
@@ -455,6 +483,7 @@ class _$CountryDataLoadedImpl
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return countryDataLoaded?.call(this);
   }
@@ -469,6 +498,7 @@ class _$CountryDataLoadedImpl
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (countryDataLoaded != null) {
@@ -574,6 +604,9 @@ class _$LocationPermissionImpl
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return locationPermission(context);
   }
@@ -590,6 +623,8 @@ class _$LocationPermissionImpl
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return locationPermission?.call(context);
   }
@@ -606,6 +641,8 @@ class _$LocationPermissionImpl
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (locationPermission != null) {
@@ -625,6 +662,7 @@ class _$LocationPermissionImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return locationPermission(this);
   }
@@ -639,6 +677,7 @@ class _$LocationPermissionImpl
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return locationPermission?.call(this);
   }
@@ -653,6 +692,7 @@ class _$LocationPermissionImpl
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (locationPermission != null) {
@@ -775,6 +815,9 @@ class _$SelectCountryImpl
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return selectCountry(context, country);
   }
@@ -791,6 +834,8 @@ class _$SelectCountryImpl
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return selectCountry?.call(context, country);
   }
@@ -807,6 +852,8 @@ class _$SelectCountryImpl
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (selectCountry != null) {
@@ -826,6 +873,7 @@ class _$SelectCountryImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return selectCountry(this);
   }
@@ -840,6 +888,7 @@ class _$SelectCountryImpl
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return selectCountry?.call(this);
   }
@@ -854,6 +903,7 @@ class _$SelectCountryImpl
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (selectCountry != null) {
@@ -977,6 +1027,9 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return selectCity(context, district);
   }
@@ -993,6 +1046,8 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return selectCity?.call(context, district);
   }
@@ -1009,6 +1064,8 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (selectCity != null) {
@@ -1028,6 +1085,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return selectCity(this);
   }
@@ -1042,6 +1100,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return selectCity?.call(this);
   }
@@ -1056,6 +1115,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (selectCity != null) {
@@ -1183,6 +1243,9 @@ class _$SubmitLocationImpl
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return submitLocation(context, userCoordinator);
   }
@@ -1199,6 +1262,8 @@ class _$SubmitLocationImpl
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return submitLocation?.call(context, userCoordinator);
   }
@@ -1215,6 +1280,8 @@ class _$SubmitLocationImpl
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (submitLocation != null) {
@@ -1234,6 +1301,7 @@ class _$SubmitLocationImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return submitLocation(this);
   }
@@ -1248,6 +1316,7 @@ class _$SubmitLocationImpl
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return submitLocation?.call(this);
   }
@@ -1262,6 +1331,7 @@ class _$SubmitLocationImpl
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (submitLocation != null) {
@@ -1389,6 +1459,9 @@ class _$IsDistrictSelectedImpl
         submitLocation,
     required TResult Function(BuildContext context, bool isDistrictSelected)
         isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
   }) {
     return isDistrictSelected(context, this.isDistrictSelected);
   }
@@ -1405,6 +1478,8 @@ class _$IsDistrictSelectedImpl
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
   }) {
     return isDistrictSelected?.call(context, this.isDistrictSelected);
   }
@@ -1421,6 +1496,8 @@ class _$IsDistrictSelectedImpl
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
         isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (isDistrictSelected != null) {
@@ -1440,6 +1517,7 @@ class _$IsDistrictSelectedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
   }) {
     return isDistrictSelected(this);
   }
@@ -1454,6 +1532,7 @@ class _$IsDistrictSelectedImpl
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
   }) {
     return isDistrictSelected?.call(this);
   }
@@ -1468,6 +1547,7 @@ class _$IsDistrictSelectedImpl
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
     required TResult orElse(),
   }) {
     if (isDistrictSelected != null) {
@@ -1493,11 +1573,240 @@ abstract class _IsDistrictSelected implements PrayerTimeEvent {
 }
 
 /// @nodoc
+abstract class _$$WeatherDataLoadedImplCopyWith<$Res> {
+  factory _$$WeatherDataLoadedImplCopyWith(_$WeatherDataLoadedImpl value,
+          $Res Function(_$WeatherDataLoadedImpl) then) =
+      __$$WeatherDataLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, double latitude, double longitude});
+}
+
+/// @nodoc
+class __$$WeatherDataLoadedImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res, _$WeatherDataLoadedImpl>
+    implements _$$WeatherDataLoadedImplCopyWith<$Res> {
+  __$$WeatherDataLoadedImplCopyWithImpl(_$WeatherDataLoadedImpl _value,
+      $Res Function(_$WeatherDataLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_$WeatherDataLoadedImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$WeatherDataLoadedImpl
+    with DiagnosticableTreeMixin
+    implements _WeatherDataLoaded {
+  const _$WeatherDataLoadedImpl(
+      {required this.context, required this.latitude, required this.longitude});
+
+  @override
+  final BuildContext context;
+  @override
+  final double latitude;
+  @override
+  final double longitude;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.weatherDataLoaded(context: $context, latitude: $latitude, longitude: $longitude)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PrayerTimeEvent.weatherDataLoaded'))
+      ..add(DiagnosticsProperty('context', context))
+      ..add(DiagnosticsProperty('latitude', latitude))
+      ..add(DiagnosticsProperty('longitude', longitude));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WeatherDataLoadedImpl &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context, latitude, longitude);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WeatherDataLoadedImplCopyWith<_$WeatherDataLoadedImpl> get copyWith =>
+      __$$WeatherDataLoadedImplCopyWithImpl<_$WeatherDataLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+  }) {
+    return weatherDataLoaded(context, latitude, longitude);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+  }) {
+    return weatherDataLoaded?.call(context, latitude, longitude);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    required TResult orElse(),
+  }) {
+    if (weatherDataLoaded != null) {
+      return weatherDataLoaded(context, latitude, longitude);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+  }) {
+    return weatherDataLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+  }) {
+    return weatherDataLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    required TResult orElse(),
+  }) {
+    if (weatherDataLoaded != null) {
+      return weatherDataLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WeatherDataLoaded implements PrayerTimeEvent {
+  const factory _WeatherDataLoaded(
+      {required final BuildContext context,
+      required final double latitude,
+      required final double longitude}) = _$WeatherDataLoadedImpl;
+
+  BuildContext get context;
+  double get latitude;
+  double get longitude;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$WeatherDataLoadedImplCopyWith<_$WeatherDataLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PrayerTimeState {
   PrayerTimesResponse get prayerTimesResponse =>
       throw _privateConstructorUsedError;
   CountryResponse get countryResponse => throw _privateConstructorUsedError;
   UserCoordinator get userCoordinator => throw _privateConstructorUsedError;
+  WeatherModel get weatherResponse => throw _privateConstructorUsedError;
   Country? get selectedCountry => throw _privateConstructorUsedError;
   District? get selectedDistrict => throw _privateConstructorUsedError;
   bool get isDistrictSelected => throw _privateConstructorUsedError;
@@ -1521,6 +1830,7 @@ abstract class $PrayerTimeStateCopyWith<$Res> {
       {PrayerTimesResponse prayerTimesResponse,
       CountryResponse countryResponse,
       UserCoordinator userCoordinator,
+      WeatherModel weatherResponse,
       Country? selectedCountry,
       District? selectedDistrict,
       bool isDistrictSelected,
@@ -1546,6 +1856,7 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
     Object? prayerTimesResponse = null,
     Object? countryResponse = null,
     Object? userCoordinator = null,
+    Object? weatherResponse = null,
     Object? selectedCountry = freezed,
     Object? selectedDistrict = freezed,
     Object? isDistrictSelected = null,
@@ -1565,6 +1876,10 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
           ? _value.userCoordinator
           : userCoordinator // ignore: cast_nullable_to_non_nullable
               as UserCoordinator,
+      weatherResponse: null == weatherResponse
+          ? _value.weatherResponse
+          : weatherResponse // ignore: cast_nullable_to_non_nullable
+              as WeatherModel,
       selectedCountry: freezed == selectedCountry
           ? _value.selectedCountry
           : selectedCountry // ignore: cast_nullable_to_non_nullable
@@ -1601,6 +1916,7 @@ abstract class _$$PrayerTimeStateImplCopyWith<$Res>
       {PrayerTimesResponse prayerTimesResponse,
       CountryResponse countryResponse,
       UserCoordinator userCoordinator,
+      WeatherModel weatherResponse,
       Country? selectedCountry,
       District? selectedDistrict,
       bool isDistrictSelected,
@@ -1624,6 +1940,7 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
     Object? prayerTimesResponse = null,
     Object? countryResponse = null,
     Object? userCoordinator = null,
+    Object? weatherResponse = null,
     Object? selectedCountry = freezed,
     Object? selectedDistrict = freezed,
     Object? isDistrictSelected = null,
@@ -1643,6 +1960,10 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
           ? _value.userCoordinator
           : userCoordinator // ignore: cast_nullable_to_non_nullable
               as UserCoordinator,
+      weatherResponse: null == weatherResponse
+          ? _value.weatherResponse
+          : weatherResponse // ignore: cast_nullable_to_non_nullable
+              as WeatherModel,
       selectedCountry: freezed == selectedCountry
           ? _value.selectedCountry
           : selectedCountry // ignore: cast_nullable_to_non_nullable
@@ -1676,6 +1997,7 @@ class _$PrayerTimeStateImpl
       {this.prayerTimesResponse = const PrayerTimesResponse(),
       this.countryResponse = const CountryResponse(),
       this.userCoordinator = const UserCoordinator(),
+      this.weatherResponse = const WeatherModel(),
       this.selectedCountry,
       this.selectedDistrict,
       this.isDistrictSelected = true,
@@ -1692,6 +2014,9 @@ class _$PrayerTimeStateImpl
   @JsonKey()
   final UserCoordinator userCoordinator;
   @override
+  @JsonKey()
+  final WeatherModel weatherResponse;
+  @override
   final Country? selectedCountry;
   @override
   final District? selectedDistrict;
@@ -1707,7 +2032,7 @@ class _$PrayerTimeStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, countryResponse: $countryResponse, userCoordinator: $userCoordinator, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus)';
+    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, countryResponse: $countryResponse, userCoordinator: $userCoordinator, weatherResponse: $weatherResponse, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus)';
   }
 
   @override
@@ -1718,6 +2043,7 @@ class _$PrayerTimeStateImpl
       ..add(DiagnosticsProperty('prayerTimesResponse', prayerTimesResponse))
       ..add(DiagnosticsProperty('countryResponse', countryResponse))
       ..add(DiagnosticsProperty('userCoordinator', userCoordinator))
+      ..add(DiagnosticsProperty('weatherResponse', weatherResponse))
       ..add(DiagnosticsProperty('selectedCountry', selectedCountry))
       ..add(DiagnosticsProperty('selectedDistrict', selectedDistrict))
       ..add(DiagnosticsProperty('isDistrictSelected', isDistrictSelected))
@@ -1736,6 +2062,8 @@ class _$PrayerTimeStateImpl
                 other.countryResponse == countryResponse) &&
             (identical(other.userCoordinator, userCoordinator) ||
                 other.userCoordinator == userCoordinator) &&
+            (identical(other.weatherResponse, weatherResponse) ||
+                other.weatherResponse == weatherResponse) &&
             (identical(other.selectedCountry, selectedCountry) ||
                 other.selectedCountry == selectedCountry) &&
             (identical(other.selectedDistrict, selectedDistrict) ||
@@ -1754,6 +2082,7 @@ class _$PrayerTimeStateImpl
       prayerTimesResponse,
       countryResponse,
       userCoordinator,
+      weatherResponse,
       selectedCountry,
       selectedDistrict,
       isDistrictSelected,
@@ -1775,6 +2104,7 @@ abstract class _PrayerTimeState implements PrayerTimeState {
       {final PrayerTimesResponse prayerTimesResponse,
       final CountryResponse countryResponse,
       final UserCoordinator userCoordinator,
+      final WeatherModel weatherResponse,
       final Country? selectedCountry,
       final District? selectedDistrict,
       final bool isDistrictSelected,
@@ -1787,6 +2117,8 @@ abstract class _PrayerTimeState implements PrayerTimeState {
   CountryResponse get countryResponse;
   @override
   UserCoordinator get userCoordinator;
+  @override
+  WeatherModel get weatherResponse;
   @override
   Country? get selectedCountry;
   @override

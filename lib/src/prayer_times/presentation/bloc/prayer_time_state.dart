@@ -9,6 +9,7 @@ class PrayerTimeState with _$PrayerTimeState{
     @Default(PrayerTimesResponse())PrayerTimesResponse prayerTimesResponse,
     @Default(CountryResponse())CountryResponse countryResponse,
     @Default(UserCoordinator())UserCoordinator userCoordinator,
+    @Default(WeatherModel())WeatherModel weatherResponse,
     Country? selectedCountry,
   District? selectedDistrict,
     @Default(true) bool isDistrictSelected,

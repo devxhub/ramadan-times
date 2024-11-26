@@ -83,13 +83,16 @@ class _SchedulePageState extends State<SchedulePage> {
                         .bn_name),
               );
         },
-        child: BlocBuilder<HomeBloc, HomeState>(
+        child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+  builder: (context, prayerTimeState) {
+    return BlocBuilder<HomeBloc, HomeState>(
           builder: (context, HomeState state) {
-            if (state.status == HomeStatus.initial) {
+            if (state.status == HomeStatus.initial|| prayerTimeState.prayerStatus==PrayerStatus.initial) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
-            } else if (state.status == HomeStatus.success) {
+            }
+            else if (state.status == HomeStatus.success) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(slivers: [
@@ -208,7 +211,9 @@ class _SchedulePageState extends State<SchedulePage> {
               );
             }
           },
-        ),
+        );
+  },
+),
       ),
     );
   }

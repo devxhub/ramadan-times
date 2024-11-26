@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/schedule/schedule.dart';
 
 import '../../l10n/app_localizations.dart';
@@ -66,14 +68,18 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     //Text("00\u2103"),
-                    AutoSizeText(
-                      AppLocalizations.of(context)!.localeName == "bn" ? engToBn("${widget.weatherMap.temp!.toStringAsFixed(0)}°"):"",
+                    BlocBuilder<PrayerTimeBloc,PrayerTimeState>(
+  builder: (context, state) {
+    return AutoSizeText(
+                      AppLocalizations.of(context)!.localeName == "bn" ? engToBn("${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°"):"",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           height: 1.4,
                           fontSize: 40.sp,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xff36219E)),
-                    ),
+                    );
+  },
+),
                   ],
                 ),
               ),

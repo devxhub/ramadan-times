@@ -6,9 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
 
 import '../../../bloc/api_result.dart';
+import '../../../models/weather/weather_model_final.dart';
 import '../../../services/dio_client.dart';
+import 'package:http/http.dart' as http;
 
 class PrayerTimeRepository {
   late DioClient dioClient;
@@ -20,7 +23,6 @@ class PrayerTimeRepository {
   }
 
  Future<PrayerTimesResponse>generatePrayerTimes({required double latitude,required double longitude})async {
-    print("Final state is lat lng$latitude===$longitude");
     if(latitude.isFinite){
 
       final coordinates = Coordinates(latitude, longitude); // Example: London
@@ -103,5 +105,13 @@ class PrayerTimeRepository {
     } catch (e) {
       rethrow;
     }
+  }
+  Future<WeatherModel> fetchWeatherData(String latitude,String longitude) async {
+    String weatherUrl =
+        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&appid=f92bf340ade13c087f6334ed434f9761&fbclid=IwAR2MIhWnKnisutHJ1y1dgxc-XbFFbVlG_T_f8F9_fhd6ZFC4PRI3oNAWgMc";
+
+  final response = await http.get(Uri.parse(weatherUrl));
+
+    return WeatherModel.fromRawJson(response.body);
   }
 }

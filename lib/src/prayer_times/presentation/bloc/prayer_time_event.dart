@@ -16,4 +16,6 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
   _SubmitLocation;
   const factory PrayerTimeEvent.isDistrictSelected({required BuildContext context,required bool isDistrictSelected}) =
   _IsDistrictSelected;
+  const factory PrayerTimeEvent.weatherDataLoaded({required BuildContext context,required double latitude,required double longitude}) =
+  _WeatherDataLoaded;
 }

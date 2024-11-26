@@ -15,7 +15,10 @@ import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
+
+import '../../../models/weather/weather_model_final.dart';
 
 part 'prayer_time_event.dart';
 part 'prayer_time_state.dart';
@@ -42,6 +45,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         await _submitLocation(event, emit),
         isDistrictSelected: (event) async =>
         await _isDistrictSelected(event, emit),
+        weatherDataLoaded: (event) async =>
+        await _weatherDataLoaded(event, emit),
 
       );
     });
@@ -171,6 +176,7 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
 
       }
       prayerBloc.add(  PrayerTimeEvent.prayerTimesDataLoaded(latitude:  position.latitude??0.0, longitude: position.longitude,));
+      prayerBloc.add(  PrayerTimeEvent.weatherDataLoaded(latitude:  position.latitude??0.0, longitude: position.longitude, context: event.context,));
       print("Final state is 111");
       emit(
 
@@ -189,6 +195,43 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
 
 
       print("Final state is ${state.userCoordinator.userLat}====${state.userCoordinator.userLng}");
+    }
+    catch (e) {
+      if (kDebugMode) {
+        print("Error fetching location: $e");
+      }
+      emit(
+        state.copyWith(
+          prayerTimeStatus: PrayerTimeStatus.failure,
+        ),
+      );
+
+    }
+  }
+ Future<void> _weatherDataLoaded(
+      _WeatherDataLoaded event,
+      Emitter<PrayerTimeState> emit) async
+  {
+
+    emit(
+      state.copyWith(
+        prayerTimeStatus: PrayerTimeStatus.initial,
+      ),
+    );
+    try {
+
+
+      final response = await prayerTimeRepository.fetchWeatherData(event.latitude.toString(), event.longitude.toString());
+
+      emit(
+        state.copyWith(
+          weatherResponse: response,
+          prayerTimeStatus: PrayerTimeStatus.success,
+        ),
+
+      );
+
+
     }
     catch (e) {
       if (kDebugMode) {
@@ -236,6 +279,8 @@ final prayerBloc= event.context.read<PrayerTimeBloc>();
   {
     final prayerBloc= event.context.read<PrayerTimeBloc>();
     prayerBloc.add(  PrayerTimeEvent.prayerTimesDataLoaded(latitude:  event.userCoordinator.userLat??0.0, longitude: event.userCoordinator.userLng??0.0,));
+    prayerBloc.add(  PrayerTimeEvent.weatherDataLoaded(latitude:  event.userCoordinator.userLat??0.0, longitude:event.userCoordinator.userLng??0.0, context: event.context,));
+
     emit(
       state.copyWith(
         userCoordinator: event.userCoordinator,
