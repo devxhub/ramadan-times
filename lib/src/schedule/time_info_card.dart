@@ -62,20 +62,22 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                     //Text("00\u2103"),
                     BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
                       builder: (context, state) {
-                        return AutoSizeText(
-                          AppLocalizations.of(context)!.localeName == "bn"
-                              ? engToBn(
-                                  "${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°")
-                              : "",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(
-                                  height: 1.4,
-                                  fontSize: 40.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xff36219E)),
-                        );
+                        return state.weatherResponse.main?.temp != null
+                            ? AutoSizeText(
+                                AppLocalizations.of(context)!.localeName == "bn"
+                                    ? engToBn(
+                                        "${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°")
+                                    : "",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                        height: 1.4,
+                                        fontSize: 40.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xff36219E)),
+                              )
+                            : SizedBox();
                       },
                     ),
                   ],

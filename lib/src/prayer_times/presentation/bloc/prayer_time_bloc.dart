@@ -182,7 +182,6 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             prayerTimeStatus: PrayerTimeStatus.success,
           ),
         );
-        throw Exception("Location permissions are permanently denied.");
       }
 
       Position position = await Geolocator.getCurrentPosition(
@@ -225,8 +224,23 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       if (kDebugMode) {
         print("Error fetching location: $e");
       }
+      prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+        latitude: 23.7115253,
+        longitude: 90.4111451,
+      ));
+      prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
+        latitude: 23.7115253,
+        longitude: 90.4111451,
+        context: event.context,
+      ));
       emit(
         state.copyWith(
+          userCoordinator: UserCoordinator(
+              userLat: 23.7115253,
+              userLng: 90.4111451,
+              userCountry: "Bangladesh",
+              userCity: "Dhaka",
+              userCountryIso: "BD"),
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );

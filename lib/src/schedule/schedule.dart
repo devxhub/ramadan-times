@@ -33,10 +33,10 @@ class _SchedulePageState extends State<SchedulePage> {
   District? selectedLocation;
   @override
   void initState() {
-    context.read<HomeBloc>().add(DataFetched(
-            date: DateFormat("dd-MM-yyyy").format(
-          DateTime.now(),
-        )));
+    // context.read<HomeBloc>().add(DataFetched(
+    //         date: DateFormat("dd-MM-yyyy").format(
+    //       DateTime.now(),
+    //     )));
     //context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
     context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
     context
@@ -64,17 +64,17 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          SharedPreferences preferences = await SharedPreferences.getInstance();
+          // SharedPreferences preferences = await SharedPreferences.getInstance();
           if (!mounted) return;
-          context.read<HomeBloc>().add(
-                DataFetched(
-                    date: DateFormat("dd-MM-yyyy").format(
-                      DateTime.now(),
-                    ),
-                    city: District.fromJson(jsonDecode(
-                            preferences.getString("current_location")!))
-                        .bn_name),
-              );
+          // context.read<HomeBloc>().add(
+          //       DataFetched(
+          //           date: DateFormat("dd-MM-yyyy").format(
+          //             DateTime.now(),
+          //           ),
+          //           city: District.fromJson(jsonDecode(
+          //                   preferences.getString("current_location") ?? ''))
+          //               .bn_name),
+          //     );
         },
         child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
           builder: (context, state) {
