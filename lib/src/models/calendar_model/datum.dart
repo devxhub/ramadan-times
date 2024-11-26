@@ -4,7 +4,6 @@ import 'package:json_annotation/json_annotation.dart';
 import '../timing/timings.dart';
 import 'date.dart';
 import 'meta.dart';
-import 'timings.dart';
 
 part 'datum.g.dart';
 

@@ -14,6 +14,8 @@ enum PrayerStatus { initial, success, failure, inProgress, inProgressFilter }
 class PrayerTimeState with _$PrayerTimeState {
   const factory PrayerTimeState({
     @Default(PrayerTimesResponse()) PrayerTimesResponse prayerTimesResponse,
+    @Default(PrayerTimesResponse())
+    PrayerTimesResponse prayerTimesResponseNextDay,
     @Default(CountryResponse()) CountryResponse countryResponse,
     @Default(UserCoordinator()) UserCoordinator userCoordinator,
     Country? selectedCountry,

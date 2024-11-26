@@ -4,13 +4,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:intl/intl.dart';
-
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
-
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
@@ -19,11 +15,8 @@ import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location
 
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../bloc/home/bloc/calendar_state.dart';
-
 import 'dua.dart';
-import 'location_picker.dart';
 import 'next_prayer.dart';
 import 'next_sehri_ifter.dart';
 import 'remaining_time_for_ifter.dart';
@@ -87,138 +80,126 @@ class _SchedulePageState extends State<SchedulePage> {
               );
         },
         child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
-          builder: (context, prayerTimeState) {
-            return BlocBuilder<HomeBloc, HomeState>(
-              builder: (context, HomeState state) {
-                if (state.status == HomeStatus.initial ||
-                    prayerTimeState.prayerStatus == PrayerStatus.initial) {
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  );
-                } else if (state.status == HomeStatus.success) {
-                  return Container(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: CustomScrollView(slivers: [
-                      SliverToBoxAdapter(
-                        child: SizedBox(height: 16.spMin),
-                      ),
-                      SliverToBoxAdapter(
-                        child: TodayInfoCard(
-                          timeOfToday: state.timeOfToday!,
-                          timeOfNextDay: state.timeOfNextDay!,
-                          weatherMap: state.weatherData!,
-                        ),
-                      ),
-                      if (state.timeOfToday != null)
-                        SliverToBoxAdapter(
-                          child: NextPrayer(
-                            today: state.timeOfToday!,
-                            nextDay: state.timeOfNextDay!,
-                          ),
-                        ),
-                      SliverToBoxAdapter(
-                        child: PrayerTimeWidget(),
-                      ),
-                      SliverToBoxAdapter(
-                        child: GridView(
-                          padding: EdgeInsets.only(top: 24.spMin),
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 1.1,
-                                  crossAxisSpacing: 12.w,
-                                  mainAxisSpacing: 12),
-                          children: [
-                            TimeContainerForSehriTime(
-                              time:
-                                  state.timeOfToday?.data?.timings?.fajr ?? "",
-                            ),
-                            RemainingTimeContainerForSehriTime(
-                              sehriTime:
-                                  state.timeOfToday?.data?.timings?.fajr ?? "",
-                            ),
-                            TimeContainerForIftarTime(
-                              ifterTime:
-                                  state.timeOfToday?.data?.timings?.sunset ??
-                                      "",
-                            ),
-                            RemainingTimeContainerForIftarTime(
-                              ifterTime:
-                                  state.timeOfToday?.data?.timings?.sunset ??
-                                      "",
-                            ),
-                          ],
-                        ),
-                      ),
-                      if (state.timeOfNextDay != null)
-                        SliverToBoxAdapter(
-                          child: NextSehriIftar(
-                            data: state.timeOfNextDay!,
-                          ),
-                        ),
-                      const SliverToBoxAdapter(
-                        child: SizedBox(height: 24),
-                      ),
-                      const SliverToBoxAdapter(
-                        child: Dua(),
-                      ),
-                      const SliverToBoxAdapter(
-                        child: SizedBox(height: 200),
-                      )
-                    ]),
-                  );
-                } else if (state.status == HomeStatus.noData) {
-                  // showDialog(context: context, builder: (context) => const AlertDialog(
-                  // content: Text("Please Connect to the internet "),
-                  // ),);
-                  return SizedBox(
-                    height: 900.h,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/nowifi.png",
-                            fit: BoxFit.cover,
-                            height: 300.h,
-                            width: 300.h,
-                          ),
-                          AutoSizeText(
-                            "Please connect to the internet!!!",
-                            style: TextStyle(fontSize: 24.sp),
-                          ),
-                        ],
-                      ),
+          builder: (context, state) {
+            if (state.prayerStatus == PrayerStatus.initial ||
+                state.prayerTimesResponse.fajrStart == null) {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(),
+              );
+            } else if (state.prayerStatus == PrayerStatus.success) {
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                child: CustomScrollView(slivers: [
+                  SliverToBoxAdapter(
+                    child: SizedBox(height: 16.spMin),
+                  ),
+                  SliverToBoxAdapter(
+                    child: TodayInfoCard(
+                      timeOfToday: state.prayerTimesResponse,
+                      timeOfNextDay: state.prayerTimesResponseNextDay,
                     ),
-                  );
-                } else {
-                  return SizedBox(
-                    height: 900.h,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/error.png",
-                            fit: BoxFit.cover,
-                            height: 300.h,
-                            width: 300.h,
-                          ),
-                          AutoSizeText(
-                            "Something went wrong...",
-                            style: TextStyle(fontSize: 24.sp),
-                          ),
-                        ],
-                      ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: NextPrayer(
+                      today: state.prayerTimesResponse,
+                      nextDay: state.prayerTimesResponseNextDay,
                     ),
-                  );
-                }
-              },
-            );
+                  ),
+                  SliverToBoxAdapter(
+                    child: PrayerTimeWidget(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: GridView(
+                      padding: EdgeInsets.only(top: 24.spMin),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1.1,
+                          crossAxisSpacing: 12.w,
+                          mainAxisSpacing: 12),
+                      children: [
+                        TimeContainerForSehriTime(
+                          time: state.prayerTimesResponse.fajrStart ?? "",
+                        ),
+                        RemainingTimeContainerForSehriTime(
+                          sehriTime: state.prayerTimesResponse.fajrStart ?? "",
+                        ),
+                        TimeContainerForIftarTime(
+                          ifterTime:
+                              state.prayerTimesResponse.maghribStart ?? "",
+                        ),
+                        RemainingTimeContainerForIftarTime(
+                          ifterTime:
+                              state.prayerTimesResponse.maghribStart ?? "",
+                        ),
+                      ],
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: NextSehriIftar(
+                      data: state.prayerTimesResponseNextDay,
+                    ),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: SizedBox(height: 24),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: Dua(),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: SizedBox(height: 200),
+                  )
+                ]),
+              );
+            } else if (state.prayerStatus == PrayerStatus.failure) {
+              // showDialog(context: context, builder: (context) => const AlertDialog(
+              // content: Text("Please Connect to the internet "),
+              // ),);
+              return SizedBox(
+                height: 900.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/nowifi.png",
+                        fit: BoxFit.cover,
+                        height: 300.h,
+                        width: 300.h,
+                      ),
+                      AutoSizeText(
+                        "Please connect to the internet!!!",
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            } else {
+              return SizedBox(
+                height: 900.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/error.png",
+                        fit: BoxFit.cover,
+                        height: 300.h,
+                        width: 300.h,
+                      ),
+                      AutoSizeText(
+                        "Something went wrong...",
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }
           },
         ),
       ),

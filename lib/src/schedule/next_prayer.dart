@@ -2,10 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/models/timing/timing.dart' as timing;
-
+import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import '../../l10n/app_localizations.dart';
-import '../models/timing/timings.dart';
+import '../prayer_times/data/models/prayer_time_format_model.dart';
 
 class NextPrayer extends StatelessWidget {
   const NextPrayer({
@@ -13,94 +12,58 @@ class NextPrayer extends StatelessWidget {
     required this.today,
     required this.nextDay,
   });
-  final timing.Timing today;
-  final timing.Timing nextDay;
+  final PrayerTimesResponse today;
+  final PrayerTimesResponse nextDay;
 
-  Map<String, dynamic> getNextPrayer(Timings today, Timings nextDay) {
-    if (DateTime.now().isBefore(customHourMinuteOfToday(
-      int.parse(
-        today.fajr!.split(":").first,
-      ),
-      int.parse(
-        today.fajr!.split(":").last,
-      ),
-    ))) {
-      return {
-        "start_minute": today.fajr?.split(":").last ?? "",
-        "start_hour": today.fajr?.split(":").first ?? "",
-        "end_minute": today.sunrise?.split(":").last ?? "",
-        "end_hour": today.sunrise?.split(":").first ?? "",
-        "name": "Fajr"
-      };
-    } else if (DateTime.now().isBefore(customHourMinuteOfToday(
-      int.parse(
-        today.dhuhr!.split(":").first,
-      ),
-      int.parse(
-        today.dhuhr!.split(":").last,
-      ),
-    ))) {
-      return {
-        "start_minute": today.dhuhr?.split(":").last ?? "",
-        "start_hour": today.dhuhr?.split(":").first ?? "",
-        "end_minute": today.asr?.split(":").last ?? "",
-        "end_hour": today.asr?.split(":").first ?? "",
-        "name": "Dhuhr"
-      };
-    } else if (DateTime.now().isBefore(customHourMinuteOfToday(
-      int.parse(
-        today.asr!.split(":").first,
-      ),
-      int.parse(
-        today.asr!.split(":").last,
-      ),
-    ))) {
-      return {
-        "start_minute": today.asr?.split(":").last ?? "",
-        "start_hour": today.asr?.split(":").first ?? "",
-        "end_minute": today.sunset?.split(":").last ?? "",
-        "end_hour": today.sunset?.split(":").first ?? "",
-        "name": "Asr"
-      };
-    } else if (DateTime.now().isBefore(customHourMinuteOfToday(
-      int.parse(
-        today.maghrib!.split(":").first,
-      ),
-      int.parse(
-        today.maghrib!.split(":").last,
-      ),
-    ))) {
-      return {
-        "start_minute": today.maghrib?.split(":").last ?? "",
-        "start_hour": today.maghrib?.split(":").first ?? "",
-        "end_minute": today.isha?.split(":").last ?? "",
-        "end_hour": today.isha?.split(":").first ?? "",
-        "name": "Maghrib"
-      };
-    } else if (DateTime.now().isBefore(customHourMinuteOfToday(
-      int.parse(
-        today.isha!.split(":").first,
-      ),
-      int.parse(
-        today.isha!.split(":").last,
-      ),
-    ))) {
-      return {
-        "start_minute": today.isha?.split(":").last ?? "",
-        "start_hour": today.isha?.split(":").first ?? "",
-        "end_minute": nextDay.fajr?.split(":").last ?? "",
-        "end_hour": nextDay.fajr?.split(":").first ?? "",
-        "name": "Isha"
-      };
-    } else {
-      return {
-        "start_minute": today.fajr?.split(":").last ?? "",
-        "start_hour": today.fajr?.split(":").first ?? "",
-        "end_minute": today.sunrise?.split(":").last ?? "",
-        "end_hour": today.sunrise?.split(":").first ?? "",
-        "name": "Fajr"
-      };
+  String formatTime(DateTime date) {
+    return DateFormat('hh:mm a').format(date);
+  }
+
+  PrayerTime? getNextPrayerTime(
+      Map<String, String> today, Map<String, String> nextDay) {
+    DateTime now = DateTime.now();
+
+    DateTime convertToDate(String timeString) {
+      return DateTime.parse(timeString.replaceFirst(' ', 'T'));
     }
+
+    String formatTime(DateTime date) {
+      return DateFormat('hh:mm a').format(date);
+    }
+
+    List<PrayerTime> prayerTimes = [
+      PrayerTime(
+          name: "Fajr",
+          start: formatTime(convertToDate(today['fajrStart']!)),
+          end: formatTime(convertToDate(today['fajrEnd']!))),
+      PrayerTime(
+          name: "Dhuhr",
+          start: formatTime(convertToDate(today['dhuhrStart']!)),
+          end: formatTime(convertToDate(today['dhuhrEnd']!))),
+      PrayerTime(
+          name: "Asr",
+          start: formatTime(convertToDate(today['asrStart']!)),
+          end: formatTime(convertToDate(today['asrEnd']!))),
+      PrayerTime(
+          name: "Maghrib",
+          start: formatTime(convertToDate(today['maghribStart']!)),
+          end: formatTime(convertToDate(today['maghribEnd']!))),
+      PrayerTime(
+          name: "Isha",
+          start: formatTime(convertToDate(today['ishaStart']!)),
+          end: formatTime(convertToDate(today['ishaEnd']!))),
+      PrayerTime(
+          name: "Fajr (Next Day)",
+          start: formatTime(convertToDate(nextDay['fajrStart']!)),
+          end: formatTime(convertToDate(nextDay['fajrEnd']!))),
+    ];
+
+    var nextPrayer = prayerTimes.firstWhere(
+      (prayer) => now.isBefore(convertToDate(
+          today['${prayer.name.toLowerCase().split(' ')[0]}Start']!)),
+    );
+
+    return nextPrayer;
   }
 
   DateTime customHourMinuteOfToday(int hour, int minute) {
@@ -110,6 +73,24 @@ class NextPrayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> todayModel = {
+      'fajrStart': today.fajrStart!,
+      'fajrEnd': today.fajrEnd!,
+      'dhuhrStart': today.dhuhrEnd!,
+      'dhuhrEnd': today.dhuhrEnd!,
+      'asrStart': today.asrStart!,
+      'asrEnd': today.asrEnd!,
+      'maghribStart': today.maghribStart!,
+      'maghribEnd': today.maghribEnd!,
+      'ishaStart': today.ishaStart!,
+      'ishaEnd': today.ishaEnd!,
+    };
+
+    Map<String, String> nextDayModel = {
+      'fajrStart': nextDay.fajrStart!,
+      'fajrEnd': nextDay.fajrEnd!,
+    };
+    print(todayModel);
     return Container(
       margin: const EdgeInsets.only(top: 24, left: 1, right: 1),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -132,9 +113,7 @@ class NextPrayer extends StatelessWidget {
               ),
               AutoSizeText(
                 AppLocalizations.of(context)?.prayerName(
-                      getNextPrayer(today.data!.timings!,
-                              nextDay.data!.timings!)['name'] ??
-                          "",
+                      getNextPrayerTime(todayModel, nextDayModel)!.name,
                     ) ??
                     "",
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -150,44 +129,21 @@ class NextPrayer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.r)),
             child: AutoSizeText.rich(
               TextSpan(
-                  text: DateFormat.jm("bn_BD").format(
-                    DateTime(
-                      2023,
-                      1,
-                      1,
-                      int.tryParse(getNextPrayer(today.data!.timings!,
-                              nextDay.data!.timings!)["start_hour"]) ??
-                          0,
-                      int.tryParse(getNextPrayer(today.data!.timings!,
-                              nextDay.data!.timings!)["start_minute"]) ??
-                          0,
-                    ),
-                  ),
+                  text: getNextPrayerTime(todayModel, nextDayModel)!
+                      .start
+                      .toString(),
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.w700,
                       fontSize: 16.sp,
                       color: const Color(0xff674cec)),
                   children: [
-                    // TextSpan(
-                    //     text: "AM",
-                    //     style: Theme.of(context).textTheme.bodySmall),
                     TextSpan(
                         text: " - ",
                         style: Theme.of(context).textTheme.titleLarge),
                     TextSpan(
-                      text: DateFormat.jm("bn_BD").format(
-                        DateTime(
-                          2023,
-                          1,
-                          1,
-                          int.tryParse(getNextPrayer(today.data!.timings!,
-                                  nextDay.data!.timings!)["end_hour"]) ??
-                              0,
-                          int.tryParse(getNextPrayer(today.data!.timings!,
-                                  nextDay.data!.timings!)["end_minute"]) ??
-                              0,
-                        ),
-                      ),
+                      text: getNextPrayerTime(todayModel, nextDayModel)!
+                          .end
+                          .toString(),
                     ),
                   ]),
             ),

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 import '../../l10n/app_localizations.dart';
+import '../services/utility.dart';
 
 class TimeContainerForIftarTime extends StatefulWidget {
   const TimeContainerForIftarTime({
@@ -49,15 +50,7 @@ class _TimeContainerForIftarTimeState extends State<TimeContainerForIftarTime> {
                 ),
                 AutoSizeText.rich(
                   TextSpan(
-                    text: DateFormat.jm("bn_BD").format(
-                      DateTime(
-                              2023,
-                              1,
-                              1,
-                              int.parse(widget.ifterTime.split(":").first),
-                              int.parse(widget.ifterTime.split(":").last))
-                          .add(const Duration(minutes: 4)),
-                    ),
+                    text: formatIftarTime(widget.ifterTime),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         height: 1.4,
                         color: const Color(0xff674cec),

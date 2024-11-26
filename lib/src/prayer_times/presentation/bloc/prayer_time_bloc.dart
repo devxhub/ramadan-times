@@ -49,6 +49,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
   }
   Future<void> _prayerTimesDataLoaded(
       _PrayerTimesDataLoaded event, Emitter<PrayerTimeState> emit) async {
+    DateTime now = DateTime.now();
+    DateTime nextDay = now.add(Duration(days: 1));
     emit(
       state.copyWith(
         prayerStatus: PrayerStatus.initial,
@@ -57,43 +59,27 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     try {
       final prayerTimeDataResponse =
           await prayerTimeRepository.generatePrayerTimes(
-              latitude: event.latitude, longitude: event.longitude);
-      emit(
-        state.copyWith(
-          prayerTimesResponse: prayerTimeDataResponse,
-          prayerStatus: PrayerStatus.success,
-        ),
+        latitude: event.latitude,
+        longitude: event.longitude,
+        date: DateTime.now(),
       );
-    } catch (e) {
-      print("Errros $e");
-      emit(
-        state.copyWith(
-          prayerStatus: PrayerStatus.failure,
-        ),
-      );
-      rethrow;
-    }
-  }
-
-  Future<void> _countryDataLoaded(
-      _CountryDataLoaded event, Emitter<PrayerTimeState> emit) async {
-    emit(
-      state.copyWith(
-        prayerStatus: PrayerStatus.initial,
-      ),
-    );
-    try {
-      final prayerTimeDataResponse =
+      final prayerTimeDataResponseNextDay =
           await prayerTimeRepository.generatePrayerTimes(
-              latitude: event.latitude, longitude: event.longitude);
+        latitude: event.latitude,
+        longitude: event.longitude,
+        date: nextDay,
+      );
       emit(
         state.copyWith(
           prayerTimesResponse: prayerTimeDataResponse,
+          prayerTimesResponseNextDay: prayerTimeDataResponseNextDay,
           prayerStatus: PrayerStatus.success,
         ),
       );
     } catch (e) {
-      print("Errros $e");
+      if (kDebugMode) {
+        print("Error $e");
+      }
       emit(
         state.copyWith(
           prayerStatus: PrayerStatus.failure,

@@ -7,9 +7,8 @@ import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ramadantimes/src/models/timing/timing.dart' as timing;
-
 import '../../l10n/app_localizations.dart';
 import '../bloc/home/bloc/calendar_bloc.dart';
 import '../bloc/home/bloc/calendar_event.dart';
@@ -23,170 +22,108 @@ class CurrentPrayer extends StatelessWidget {
     required this.today,
     required this.nextDay,
   });
-  final timing.Timing today;
-  final timing.Timing nextDay;
+  final PrayerTimesResponse today;
+  final PrayerTimesResponse nextDay;
 
   Map<String, dynamic> getCurrentPrayer(Timings today, Timings nextDay) {
     DateTime now = DateTime.now();
-    if (DateTime.now().isAfter(customHourMinuteOfToday(
-          00,
-          00,
-        )) &&
-        DateTime.now().isBefore(customHourMinuteOfToday(
-          int.parse(
-            today.fajr!.split(":").first,
-          ),
-          int.parse(
-            today.fajr!.split(":").last,
-          ),
-        ))) {
+
+    // Helper function to parse a DateTime object
+    DateTime parseTime(String dateTimeString) {
+      return DateTime.parse(dateTimeString);
+    }
+
+    // Parse all timings
+    DateTime fajrTime = parseTime(today.fajr!);
+    DateTime sunriseTime = parseTime(today.sunrise!);
+    DateTime dhuhrTime = parseTime(today.dhuhr!);
+    DateTime asrTime = parseTime(today.asr!);
+    DateTime maghribTime = parseTime(today.maghrib!);
+    DateTime ishaTime = parseTime(today.isha!);
+    DateTime nextFajrTime = parseTime(nextDay.fajr!);
+
+    // Helper function to create custom DateTime objects
+    DateTime customHourMinuteOfToday(int hour, int minute) {
+      return DateTime(now.year, now.month, now.day, hour, minute);
+    }
+
+    if (now.isAfter(customHourMinuteOfToday(0, 0)) && now.isBefore(fajrTime)) {
       return {
-        "end_minute": today.fajr?.split(":").last ?? "",
-        "end_hour": today.fajr?.split(":").first ?? "",
+        "end_minute": fajrTime.minute.toString(),
+        "end_hour": fajrTime.hour.toString(),
         "name": "Isha"
       };
-    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
-          int.parse(
-            today.fajr!.split(":").first,
-          ),
-          int.parse(
-            today.fajr!.split(":").last,
-          ),
-        )) &&
-        DateTime.now().isBefore(customHourMinuteOfToday(
-          int.parse(
-            today.sunrise!.split(":").first,
-          ),
-          int.parse(
-            today.sunrise!.split(":").last,
-          ),
-        ))) {
+    } else if (now.isAfter(fajrTime) && now.isBefore(sunriseTime)) {
       return {
-        "end_minute": today.sunrise?.split(":").last ?? "",
-        "end_hour": today.sunrise?.split(":").first ?? "",
+        "end_minute": sunriseTime.minute.toString(),
+        "end_hour": sunriseTime.hour.toString(),
         "name": "Fajr"
       };
-    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
-          int.parse(
-            today.sunrise!.split(":").first,
-          ),
-          int.parse(
-            today.sunrise!.split(":").last,
-          ),
-        )) &&
-        DateTime.now().isBefore(customHourMinuteOfToday(
-          int.parse(
-            today.dhuhr!.split(":").first,
-          ),
-          int.parse(
-            today.dhuhr!.split(":").last,
-          ),
-        ))) {
+    } else if (now.isAfter(sunriseTime) && now.isBefore(dhuhrTime)) {
       return {
-        "end_minute": today.dhuhr?.split(":").last ?? "",
-        "end_hour": today.dhuhr?.split(":").first ?? "",
+        "end_minute": dhuhrTime.minute.toString(),
+        "end_hour": dhuhrTime.hour.toString(),
         "name": "Ishrak"
       };
-    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
-          int.parse(
-            today.dhuhr!.split(":").first,
-          ),
-          int.parse(
-            today.dhuhr!.split(":").last,
-          ),
-        )) &&
-        DateTime.now().isBefore(customHourMinuteOfToday(
-          int.parse(
-            today.asr!.split(":").first,
-          ),
-          int.parse(
-            today.asr!.split(":").last,
-          ),
-        ))) {
+    } else if (now.isAfter(dhuhrTime) && now.isBefore(asrTime)) {
       return {
-        "end_minute": today.asr?.split(":").last ?? "",
-        "end_hour": today.asr?.split(":").first ?? "",
+        "end_minute": asrTime.minute.toString(),
+        "end_hour": asrTime.hour.toString(),
         "name": "Dhuhr"
       };
-    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
-          int.parse(
-            today.asr!.split(":").first,
-          ),
-          int.parse(
-            today.asr!.split(":").last,
-          ),
-        )) &&
-        DateTime.now().isBefore(customHourMinuteOfToday(
-          int.parse(
-            today.maghrib!.split(":").first,
-          ),
-          int.parse(
-            today.maghrib!.split(":").last,
-          ),
-        ))) {
+    } else if (now.isAfter(asrTime) && now.isBefore(maghribTime)) {
       return {
-        "end_minute": today.maghrib?.split(":").last ?? "",
-        "end_hour": today.maghrib?.split(":").first ?? "",
+        "end_minute": maghribTime.minute.toString(),
+        "end_hour": maghribTime.hour.toString(),
         "name": "Asr"
       };
-    } else if (DateTime.now().isAfter(customHourMinuteOfToday(
-          int.parse(
-            today.maghrib!.split(":").first,
-          ),
-          int.parse(
-            today.maghrib!.split(":").last,
-          ),
-        )) &&
-        DateTime.now().isBefore(customHourMinuteOfToday(
-          int.parse(
-            today.isha!.split(":").first,
-          ),
-          int.parse(
-            today.isha!.split(":").last,
-          ),
-        ))) {
+    } else if (now.isAfter(maghribTime) && now.isBefore(ishaTime)) {
       return {
-        "end_minute": today.isha?.split(":").last ?? "",
-        "end_hour": today.isha?.split(":").first ?? "",
+        "end_minute": ishaTime.minute.toString(),
+        "end_hour": ishaTime.hour.toString(),
         "name": "Maghrib"
       };
-    } else if (now.isAfter(customHourMinuteOfToday(
-          int.parse(
-            today.isha!.split(":").first,
-          ),
-          int.parse(
-            today.isha!.split(":").last,
-          ),
-        )) &&
+    } else if (now.isAfter(ishaTime) &&
         now.isBefore(customHourMinuteOfToday(23, 59))) {
       return {
         "isToday": "true",
-        "end_minute": nextDay.fajr?.split(":").last ?? "",
-        "end_hour": nextDay.fajr?.split(":").first ?? "",
+        "end_minute": nextFajrTime.minute.toString(),
+        "end_hour": nextFajrTime.hour.toString(),
         "name": "Isha"
       };
     } else {
       return {
         "isToday": "true",
-        "end_minute": today.fajr?.split(":").last ?? "",
-        "end_hour": today.fajr?.split(":").first ?? "",
+        "end_minute": fajrTime.minute.toString(),
+        "end_hour": fajrTime.hour.toString(),
         "name": "Isha"
       };
     }
   }
 
-  DateTime customHourMinuteOfToday(int hour, int minute) {
-    return DateTime(DateTime.now().year, DateTime.now().month,
-        DateTime.now().day, hour, minute);
-  }
-
-  DateTime customHourMinuteOfNextDay(int hour, int minute) {
-    return DateTime(DateTime.now().year, DateTime.now().month,
-        DateTime.now().day + 1, hour, minute);
-  }
-
   @override
   Widget build(BuildContext context) {
+    Timings timingsToday = Timings(
+      asr: today.asrStart,
+      dhuhr: today.dhuhrStart,
+      fajr: today.fajrStart,
+      isha: today.ishaStart,
+      maghrib: today.maghribStart,
+      midnight: today.noonEnd,
+      sunrise: today.sunrise,
+      sunset: today.sunset,
+    );
+    Timings timingsNextToday = Timings(
+      asr: today.asrStart,
+      dhuhr: today.dhuhrStart,
+      fajr: today.fajrStart,
+      isha: today.ishaStart,
+      maghrib: today.maghribStart,
+      midnight: today.noonEnd,
+      sunrise: today.sunrise,
+      sunset: today.sunset,
+    );
+
     return Row(
       children: [
         Column(
@@ -197,8 +134,8 @@ class CurrentPrayer extends StatelessWidget {
               children: [
                 AutoSizeText(
                   "${AppLocalizations.of(context)?.prayerName(
-                        getCurrentPrayer(today.data!.timings!,
-                                nextDay.data!.timings!)['name'] ??
+                        getCurrentPrayer(
+                                timingsToday, timingsNextToday)['name'] ??
                             "",
                       ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -219,8 +156,7 @@ class CurrentPrayer extends StatelessWidget {
               endTime: DateTime(
                 DateTime.now().year,
                 DateTime.now().month,
-                (getCurrentPrayer(today.data!.timings!, nextDay.data!.timings!)[
-                                "name"] ==
+                (getCurrentPrayer(timingsToday, timingsNextToday)["name"] ==
                             "Isha" &&
                         !DateTime.now().isAfter(DateTime(
                             DateTime.now().year,
@@ -232,9 +168,9 @@ class CurrentPrayer extends StatelessWidget {
                     ? DateTime.now().day + 1
                     : DateTime.now().day,
                 int.parse(getCurrentPrayer(
-                    today.data!.timings!, nextDay.data!.timings!)["end_hour"]),
-                int.parse(getCurrentPrayer(today.data!.timings!,
-                    nextDay.data!.timings!)["end_minute"]),
+                    timingsToday, timingsNextToday)["end_hour"]),
+                int.parse(getCurrentPrayer(
+                    timingsToday, timingsNextToday)["end_minute"]),
               ).millisecondsSinceEpoch,
               onEnd: () async {
                 SharedPreferences preferences =
@@ -242,12 +178,13 @@ class CurrentPrayer extends StatelessWidget {
 
                 context.read<HomeBloc>().add(
                       DataFetched(
-                          date: DateFormat("dd-MM-yyyy").format(
-                            DateTime.now(),
-                          ),
-                          city: District.fromJson(jsonDecode(
-                                  preferences.getString("current_location")!))
-                              .bn_name,),
+                        date: DateFormat("dd-MM-yyyy").format(
+                          DateTime.now(),
+                        ),
+                        city: District.fromJson(jsonDecode(
+                                preferences.getString("current_location")!))
+                            .bn_name,
+                      ),
                     );
               },
               widgetBuilder: (_, CurrentRemainingTime? time) {
