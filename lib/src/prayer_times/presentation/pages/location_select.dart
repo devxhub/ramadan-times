@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nextgen_button/nextgen_button.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
@@ -25,6 +26,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
   @override
   void initState() {
     context.read<LocationCubit>().loadData();
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.clearSelectedLocation());
     super.initState();
   }
 
@@ -39,22 +41,28 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
         builder: (context, prayerTimeState) {
           final countryList = prayerTimeState.countryResponse.countries ?? [];
           return Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.symmetric(horizontal: 32.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "Select Your Country",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 8.h),
-                DropdownButton<Country>(
-                  hint: const Text("Select a Country"),
+                DropdownButtonFormField<Country>(
+                  decoration: InputDecoration(
+                    labelText: "Select a Country",
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    border: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.circular(12.r), // Circular border
+                    ),
+                  ),
                   value: prayerTimeState.selectedCountry,
                   isExpanded: true,
-                  borderRadius: BorderRadius.circular(12.r),
                   menuMaxHeight: 400.h,
-                  underline: Container(height: 1, color: Colors.grey.shade400),
                   items: countryList.map((country) {
                     return DropdownMenuItem<Country>(
                       value: country,
@@ -63,8 +71,11 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   }).toList(),
                   onChanged: (Country? newValue) {
                     context.read<PrayerTimeBloc>().add(
-                        PrayerTimeEvent.selectCountry(
-                            context: context, country: newValue ?? Country()));
+                          PrayerTimeEvent.selectCountry(
+                            context: context,
+                            country: newValue ?? Country(),
+                          ),
+                        );
                   },
                 ),
                 if (prayerTimeState.selectedCountry?.name
@@ -72,11 +83,11 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         .toLowerCase() ==
                     "bangladesh") ...[
                   SizedBox(height: 24.h),
-                  const Text(
+                  Text(
                     "Select Your City",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(height: 8.h),
                   BlocBuilder<LocationCubit, LocationState<List<District>>>(
                     builder: (context, state) {
                       return state.when(
@@ -84,16 +95,19 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         loading: () => const Center(
                           child: CircularProgressIndicator.adaptive(),
                         ),
-                        data: (data) => DropdownButton<District>(
-                          hint: const Text("Select a City"),
+                        data: (data) => DropdownButtonFormField<District>(
+                          decoration: InputDecoration(
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            labelText: "Select a City",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 12.w, vertical: 8.h),
+                          ),
                           value: prayerTimeState.selectedDistrict,
                           isExpanded: true,
-                          borderRadius: BorderRadius.circular(12.r),
                           menuMaxHeight: 400.h,
-                          underline: Container(
-                            height: 1,
-                            color: Colors.grey.shade400,
-                          ),
                           items: data.map((district) {
                             return DropdownMenuItem<District>(
                               value: district,
@@ -102,9 +116,11 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                           }).toList(),
                           onChanged: (District? value) async {
                             context.read<PrayerTimeBloc>().add(
-                                PrayerTimeEvent.selectCity(
+                                  PrayerTimeEvent.selectCity(
                                     context: context,
-                                    district: value ?? District()));
+                                    district: value ?? District(),
+                                  ),
+                                );
                           },
                         ),
                         error: (e) => Container(),
@@ -114,11 +130,12 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   prayerTimeState.isDistrictSelected == false
                       ? Text(
                           "Please Select a city",
-                          style: TextStyle(color: Colors.red),
+                          style: TextStyle(color: Colors.red, fontSize: 14.sp),
                         )
                       : SizedBox()
                 ],
-                GestureDetector(
+                Expanded(child: SizedBox()),
+                NextGenButton(
                   onTap: () {
                     if (prayerTimeState.selectedCountry?.name
                             .toString()
@@ -126,9 +143,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         "bangladesh") {
                       if (prayerTimeState.selectedDistrict?.name?.isNotEmpty ==
                           true) {
-                        context
-                            .read<PrayerTimeBloc>()
-                            .add(PrayerTimeEvent.submitLocation(
+                        context.read<PrayerTimeBloc>().add(
+                              PrayerTimeEvent.submitLocation(
                                 context: context,
                                 userCoordinator: UserCoordinator(
                                   userCountryIso: prayerTimeState
@@ -148,42 +164,55 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                           .selectedDistrict?.lat
                                           .toString() ??
                                       ""),
-                                )));
+                                ),
+                              ),
+                            );
                       } else {
                         context.read<PrayerTimeBloc>().add(
-                            PrayerTimeEvent.isDistrictSelected(
-                                context: context, isDistrictSelected: false));
+                              PrayerTimeEvent.isDistrictSelected(
+                                context: context,
+                                isDistrictSelected: false,
+                              ),
+                            );
                       }
                     } else {
-                      context.read<PrayerTimeBloc>().add(PrayerTimeEvent
-                          .submitLocation(
+                      context.read<PrayerTimeBloc>().add(
+                            PrayerTimeEvent.submitLocation(
                               context: context,
                               userCoordinator: UserCoordinator(
-                                  userCountryIso: prayerTimeState
-                                          .selectedCountry?.countryCode ??
-                                      "",
-                                  userCity: prayerTimeState
-                                          .selectedCountry?.capitalCity ??
-                                      "",
-                                  userCountry:
-                                      prayerTimeState.selectedCountry?.name ??
-                                          '',
-                                  userLng:
-                                      prayerTimeState.selectedCountry?.long,
-                                  userLat:
-                                      prayerTimeState.selectedCountry?.lat)));
+                                userCountryIso: prayerTimeState
+                                        .selectedCountry?.countryCode ??
+                                    "",
+                                userCity: prayerTimeState
+                                        .selectedCountry?.capitalCity ??
+                                    "",
+                                userCountry:
+                                    prayerTimeState.selectedCountry?.name ?? '',
+                                userLng: prayerTimeState.selectedCountry?.long,
+                                userLat: prayerTimeState.selectedCountry?.lat,
+                              ),
+                            ),
+                          );
                     }
                   },
-                  child: Container(
-                    height: 40.h,
-                    width: 300.w,
-                    color: Colors.red,
-                    child: Center(
-                        child: prayerTimeState.prayerTimeStatus ==
-                                PrayerTimeStatus.initial
-                            ? CircularProgressIndicator()
-                            : Text("Save")),
+                  color: const Color(0xff674cec), // Set the background color
+                  borderColor: Colors.transparent, // No border
+                  height: 40.h, // Adjust the height of the button
+                  width: 300.w, // Adjust the width of the button
+                  radius: 8.0, // Optional: Add corner radius
+                  isLoading: prayerTimeState.prayerTimeStatus ==
+                      PrayerTimeStatus.initial, // Show loading indicator
+                  titleText: Text(
+                    "Save",
+                    style: TextStyle(
+                      fontSize: 16.w,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
                   ),
+                ),
+                SizedBox(
+                  height: 32.h,
                 )
               ],
             ),

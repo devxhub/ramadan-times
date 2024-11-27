@@ -29,20 +29,21 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       : super(const PrayerTimeState()) {
     on<PrayerTimeEvent>((events, emit) async {
       await events.map(
-        prayerTimesDataLoaded: (event) async =>
-            await _prayerTimesDataLoaded(event, emit),
-        countryDataLoaded: (event) async =>
-            await _countryDataLoaded(event, emit),
-        locationPermission: (event) async =>
-            await _locationPermission(event, emit),
-        selectCountry: (event) async => await _selectCountry(event, emit),
-        selectCity: (event) async => await _selectCity(event, emit),
-        submitLocation: (event) async => await _submitLocation(event, emit),
-        isDistrictSelected: (event) async =>
-            await _isDistrictSelected(event, emit),
-        weatherDataLoaded: (event) async =>
-            await _weatherDataLoaded(event, emit),
-      );
+          prayerTimesDataLoaded: (event) async =>
+              await _prayerTimesDataLoaded(event, emit),
+          countryDataLoaded: (event) async =>
+              await _countryDataLoaded(event, emit),
+          locationPermission: (event) async =>
+              await _locationPermission(event, emit),
+          selectCountry: (event) async => await _selectCountry(event, emit),
+          selectCity: (event) async => await _selectCity(event, emit),
+          submitLocation: (event) async => await _submitLocation(event, emit),
+          isDistrictSelected: (event) async =>
+              await _isDistrictSelected(event, emit),
+          weatherDataLoaded: (event) async =>
+              await _weatherDataLoaded(event, emit),
+          clearSelectedLocation: (event) async =>
+              await _clearSelectedLocation(event, emit));
     });
   }
   Future<void> _prayerTimesDataLoaded(
@@ -347,6 +348,16 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       state.copyWith(
         isDistrictSelected: event.isDistrictSelected,
         prayerTimeStatus: PrayerTimeStatus.success,
+      ),
+    );
+  }
+
+  _clearSelectedLocation(
+      _ClearSelectedLocation event, Emitter<PrayerTimeState> emit) {
+    emit(
+      state.copyWith(
+        selectedDistrict: null,
+        selectedCountry: null,
       ),
     );
   }
