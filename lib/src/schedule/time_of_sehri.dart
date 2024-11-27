@@ -2,8 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
-
+import 'package:ramadantimes/src/services/utility.dart';
 import '../../l10n/app_localizations.dart';
 
 class TimeContainerForSehriTime extends StatefulWidget {
@@ -48,15 +47,7 @@ class _TimeContainerForSehriTimeState extends State<TimeContainerForSehriTime> {
                 ),
                 AutoSizeText.rich(
                   TextSpan(
-                    text: DateFormat.jm("bn_BD").format(
-                      DateTime(
-                              2023,
-                              1,
-                              1,
-                              int.parse(widget.time.split(":").first),
-                              int.parse(widget.time.split(":").last))
-                          .subtract(const Duration(minutes: 5)),
-                    ),
+                    text: formatTo12Hour(widget.time),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         height: 1.4,
                         color: const Color(0xff674CEC),

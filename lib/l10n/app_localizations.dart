@@ -266,13 +266,13 @@ abstract class AppLocalizations {
   /// No description provided for @arabicDate.
   ///
   /// In en, this message translates to:
-  /// **'{day} {month}, {year} AH'**
+  /// **'{day} {month, select, 1{Muharram} 2{Safar} 3{Rabiul Awwal} 4{Rabiul Thani} 5{Jumada Al-Awwal} 6{Jumada Al-Thani} 7{Rajab} 8{Sha’ban} 9{Ramadan} 10{Shawwal} 11{Dhul Qadah} 12{Dhul Hijjah} other{}}'**
   String arabicDate(String day, String month, String year);
 
   /// No description provided for @prayerName.
   ///
   /// In en, this message translates to:
-  /// **'{name, select, Fajr{Fajar} Sunrise{Sunrise} Dhuhr{Dhuhor} Asr{Asor} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} other{name}}, '**
+  /// **'{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr (Next Day)} other{Fajr}}, '**
   String prayerName(String name);
 }
 

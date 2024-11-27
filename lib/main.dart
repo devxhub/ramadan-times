@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ramadantimes/src/bloc/NextDayTiming/next_day_timing_cubit.dart';
-import 'package:ramadantimes/src/bloc/calendar_bloc/calendar_bloc.dart';
+import 'package:ramadantimes/src/calender/data/repositories/calender_repository.dart';
+import 'package:ramadantimes/src/calender/presentation/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/home_cubit.dart';
-
 import 'package:ramadantimes/src/bloc/navigation_cubit/navigation_cubit.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/services/api_service.dart';
 import 'package:ramadantimes/src/services/api_service_masail.dart';
-
 import 'src/app.dart';
 import 'src/bloc/infinite_masail_list/masail_bloc.dart';
 import 'src/bloc/location/location_cubit.dart';
@@ -57,7 +55,7 @@ void main() {
     ),
     BlocProvider<CalendarBloc>(
       create: (BuildContext context) {
-        return CalendarBloc(apiService: ApiServices());
+        return CalendarBloc(calenderRepository: CalenderRepository());
       },
     ),
     BlocProvider<LocationCubit>(

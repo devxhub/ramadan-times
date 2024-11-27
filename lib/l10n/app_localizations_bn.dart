@@ -135,7 +135,8 @@ class AppLocalizationsBn extends AppLocalizations {
         'Maghrib': 'মাগরিব',
         'Isha': 'ঈশা',
         'Ishrak': 'ইশরাক',
-        'other': '\$name',
+        'FajrNext': 'ফজর (পরের দিন)',
+        'other': 'ফজর',
       },
     );
     return '$_temp0 ';

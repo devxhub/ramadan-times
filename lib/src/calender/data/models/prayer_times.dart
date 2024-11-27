@@ -1,6 +1,4 @@
-import 'package:intl/intl.dart';
-
-class PrayerTimesResponse {
+class CalenderResponse {
   final String? fajrStart;
   final String? fajrEnd;
   final String? sunrise;
@@ -26,7 +24,7 @@ class PrayerTimesResponse {
   final String? eveningEnd;
   final DateTime? date;
 
-  const PrayerTimesResponse({
+  const CalenderResponse({
     this.fajrStart,
     this.fajrEnd,
     this.sunrise,

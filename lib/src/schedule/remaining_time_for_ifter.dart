@@ -40,19 +40,23 @@ class _RemainingTimeContainerForIftarTimeState
 
   @override
   Widget build(BuildContext context) {
-    endTime = DateTime(
+    DateTime ifterDateTime =
+        DateTime.parse(widget.ifterTime.toString().replaceFirst(' ', 'T'));
+
+    DateTime endTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day,
-      int.parse(widget.ifterTime.toString().split(":").first),
-      int.parse(widget.ifterTime.toString().split(":").last) + 4,
+      ifterDateTime.hour,
+      ifterDateTime.minute,
     );
-    nextDayEndTime = DateTime(
+
+    DateTime nextDayEndTime = DateTime(
       DateTime.now().year,
       DateTime.now().month,
       DateTime.now().day + 1,
-      int.parse(widget.ifterTime.toString().split(":").first),
-      int.parse(widget.ifterTime.toString().split(":").last) + 4,
+      ifterDateTime.hour,
+      ifterDateTime.minute,
     );
     return Stack(
       alignment: Alignment.center,
@@ -83,12 +87,12 @@ class _RemainingTimeContainerForIftarTimeState
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontSize: 14.sp,
                         height: 1.4,
-                        color:  Colors.white70,
+                        color: Colors.white70,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
                 const Spacer(),
-                if (DateTime.now().isBefore(endTime!))
+                if (DateTime.now().isBefore(endTime))
                   CountdownTimer(
                     onEnd: () async {
                       SharedPreferences preferences =
@@ -104,7 +108,7 @@ class _RemainingTimeContainerForIftarTimeState
                                     .bn_name),
                           );
                     },
-                    endTime: endTime!.millisecondsSinceEpoch,
+                    endTime: endTime.millisecondsSinceEpoch,
                     widgetBuilder: (_, CurrentRemainingTime? time) {
                       if (time == null) {
                         return const Text("");
@@ -121,9 +125,9 @@ class _RemainingTimeContainerForIftarTimeState
                       );
                     },
                   ),
-                if (DateTime.now().isAfter(endTime!))
+                if (DateTime.now().isAfter(endTime))
                   CountdownTimer(
-                    endTime: nextDayEndTime!.millisecondsSinceEpoch,
+                    endTime: nextDayEndTime.millisecondsSinceEpoch,
                     widgetBuilder: (_, CurrentRemainingTime? time) {
                       if (time == null) {
                         return const Text("");

@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/calender/calender.dart';
+import 'package:ramadantimes/src/calender/presentation/pages/calender.dart';
 import 'package:ramadantimes/src/component/splash_page.dart';
 import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/pages/location_select.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 
 import '../l10n/app_localizations.dart';
 import 'schedule/schedule.dart';
@@ -41,8 +43,8 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               navigationBarTheme: NavigationBarThemeData(
                   // indicatorShape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                  iconTheme: MaterialStateProperty.resolveWith((states) =>
-                      states.contains(MaterialState.selected)
+                  iconTheme: WidgetStateProperty.resolveWith((states) =>
+                      states.contains(WidgetState.selected)
                           ? const IconThemeData(size: 32)
                           : const IconThemeData(size: 32))),
               useMaterial3: true,
@@ -52,7 +54,8 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             builder: (context, child) {
               return MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: TextScaler.linear(1.0)),
                 child: child!,
               );
             },
@@ -95,7 +98,15 @@ final GoRouter _router = GoRouter(
             return const CalendarPage();
           },
         ),
+
       ],
+    ),
+    GoRoute(
+      path: '/location_select',
+      name: "location_select",
+      builder: (BuildContext context, GoRouterState state) {
+        return const UserLocationSelect();
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

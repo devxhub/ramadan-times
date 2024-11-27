@@ -135,7 +135,7 @@ class ApiServices {
   Future< WeatherModelFinal> fetchWeatherData(String latitude,String longatute) async {
 
     String weatherUrl =
-        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longatute&units=metric&appid=f92bf340ade13c087f6334ed434f9761&fbclid=IwAR2MIhWnKnisutHJ1y1dgxc-XbFFbVlG_T_f8F9_fhd6ZFC4PRI3oNAWgMc";
+        "https://api.openweathermap.org/data/2.5/weather?lat=23.4605&lon=91.1815&units=metric&appid=f92bf340ade13c087f6334ed434f9761&fbclid=IwAR2MIhWnKnisutHJ1y1dgxc-XbFFbVlG_T_f8F9_fhd6ZFC4PRI3oNAWgMc";
 
     var weatherResponce = await http.get(Uri.parse(weatherUrl));
 

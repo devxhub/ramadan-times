@@ -1,32 +1,22 @@
-import 'dart:convert';
-
 import 'package:adhan/adhan.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
-
-import '../../../bloc/api_result.dart';
-import '../../../models/weather/weather_model_final.dart';
+import 'package:ramadantimes/src/calender/data/models/prayer_times.dart';
 import '../../../services/dio_client.dart';
-import 'package:http/http.dart' as http;
 
-class PrayerTimeRepository {
+class CalenderRepository {
   late DioClient dioClient;
   final String _baseUrl = "";
 
-  PrayerTimeRepository() {
+  CalenderRepository() {
     var dio = Dio();
     dioClient = DioClient(_baseUrl, dio);
   }
 
-  Future<PrayerTimesResponse> generatePrayerTimes(
-      {required double latitude,
-      required double longitude,
-      required date}) async {
-    print("Final state is lat lng$latitude===$longitude");
+  Future<CalenderResponse> generatePrayerTimes({
+    required double latitude,
+    required double longitude,
+    required DateTime date,
+  }) async {
     if (latitude.isFinite) {
       final coordinates = Coordinates(latitude, longitude); // Example: London
       CalculationParameters calculationMethod = CalculationParameters(
@@ -38,16 +28,12 @@ class PrayerTimeRepository {
         highLatitudeRule: HighLatitudeRule.middle_of_the_night,
       );
       try {
-        final date = DateTime.now();
-
         final prayerTimesForDay = PrayerTimes(
             coordinates,
             DateComponents(date.year, date.month, date.day),
             calculationMethod); // 5 mins before and after Dhuhr
         final tahajjudEnd = prayerTimesForDay.fajr
             .subtract(Duration(minutes: 10)); // End 10 minutes before Fajr
-
-        ///fazr
         final fajrStart = prayerTimesForDay.fajr;
         final fajrEnd = prayerTimesForDay.sunrise;
         final dhuhrStart = prayerTimesForDay.dhuhr;
@@ -60,9 +46,9 @@ class PrayerTimeRepository {
         final ishaEnd = prayerTimesForDay.fajr.add(Duration(days: 1));
         final awwabinStart = prayerTimesForDay.maghrib
             .add(Duration(minutes: 5)); // Start 5 minutes after Maghrib
-        final awwabinEnd = prayerTimesForDay
+        final awabinEnd = prayerTimesForDay
             .isha; // Ends at Isha time// Isha ends at Fajr of the next day
-        ///sun
+        ///sun rise
         final sunrise = prayerTimesForDay.sunrise;
         final sunset = prayerTimesForDay.maghrib;
 
@@ -78,7 +64,7 @@ class PrayerTimeRepository {
         final noonEnd = dhuhrStart;
         final eveningStart = maghribStart.subtract(Duration(minutes: 19));
         final eveningEnd = maghribStart.subtract(Duration(minutes: 4));
-        return PrayerTimesResponse(
+        return CalenderResponse(
           fajrStart: fajrStart.toString(),
           fajrEnd: fajrEnd.toString(),
           sunrise: sunrise.toString(),
@@ -94,7 +80,7 @@ class PrayerTimeRepository {
           sehri: fajrStart.toString(),
           iftar: maghribStart.toString(),
           awwabinStart: awwabinStart.toString(),
-          awwabinEnd: awwabinEnd.toString(),
+          awwabinEnd: awabinEnd.toString(),
           dawnStart: dawnStart.toString(),
           dawnEnd: dawnEnd.toString(),
           noonStart: noonStart.toString(),
@@ -108,28 +94,7 @@ class PrayerTimeRepository {
         rethrow;
       }
     } else {
-      return PrayerTimesResponse();
+      return CalenderResponse();
     }
-  }
-
-  Future<CountryResponse> countryResponseDataLoaded() async {
-    try {
-      var response =
-          await rootBundle.loadString('assets/locations/countries.json');
-      final map = jsonDecode(response);
-      return CountryResponse.fromJson(map);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<WeatherModel> fetchWeatherData(
-      String latitude, String longitude) async {
-    String weatherUrl =
-        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&appid=f92bf340ade13c087f6334ed434f9761&fbclid=IwAR2MIhWnKnisutHJ1y1dgxc-XbFFbVlG_T_f8F9_fhd6ZFC4PRI3oNAWgMc";
-
-    final response = await http.get(Uri.parse(weatherUrl));
-
-    return WeatherModel.fromRawJson(response.body);
   }
 }

@@ -4,24 +4,16 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:intl/intl.dart';
-
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
-
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
-
+import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../bloc/home/bloc/calendar_state.dart';
-
 import 'dua.dart';
-import 'location_picker.dart';
 import 'next_prayer.dart';
 import 'next_sehri_ifter.dart';
 import 'remaining_time_for_ifter.dart';
@@ -41,11 +33,15 @@ class _SchedulePageState extends State<SchedulePage> {
   District? selectedLocation;
   @override
   void initState() {
-    context.read<HomeBloc>().add(DataFetched(
-            date: DateFormat("dd-MM-yyyy").format(
-          DateTime.now(),
-        )));
-    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
+    // context.read<HomeBloc>().add(DataFetched(
+    //         date: DateFormat("dd-MM-yyyy").format(
+    //       DateTime.now(),
+    //     )));
+    //context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
+    context
+        .read<PrayerTimeBloc>()
+        .add(PrayerTimeEvent.locationPermission(context: context));
     super.initState();
   }
 
@@ -62,30 +58,32 @@ class _SchedulePageState extends State<SchedulePage> {
         backgroundColor: Color(0xfff2f2ef),
         elevation: 0,
         actions: const [
-          LocationPicker(),
+          // LocationPicker(),
+          UserLocation()
         ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          SharedPreferences preferences = await SharedPreferences.getInstance();
+          // SharedPreferences preferences = await SharedPreferences.getInstance();
           if (!mounted) return;
-          context.read<HomeBloc>().add(
-                DataFetched(
-                    date: DateFormat("dd-MM-yyyy").format(
-                      DateTime.now(),
-                    ),
-                    city: District.fromJson(jsonDecode(
-                            preferences.getString("current_location")!))
-                        .bn_name),
-              );
+          // context.read<HomeBloc>().add(
+          //       DataFetched(
+          //           date: DateFormat("dd-MM-yyyy").format(
+          //             DateTime.now(),
+          //           ),
+          //           city: District.fromJson(jsonDecode(
+          //                   preferences.getString("current_location") ?? ''))
+          //               .bn_name),
+          //     );
         },
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, HomeState state) {
-            if (state.status == HomeStatus.initial) {
+        child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+          builder: (context, state) {
+            if (state.prayerStatus == PrayerStatus.initial ||
+                state.prayerTimesResponse.fajrStart == null) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
-            } else if (state.status == HomeStatus.success) {
+            } else if (state.prayerStatus == PrayerStatus.success) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(slivers: [
@@ -94,18 +92,13 @@ class _SchedulePageState extends State<SchedulePage> {
                   ),
                   SliverToBoxAdapter(
                     child: TodayInfoCard(
-                      timeOfToday: state.timeOfToday!,
-                      timeOfNextDay: state.timeOfNextDay!,
-                      weatherMap: state!.weatherData!,
+                      timeOfToday: state.prayerTimesResponse,
+                      timeOfNextDay: state.prayerTimesResponseNextDay,
                     ),
                   ),
-                  if (state.timeOfToday != null)
-                    SliverToBoxAdapter(
-                      child: NextPrayer(
-                        today: state.timeOfToday!,
-                        nextDay: state.timeOfNextDay!,
-                      ),
-                    ),
+                  SliverToBoxAdapter(
+                    child: NextPrayer(),
+                  ),
                   SliverToBoxAdapter(
                     child: PrayerTimeWidget(),
                   ),
@@ -115,35 +108,34 @@ class _SchedulePageState extends State<SchedulePage> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1.1,
-                          crossAxisSpacing: 12.w,
-                          mainAxisSpacing: 12),
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.1,
+                        crossAxisSpacing: 12.w,
+                        mainAxisSpacing: 12,
+                      ),
                       children: [
                         TimeContainerForSehriTime(
-                          time: state.timeOfToday?.data?.timings?.fajr ?? "",
+                          time: state.prayerTimesResponse.fajrStart ?? "",
                         ),
                         RemainingTimeContainerForSehriTime(
-                          sehriTime:
-                              state.timeOfToday?.data?.timings?.fajr ?? "",
+                          sehriTime: state.prayerTimesResponse.fajrStart ?? "",
                         ),
                         TimeContainerForIftarTime(
                           ifterTime:
-                              state.timeOfToday?.data?.timings?.sunset ?? "",
+                              state.prayerTimesResponse.maghribStart ?? "",
                         ),
                         RemainingTimeContainerForIftarTime(
                           ifterTime:
-                              state.timeOfToday?.data?.timings?.sunset ?? "",
+                              state.prayerTimesResponse.maghribStart ?? "",
                         ),
                       ],
                     ),
                   ),
-                  if (state.timeOfNextDay != null)
-                    SliverToBoxAdapter(
-                      child: NextSehriIftar(
-                        data: state.timeOfNextDay!,
-                      ),
+                  SliverToBoxAdapter(
+                    child: NextSehriIftar(
+                      data: state.prayerTimesResponseNextDay,
                     ),
+                  ),
                   const SliverToBoxAdapter(
                     child: SizedBox(height: 24),
                   ),
@@ -155,30 +147,27 @@ class _SchedulePageState extends State<SchedulePage> {
                   )
                 ]),
               );
-            } else if (state.status == HomeStatus.noData) {
-              // showDialog(context: context, builder: (context) => const AlertDialog(
-              // content: Text("Please Connect to the internet "),
-              // ),);
+            } else if (state.prayerStatus == PrayerStatus.failure) {
               return SizedBox(
-                  height: 900.h,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/nowifi.png",
-                          fit: BoxFit.cover,
-                          height: 300.h,
-                          width: 300.h,
-                        ),
-                        AutoSizeText(
-                          "Please connect to the internet!!!",
-                          style: TextStyle(fontSize: 24.sp),
-                        ),
-                      ],
-                    ),
+                height: 900.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/nowifi.png",
+                        fit: BoxFit.cover,
+                        height: 300.h,
+                        width: 300.h,
+                      ),
+                      AutoSizeText(
+                        "Please connect to the internet!!!",
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                    ],
                   ),
+                ),
               );
             } else {
               return SizedBox(

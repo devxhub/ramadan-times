@@ -101,7 +101,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String arabicDate(String day, String month, String year) {
-    return '$day $month, $year AH';
+    String _temp0 = intl.Intl.selectLogic(
+      month,
+      {
+        '1': 'Muharram',
+        '2': 'Safar',
+        '3': 'Rabiul Awwal',
+        '4': 'Rabiul Thani',
+        '5': 'Jumada Al-Awwal',
+        '6': 'Jumada Al-Thani',
+        '7': 'Rajab',
+        '8': 'Sha’ban',
+        '9': 'Ramadan',
+        '10': 'Shawwal',
+        '11': 'Dhul Qadah',
+        '12': 'Dhul Hijjah',
+        'other': '',
+      },
+    );
+    return '$day $_temp0';
   }
 
   @override
@@ -109,14 +127,15 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.selectLogic(
       name,
       {
-        'Fajr': 'Fajar',
+        'Fajr': 'Fajr',
         'Sunrise': 'Sunrise',
-        'Dhuhr': 'Dhuhor',
-        'Asr': 'Asor',
+        'Dhuhr': 'Dhuhr',
+        'Asr': 'Asr',
         'Sunset': 'Sunset',
         'Maghrib': 'Maghrib',
         'Isha': 'Isha',
-        'other': 'name',
+        'FajrNext': 'Fajr (Next Day)',
+        'other': 'Fajr',
       },
     );
     return '$_temp0, ';

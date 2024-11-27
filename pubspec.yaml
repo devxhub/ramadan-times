@@ -69,6 +69,10 @@ dependencies:
   path: ^1.8.3
   http: ^1.1.0
   adhan: ^2.0.0+1
+  geocoding: ^3.0.0
+  geolocator: ^13.0.2
+  location: ^6.0.2
+  nextgen_button: ^0.0.6
 
 
 dev_dependencies:
