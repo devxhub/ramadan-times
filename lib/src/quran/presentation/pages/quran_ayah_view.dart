@@ -162,25 +162,6 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Ayah: ${ayah.numberInSurah}",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepPurple,
-                            ),
-                          ),
-                          if (ayah.sajda == true)
-                            Icon(
-                              Icons.done,
-                              color: Colors.green,
-                              size: 18.sp,
-                            ),
-                        ],
-                      ),
                       SizedBox(height: 10.h),
                       InteractiveViewer(
                         minScale: 1.0,
@@ -189,7 +170,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                           ayah.text ?? '',
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                            fontSize: 16.sp,
+                            fontSize: 22.sp,
                             color: Colors.black87,
                           ),
                         ),
@@ -231,24 +212,48 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                           ],
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: ElevatedButton.icon(
-                          onPressed: () =>
-                              _playAudio(audioUrl, ayah.numberInSurah!),
-                          icon: StreamBuilder<bool>(
-                            stream: _audioPlayer.playingStream,
-                            builder: (context, snapshot) {
-                              final isPlaying =
-                                  _currentlyPlayingAyah == ayah.numberInSurah &&
-                                      (snapshot.data ?? false);
-                              return Icon(
-                                isPlaying ? Icons.pause : Icons.play_arrow,
-                              );
-                            },
+                      Row(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Ayah: ${ayah.numberInSurah}, Ruku: ${ayah.ruku}, Juz: ${ayah.juz}",
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepPurple,
+                                ),
+                              ),
+                              if (ayah.sajda == true)
+                                Icon(
+                                  Icons.done,
+                                  color: Colors.green,
+                                  size: 18.sp,
+                                ),
+                            ],
                           ),
-                          label: Text('Play Audio'),
-                        ),
+                          Spacer(),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton.icon(
+                              onPressed: () =>
+                                  _playAudio(audioUrl, ayah.numberInSurah!),
+                              icon: StreamBuilder<bool>(
+                                stream: _audioPlayer.playingStream,
+                                builder: (context, snapshot) {
+                                  final isPlaying = _currentlyPlayingAyah ==
+                                          ayah.numberInSurah &&
+                                      (snapshot.data ?? false);
+                                  return Icon(
+                                    isPlaying ? Icons.pause : Icons.play_arrow,
+                                  );
+                                },
+                              ),
+                              label: Text('Play Audio'),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

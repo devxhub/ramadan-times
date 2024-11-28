@@ -138,11 +138,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           emit(
             state.copyWith(
               userCoordinator: UserCoordinator(
-                  userLat: 23.7115253,
-                  userLng: 90.4111451,
-                  userCountry: "Bangladesh",
-                  userCity: "Dhaka",
-                  userCountryIso: "BD"),
+                userLat: 23.7115253,
+                userLng: 90.4111451,
+                userCountry: "Bangladesh",
+                userCity: "Dhaka",
+                userCountryIso: "BD",
+              ),
               prayerTimeStatus: PrayerTimeStatus.success,
             ),
           );
@@ -152,8 +153,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          _saveLocationToPreferences(
-              23.7115253, 90.4111451); // Default location
+          _saveLocationToPreferences(23.7115253, 90.4111451);
           emit(
             state.copyWith(
               userCoordinator: UserCoordinator(
@@ -170,7 +170,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       }
 
       if (permission == LocationPermission.deniedForever) {
-        _saveLocationToPreferences(23.7115253, 90.4111451); // Default location
+        _saveLocationToPreferences(23.7115253, 90.4111451);
         emit(
           state.copyWith(
             userCoordinator: UserCoordinator(
