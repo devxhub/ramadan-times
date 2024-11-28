@@ -92,6 +92,9 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
+  String get quran => 'কুরআন';
+
+  @override
   String formattedTime(DateTime date) {
     final intl.DateFormat dateDateFormat = intl.DateFormat.jm(localeName);
     final String dateString = dateDateFormat.format(date);

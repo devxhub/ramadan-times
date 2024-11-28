@@ -27,6 +27,7 @@
   "privacyPolicy": "গোপনীয়তা নীতি",
   "timeRemaining": "সময় বাকি",
   "greetings": "স্বাগতম {userName}",
+  "quran": "Quran",
   "formattedTime": "{date}",
   "@formattedTime": {
     "description": "Formatted Time",
@@ -70,5 +71,6 @@
         "format": "compact"
       }
     }
-  }
+  },
+   "quran": "Quran"
 }

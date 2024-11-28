@@ -257,6 +257,12 @@ abstract class AppLocalizations {
   /// **'স্বাগতম {userName}'**
   String greetings(String userName);
 
+  /// No description provided for @quran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran'**
+  String get quran;
+
   /// Formatted Time
   ///
   /// In en, this message translates to:

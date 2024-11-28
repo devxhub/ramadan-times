@@ -18,7 +18,7 @@ import '../services/api_service.dart';
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class ShellPage extends StatefulWidget {
-  const ShellPage({Key? key, required this.child}) : super(key: key);
+  const ShellPage({super.key, required this.child});
 
   // final String title;
   final Widget child;
@@ -233,6 +233,16 @@ class CommonDrawer extends StatelessWidget {
                     onTap: () {
                       context.pop();
                       context.goNamed("calendar");
+
+                      context.read<NavigationCubit>().getNavBarItem(2);
+                    },
+                  ),
+                  DrawerItem(
+                    icon: const Icon(Icons.menu_book),
+                    title: AppLocalizations.of(context)?.quran ?? "",
+                    onTap: () {
+                      context.pop();
+                      context.goNamed("quran_surah");
 
                       context.read<NavigationCubit>().getNavBarItem(2);
                     },
