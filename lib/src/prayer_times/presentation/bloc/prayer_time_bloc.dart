@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -29,21 +27,22 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       : super(const PrayerTimeState()) {
     on<PrayerTimeEvent>((events, emit) async {
       await events.map(
-          prayerTimesDataLoaded: (event) async =>
-              await _prayerTimesDataLoaded(event, emit),
-          countryDataLoaded: (event) async =>
-              await _countryDataLoaded(event, emit),
-          locationPermission: (event) async =>
-              await _locationPermission(event, emit),
-          selectCountry: (event) async => await _selectCountry(event, emit),
-          selectCity: (event) async => await _selectCity(event, emit),
-          submitLocation: (event) async => await _submitLocation(event, emit),
-          isDistrictSelected: (event) async =>
-              await _isDistrictSelected(event, emit),
-          weatherDataLoaded: (event) async =>
-              await _weatherDataLoaded(event, emit),
-          clearSelectedLocation: (event) async =>
-              await _clearSelectedLocation(event, emit));
+        prayerTimesDataLoaded: (event) async =>
+            await _prayerTimesDataLoaded(event, emit),
+        countryDataLoaded: (event) async =>
+            await _countryDataLoaded(event, emit),
+        locationPermission: (event) async =>
+            await _locationPermission(event, emit),
+        selectCountry: (event) async => await _selectCountry(event, emit),
+        selectCity: (event) async => await _selectCity(event, emit),
+        submitLocation: (event) async => await _submitLocation(event, emit),
+        isDistrictSelected: (event) async =>
+            await _isDistrictSelected(event, emit),
+        weatherDataLoaded: (event) async =>
+            await _weatherDataLoaded(event, emit),
+        clearSelectedLocation: (event) async =>
+            await _clearSelectedLocation(event, emit),
+      );
     });
   }
   Future<void> _prayerTimesDataLoaded(
@@ -139,11 +138,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           emit(
             state.copyWith(
               userCoordinator: UserCoordinator(
-                  userLat: 23.7115253,
-                  userLng: 90.4111451,
-                  userCountry: "Bangladesh",
-                  userCity: "Dhaka",
-                  userCountryIso: "BD"),
+                userLat: 23.7115253,
+                userLng: 90.4111451,
+                userCountry: "Bangladesh",
+                userCity: "Dhaka",
+                userCountryIso: "BD",
+              ),
               prayerTimeStatus: PrayerTimeStatus.success,
             ),
           );
@@ -153,8 +153,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          _saveLocationToPreferences(
-              23.7115253, 90.4111451); // Default location
+          _saveLocationToPreferences(23.7115253, 90.4111451);
           emit(
             state.copyWith(
               userCoordinator: UserCoordinator(
@@ -171,7 +170,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       }
 
       if (permission == LocationPermission.deniedForever) {
-        _saveLocationToPreferences(23.7115253, 90.4111451); // Default location
+        _saveLocationToPreferences(23.7115253, 90.4111451);
         emit(
           state.copyWith(
             userCoordinator: UserCoordinator(
