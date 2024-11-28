@@ -10,11 +10,13 @@ import 'package:ramadantimes/src/bloc/home/home_cubit.dart';
 import 'package:ramadantimes/src/bloc/navigation_cubit/navigation_cubit.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:ramadantimes/src/quran/data/repository/quran_repository.dart';
 import 'package:ramadantimes/src/services/api_service.dart';
 import 'package:ramadantimes/src/services/api_service_masail.dart';
 import 'src/app.dart';
 import 'src/bloc/infinite_masail_list/masail_bloc.dart';
 import 'src/bloc/location/location_cubit.dart';
+import 'src/quran/presentation/bloc/quran_bloc.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -66,6 +68,11 @@ void main() {
     BlocProvider<MasailBloc>(
       create: (BuildContext context) {
         return MasailBloc(masailApi: MasailApiServices());
+      },
+    ),
+    BlocProvider<QuranBloc>(
+      create: (BuildContext context) {
+        return QuranBloc(quranRepository: QuranRepository());
       },
     ),
   ], child: const MyApp()));

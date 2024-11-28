@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/calender/presentation/pages/calender.dart';
 import 'package:ramadantimes/src/component/splash_page.dart';
 import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/location_select.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
-
 import '../l10n/app_localizations.dart';
+import 'quran/presentation/pages/quran_surah_view.dart';
 import 'schedule/schedule.dart';
 import 'schedule/shell.dart';
 
@@ -98,7 +95,6 @@ final GoRouter _router = GoRouter(
             return const CalendarPage();
           },
         ),
-
       ],
     ),
     GoRoute(
@@ -118,6 +114,26 @@ final GoRouter _router = GoRouter(
 
       // ],
     ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/quran_surah',
+      name: "quran_surah",
+      builder: (BuildContext context, GoRouterState state) {
+        return const QuranSurahView();
+      },
+    ),
+
+    // GoRoute(
+    //   parentNavigatorKey: _rootNavigatorKey,
+    //   path: '/quran_ayah',
+    //   name: "quran_ayah",
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     return const QuranAyahView(
+    //       surahModel: ,
+    //     );
+    //   },
+    // ),
+
     // GoRoute(
     //   parentNavigatorKey: _rootNavigatorKey,
     //   path: '/auth',

@@ -3,13 +3,9 @@ import 'dart:convert';
 import 'package:adhan/adhan.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
-
-import '../../../bloc/api_result.dart';
-import '../../../models/weather/weather_model_final.dart';
 import '../../../services/dio_client.dart';
 import 'package:http/http.dart' as http;
 
