@@ -4,12 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import '../../data/model/quran_response.dart';
 
 class QuranAyahView extends StatefulWidget {
-  final Surah surahModel;
-
-  const QuranAyahView({super.key, required this.surahModel});
+  const QuranAyahView({super.key});
 
   @override
   State<QuranAyahView> createState() => _QuranAyahViewState();
@@ -136,7 +133,8 @@ class _QuranAyahViewState extends State<QuranAyahView> {
           ),
         ),
         title: Text(
-          widget.surahModel.englishName!,
+          '',
+          // widget.surahModel.englishName!,
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
@@ -147,11 +145,12 @@ class _QuranAyahViewState extends State<QuranAyahView> {
       body: Padding(
         padding: EdgeInsets.all(16.0.w),
         child: ListView.builder(
-          itemCount: widget.surahModel.ayahs?.length ?? 0,
+          itemCount: 1,
+          //  widget.surahModel.ayahs?.length ?? 0,
           itemBuilder: (context, index) {
-            final ayah = widget.surahModel.ayahs![index];
-            final audioUrl =
-                "https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayah.numberInSurah}.mp3";
+            // final ayah = widget.surahModel.ayahs![index];
+            // final audioUrl =
+            //     "https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayah.numberInSurah}.mp3";
 
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0.h),
@@ -167,7 +166,8 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                         minScale: 1.0,
                         maxScale: 5.0,
                         child: Text(
-                          ayah.text ?? '',
+                          '',
+                          // ayah.text ?? '',
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 22.sp,
@@ -218,41 +218,42 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Ayah: ${ayah.numberInSurah}, Ruku: ${ayah.ruku}, Juz: ${ayah.juz}",
+                                // "Ayah: ${ayah.numberInSurah}, Ruku: ${ayah.ruku}, Juz: ${ayah.juz}",
+                                '',
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.deepPurple,
                                 ),
                               ),
-                              if (ayah.sajda == true)
-                                Icon(
-                                  Icons.done,
-                                  color: Colors.green,
-                                  size: 18.sp,
-                                ),
+                              // if (ayah.sajda == true)
+                              //   Icon(
+                              //     Icons.done,
+                              //     color: Colors.green,
+                              //     size: 18.sp,
+                              //   ),
                             ],
                           ),
                           Spacer(),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: ElevatedButton.icon(
-                              onPressed: () =>
-                                  _playAudio(audioUrl, ayah.numberInSurah!),
-                              icon: StreamBuilder<bool>(
-                                stream: _audioPlayer.playingStream,
-                                builder: (context, snapshot) {
-                                  final isPlaying = _currentlyPlayingAyah ==
-                                          ayah.numberInSurah &&
-                                      (snapshot.data ?? false);
-                                  return Icon(
-                                    isPlaying ? Icons.pause : Icons.play_arrow,
-                                  );
-                                },
-                              ),
-                              label: Text('Play Audio'),
-                            ),
-                          ),
+                          // Align(
+                          //   alignment: Alignment.centerRight,
+                          //   child: ElevatedButton.icon(
+                          //     onPressed: () =>
+                          //         _playAudio(audioUrl, ayah.numberInSurah!),
+                          //     icon: StreamBuilder<bool>(
+                          //       stream: _audioPlayer.playingStream,
+                          //       builder: (context, snapshot) {
+                          //         final isPlaying = _currentlyPlayingAyah ==
+                          //                 ayah.numberInSurah &&
+                          //             (snapshot.data ?? false);
+                          //         return Icon(
+                          //           isPlaying ? Icons.pause : Icons.play_arrow,
+                          //         );
+                          //       },
+                          //     ),
+                          //     label: Text('Play Audio'),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ],

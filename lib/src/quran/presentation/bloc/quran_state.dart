@@ -10,13 +10,14 @@ abstract class QuranState extends Equatable {
 class QuranInitial extends QuranState {}
 
 class QuranLoaded extends QuranState {
-  final List<Surah> surahList;
+  // final List<Surah> surahList;
+  final String languageCode;
 
   const QuranLoaded({
-    required this.surahList,
+    required this.languageCode,
   });
   @override
-  List<Object?> get props => [surahList];
+  List<Object?> get props => [languageCode];
 }
 
 class QuranError extends QuranState {
