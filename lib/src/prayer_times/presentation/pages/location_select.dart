@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:nextgen_button/nextgen_button.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
-
 import '../../../bloc/location/location_cubit.dart';
 import '../../../bloc/location/location_state.dart';
 import '../../../models/address/district.dart';
