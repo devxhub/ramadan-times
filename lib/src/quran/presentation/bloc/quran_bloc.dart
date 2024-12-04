@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ramadantimes/src/quran/data/repository/quran_data.dart';
 import 'package:ramadantimes/src/quran/data/repository/quran_repository.dart';
-
 import '../../data/model/quran_model.dart';
 part 'quran_event.dart';
 part 'quran_state.dart';
@@ -25,12 +24,13 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
     });
     on<QuranLanguageChangeEvent>((event, emit) async {
       emit(QuranInitial());
-
+      Future.delayed(Duration(milliseconds: 500));
       emit(
         QuranLoaded(
-            languageCode: event.languageCode,
-            language: event.language,
-            quranSurahList: quranSurahList),
+          languageCode: event.languageCode,
+          language: event.language,
+          quranSurahList: event.quranSurahList,
+        ),
       );
     });
     on<QuranSearchEvent>((event, emit) {

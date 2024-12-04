@@ -80,11 +80,12 @@ class _QuranSurahAppBarState extends State<QuranSurahAppBar> {
                           if (newValue != null) {
                             context.read<QuranBloc>().add(
                                   QuranLanguageChangeEvent(
-                                      languageCode: newValue,
-                                      language: quranLanguageList.firstWhere(
-                                          (item) =>
-                                              item['code'] ==
-                                              newValue)['Name']!),
+                                    languageCode: newValue,
+                                    language: quranLanguageList.firstWhere(
+                                        (item) =>
+                                            item['code'] == newValue)['Name']!,
+                                    quranSurahList: state.quranSurahList,
+                                  ),
                                 );
                           }
                         },
@@ -107,7 +108,7 @@ class _QuranSurahAppBarState extends State<QuranSurahAppBar> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 2),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 2.h),
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
@@ -122,18 +123,5 @@ class _QuranSurahAppBarState extends State<QuranSurahAppBar> {
         ],
       ),
     );
-
-    // AppBar(
-    //   toolbarHeight: 500,
-    //   leading:
-    //   title:
-    //   actions: [
-
-    //   ],
-    //   bottom: PreferredSize(
-    //     preferredSize: Size(double.infinity, 50.h),
-    //     child:
-    //   ),
-    // );
   }
 }

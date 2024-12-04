@@ -10,11 +10,11 @@ String getSurahName(int surahNumber, String languageCode) {
     case "bn":
       return getCustomSurahName(surahNumber, languageCode);
     case "fr":
-      return quran.getSurahNameFrench(surahNumber);
+      return quran.getSurahNameEnglish(surahNumber);
     case "pt":
-      return getCustomSurahName(surahNumber, languageCode);
+      return quran.getSurahNameEnglish(surahNumber);
     case "id":
-      return getCustomSurahName(surahNumber, languageCode);
+      return quran.getSurahNameEnglish(surahNumber);
     case "tr":
       return quran.getSurahNameTurkish(surahNumber);
     case "ml":
@@ -24,9 +24,9 @@ String getSurahName(int surahNumber, String languageCode) {
     case "ch":
       return getCustomSurahName(surahNumber, languageCode);
     case "sw":
-      return getCustomSurahName(surahNumber, languageCode);
+      return quran.getSurahNameEnglish(surahNumber);
     case "es":
-      return getCustomSurahName(surahNumber, languageCode);
+      return quran.getSurahNameEnglish(surahNumber);
     case "ur":
       return getCustomSurahName(surahNumber, languageCode);
     default:

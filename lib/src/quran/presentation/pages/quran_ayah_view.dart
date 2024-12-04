@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,6 @@ import '../../data/repository/quran_utils.dart';
 
 class QuranAyahView extends StatefulWidget {
   final String surahName;
-  final String surahNameTranslation;
   final String languageCode;
   final int surahAyahNumber;
   final int surahNumber;
@@ -18,7 +18,6 @@ class QuranAyahView extends StatefulWidget {
     super.key,
     required this.surahName,
     required this.surahAyahNumber,
-    required this.surahNameTranslation,
     required this.surahNumber,
     required this.languageCode,
   });
@@ -147,26 +146,13 @@ class _QuranAyahViewState extends State<QuranAyahView> {
             ),
           ),
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.surahName,
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
-              ),
-            ),
-            Text(
-              widget.surahNameTranslation,
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
-              ),
-            ),
-          ],
+        title: Text(
+          widget.surahName,
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.deepPurple,
+          ),
         ),
         actions: [
           Text(
@@ -283,10 +269,9 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                           Align(
                             alignment: Alignment.centerRight,
                             child: ElevatedButton.icon(
-                              onPressed: () => _playAudio(
-                                  quran.getAudioURLByVerse(
-                                      widget.surahNumber, index + 1),
-                                  index + 1),
+                              onPressed: () {
+                                checkConnectivityAndPlayAudio(index);
+                              },
                               icon: StreamBuilder<bool>(
                                 stream: _audioPlayer.playingStream,
                                 builder: (context, snapshot) {
@@ -298,7 +283,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                                   );
                                 },
                               ),
-                              label: Text('Play Audio'),
+                              label: Text('Play Ayah'),
                             ),
                           ),
                         ],
@@ -312,5 +297,23 @@ class _QuranAyahViewState extends State<QuranAyahView> {
         ),
       ),
     );
+  }
+
+  void checkConnectivityAndPlayAudio(int index) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.none) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('No internet connection. Please turn on internet'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } else {
+      _playAudio(
+        quran.getAudioURLByVerse(widget.surahNumber, index + 1),
+        index + 1,
+      );
+    }
   }
 }
