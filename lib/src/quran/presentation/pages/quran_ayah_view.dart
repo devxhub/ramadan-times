@@ -1,12 +1,26 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:quran/quran.dart' as quran;
+
+import '../../data/repository/quran_utils.dart';
 
 class QuranAyahView extends StatefulWidget {
-  const QuranAyahView({super.key});
+  final String surahName;
+  final String languageCode;
+  final int surahAyahNumber;
+  final int surahNumber;
+  const QuranAyahView({
+    super.key,
+    required this.surahName,
+    required this.surahAyahNumber,
+    required this.surahNumber,
+    required this.languageCode,
+  });
 
   @override
   State<QuranAyahView> createState() => _QuranAyahViewState();
@@ -133,25 +147,30 @@ class _QuranAyahViewState extends State<QuranAyahView> {
           ),
         ),
         title: Text(
-          '',
-          // widget.surahModel.englishName!,
+          widget.surahName,
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
             color: Colors.deepPurple,
           ),
         ),
+        actions: [
+          Text(
+            "Revealed in: ${quran.getPlaceOfRevelation(widget.surahNumber)}",
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          Gap(20.w),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0.w),
         child: ListView.builder(
-          itemCount: 1,
-          //  widget.surahModel.ayahs?.length ?? 0,
+          itemCount: widget.surahAyahNumber,
           itemBuilder: (context, index) {
-            // final ayah = widget.surahModel.ayahs![index];
-            // final audioUrl =
-            //     "https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayah.numberInSurah}.mp3";
-
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0.h),
               child: Card(
@@ -166,13 +185,13 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                         minScale: 1.0,
                         maxScale: 5.0,
                         child: Text(
-                          '',
-                          // ayah.text ?? '',
+                          quran.getVerse(widget.surahNumber, index + 1,
+                              verseEndSymbol: true),
                           textAlign: TextAlign.justify,
-                          style: TextStyle(
-                            fontSize: 22.sp,
-                            color: Colors.black87,
-                          ),
+                          style: GoogleFonts.amiriQuran(
+                              fontSize: 28.sp,
+                              color: Colors.black87,
+                              height: 1.8.sp),
                         ),
                       ),
                       Gap(4.h),
@@ -180,8 +199,17 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Bismillah hir rahman nir raheem',
+                              text: 'Transliteration: ',
                               style: GoogleFonts.roboto(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            TextSpan(
+                              text: getVerseTransliteration(
+                                  widget.surahNumber, index + 1),
+                              style: GoogleFonts.kanit(
                                 fontSize: 13.sp,
                                 color: Colors.black87,
                               ),
@@ -202,9 +230,12 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                               ),
                             ),
                             TextSpan(
-                              text:
-                                  'In the Name of Allah, the Most Beneficent, the Most Merciful.',
-                              style: GoogleFonts.roboto(
+                              text: quran.getVerseTranslation(
+                                  widget.surahNumber, index + 1,
+                                  verseEndSymbol: true,
+                                  translation: getSurahVerseTranslation(
+                                      widget.languageCode)),
+                              style: GoogleFonts.amiri(
                                 fontSize: 13.sp,
                                 color: Colors.black87,
                               ),
@@ -218,42 +249,43 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                // "Ayah: ${ayah.numberInSurah}, Ruku: ${ayah.ruku}, Juz: ${ayah.juz}",
-                                '',
+                                "Ayah: ${index + 1}",
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.deepPurple,
                                 ),
                               ),
-                              // if (ayah.sajda == true)
-                              //   Icon(
-                              //     Icons.done,
-                              //     color: Colors.green,
-                              //     size: 18.sp,
-                              //   ),
+                              if (quran.isSajdahVerse(
+                                  widget.surahNumber, index + 1))
+                                Icon(
+                                  Icons.done,
+                                  color: Colors.green,
+                                  size: 18.sp,
+                                ),
                             ],
                           ),
                           Spacer(),
-                          // Align(
-                          //   alignment: Alignment.centerRight,
-                          //   child: ElevatedButton.icon(
-                          //     onPressed: () =>
-                          //         _playAudio(audioUrl, ayah.numberInSurah!),
-                          //     icon: StreamBuilder<bool>(
-                          //       stream: _audioPlayer.playingStream,
-                          //       builder: (context, snapshot) {
-                          //         final isPlaying = _currentlyPlayingAyah ==
-                          //                 ayah.numberInSurah &&
-                          //             (snapshot.data ?? false);
-                          //         return Icon(
-                          //           isPlaying ? Icons.pause : Icons.play_arrow,
-                          //         );
-                          //       },
-                          //     ),
-                          //     label: Text('Play Audio'),
-                          //   ),
-                          // ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                checkConnectivityAndPlayAudio(index);
+                              },
+                              icon: StreamBuilder<bool>(
+                                stream: _audioPlayer.playingStream,
+                                builder: (context, snapshot) {
+                                  final isPlaying =
+                                      _currentlyPlayingAyah == index + 1 &&
+                                          (snapshot.data ?? false);
+                                  return Icon(
+                                    isPlaying ? Icons.pause : Icons.play_arrow,
+                                  );
+                                },
+                              ),
+                              label: Text('Play Ayah'),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -265,5 +297,23 @@ class _QuranAyahViewState extends State<QuranAyahView> {
         ),
       ),
     );
+  }
+
+  void checkConnectivityAndPlayAudio(int index) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.none) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('No internet connection. Please turn on internet'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } else {
+      _playAudio(
+        quran.getAudioURLByVerse(widget.surahNumber, index + 1),
+        index + 1,
+      );
+    }
   }
 }
