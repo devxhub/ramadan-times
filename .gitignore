@@ -1,29 +1,44 @@
-# Miscellaneous
-*.class
+# General
 *.log
-*.pyc
+*.tmp
+*.temp
 *.swp
+*.swo
+*.class
+*.pyc
+*.pyo
+*.DS_Store
+*.thumb
+*.lock
+*.lock~
+*.cache
+*.bak
+*.old
+*.rej
+*.orig
+*.gz
+*.zip
+*.tar
+*.7z
+*.rar
+*.dmp
+*.mdmp
+*.pid
+*.seed
+*.seed~
+
+# Backup files
+*~
+*.bak
+*.tmp
+*.temp
+
+# System files
 .DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
+.env
+.env.*
 
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Flutter / Dart / Pub
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -31,15 +46,89 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.macos/
+web/compiled.js
 
-# Symbolication related
+# Symbolication and Obfuscation
 app.*.symbols
-
-# Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/build
-/android/app/profile
-/android/app/release
+# IntelliJ IDEA / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+.idea/*
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# macOS
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+.Network Trash Folder
+.Temporary Items
+.apdisk
+
+# Android specific
+*.apk
+*.ap_
+**/build/
+**/app/build/
+**/local.properties
+**/.gradle/
+**/.idea/
+**/gradle-wrapper.properties
+
+# iOS specific
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.workspace
+!default.mode1v3
+!default.mode2v3
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.flutter-plugins-dependencies
+ios/.flutter-plugins
+
+# Linux specific
+linux/obj/
+linux/lib/
+linux/flutter/
+
+# Windows specific
+windows/obj/
+windows/flutter/
+
+# Web
+web/.dart_tool/
+web/build/
+
+# Firebase / Crashlytics
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
