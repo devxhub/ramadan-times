@@ -27,6 +27,10 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
       {required BuildContext context,
       required double latitude,
       required double longitude}) = _WeatherDataLoaded;
+  const factory PrayerTimeEvent.isImsakTimeShow(
+      {required BuildContext context,
+      required bool isImsakEnable}) = _IsImsakTimeShow;
+  const factory PrayerTimeEvent.imsakTimeDataLoaded() = _ImsakTimeDataLoaded;
   const factory PrayerTimeEvent.selectPrayerConvention({
     required BuildContext context,
     required String prayerConventionName,

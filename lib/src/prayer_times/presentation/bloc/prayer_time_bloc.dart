@@ -43,6 +43,9 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _weatherDataLoaded(event, emit),
         clearSelectedLocation: (event) async =>
             await _clearSelectedLocation(event, emit),
+        imsakTimeDataLoaded: (event) async =>
+            await _imsakTimeDataLoaded(event, emit),
+        isImsakTimeShow: (event) async => await _isImsakTimeShow(event, emit),
         selectPrayerConvention: (event) async =>
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
@@ -460,6 +463,26 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         selectedDistrict: null,
         selectedCountry: null,
       ),
+    );
+  }
+
+  _imsakTimeDataLoaded(
+      _ImsakTimeDataLoaded event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final isImsakEnable = prefs.getBool(
+      'isImsakEnable',
+    );
+    emit(
+      state.copyWith(isImsakEnable: isImsakEnable ?? false),
+    );
+  }
+
+  _isImsakTimeShow(
+      _IsImsakTimeShow event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isImsakEnable', event.isImsakEnable);
+    emit(
+      state.copyWith(isImsakEnable: event.isImsakEnable),
     );
   }
 
