@@ -13,6 +13,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../bloc/navigation_cubit/navigation_cubit.dart';
 import '../models/named_navigation_bar.dart';
+import '../services/api_service.dart';
 import '../settings/presentation/page/settings_page.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
