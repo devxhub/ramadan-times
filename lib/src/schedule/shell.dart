@@ -14,6 +14,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../bloc/navigation_cubit/navigation_cubit.dart';
 import '../models/named_navigation_bar.dart';
 import '../services/api_service.dart';
+import '../settings/presentation/page/settings_page.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -204,6 +205,17 @@ class CommonDrawer extends StatelessWidget {
                     title:
                         AppLocalizations.of(context)?.changeAppLocation ?? "",
                   ),
+                  DrawerItem(
+                    icon: const Icon(Icons.settings),
+                    title: "Settings",
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return SettingsScreen();
+                        },
+                      ));
+                    },
+                  ),
                   const Divider(
                     color: Colors.white,
                   ),
@@ -304,6 +316,7 @@ class DrawerItem extends StatelessWidget {
     required this.title,
     this.onTap,
   });
+
   final Widget icon;
   final String title;
   final void Function()? onTap;
