@@ -1,3 +1,4 @@
+import 'package:adhan/adhan.dart';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -60,12 +61,14 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         latitude: event.latitude,
         longitude: event.longitude,
         date: DateTime.now(),
+        calculationMethod: CalculationMethod.muslim_world_league,
       );
       final prayerTimeDataResponseNextDay =
           await prayerTimeRepository.generatePrayerTimes(
         latitude: event.latitude,
         longitude: event.longitude,
         date: nextDay,
+        calculationMethod: CalculationMethod.dubai,
       );
       emit(
         state.copyWith(

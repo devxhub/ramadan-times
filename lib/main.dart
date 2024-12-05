@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ramadantimes/src/bloc/NextDayTiming/next_day_timing_cubit.dart';
 import 'package:ramadantimes/src/calender/data/repositories/calender_repository.dart';
 import 'package:ramadantimes/src/calender/presentation/bloc/calendar_bloc.dart';
@@ -18,7 +19,8 @@ import 'src/bloc/infinite_masail_list/masail_bloc.dart';
 import 'src/bloc/location/location_cubit.dart';
 import 'src/quran/presentation/bloc/quran_bloc.dart';
 
-void main() {
+void main() async {
+  await getStorageInitialization();
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
@@ -28,7 +30,7 @@ void main() {
     systemNavigationBarColor: Colors.blue,
     statusBarColor: Colors.transparent,
   ));
-  // Intl.defaultLocale = 'bn_BD';
+
   runApp(MultiBlocProvider(providers: [
     BlocProvider<PrayerTimeBloc>(
       create: (BuildContext context) {
@@ -76,4 +78,13 @@ void main() {
       },
     ),
   ], child: const MyApp()));
+}
+
+Future<void> getStorageInitialization() async {
+  GetStorage.init();
+  GetStorage box = GetStorage();
+  box.writeIfNull('isCustomConvention', false);
+  box.writeIfNull('selectedConvention', 'Muslim World League');
+  box.writeIfNull('fajrAngle', 15.0);
+  box.writeIfNull('ishaAngle', 15.0);
 }

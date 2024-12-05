@@ -144,4 +144,16 @@ class AppLocalizationsBn extends AppLocalizations {
     );
     return '$_temp0 ';
   }
+
+  @override
+  String get prayerTimeConvention => 'নামাজের সময় সম্মেলন';
+
+  @override
+  String get customAngles => 'কাস্টম কোণ';
+
+  @override
+  String get fajrAngle => 'ফজর কোণ';
+
+  @override
+  String get ishaAngle => 'ইশা কোণ';
 }

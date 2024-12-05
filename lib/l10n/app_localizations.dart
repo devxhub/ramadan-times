@@ -280,6 +280,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr (Next Day)} other{Fajr}}, '**
   String prayerName(String name);
+
+  /// No description provided for @prayerTimeConvention.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Time Convention'**
+  String get prayerTimeConvention;
+
+  /// No description provided for @customAngles.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Angles'**
+  String get customAngles;
+
+  /// No description provided for @fajrAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr Angle'**
+  String get fajrAngle;
+
+  /// No description provided for @ishaAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha Angle'**
+  String get ishaAngle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

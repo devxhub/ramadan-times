@@ -18,13 +18,15 @@ class PrayerTimeRepository {
     dioClient = DioClient(_baseUrl, dio);
   }
 
-  Future<PrayerTimesResponse> generatePrayerTimes(
-      {required double latitude,
-      required double longitude,
-      required date}) async {
+  Future<PrayerTimesResponse> generatePrayerTimes({
+    required double latitude,
+    required double longitude,
+    required date,
+    required CalculationMethod calculationMethod,
+  }) async {
     print("Final state is lat lng$latitude===$longitude");
     if (latitude.isFinite) {
-      final coordinates = Coordinates(latitude, longitude); // Example: London
+      final coordinates = Coordinates(latitude, longitude);
       CalculationParameters calculationMethod = CalculationParameters(
         method: CalculationMethod.muslim_world_league,
         fajrAngle: 18.0,

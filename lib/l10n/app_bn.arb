@@ -72,5 +72,9 @@
       }
     }
   },
-   "quran": "কুরআন"
+   "quran": "কুরআন",
+   "prayerTimeConvention": "নামাজের সময় সম্মেলন",
+   "customAngles": "কাস্টম কোণ",
+   "fajrAngle": "ফজর কোণ",
+   "ishaAngle": "ইশা কোণ"
 }
