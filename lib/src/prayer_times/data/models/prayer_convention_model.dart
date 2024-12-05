@@ -4,12 +4,12 @@ class PrayerConventionModel {
   final CalculationMethod calculationMethod;
   final double fajrAngle;
   final double ishaAngle;
-  final String conventionName;
+  final String prayerConventionName;
 
   PrayerConventionModel({
     required this.calculationMethod,
     required this.fajrAngle,
     required this.ishaAngle,
-    required this.conventionName,
+    required this.prayerConventionName,
   });
 }

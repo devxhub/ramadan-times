@@ -76,5 +76,8 @@
    "prayerTimeConvention": "Prayer Time Convention",
    "customAngles": "Custom Angles",
    "fajrAngle": "Fajr Angle",
-   "ishaAngle": "Isha Angle"
+   "ishaAngle": "Isha Angle",
+   "ishaInterval": "Isha Interval",
+   "minutes":"minutes",
+   "maghribAngle": "Maghrib Angle"
 }

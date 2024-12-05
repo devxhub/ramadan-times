@@ -24,5 +24,8 @@ class PrayerTimeState with _$PrayerTimeState {
     @Default(true) bool isDistrictSelected,
     @Default(PrayerTimeStatus.success) PrayerTimeStatus prayerTimeStatus,
     @Default(PrayerStatus.success) PrayerStatus prayerStatus,
+    @Default('') String selectedPrayerConventionName,
+    @Default(0.0) double selectedFajrAngle,
+    @Default(0.0) double selectedIshaAngle,
   }) = _PrayerTimeState;
 }

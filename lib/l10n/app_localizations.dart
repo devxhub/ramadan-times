@@ -304,6 +304,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Isha Angle'**
   String get ishaAngle;
+
+  /// No description provided for @ishaInterval.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha Interval'**
+  String get ishaInterval;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'minutes'**
+  String get minutes;
+
+  /// No description provided for @maghribAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib Angle'**
+  String get maghribAngle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

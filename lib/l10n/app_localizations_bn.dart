@@ -156,4 +156,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get ishaAngle => 'ইশা কোণ';
+
+  @override
+  String get ishaInterval => 'ইশার ব্যবধান';
+
+  @override
+  String get minutes => 'মিনিট';
+
+  @override
+  String get maghribAngle => 'মাগরিব কোণ';
 }

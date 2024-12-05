@@ -13,6 +13,7 @@ import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_wid
 import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../prayer_times/data/repositories/prayer_convertion_util.dart';
 import 'dua.dart';
 import 'next_prayer.dart';
 import 'next_sehri_ifter.dart';
@@ -38,6 +39,8 @@ class _SchedulePageState extends State<SchedulePage> {
     //       DateTime.now(),
     //     )));
     //context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
+    // loadPrayerConvention();
+
     context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
     context
         .read<PrayerTimeBloc>()
@@ -45,6 +48,18 @@ class _SchedulePageState extends State<SchedulePage> {
     print("Init called ===");
     super.initState();
   }
+
+  // Future<void> loadPrayerConvention() async {
+  //   String prayerConventionName = await readSelectedConvention();
+  //   double fajrAngle = await readFajrAngle();
+  //   double ishaAngle = await readFajrAngle();
+  //   context.read<PrayerTimeBloc>().add(PrayerTimeEvent.selectPrayerConvention(
+  //         context: context,
+  //         prayerConventionName: prayerConventionName,
+  //         fajrAngle: fajrAngle,
+  //         ishaAngle: ishaAngle,
+  //       ));
+  // }
 
   @override
   Widget build(BuildContext context) {

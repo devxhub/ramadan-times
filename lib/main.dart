@@ -83,7 +83,6 @@ void main() async {
 Future<void> getStorageInitialization() async {
   GetStorage.init();
   GetStorage box = GetStorage();
-  box.writeIfNull('isCustomConvention', false);
   box.writeIfNull('selectedConvention', 'Muslim World League');
   box.writeIfNull('fajrAngle', 15.0);
   box.writeIfNull('ishaAngle', 15.0);

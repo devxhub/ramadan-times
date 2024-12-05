@@ -155,4 +155,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ishaAngle => 'Isha Angle';
+
+  @override
+  String get ishaInterval => 'Isha Interval';
+
+  @override
+  String get minutes => 'minutes';
+
+  @override
+  String get maghribAngle => 'Maghrib Angle';
 }

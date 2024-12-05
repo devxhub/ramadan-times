@@ -76,5 +76,8 @@
    "prayerTimeConvention": "নামাজের সময় সম্মেলন",
    "customAngles": "কাস্টম কোণ",
    "fajrAngle": "ফজর কোণ",
-   "ishaAngle": "ইশা কোণ"
+   "ishaAngle": "ইশা কোণ",
+   "ishaInterval": "ইশার ব্যবধান",
+   "minutes":"মিনিট",
+    "maghribAngle": "মাগরিব কোণ"
 }

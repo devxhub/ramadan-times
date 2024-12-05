@@ -2,9 +2,10 @@ part of 'prayer_time_bloc.dart';
 
 @freezed
 class PrayerTimeEvent with _$PrayerTimeEvent {
-  const factory PrayerTimeEvent.prayerTimesDataLoaded(
-      {required double latitude,
-      required double longitude}) = _PrayerTimesDataLoaded;
+  const factory PrayerTimeEvent.prayerTimesDataLoaded({
+    required double latitude,
+    required double longitude,
+  }) = _PrayerTimesDataLoaded;
   const factory PrayerTimeEvent.countryDataLoaded() = _CountryDataLoaded;
   const factory PrayerTimeEvent.locationPermission(
       {required BuildContext context}) = _LocationPermission;
@@ -26,4 +27,10 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
       {required BuildContext context,
       required double latitude,
       required double longitude}) = _WeatherDataLoaded;
+  const factory PrayerTimeEvent.selectPrayerConvention({
+    required BuildContext context,
+    required String prayerConventionName,
+    required double fajrAngle,
+    required double ishaAngle,
+  }) = _SelectPrayerConvention;
 }
