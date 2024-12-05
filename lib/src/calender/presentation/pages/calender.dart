@@ -76,7 +76,7 @@ class CalendarPageState extends State<CalendarPage> {
             return Column(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: const BoxDecoration(color: Color(0xff6348EB)),
                   child: TableCalendar<Datum>(
                     calendarBuilders: CalendarBuilders(
@@ -132,7 +132,7 @@ class CalendarPageState extends State<CalendarPage> {
                                       .copyWith(
                                     overflow: TextOverflow.ellipsis,
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 16,
+                                        fontSize: 14.sp,
                                         color: Colors.white,
                                       ),
                                 ),
