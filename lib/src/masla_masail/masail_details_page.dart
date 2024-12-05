@@ -61,7 +61,7 @@ class _MaslaMasailDetailsPageState extends State<MaslaMasailDetailsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AutoSizeText(
+                Text(
                   widget.result.title ?? "",
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.titleLarge,

@@ -74,19 +74,17 @@ class _RemainingTimeContainerForIftarTimeState
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.ofIfter ?? "",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: 18.sp,
-                      height: 1.4,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.remaining ?? "",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontSize: 14.sp,
-                        height: 1.4,
                         color: Colors.white70,
                         fontWeight: FontWeight.bold,
                       ),
@@ -113,10 +111,10 @@ class _RemainingTimeContainerForIftarTimeState
                       if (time == null) {
                         return const Text("");
                       }
-                      return AutoSizeText(
+                      return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -132,10 +130,10 @@ class _RemainingTimeContainerForIftarTimeState
                       if (time == null) {
                         return const Text("");
                       }
-                      return AutoSizeText(
+                      return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -151,7 +149,7 @@ class _RemainingTimeContainerForIftarTimeState
           right: 8,
           child: Image.asset(
             "assets/images/timer.png",
-            height: 60,
+            height: 60.h,
             width: 60.w,
           ),
         )

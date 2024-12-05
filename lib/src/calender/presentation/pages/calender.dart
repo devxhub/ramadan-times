@@ -11,6 +11,7 @@ import 'package:ramadantimes/src/calender/utils.dart';
 import 'package:ramadantimes/src/models/calendar_model/datum.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../component/eng_to_bn.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -32,6 +33,7 @@ class CalendarPageState extends State<CalendarPage> {
             focusDay: DateTime.now(),
           ),
         );
+
   }
 
   @override
@@ -83,8 +85,7 @@ class CalendarPageState extends State<CalendarPage> {
                         return Row(
                           children: [
                             Text(
-                              DateFormat('MMMM  yyyy', 'bn_bd')
-                                  .format(dateTime),
+                        DateFormat('MMMM  yyyy', AppLocalizations.of(context)?.localeName).format(dateTime),
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -114,23 +115,22 @@ class CalendarPageState extends State<CalendarPage> {
                                 }
                               },
                               child: Container(
-                                height: 32,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 0),
+                                padding: EdgeInsets.all(6.r),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(18),
                                     border: Border.all(color: Colors.white70)),
                                 child: Text(
                                   _calendarFormat == CalendarFormat.month
-                                      ? "মাস"
+                                      ? AppLocalizations.of(context)!.month
                                       : _calendarFormat ==
                                               CalendarFormat.twoWeeks
-                                          ? "২ সপ্তাহ"
-                                          : "সপ্তাহ",
+                                          ? AppLocalizations.of(context)!.twoWeek
+                                          : AppLocalizations.of(context)!.week,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
                                       .copyWith(
+                                    overflow: TextOverflow.ellipsis,
                                         fontWeight: FontWeight.w700,
                                         fontSize: 16,
                                         color: Colors.white,
@@ -149,7 +149,7 @@ class CalendarPageState extends State<CalendarPage> {
                               shape: BoxShape.circle,
                               color: Colors.transparent),
                           child: Text(
-                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -168,7 +168,7 @@ class CalendarPageState extends State<CalendarPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.white54),
                           child: Text(
-                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -187,7 +187,7 @@ class CalendarPageState extends State<CalendarPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.white),
                           child: Text(
-                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -208,7 +208,7 @@ class CalendarPageState extends State<CalendarPage> {
                               shape: BoxShape.circle,
                               color: Colors.transparent),
                           child: Text(
-                            DateFormat('dd', 'bn_bd').format(dateTime),
+                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -259,7 +259,7 @@ class CalendarPageState extends State<CalendarPage> {
                     ),
                     firstDay: kFirstDay,
                     lastDay: kLastDay,
-                    locale: "bn_BD",
+                    locale: AppLocalizations.of(context)?.localeName,
                     daysOfWeekStyle: DaysOfWeekStyle(
                         weekendStyle: Theme.of(context)
                             .textTheme
@@ -359,7 +359,7 @@ class CalendarPageState extends State<CalendarPage> {
                                       MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    AutoSizeText(
+                                    Text(
                                       AppLocalizations.of(context)?.hijriDate ??
                                           "",
                                       style: Theme.of(context)
@@ -370,8 +370,8 @@ class CalendarPageState extends State<CalendarPage> {
                                             color: Colors.black87,
                                           ),
                                     ),
-                                    AutoSizeText(
-                                      "${hijriDate.hDay} ${hijriDate.longMonthName} ${hijriDate.hYear}",
+                                    Text(
+                                      "${engToBn(hijriDate.hDay.toString(), context)} ${hijriMonthLocal(hijriDate.longMonthName, context)} ${engToBn(hijriDate.hYear.toString(), context)}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleLarge!
@@ -393,7 +393,7 @@ class CalendarPageState extends State<CalendarPage> {
                           Expanded(
                             child: ListView(
                               children: [
-                                AutoSizeText(
+                                Text(
                                   AppLocalizations.of(context)?.schedule ?? "",
                                   style: Theme.of(context)
                                       .textTheme
@@ -541,7 +541,7 @@ class CalendarPageState extends State<CalendarPage> {
                       height: 300.h,
                       width: 300.h,
                     ),
-                    AutoSizeText(
+                    Text(
                       "Please connect to the internet!!!",
                       style: TextStyle(fontSize: 24.sp),
                     ),
@@ -563,7 +563,7 @@ class CalendarPageState extends State<CalendarPage> {
                       height: 250.h,
                       width: 250.h,
                     ),
-                    AutoSizeText(
+                    Text(
                       "Something went wrong...",
                       style: TextStyle(fontSize: 24.sp),
                     ),
@@ -599,7 +599,7 @@ class TimeCard extends StatelessWidget {
       DateTime utcDateTime = DateTime.parse(utcTime);
       DateTime adjustedDateTime =
           utcDateTime.add(Duration(minutes: adjustTime));
-      return DateFormat.jm("bn_BD").format(adjustedDateTime);
+      return DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName).format(adjustedDateTime);
     }
 
     return Row(
@@ -641,7 +641,7 @@ class TimeCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
+                    Text(
                       name,
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontWeight: FontWeight.w700,
@@ -649,7 +649,7 @@ class TimeCard extends StatelessWidget {
                             color: Colors.black87,
                           ),
                     ),
-                    AutoSizeText(
+                    Text(
                       formatTime(startTime),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             height: 1,

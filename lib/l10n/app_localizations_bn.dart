@@ -9,6 +9,87 @@ class AppLocalizationsBn extends AppLocalizations {
   AppLocalizationsBn([String locale = 'bn']) : super(locale);
 
   @override
+  String get prohibitedPrayerTimes => 'নামাজের নিষিদ্ধ সময়';
+
+  @override
+  String get morning => 'সকাল';
+
+  @override
+  String get noon => 'দুপুর';
+
+  @override
+  String get evening => 'সন্ধ্যা';
+
+  @override
+  String get month => 'মাস';
+
+  @override
+  String get twoWeek => '২ সপ্তাহ';
+
+  @override
+  String get week => 'সপ্তাহ';
+
+  @override
+  String get locationSettings => 'লোকেশন সেটিংস';
+
+  @override
+  String get selectYourCountry => 'আপনার দেশ নির্বাচন করুন';
+
+  @override
+  String get selectCountry => 'দেশ নির্বাচন করুন';
+
+  @override
+  String get selectYourCity => 'আপনার শহর নির্বাচন করুন';
+
+  @override
+  String get selectACity => 'শহর নির্বাচন করুন';
+
+  @override
+  String get selectYourDistrict => 'Select Your District';
+
+  @override
+  String get pleaseSelectYourCity => 'শহর নির্বাচন করুন';
+
+  @override
+  String get save => 'সেভ';
+
+  @override
+  String get prayerTimes => 'নামাজের সময়';
+
+  @override
+  String get fajr => 'ফজর';
+
+  @override
+  String get dhuhr => 'যুহর';
+
+  @override
+  String get asr => 'আসর';
+
+  @override
+  String get maghrib => 'মাগরিব';
+
+  @override
+  String get isha => 'ইশা';
+
+  @override
+  String get awabin => 'আওয়াবিন';
+
+  @override
+  String get tahajjud => 'তাহাজ্জুদ';
+
+  @override
+  String get afterIsha => 'ইশার পরে';
+
+  @override
+  String get english => 'ইংরেজি';
+
+  @override
+  String get bangla => 'বাংলা';
+
+  @override
+  String get finnish => 'ফিনিশ';
+
+  @override
   String get schedule => 'সময়সূচী';
 
   @override
@@ -72,9 +153,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get chooseYourLocation => 'আপনার অবস্থান নির্বাচন করুন';
 
   @override
-  String get save => 'সংরক্ষণ করুন';
-
-  @override
   String get hijriDate => 'হিজরি তারিখ';
 
   @override
@@ -90,9 +168,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String greetings(String userName) {
     return 'স্বাগতম $userName';
   }
-
-  @override
-  String get quran => 'কুরআন';
 
   @override
   String formattedTime(DateTime date) {
@@ -138,7 +213,7 @@ class AppLocalizationsBn extends AppLocalizations {
         'Maghrib': 'মাগরিব',
         'Isha': 'ঈশা',
         'Ishrak': 'ইশরাক',
-        'FajrNext': 'ফজর (পরের দিন)',
+        'FajrNext': 'ফজর',
         'other': 'ফজর',
       },
     );

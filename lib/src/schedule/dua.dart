@@ -30,24 +30,24 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
     List<Widget> duaList = [
       Container(
         // constraints: BoxConstraints.loose(Size(300, 100)),
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(24.r),
         ),
         child: Column(
           children: [
-            AutoSizeText(
+            Text(
               "نَوَيْتُ اَنْ اُصُوْمَ غَدًا مِّنْ شَهْرِ رَمْضَانَ الْمُبَارَكِ فَرْضَا لَكَ يَا اللهُ فَتَقَبَّل مِنِّى اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْم",
               style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.right,
             ),
-            AutoSizeText(
+            Text(
               "উচ্চারণ : নাওয়াইতু আন আছুমা গদাম মিং শাহরি রমাদ্বানাল মুবারকি ফারদ্বল্লাকা ইয়া আল্লাহু ফাতাক্বব্বাল মিন্নী ইন্নাকা আংতাস সামীউল আলীম",
               textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            AutoSizeText(
+            Text(
               "অর্থ : হে আল্লাহ! আমি আগামীকাল পবিত্র রমজানের তোমার পক্ষ থেকে নির্ধারিত ফরজ রোজা রাখার ইচ্ছা পোষণ (নিয়্যত) করলাম। অতএব তুমি আমার পক্ষ থেকে (আমার রোযা তথা পানাহার থেকে বিরত থাকাকে) কবুল কর, নিশ্চয়ই তুমি সর্বশ্রোতা ও সর্বজ্ঞানী।",
               textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.titleLarge,
@@ -57,24 +57,24 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
       ),
       Container(
         // constraints: BoxConstraints.loose(Size(300, 100)),
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(24.r),
         ),
         child: Column(
           children: [
-            AutoSizeText(
+            Text(
               "اَللَّهُمَّ لَكَ صُمْتُ وَ عَلَى رِزْقِكَ وَ اَفْطَرْتُ بِرَحْمَتِكَ يَا اَرْحَمَ الرَّاحِيْمِيْن",
               textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
-            AutoSizeText(
+            Text(
               "উচ্চারণ : আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযক্বিকা ওয়া আফতারতু বিরাহমাতিকা ইয়া আরহামার রাহিমিন",
               textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            AutoSizeText(
+            Text(
               "অর্থ : হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেয়া রিযিক্বের মাধ্যমে ইফতার করছি।",
               textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.titleLarge,
@@ -137,7 +137,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                               ? Colors.white
                               : Colors.transparent,
                         ),
-                        child: AutoSizeText(
+                        child: Text(
                           AppLocalizations.of(context)?.sehriDua ?? "",
                           style: Theme.of(context)
                               .textTheme
@@ -163,7 +163,7 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                           borderRadius: BorderRadius.circular(20.r),
                           color: _selectedTab == 1 ? Colors.white : null,
                         ),
-                        child: AutoSizeText(
+                        child: Text(
                           AppLocalizations.of(context)?.ifterDua ?? "",
                           style: Theme.of(context)
                               .textTheme

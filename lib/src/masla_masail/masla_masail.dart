@@ -113,7 +113,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                     height: 300.h,
                                     width: 300.h,
                                   ),
-                                  AutoSizeText(
+                                  Text(
                                     "Failed to Fetch Articles!!!",
                                     style: TextStyle(fontSize: 20.sp),
                                   ),
@@ -136,7 +136,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                     height: 300.h,
                                     width: 300.h,
                                   ),
-                                  AutoSizeText(
+                                  Text(
                                     "Please connect to the internet!!!",
                                     style: TextStyle(fontSize: 20.sp),
                                   ),
@@ -160,7 +160,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                       height: 300.h,
                                       width: 300.h,
                                     ),
-                                    AutoSizeText(
+                                    Text(
                                       "No Articles !!!",
                                       style: TextStyle(fontSize: 24.sp),
                                     ),
@@ -201,7 +201,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                             color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(12)),
-                                        child: AutoSizeText(
+                                        child: Text(
                                           state.posts[index].title ?? "",
                                           style: Theme.of(context)
                                               .textTheme
