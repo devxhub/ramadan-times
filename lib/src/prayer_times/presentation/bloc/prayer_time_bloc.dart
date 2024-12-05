@@ -116,6 +116,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
 
   Future<void> _locationPermission(
       _LocationPermission event, Emitter<PrayerTimeState> emit) async {
+    print("Init called ===1111");
     final prayerBloc = event.context.read<PrayerTimeBloc>();
     emit(
       state.copyWith(
@@ -365,7 +366,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       longitude: event.userCoordinator.userLng ?? 0.0,
       context: event.context,
     ));
-
+_saveCurrentLocationToPreferences(event.userCoordinator.userLat ?? 0.0,event.userCoordinator.userLng ?? 0.0, event.userCoordinator.userCountry??'', event.userCoordinator.userCity??"",event.userCoordinator.userCountryIso??'');
     emit(
       state.copyWith(
           userCoordinator: event.userCoordinator,
