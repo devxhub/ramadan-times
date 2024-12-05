@@ -126,154 +126,187 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         prayerTimeStatus: PrayerTimeStatus.initial,
       ),
     );
-    try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        await Geolocator.requestPermission();
-      }
-
-      LocationPermission permission = await Geolocator.checkPermission();
-      ConnectivityResult connection = await Connectivity().checkConnectivity();
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
-      double currentLongitude =
-          prefs.getDouble('currentLongitude') ?? 90.4111451;
-      String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
-      String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
-      String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
-
-      if (connection == ConnectivityResult.none) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          _saveLocationToPreferences(23.7115253, 90.4111451);
-          var userCoordinator = UserCoordinator(
-            userLat: currentLatitude,
-            userLng: currentLongitude,
-            userCountry: currentCountry,
-            userCity: currentCity,
-            userCountryIso: currentIsoCode,
-          );
-
-          emit(
-            state.copyWith(
-              userCoordinator: userCoordinator,
-              prayerTimeStatus: PrayerTimeStatus.success,
-            ),
-          );
-          return;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    double userLat=prefs.getDouble('currentLatitude')??0.0;
+    double userLng=prefs.getDouble('currentLongitude')??0.0;
+    String userCity=prefs.getString('currentCity')??"";
+    String userCountry=prefs.getString('currentCountry')??"";
+    String userIsoCountryCode=prefs.getString('isoCountryCode')??"";
+    var coordinator = UserCoordinator(
+      userLat: userLat,
+      userLng: userLng,
+      userCountry:userCountry,
+      userCity: userCity,
+      userCountryIso: userIsoCountryCode,
+    );
+    if(userCity.isEmpty==true){
+      try {
+        bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+        if (!serviceEnabled) {
+          await Geolocator.requestPermission();
         }
-      }
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          _saveLocationToPreferences(23.7115253, 90.4111451);
-          var userCoordinator = UserCoordinator(
-            userLat: currentLatitude,
-            userLng: currentLongitude,
-            userCountry: currentCountry,
-            userCity: currentCity,
-            userCountryIso: currentIsoCode,
-          );
 
-          emit(
-            state.copyWith(
-              userCoordinator: userCoordinator,
-              prayerTimeStatus: PrayerTimeStatus.success,
-            ),
-          );
-          return;
-        }
-      }
+        LocationPermission permission = await Geolocator.checkPermission();
+        ConnectivityResult connection = await Connectivity().checkConnectivity();
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
+        double currentLongitude =
+            prefs.getDouble('currentLongitude') ?? 90.4111451;
+        String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
+        String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
+        String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
 
-      if (permission == LocationPermission.deniedForever) {
-        _saveLocationToPreferences(23.7115253, 90.4111451);
-        emit(
-          state.copyWith(
-            userCoordinator: UserCoordinator(
+        if (connection == ConnectivityResult.none) {
+          permission = await Geolocator.requestPermission();
+          if (permission == LocationPermission.denied) {
+            _saveLocationToPreferences(23.7115253, 90.4111451);
+            var userCoordinator = UserCoordinator(
               userLat: currentLatitude,
               userLng: currentLongitude,
               userCountry: currentCountry,
               userCity: currentCity,
               userCountryIso: currentIsoCode,
+            );
+
+            emit(
+              state.copyWith(
+                userCoordinator: userCoordinator,
+                prayerTimeStatus: PrayerTimeStatus.success,
+              ),
+            );
+            return;
+          }
+        }
+        if (permission == LocationPermission.denied) {
+          permission = await Geolocator.requestPermission();
+          if (permission == LocationPermission.denied) {
+            _saveLocationToPreferences(23.7115253, 90.4111451);
+            var userCoordinator = UserCoordinator(
+              userLat: currentLatitude,
+              userLng: currentLongitude,
+              userCountry: currentCountry,
+              userCity: currentCity,
+              userCountryIso: currentIsoCode,
+            );
+
+            emit(
+              state.copyWith(
+                userCoordinator: userCoordinator,
+                prayerTimeStatus: PrayerTimeStatus.success,
+              ),
+            );
+            return;
+          }
+        }
+
+        if (permission == LocationPermission.deniedForever) {
+          _saveLocationToPreferences(23.7115253, 90.4111451);
+          emit(
+            state.copyWith(
+              userCoordinator: UserCoordinator(
+                userLat: currentLatitude,
+                userLng: currentLongitude,
+                userCountry: currentCountry,
+                userCity: currentCity,
+                userCountryIso: currentIsoCode,
+              ),
+              prayerTimeStatus: PrayerTimeStatus.success,
             ),
+          );
+        }
+
+        Position position = await Geolocator.getCurrentPosition(
+          locationSettings: LocationSettings(
+            accuracy: LocationAccuracy.high,
+            distanceFilter: 100,
+          ),
+        );
+
+        List<Placemark> placemarks = await placemarkFromCoordinates(
+          position.latitude,
+          position.longitude,
+        );
+        String? city = placemarks.first.locality;
+        String? country = placemarks.first.country;
+        String? isoCountryCode = placemarks.first.country;
+
+        _saveLocationToPreferences(position.latitude, position.longitude);
+
+        prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+          latitude: position.latitude,
+          longitude: position.longitude,
+        ));
+        prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
+          latitude: position.latitude,
+          longitude: position.longitude,
+          context: event.context,
+        ));
+        emit(
+          state.copyWith(
+            userCoordinator: UserCoordinator(
+                userLat: position.latitude,
+                userLng: position.longitude,
+                userCountry: country,
+                userCity: city,
+                userCountryIso: placemarks.first.isoCountryCode),
             prayerTimeStatus: PrayerTimeStatus.success,
           ),
         );
+        _saveCurrentLocationToPreferences(position.latitude, position.longitude,
+            country!, city!, isoCountryCode!);
       }
-
-      Position position = await Geolocator.getCurrentPosition(
-        locationSettings: LocationSettings(
-          accuracy: LocationAccuracy.high,
-          distanceFilter: 100,
-        ),
-      );
-
-      List<Placemark> placemarks = await placemarkFromCoordinates(
-        position.latitude,
-        position.longitude,
-      );
-      String? city = placemarks.first.locality;
-      String? country = placemarks.first.country;
-      String? isoCountryCode = placemarks.first.country;
-
-      _saveLocationToPreferences(position.latitude, position.longitude);
-
+      catch (e) {
+        if (kDebugMode) {
+          print("Error fetching location: $e");
+        }
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
+        double currentLongitude =
+            prefs.getDouble('currentLongitude') ?? 90.4111451;
+        String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
+        String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
+        String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
+        prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+          latitude: currentLatitude,
+          longitude: currentLongitude,
+        ));
+        prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
+          latitude: currentLatitude,
+          longitude: currentLongitude,
+          context: event.context,
+        ));
+        var userCoordinator = UserCoordinator(
+          userLat: currentLatitude,
+          userLng: currentLongitude,
+          userCountry: currentCountry,
+          userCity: currentCity,
+          userCountryIso: currentIsoCode,
+        );
+        emit(
+          state.copyWith(
+            userCoordinator: userCoordinator,
+            prayerTimeStatus: PrayerTimeStatus.failure,
+          ),
+        );
+      }
+    }else{
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-        latitude: position.latitude,
-        longitude: position.longitude,
+        latitude: coordinator.userLat??23.7115253,
+        longitude: coordinator.userLng??90.4111451,
       ));
       prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
-        latitude: position.latitude,
-        longitude: position.longitude,
+        latitude: coordinator.userLat??23.7115253,
+        longitude: coordinator.userLng??90.4111451,
         context: event.context,
       ));
       emit(
         state.copyWith(
-          userCoordinator: UserCoordinator(
-              userLat: position.latitude,
-              userLng: position.longitude,
-              userCountry: country,
-              userCity: city,
-              userCountryIso: placemarks.first.isoCountryCode),
-          prayerTimeStatus: PrayerTimeStatus.success,
-        ),
-      );
-      _saveCurrentLocationToPreferences(position.latitude, position.longitude,
-          country!, city!, isoCountryCode!);
-    } catch (e) {
-      if (kDebugMode) {
-        print("Error fetching location: $e");
-      }
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
-      double currentLongitude =
-          prefs.getDouble('currentLongitude') ?? 90.4111451;
-      String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
-      String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
-      String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
-      prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-        latitude: currentLatitude,
-        longitude: currentLongitude,
-      ));
-      prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
-        latitude: currentLatitude,
-        longitude: currentLongitude,
-        context: event.context,
-      ));
-      var userCoordinator = UserCoordinator(
-        userLat: currentLatitude,
-        userLng: currentLongitude,
-        userCountry: currentCountry,
-        userCity: currentCity,
-        userCountryIso: currentIsoCode,
-      );
-      emit(
-        state.copyWith(
-          userCoordinator: userCoordinator,
+          userCoordinator:coordinator,
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
     }
+
   }
 
   Future<void> _saveCurrentLocationToPreferences(double lat, double lng,
