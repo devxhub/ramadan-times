@@ -1,3 +1,4 @@
+import 'package:adhan/adhan.dart';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
