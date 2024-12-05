@@ -13,6 +13,7 @@ import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import '../l10n/l10n.dart';
 import 'bloc/language_bloc/language_bloc.dart';
 import 'langauage/language_screen.dart';
+import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import 'quran/presentation/pages/quran_surah_view.dart';
 import 'schedule/schedule.dart';
 import 'schedule/shell.dart';
