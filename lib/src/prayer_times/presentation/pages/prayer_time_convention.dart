@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_convention_data.dart';
 import '../../../../l10n/app_localizations.dart';

@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-
 import 'package:go_router/go_router.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
 import '../bloc/navigation_cubit/navigation_cubit.dart';
 import '../models/named_navigation_bar.dart';
-import '../services/api_service.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
