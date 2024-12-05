@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,8 @@ import 'package:nextgen_button/nextgen_button.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+
+import '../../../../l10n/app_localizations.dart';
 import '../../../bloc/location/location_cubit.dart';
 import '../../../bloc/location/location_state.dart';
 import '../../../models/address/district.dart';
@@ -33,7 +36,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: const Text("Select user location"),
+        title: Text(AppLocalizations.of(context)!.locationSettings),
       ),
       body: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
         builder: (context, prayerTimeState) {
@@ -44,18 +47,17 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Select Your Country",
+                  AppLocalizations.of(context)!.selectYourCountry,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 8.h),
                 DropdownButtonFormField<Country>(
                   decoration: InputDecoration(
-                    labelText: "Select a Country",
+                    labelText: AppLocalizations.of(context)!.selectCountry,
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     border: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular(12.r), // Circular border
+                      borderRadius: BorderRadius.circular(12.r), // Circular border
                     ),
                   ),
                   value: prayerTimeState.selectedCountry,
@@ -82,7 +84,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                     "bangladesh") ...[
                   SizedBox(height: 24.h),
                   Text(
-                    "Select Your City",
+                    AppLocalizations.of(context)!.selectYourCity,
                     style:
                         TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
@@ -96,7 +98,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         data: (data) => DropdownButtonFormField<District>(
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
-                            labelText: "Select a City",
+                            labelText: AppLocalizations.of(context)!.selectACity,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
                             ),
@@ -127,7 +129,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   ),
                   prayerTimeState.isDistrictSelected == false
                       ? Text(
-                          "Please Select a city",
+                    AppLocalizations.of(context)!.pleaseSelectYourCity,
                           style: TextStyle(color: Colors.red, fontSize: 14.sp),
                         )
                       : SizedBox()
@@ -201,7 +203,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   isLoading: prayerTimeState.prayerTimeStatus ==
                       PrayerTimeStatus.initial, // Show loading indicator
                   titleText: Text(
-                    "Save",
+                    AppLocalizations.of(context)!.save,
                     style: TextStyle(
                       fontSize: 16.w,
                       fontWeight: FontWeight.w700,

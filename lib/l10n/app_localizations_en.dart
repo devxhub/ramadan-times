@@ -9,90 +9,165 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get schedule => 'সময়সূচী';
+  String get prohibitedPrayerTimes => 'Prohibited Prayer Times';
 
   @override
-  String get maslaMasail => 'মাসআলা- মাসায়েল';
+  String get morning => 'Morning';
 
   @override
-  String get calendar => 'ক্যালেন্ডার';
+  String get noon => 'Noon';
 
   @override
-  String get ramadanMubarak => 'রমজান মুবারক';
+  String get evening => 'Evening';
 
   @override
-  String get nextPrayer => 'পরবতী নামাজ';
+  String get month => 'Month';
 
   @override
-  String get sehriTime => 'সেহরির সময়';
+  String get twoWeek => 'Two Weeks';
 
   @override
-  String get ifterTime => 'ইফতারের সময়';
+  String get week => 'Week';
 
   @override
-  String get remaining => 'সময় বাকি';
+  String get locationSettings => 'Location Settings';
 
   @override
-  String get ofIfter => 'ইফতারের';
+  String get selectYourCountry => 'Select Your Country';
 
   @override
-  String get ofSehri => 'সেহরির';
+  String get selectCountry => 'Select a Country';
 
   @override
-  String get nextDay => 'পরবর্তী দিনের';
+  String get selectYourCity => 'Select Your City';
 
   @override
-  String get sehri => 'সেহরি';
+  String get selectACity => 'Select a City';
 
   @override
-  String get sehriDua => 'সেহরির দোয়া';
+  String get selectYourDistrict => 'Select Your District';
 
   @override
-  String get ifter => 'ইফতার';
+  String get pleaseSelectYourCity => 'Please select a city';
 
   @override
-  String get ifterDua => 'ইফতারের দোয়া';
+  String get save => 'Save';
 
   @override
-  String get changeAppLanguage => 'ভাষা পরিবর্তন করুন';
+  String get prayerTimes => 'Prayer Times';
 
   @override
-  String get changeAppLocation => 'অবস্থান পরিবর্তন করুন';
+  String get fajr => 'Fajr';
 
   @override
-  String get shareApp => 'শেয়ার করুন';
+  String get dhuhr => 'Dhuhr';
 
   @override
-  String get rateThisApp => 'রেটিং দিন';
+  String get asr => 'Asr';
 
   @override
-  String get chooseYourLanguage => 'আপনার ভাষা নির্বাচন করুন';
+  String get maghrib => 'Maghrib';
 
   @override
-  String get chooseYourLocation => 'আপনার অবস্থান নির্বাচন করুন';
+  String get isha => 'Isha';
 
   @override
-  String get save => 'সংরক্ষণ করুন';
+  String get awabin => 'Awabin';
 
   @override
-  String get hijriDate => 'হিজরি তারিখ';
+  String get tahajjud => 'Tahajjud';
 
   @override
-  String get prayer => 'নামায';
+  String get afterIsha => 'After Isha';
 
   @override
-  String get privacyPolicy => 'গোপনীয়তা নীতি';
+  String get english => 'English';
 
   @override
-  String get timeRemaining => 'সময় বাকি';
+  String get bangla => 'Bangla';
+
+  @override
+  String get finnish => 'Finnish';
+
+  @override
+  String get schedule => 'schedule';
+
+  @override
+  String get maslaMasail => 'Masala - Masael';
+
+  @override
+  String get calendar => 'Calendar';
+
+  @override
+  String get ramadanMubarak => 'Ramadan Mubarak';
+
+  @override
+  String get nextPrayer => 'last prayer';
+
+  @override
+  String get sehriTime => 'Sehri time';
+
+  @override
+  String get ifterTime => 'Iftar time';
+
+  @override
+  String get remaining => 'Time remaining';
+
+  @override
+  String get ofIfter => 'of Iftar';
+
+  @override
+  String get ofSehri => 'of Sehri';
+
+  @override
+  String get nextDay => 'Next day\'s';
+
+  @override
+  String get sehri => 'Sehri';
+
+  @override
+  String get sehriDua => 'Sehri\'s Dua';
+
+  @override
+  String get ifter => 'Iftar';
+
+  @override
+  String get ifterDua => 'Iftar\'s Dua';
+
+  @override
+  String get changeAppLanguage => 'Change the language';
+
+  @override
+  String get changeAppLocation => 'Change location';
+
+  @override
+  String get shareApp => 'Share the app';
+
+  @override
+  String get rateThisApp => 'Rate this app';
+
+  @override
+  String get chooseYourLanguage => 'Select your language';
+
+  @override
+  String get chooseYourLocation => 'Select your location';
+
+  @override
+  String get hijriDate => 'Hijri date';
+
+  @override
+  String get prayer => 'Prayer';
+
+  @override
+  String get privacyPolicy => 'Privacy policy';
+
+  @override
+  String get timeRemaining => 'Remaining Time';
 
   @override
   String greetings(String userName) {
-    return 'স্বাগতম $userName';
+    return 'Welcome $userName';
   }
-
-  @override
-  String get quran => 'Quran';
 
   @override
   String formattedTime(DateTime date) {
@@ -137,7 +212,7 @@ class AppLocalizationsEn extends AppLocalizations {
         'Sunset': 'Sunset',
         'Maghrib': 'Maghrib',
         'Isha': 'Isha',
-        'FajrNext': 'Fajr (Next Day)',
+        'FajrNext': 'Fajr',
         'other': 'Fajr',
       },
     );

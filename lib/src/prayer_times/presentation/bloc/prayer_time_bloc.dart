@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -27,22 +29,21 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       : super(const PrayerTimeState()) {
     on<PrayerTimeEvent>((events, emit) async {
       await events.map(
-        prayerTimesDataLoaded: (event) async =>
-            await _prayerTimesDataLoaded(event, emit),
-        countryDataLoaded: (event) async =>
-            await _countryDataLoaded(event, emit),
-        locationPermission: (event) async =>
-            await _locationPermission(event, emit),
-        selectCountry: (event) async => await _selectCountry(event, emit),
-        selectCity: (event) async => await _selectCity(event, emit),
-        submitLocation: (event) async => await _submitLocation(event, emit),
-        isDistrictSelected: (event) async =>
-            await _isDistrictSelected(event, emit),
-        weatherDataLoaded: (event) async =>
-            await _weatherDataLoaded(event, emit),
-        clearSelectedLocation: (event) async =>
-            await _clearSelectedLocation(event, emit),
-      );
+          prayerTimesDataLoaded: (event) async =>
+              await _prayerTimesDataLoaded(event, emit),
+          countryDataLoaded: (event) async =>
+              await _countryDataLoaded(event, emit),
+          locationPermission: (event) async =>
+              await _locationPermission(event, emit),
+          selectCountry: (event) async => await _selectCountry(event, emit),
+          selectCity: (event) async => await _selectCity(event, emit),
+          submitLocation: (event) async => await _submitLocation(event, emit),
+          isDistrictSelected: (event) async =>
+              await _isDistrictSelected(event, emit),
+          weatherDataLoaded: (event) async =>
+              await _weatherDataLoaded(event, emit),
+          clearSelectedLocation: (event) async =>
+              await _clearSelectedLocation(event, emit));
     });
   }
   Future<void> _prayerTimesDataLoaded(
@@ -130,29 +131,19 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
 
       LocationPermission permission = await Geolocator.checkPermission();
       ConnectivityResult connection = await Connectivity().checkConnectivity();
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
-      double currentLongitude =
-          prefs.getDouble('currentLongitude') ?? 90.4111451;
-      String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
-      String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
-      String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
 
       if (connection == ConnectivityResult.none) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
           _saveLocationToPreferences(23.7115253, 90.4111451);
-          var userCoordinator = UserCoordinator(
-            userLat: currentLatitude,
-            userLng: currentLongitude,
-            userCountry: currentCountry,
-            userCity: currentCity,
-            userCountryIso: currentIsoCode,
-          );
-
           emit(
             state.copyWith(
-              userCoordinator: userCoordinator,
+              userCoordinator: UserCoordinator(
+                  userLat: 23.7115253,
+                  userLng: 90.4111451,
+                  userCountry: "Bangladesh",
+                  userCity: "Dhaka",
+                  userCountryIso: "BD"),
               prayerTimeStatus: PrayerTimeStatus.success,
             ),
           );
@@ -162,18 +153,16 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
-          _saveLocationToPreferences(23.7115253, 90.4111451);
-          var userCoordinator = UserCoordinator(
-            userLat: currentLatitude,
-            userLng: currentLongitude,
-            userCountry: currentCountry,
-            userCity: currentCity,
-            userCountryIso: currentIsoCode,
-          );
-
+          _saveLocationToPreferences(
+              23.7115253, 90.4111451); // Default location
           emit(
             state.copyWith(
-              userCoordinator: userCoordinator,
+              userCoordinator: UserCoordinator(
+                  userLat: 23.7115253,
+                  userLng: 90.4111451,
+                  userCountry: "Bangladesh",
+                  userCity: "Dhaka",
+                  userCountryIso: "BD"),
               prayerTimeStatus: PrayerTimeStatus.success,
             ),
           );
@@ -182,16 +171,15 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       }
 
       if (permission == LocationPermission.deniedForever) {
-        _saveLocationToPreferences(23.7115253, 90.4111451);
+        _saveLocationToPreferences(23.7115253, 90.4111451); // Default location
         emit(
           state.copyWith(
             userCoordinator: UserCoordinator(
-              userLat: currentLatitude,
-              userLng: currentLongitude,
-              userCountry: currentCountry,
-              userCity: currentCity,
-              userCountryIso: currentIsoCode,
-            ),
+                userLat: 23.7115253,
+                userLng: 90.4111451,
+                userCountry: "Bangladesh",
+                userCity: "Dhaka",
+                userCountryIso: "BD"),
             prayerTimeStatus: PrayerTimeStatus.success,
           ),
         );
@@ -210,7 +198,6 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       );
       String? city = placemarks.first.locality;
       String? country = placemarks.first.country;
-      String? isoCountryCode = placemarks.first.country;
 
       _saveLocationToPreferences(position.latitude, position.longitude);
 
@@ -234,52 +221,31 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           prayerTimeStatus: PrayerTimeStatus.success,
         ),
       );
-      _saveCurrentLocationToPreferences(position.latitude, position.longitude,
-          country!, city!, isoCountryCode!);
     } catch (e) {
       if (kDebugMode) {
         print("Error fetching location: $e");
       }
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
-      double currentLongitude =
-          prefs.getDouble('currentLongitude') ?? 90.4111451;
-      String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
-      String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
-      String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-        latitude: currentLatitude,
-        longitude: currentLongitude,
+        latitude: 23.7115253,
+        longitude: 90.4111451,
       ));
       prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
-        latitude: currentLatitude,
-        longitude: currentLongitude,
+        latitude: 23.7115253,
+        longitude: 90.4111451,
         context: event.context,
       ));
-      var userCoordinator = UserCoordinator(
-        userLat: currentLatitude,
-        userLng: currentLongitude,
-        userCountry: currentCountry,
-        userCity: currentCity,
-        userCountryIso: currentIsoCode,
-      );
       emit(
         state.copyWith(
-          userCoordinator: userCoordinator,
+          userCoordinator: UserCoordinator(
+              userLat: 23.7115253,
+              userLng: 90.4111451,
+              userCountry: "Bangladesh",
+              userCity: "Dhaka",
+              userCountryIso: "BD"),
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
     }
-  }
-
-  Future<void> _saveCurrentLocationToPreferences(double lat, double lng,
-      String country, String city, String countryCode) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('currentLatitude', lat);
-    await prefs.setDouble('currentLongitude', lng);
-    await prefs.setString('currentCity', country);
-    await prefs.setString('currentCountry', city);
-    await prefs.setString('isoCountryCode', countryCode);
   }
 
   Future<void> _saveLocationToPreferences(double lat, double lng) async {

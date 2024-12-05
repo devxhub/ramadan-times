@@ -1,7 +1,7 @@
 class PrayerTime {
   String name;
-  String start;
-  String end;
+  DateTime start;
+  DateTime end;
 
   PrayerTime({
     required this.name,

@@ -88,7 +88,7 @@ class _SchedulePageState extends State<SchedulePage> {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomScrollView(slivers: [
                   SliverToBoxAdapter(
-                    child: SizedBox(height: 16.spMin),
+                    child: SizedBox(height: 16.h),
                   ),
                   SliverToBoxAdapter(
                     child: TodayInfoCard(
@@ -161,7 +161,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         height: 300.h,
                         width: 300.h,
                       ),
-                      AutoSizeText(
+                      Text(
                         "Please connect to the internet!!!",
                         style: TextStyle(fontSize: 24.sp),
                       ),
@@ -183,7 +183,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         height: 300.h,
                         width: 300.h,
                       ),
-                      AutoSizeText(
+                      Text(
                         "Something went wrong...",
                         style: TextStyle(fontSize: 24.sp),
                       ),

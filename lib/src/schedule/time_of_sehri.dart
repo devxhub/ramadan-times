@@ -10,6 +10,7 @@ class TimeContainerForSehriTime extends StatefulWidget {
     super.key,
     required this.time,
   });
+
   final String time;
 
   @override
@@ -28,7 +29,7 @@ class _TimeContainerForSehriTimeState extends State<TimeContainerForSehriTime> {
         Container(
           height: MediaQuery.of(context).size.width / 2,
           width: MediaQuery.of(context).size.width / 2,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           decoration: BoxDecoration(
             color: const Color(0xffE3DeFF),
             borderRadius: BorderRadius.circular(30.r),
@@ -38,26 +39,23 @@ class _TimeContainerForSehriTimeState extends State<TimeContainerForSehriTime> {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.sehriTime ?? "",
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontSize: 18.sp,
-                      height: 1.47,
-                      fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
-                AutoSizeText.rich(
-                  TextSpan(
-                    text: formatTo12Hour(widget.time),
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        height: 1.4,
-                        color: const Color(0xff674CEC),
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700),
-                  ),
+                Text(
+                  formatTo12Hour(widget.time, context),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: const Color(0xff674CEC),
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700),
                 ),
                 const Spacer(),
                 SizedBox(
-                  height: 24.spMin,
+                  height: 24.h,
                   // width: 36,
                   child: FittedBox(
                     fit: BoxFit.fill,
@@ -79,7 +77,7 @@ class _TimeContainerForSehriTimeState extends State<TimeContainerForSehriTime> {
           right: 8,
           child: Image.asset(
             "assets/images/sehriMoon.png",
-            height: 60,
+            height: 60.h,
             width: 60.w,
           ),
         )
