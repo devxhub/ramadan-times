@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 class PrayerTimesResponse {
   final String? fajrStart;
   final String? fajrEnd;
+  final String? imsakStart;
+  final String? imsakEnd;
   final String? sunrise;
   final String? sunset;
   final String? dhuhrStart;
@@ -29,6 +31,8 @@ class PrayerTimesResponse {
   const PrayerTimesResponse({
     this.fajrStart,
     this.fajrEnd,
+    this.imsakStart,
+    this.imsakEnd,
     this.sunrise,
     this.sunset,
     this.dhuhrStart,

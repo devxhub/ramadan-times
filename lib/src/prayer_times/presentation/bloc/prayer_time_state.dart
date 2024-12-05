@@ -24,5 +24,6 @@ class PrayerTimeState with _$PrayerTimeState {
     @Default(true) bool isDistrictSelected,
     @Default(PrayerTimeStatus.success) PrayerTimeStatus prayerTimeStatus,
     @Default(PrayerStatus.success) PrayerStatus prayerStatus,
+    @Default(false) bool isImsakEnable,
   }) = _PrayerTimeState;
 }

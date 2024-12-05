@@ -42,6 +42,9 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _weatherDataLoaded(event, emit),
         clearSelectedLocation: (event) async =>
             await _clearSelectedLocation(event, emit),
+        imsakTimeDataLoaded: (event) async =>
+            await _imsakTimeDataLoaded(event, emit),
+        isImsakTimeShow: (event) async => await _isImsakTimeShow(event, emit),
       );
     });
   }
@@ -124,19 +127,19 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       ),
     );
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    double userLat=prefs.getDouble('currentLatitude')??0.0;
-    double userLng=prefs.getDouble('currentLongitude')??0.0;
-    String userCity=prefs.getString('currentCity')??"";
-    String userCountry=prefs.getString('currentCountry')??"";
-    String userIsoCountryCode=prefs.getString('isoCountryCode')??"";
+    double userLat = prefs.getDouble('currentLatitude') ?? 0.0;
+    double userLng = prefs.getDouble('currentLongitude') ?? 0.0;
+    String userCity = prefs.getString('currentCity') ?? "";
+    String userCountry = prefs.getString('currentCountry') ?? "";
+    String userIsoCountryCode = prefs.getString('isoCountryCode') ?? "";
     var coordinator = UserCoordinator(
       userLat: userLat,
       userLng: userLng,
-      userCountry:userCountry,
+      userCountry: userCountry,
       userCity: userCity,
       userCountryIso: userIsoCountryCode,
     );
-    if(userCity.isEmpty==true){
+    if (userCity.isEmpty == true) {
       try {
         bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
         if (!serviceEnabled) {
@@ -144,9 +147,11 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         }
 
         LocationPermission permission = await Geolocator.checkPermission();
-        ConnectivityResult connection = await Connectivity().checkConnectivity();
+        ConnectivityResult connection =
+            await Connectivity().checkConnectivity();
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
+        double currentLatitude =
+            prefs.getDouble('currentLatitude') ?? 23.7115253;
         double currentLongitude =
             prefs.getDouble('currentLongitude') ?? 90.4111451;
         String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
@@ -251,13 +256,13 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         );
         _saveCurrentLocationToPreferences(position.latitude, position.longitude,
             country!, city!, isoCountryCode!);
-      }
-      catch (e) {
+      } catch (e) {
         if (kDebugMode) {
           print("Error fetching location: $e");
         }
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
+        double currentLatitude =
+            prefs.getDouble('currentLatitude') ?? 23.7115253;
         double currentLongitude =
             prefs.getDouble('currentLongitude') ?? 90.4111451;
         String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
@@ -286,24 +291,23 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           ),
         );
       }
-    }else{
+    } else {
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-        latitude: coordinator.userLat??23.7115253,
-        longitude: coordinator.userLng??90.4111451,
+        latitude: coordinator.userLat ?? 23.7115253,
+        longitude: coordinator.userLng ?? 90.4111451,
       ));
       prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
-        latitude: coordinator.userLat??23.7115253,
-        longitude: coordinator.userLng??90.4111451,
+        latitude: coordinator.userLat ?? 23.7115253,
+        longitude: coordinator.userLng ?? 90.4111451,
         context: event.context,
       ));
       emit(
         state.copyWith(
-          userCoordinator:coordinator,
+          userCoordinator: coordinator,
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
     }
-
   }
 
   Future<void> _saveCurrentLocationToPreferences(double lat, double lng,
@@ -399,7 +403,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       longitude: event.userCoordinator.userLng ?? 0.0,
       context: event.context,
     ));
-_saveCurrentLocationToPreferences(event.userCoordinator.userLat ?? 0.0,event.userCoordinator.userLng ?? 0.0, event.userCoordinator.userCountry??'', event.userCoordinator.userCity??"",event.userCoordinator.userCountryIso??'');
+    _saveCurrentLocationToPreferences(
+        event.userCoordinator.userLat ?? 0.0,
+        event.userCoordinator.userLng ?? 0.0,
+        event.userCoordinator.userCountry ?? '',
+        event.userCoordinator.userCity ?? "",
+        event.userCoordinator.userCountryIso ?? '');
     emit(
       state.copyWith(
           userCoordinator: event.userCoordinator,
@@ -427,6 +436,26 @@ _saveCurrentLocationToPreferences(event.userCoordinator.userLat ?? 0.0,event.use
         selectedDistrict: null,
         selectedCountry: null,
       ),
+    );
+  }
+
+  _imsakTimeDataLoaded(
+      _ImsakTimeDataLoaded event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final isImsakEnable = prefs.getBool(
+      'isImsakEnable',
+    );
+    emit(
+      state.copyWith(isImsakEnable: isImsakEnable ?? false),
+    );
+  }
+
+  _isImsakTimeShow(
+      _IsImsakTimeShow event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isImsakEnable', event.isImsakEnable);
+    emit(
+      state.copyWith(isImsakEnable: event.isImsakEnable),
     );
   }
 }

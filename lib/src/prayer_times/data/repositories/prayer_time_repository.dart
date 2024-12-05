@@ -44,6 +44,8 @@ class PrayerTimeRepository {
             .subtract(Duration(minutes: 10)); // End 10 minutes before Fajr
 
         ///fazr
+        final imsakStart=prayerTimesForDay.fajr.subtract(Duration(minutes: 10));
+        final imsakend=prayerTimesForDay.fajr.subtract(Duration(minutes: 1));
         final fajrStart = prayerTimesForDay.fajr;
         final fajrEnd = prayerTimesForDay.sunrise;
         final dhuhrStart = prayerTimesForDay.dhuhr;
@@ -77,6 +79,8 @@ class PrayerTimeRepository {
         return PrayerTimesResponse(
           fajrStart: fajrStart.toString(),
           fajrEnd: fajrEnd.toString(),
+          imsakStart: imsakStart.toString(),
+          imsakEnd: imsakend.toString(),
           sunrise: sunrise.toString(),
           sunset: sunset.toString(),
           dhuhrStart: dhuhrStart.toString(),

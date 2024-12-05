@@ -39,6 +39,7 @@ class _SchedulePageState extends State<SchedulePage> {
     //     )));
     //context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: 23.7115253,longitude:90.4111451, ));
     context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.imsakTimeDataLoaded());
     context
         .read<PrayerTimeBloc>()
         .add(PrayerTimeEvent.locationPermission(context: context));
