@@ -42,6 +42,7 @@ class _SchedulePageState extends State<SchedulePage> {
     // loadPrayerConvention();
 
     context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
+    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.imsakTimeDataLoaded());
     context
         .read<PrayerTimeBloc>()
         .add(PrayerTimeEvent.locationPermission(context: context));
