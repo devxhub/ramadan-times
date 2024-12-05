@@ -65,7 +65,7 @@ class _RemainingTimeContainerForSehriTimeState
         Container(
           height: MediaQuery.of(context).size.width / 2,
           width: MediaQuery.of(context).size.width / 2,
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           decoration: BoxDecoration(
             color: const Color(0xff36219e),
             borderRadius: BorderRadius.circular(30.r),
@@ -75,19 +75,17 @@ class _RemainingTimeContainerForSehriTimeState
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.ofSehri ?? "",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: 18.sp,
-                      height: 1.47,
                       color: const Color(0xffffb82c),
                       fontWeight: FontWeight.bold),
                 ),
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.remaining ?? "",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: 14.sp,
-                      height: 1.4,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
@@ -99,10 +97,10 @@ class _RemainingTimeContainerForSehriTimeState
                       if (time == null) {
                         return const Text("");
                       }
-                      return AutoSizeText(
+                      return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -118,10 +116,10 @@ class _RemainingTimeContainerForSehriTimeState
                       if (time == null) {
                         return const Text("");
                       }
-                      return AutoSizeText(
+                      return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -137,7 +135,7 @@ class _RemainingTimeContainerForSehriTimeState
           right: 8,
           child: Image.asset(
             "assets/images/timer.png",
-            height: 60,
+            height: 60.h,
             width: 60.w,
           ),
         )

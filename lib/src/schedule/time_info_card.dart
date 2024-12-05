@@ -32,12 +32,12 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
 
   @override
   Widget build(BuildContext context) {
-    var hijriDate = HijriCalendar.fromDate(DateTime.now());
+    var hijriDate = HijriCalendar.fromDate(widget.timeOfToday.date??DateTime.now());
 
     return Container(
       // height: 200,
-      width: 375.w,
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16),
+      // width: 375.w,
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
           const Color(0xffC2CFF2),
@@ -52,8 +52,6 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
           Row(
             children: [
               Container(
-                //height: 100,
-                width: 80.w,
                 padding: EdgeInsets.only(right: 0.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -63,21 +61,18 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                     BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
                       builder: (context, state) {
                         return state.weatherResponse.main?.temp != null
-                            ? AutoSizeText(
-                                AppLocalizations.of(context)!.localeName == "bn"
-                                    ? engToBn(
-                                        "${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°")
-                                    : "",
+                            ? Text(
+                                engToBn(
+                                        "${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°", context),
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge
                                     ?.copyWith(
-                                        height: 1.4,
                                         fontSize: 40.sp,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff36219E)),
                               )
-                            : SizedBox();
+                            : SizedBox.shrink();
                       },
                     ),
                   ],
@@ -85,24 +80,20 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
               ),
               const Spacer(),
               Container(
-                // height: 100,
-
-                width: 240,
                 padding: EdgeInsets.only(right: 0.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    AutoSizeText(
-                      "${hijriDate.hDay} ${hijriDate.longMonthName} ${hijriDate.hYear}",
+                    Text(
+                      "${engToBn(hijriDate.hDay.toString(), context)} ${hijriMonthLocal(hijriDate.longMonthName, context)} ${engToBn(hijriDate.hYear.toString(), context)}",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          height: 1.4,
                           fontSize: 19.sp,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xff36219E)),
                     ),
-                    AutoSizeText(
-                      DateFormat("EEEE, dd MMMM", "bn").format(DateTime.now()),
+                    Text(
+                      DateFormat("EEEE, dd MMMM", AppLocalizations.of(context)?.localeName).format(DateTime.now()),
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontSize: 12.sp, fontWeight: FontWeight.w600),
                     ),
@@ -123,7 +114,7 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                 children: [
                   Row(
                     children: [
-                      AutoSizeText(
+                      Text(
                         "${AppLocalizations.of(context)?.prayerName("Sunrise") ?? ""}  ",
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               color: Colors.black,
@@ -131,8 +122,7 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                               fontSize: 12.sp,
                             ),
                       ),
-                      AutoSizeText(
-                        DateFormat.jm("bn_BD").format(
+                      Text(DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName).format(
                           () {
                             DateTime sunsetTime =
                                 DateTime.parse(widget.timeOfToday.sunrise!);
@@ -150,14 +140,14 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AutoSizeText(
+                      Text(
                         "${AppLocalizations.of(context)?.prayerName("Sunset") ?? ""}  ",
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.w600, fontSize: 12.sp),
                       ),
-                      AutoSizeText(
-                        DateFormat.jm("bn_BD").format(
-                          () {
+                      Text(
+                        DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName).format(
+                              () {
                             DateTime sunsetTime =
                                 DateTime.parse(widget.timeOfToday.sunset!);
                             return DateTime(

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import '../../l10n/app_localizations.dart';
 import '../services/utility.dart';
@@ -15,15 +16,15 @@ class NextSehriIftar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 24),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        margin: EdgeInsets.only(top: 24.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
               const Color(0xffD9DFE0),
               const Color(0xffFFFFFF).withOpacity(0),
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
             color: Colors.white,
-            borderRadius: BorderRadius.circular(24)),
+            borderRadius: BorderRadius.circular(24.r)),
         child: Column(
           children: [
             Row(
@@ -32,15 +33,14 @@ class NextSehriIftar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
+                    Text(
                       AppLocalizations.of(context)?.nextDay ?? "",
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    AutoSizeText(
+                    Text(
                       AppLocalizations.of(context)?.sehri ?? "",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: const Color(0xff674cec),
-                          height: 1,
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w700),
                     )
@@ -51,25 +51,12 @@ class NextSehriIftar extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
                       color: const Color(0xfff2f2f7),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: AutoSizeText.rich(
-                    TextSpan(
-                      text: formatTo12Hour(data.fajrStart!),
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: const Color(0xff674cec),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20.sp),
-                      // children: [
-                      // TextSpan(
-                      //     text: "AM",
-                      //     style: Theme.of(context)
-                      //         .textTheme
-                      //         .bodySmall
-                      //         ?.copyWith(
-                      //             color: const Color(0xffffa600))),
-                      // ],
-                    ),
-                  ),
+                      borderRadius: BorderRadius.circular(15.r)),
+                  child: Text(formatTo12Hour(data.fajrStart!, context),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: const Color(0xff674cec),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.sp),),
                 )
               ],
             ),
@@ -80,15 +67,14 @@ class NextSehriIftar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
+                    Text(
                       AppLocalizations.of(context)?.nextDay ?? "",
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    AutoSizeText(
+                    Text(
                       AppLocalizations.of(context)?.ifter ?? "",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: const Color(0xff674cec),
-                          height: 1,
                           fontWeight: FontWeight.w700,
                           fontSize: 20.sp),
                     )
@@ -99,17 +85,13 @@ class NextSehriIftar extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
                       color: const Color(0xffD9DFE0).withOpacity(.54),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: AutoSizeText.rich(
-                    TextSpan(
-                      text: formatTo12Hour(data.maghribStart!),
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: const Color(0xff674cec),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20.sp),
-                    ),
-                  ),
-                )
+                      borderRadius: BorderRadius.circular(15.r)),
+                  child: Text(formatTo12Hour(data.maghribStart!, context),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: const Color(0xff674cec),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.sp),
+                  ),)
               ],
             ),
           ],

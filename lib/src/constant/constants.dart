@@ -1,0 +1,1 @@
+final double SMALL_DEVICE_SIZE = 270;
