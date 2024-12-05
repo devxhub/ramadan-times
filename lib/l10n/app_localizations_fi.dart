@@ -229,5 +229,14 @@ class AppLocalizationsFi extends AppLocalizations {
   String get selectFajrAngle => 'Valitse Fajr-kulma:';
 
   @override
-  String get selectIshaAngle => 'Valitse Isha-kulma:';
+  String get ishaAngle => 'Isha Angle';
+
+  @override
+  String get ishaInterval => 'Isha Interval';
+
+  @override
+  String get minutes => 'minutes';
+
+  @override
+  String get maghribAngle => 'Maghrib Angle';
 }
