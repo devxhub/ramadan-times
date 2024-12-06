@@ -48,4 +48,7 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
     required UserCoordinator userCoordinator,
     required BuildContext context,
   }) = _SelectAngle;
+  const factory PrayerTimeEvent.selectCustomImsakTime({
+    required int customImsakTime,
+  }) = _SelectCustomImsakTime;
 }
