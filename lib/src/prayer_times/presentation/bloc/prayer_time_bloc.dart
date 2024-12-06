@@ -515,12 +515,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
-    emit(PrayerTimeState(
-      selectedPrayerConventionName: event.prayerConventionName,
-      selectedFajrAngle: event.fajrAngle,
-      selectedIshaAngle: event.ishaAngle,
-      userCoordinator: event.userCoordinator,
-    ));
+    emit(
+        state.copyWith(selectedPrayerConventionName: event.prayerConventionName,
+          selectedFajrAngle: event.fajrAngle,
+          selectedIshaAngle: event.ishaAngle,
+          userCoordinator: event.userCoordinator,)
+    );
     prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
@@ -532,12 +532,13 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
-    emit(PrayerTimeState(
-      selectedPrayerConventionName: event.prayerConventionName,
-      selectedFajrAngle: event.fajrAngle,
-      selectedIshaAngle: event.ishaAngle,
-      userCoordinator: event.userCoordinator,
-    ));
+    emit(
+
+      state.copyWith(selectedPrayerConventionName: event.prayerConventionName,
+        selectedFajrAngle: event.fajrAngle,
+        selectedIshaAngle: event.ishaAngle,
+        userCoordinator: event.userCoordinator,)
+    );
     prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
