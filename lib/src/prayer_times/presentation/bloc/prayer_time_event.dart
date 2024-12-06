@@ -32,11 +32,14 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
     required String prayerConventionName,
     required double fajrAngle,
     required double ishaAngle,
+    required UserCoordinator userCoordinator,
   }) = _SelectPrayerConvention;
 
   const factory PrayerTimeEvent.selectAngle({
     required double fajrAngle,
     required double ishaAngle,
     required String prayerConventionName,
+    required UserCoordinator userCoordinator,
+    required BuildContext context,
   }) = _SelectAngle;
 }

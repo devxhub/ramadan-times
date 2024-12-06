@@ -138,6 +138,8 @@ class PrayerTimeRepository {
           ishaAngle:
               calculationMethod == CalculationMethod.other ? ishaAngle : 0.0,
           ishaInterval: 0,
+          madhab: Madhab.hanafi,
+          highLatitudeRule: HighLatitudeRule.middle_of_the_night,
         );
       case CalculationMethod.muslim_world_league:
         return CalculationMethod.muslim_world_league.getParameters();
