@@ -50,6 +50,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         selectPrayerConvention: (event) async =>
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
+        selectCustomImsakTime: (event) async => await _selectCustomImsakTime(event, emit),
       );
     });
   }
@@ -475,10 +476,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     final isImsakEnable = prefs.getBool(
       'isImsakEnable',
     );
+    final customImsakTime =  prefs.getInt('customImsakTime');
     bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
     emit(
       state.copyWith(isImsakEnable: isImsakEnable ?? false,
-isAutoDetectLocationEnable: isAutoDetectLocationEnable
+      isAutoDetectLocationEnable: isAutoDetectLocationEnable,
+        imsakTime: customImsakTime??0
       ),
     );
   }
@@ -539,5 +542,10 @@ isAutoDetectLocationEnable: isAutoDetectLocationEnable
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
     ));
+  }
+  _selectCustomImsakTime(_SelectCustomImsakTime event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('customImsakTime', event.customImsakTime);
+    emit( state.copyWith(imsakTime:event.customImsakTime));
   }
 }

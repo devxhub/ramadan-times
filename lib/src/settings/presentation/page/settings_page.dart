@@ -110,10 +110,61 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text('Daylight Saving Time'),
             subtitle: Text('Auto'),
           ),
-          ListTile(
-            title: Text('Imsak'),
-            subtitle: Text('0 minutes before Fajr'),
-          ),
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+  builder: (context, state) {
+    return GestureDetector(
+      onTap: (){
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(
+                'Imsak',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              content: SizedBox(
+                width: double.maxFinite,
+                height: 400, // Adjust the height as needed
+                child: ListView.builder(
+                  itemCount: 31, // Number of options
+                  itemBuilder: (context, index) {
+                    return RadioListTile<int>(
+                      value: index,
+                      groupValue: state.imsakTime,
+                      onChanged: (value) {
+                        context.read<PrayerTimeBloc>().add(
+                            PrayerTimeEvent.selectCustomImsakTime(customImsakTime: value??0));
+                        Navigator.pop(context); // Close dialog on selection
+                      },
+                      title: Text(
+                        '$index minute${index >= 1 ? '' : 's'}',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      activeColor: Colors.teal, // Matches your screenshot
+                    );
+                  },
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'CANCEL',
+                    style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: ListTile(
+              title: Text('Imsak'),
+              subtitle: Text('${state.imsakTime} minutes before Fajr'),
+            ),
+    );
+  },
+),
         ],
       ),
     );

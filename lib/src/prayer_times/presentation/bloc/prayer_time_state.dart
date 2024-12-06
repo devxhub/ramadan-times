@@ -29,5 +29,6 @@ class PrayerTimeState with _$PrayerTimeState {
     @Default('') String selectedPrayerConventionName,
     @Default(0.0) double selectedFajrAngle,
     @Default(0.0) double selectedIshaAngle,
+    @Default(0) int imsakTime,
   }) = _PrayerTimeState;
 }
