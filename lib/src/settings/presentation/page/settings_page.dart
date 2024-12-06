@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';
@@ -27,13 +28,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         padding: EdgeInsets.all(16.r),
         children: [
-          SwitchListTile(
-            title: Text('Show Imsak in Prayer Times page'),
-            value: showImsak,
-            onChanged: (value) {
-              setState(() {
-                showImsak = value;
-              });
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+            builder: (context, state) {
+              return SwitchListTile(
+                title: Text('Show Imsak in Prayer Times page'),
+                value: state.isImsakEnable,
+                onChanged: (value) {
+                  context.read<PrayerTimeBloc>().add(PrayerTimeEvent.isImsakTimeShow(context: context, isImsakEnable: value));
+                },
+              );
             },
           ),
           Divider(),
