@@ -43,9 +43,14 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _weatherDataLoaded(event, emit),
         clearSelectedLocation: (event) async =>
             await _clearSelectedLocation(event, emit),
+        imsakTimeDataLoaded: (event) async =>
+            await _imsakTimeDataLoaded(event, emit),
+        isImsakTimeShow: (event) async => await _isImsakTimeShow(event, emit),
+        autoDetectLocationStatusChange: (event) async => await _autoDetectLocationStatusChange(event, emit),
         selectPrayerConvention: (event) async =>
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
+        selectCustomImsakTime: (event) async => await _selectCustomImsakTime(event, emit),
       );
     });
   }
@@ -157,6 +162,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     String userCity = prefs.getString('currentCity') ?? "";
     String userCountry = prefs.getString('currentCountry') ?? "";
     String userIsoCountryCode = prefs.getString('isoCountryCode') ?? "";
+    bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
+
     var coordinator = UserCoordinator(
       userLat: userLat,
       userLng: userLng,
@@ -164,7 +171,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       userCity: userCity,
       userCountryIso: userIsoCountryCode,
     );
-    if (userCity.isEmpty == true) {
+    if (userCity.isEmpty == true||isAutoDetectLocationEnable==true) {
       try {
         bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
         if (!serviceEnabled) {
@@ -463,6 +470,42 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     );
   }
 
+  _imsakTimeDataLoaded(
+      _ImsakTimeDataLoaded event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final isImsakEnable = prefs.getBool(
+      'isImsakEnable',
+    );
+    final customImsakTime =  prefs.getInt('customImsakTime');
+    bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
+    emit(
+      state.copyWith(isImsakEnable: isImsakEnable ?? false,
+      isAutoDetectLocationEnable: isAutoDetectLocationEnable,
+        imsakTime: customImsakTime??0
+      ),
+    );
+  }
+
+  _isImsakTimeShow(
+      _IsImsakTimeShow event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isImsakEnable', event.isImsakEnable);
+
+    emit(
+      state.copyWith(isImsakEnable: event.isImsakEnable),
+    );
+  }
+  _autoDetectLocationStatusChange(
+      _AutoDetectLocationStatusChange event, Emitter<PrayerTimeState> emit) async {
+    final prayerBloc = event.context.read<PrayerTimeBloc>();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isAutoDetectLocationEnable', event.isAutoDetectLocationEnable);
+    prayerBloc.add(PrayerTimeEvent.locationPermission(context: event.context));
+    emit(
+      state.copyWith(isAutoDetectLocationEnable: event.isAutoDetectLocationEnable),
+    );
+  }
+
   _selectPrayerConvention(
     _SelectPrayerConvention event,
     Emitter<PrayerTimeState> emit,
@@ -472,12 +515,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
-    emit(PrayerTimeState(
-      selectedPrayerConventionName: event.prayerConventionName,
-      selectedFajrAngle: event.fajrAngle,
-      selectedIshaAngle: event.ishaAngle,
-      userCoordinator: event.userCoordinator,
-    ));
+    emit(
+        state.copyWith(selectedPrayerConventionName: event.prayerConventionName,
+          selectedFajrAngle: event.fajrAngle,
+          selectedIshaAngle: event.ishaAngle,
+          userCoordinator: event.userCoordinator,)
+    );
     prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
@@ -489,15 +532,21 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
-    emit(PrayerTimeState(
-      selectedPrayerConventionName: event.prayerConventionName,
-      selectedFajrAngle: event.fajrAngle,
-      selectedIshaAngle: event.ishaAngle,
-      userCoordinator: event.userCoordinator,
-    ));
+    emit(
+
+      state.copyWith(selectedPrayerConventionName: event.prayerConventionName,
+        selectedFajrAngle: event.fajrAngle,
+        selectedIshaAngle: event.ishaAngle,
+        userCoordinator: event.userCoordinator,)
+    );
     prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
     ));
+  }
+  _selectCustomImsakTime(_SelectCustomImsakTime event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('customImsakTime', event.customImsakTime);
+    emit( state.copyWith(imsakTime:event.customImsakTime));
   }
 }

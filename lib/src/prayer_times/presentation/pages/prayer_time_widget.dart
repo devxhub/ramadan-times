@@ -56,6 +56,13 @@ class PrayerTimeWidget extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Column(
                   children: [
+                    state.isImsakEnable==true?
+                    PrayerTimeRow(
+                      prayerName: "Imsak",
+                      timeRange:
+                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.imsakStart.toString()).subtract(Duration(minutes: state.imsakTime)).toIso8601String()))} - ${convertUtcToLocalTime(state.prayerTimesResponse.imsakEnd.toString())}",
+                      isCurrentPrayer: false,
+                    ):SizedBox(),
                     PrayerTimeRow(
                       prayerName: "Fajr",
                       timeRange:

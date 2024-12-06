@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';
@@ -27,13 +28,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         padding: EdgeInsets.all(16.r),
         children: [
-          SwitchListTile(
-            title: Text('Show Imsak in Prayer Times page'),
-            value: showImsak,
-            onChanged: (value) {
-              setState(() {
-                showImsak = value;
-              });
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+            builder: (context, state) {
+              return SwitchListTile(
+                title: Text('Show Imsak in Prayer Times page'),
+                value: state.isImsakEnable,
+                onChanged: (value) {
+                  context.read<PrayerTimeBloc>().add(
+                      PrayerTimeEvent.isImsakTimeShow(
+                          context: context, isImsakEnable: value));
+                },
+              );
             },
           ),
           Divider(),
@@ -47,13 +52,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text('Location'),
             subtitle: Text('-'),
           ),
-          SwitchListTile(
-            title: Text('Auto-detect Location'),
-            value: autoDetectLocation,
-            onChanged: (value) {
-              setState(() {
-                autoDetectLocation = value;
-              });
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+            builder: (context, state) {
+              return SwitchListTile(
+                title: Text('Auto-detect Location'),
+                value: state.isAutoDetectLocationEnable,
+                onChanged: (value) {
+                  context.read<PrayerTimeBloc>().add(
+                      PrayerTimeEvent.autoDetectLocationStatusChange(
+                          context: context,isAutoDetectLocationEnable: value));
+                },
+              );
             },
           ),
           SwitchListTile(
@@ -101,10 +110,61 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text('Daylight Saving Time'),
             subtitle: Text('Auto'),
           ),
-          ListTile(
-            title: Text('Imsak'),
-            subtitle: Text('0 minutes before Fajr'),
-          ),
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+  builder: (context, state) {
+    return GestureDetector(
+      onTap: (){
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(
+                'Imsak',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              content: SizedBox(
+                width: double.maxFinite,
+                height: 400, // Adjust the height as needed
+                child: ListView.builder(
+                  itemCount: 31, // Number of options
+                  itemBuilder: (context, index) {
+                    return RadioListTile<int>(
+                      value: index,
+                      groupValue: state.imsakTime,
+                      onChanged: (value) {
+                        context.read<PrayerTimeBloc>().add(
+                            PrayerTimeEvent.selectCustomImsakTime(customImsakTime: value??0));
+                        Navigator.pop(context); // Close dialog on selection
+                      },
+                      title: Text(
+                        '$index minute${index >= 1 ? '' : 's'}',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      activeColor: Colors.teal, // Matches your screenshot
+                    );
+                  },
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'CANCEL',
+                    style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: ListTile(
+              title: Text('Imsak'),
+              subtitle: Text('${state.imsakTime} minutes before Fajr'),
+            ),
+    );
+  },
+),
         ],
       ),
     );
