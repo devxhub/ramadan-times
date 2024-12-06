@@ -31,6 +31,8 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
       {required BuildContext context,
       required bool isImsakEnable}) = _IsImsakTimeShow;
   const factory PrayerTimeEvent.imsakTimeDataLoaded() = _ImsakTimeDataLoaded;
+  const factory PrayerTimeEvent.autoDetectLocationStatusChange({required BuildContext context,
+    required bool isAutoDetectLocationEnable}) = _AutoDetectLocationStatusChange;
   const factory PrayerTimeEvent.selectPrayerConvention({
     required BuildContext context,
     required String prayerConventionName,

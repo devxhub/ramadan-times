@@ -47,6 +47,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         imsakTimeDataLoaded: (event) async =>
             await _imsakTimeDataLoaded(event, emit),
         isImsakTimeShow: (event) async => await _isImsakTimeShow(event, emit),
+        autoDetectLocationStatusChange: (event) async => await _autoDetectLocationStatusChange(event, emit),
         selectPrayerConvention: (event) async =>
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
@@ -154,6 +155,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     String userCity = prefs.getString('currentCity') ?? "";
     String userCountry = prefs.getString('currentCountry') ?? "";
     String userIsoCountryCode = prefs.getString('isoCountryCode') ?? "";
+    bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
+
     var coordinator = UserCoordinator(
       userLat: userLat,
       userLng: userLng,
@@ -161,7 +164,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       userCity: userCity,
       userCountryIso: userIsoCountryCode,
     );
-    if (userCity.isEmpty == true) {
+    if (userCity.isEmpty == true||isAutoDetectLocationEnable==true) {
       try {
         bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
         if (!serviceEnabled) {
@@ -466,8 +469,11 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     final isImsakEnable = prefs.getBool(
       'isImsakEnable',
     );
+    bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
     emit(
-      state.copyWith(isImsakEnable: isImsakEnable ?? false),
+      state.copyWith(isImsakEnable: isImsakEnable ?? false,
+isAutoDetectLocationEnable: isAutoDetectLocationEnable
+      ),
     );
   }
 
@@ -475,8 +481,19 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       _IsImsakTimeShow event, Emitter<PrayerTimeState> emit) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isImsakEnable', event.isImsakEnable);
+
     emit(
       state.copyWith(isImsakEnable: event.isImsakEnable),
+    );
+  }
+  _autoDetectLocationStatusChange(
+      _AutoDetectLocationStatusChange event, Emitter<PrayerTimeState> emit) async {
+    final prayerBloc = event.context.read<PrayerTimeBloc>();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isAutoDetectLocationEnable', event.isAutoDetectLocationEnable);
+    prayerBloc.add(PrayerTimeEvent.locationPermission(context: event.context));
+    emit(
+      state.copyWith(isAutoDetectLocationEnable: event.isAutoDetectLocationEnable),
     );
   }
 
