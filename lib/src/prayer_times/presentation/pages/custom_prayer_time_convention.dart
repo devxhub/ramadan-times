@@ -69,6 +69,8 @@ class _CustomPrayerTimeConventionState
                             ishaAngle: state.selectedIshaAngle,
                             prayerConventionName:
                                 state.selectedPrayerConventionName,
+                            userCoordinator: state.userCoordinator,
+                            context: context,
                           ),
                         );
                   },
@@ -94,6 +96,8 @@ class _CustomPrayerTimeConventionState
                             ishaAngle: value!,
                             prayerConventionName:
                                 state.selectedPrayerConventionName,
+                            userCoordinator: state.userCoordinator,
+                            context: context,
                           ),
                         );
                   },

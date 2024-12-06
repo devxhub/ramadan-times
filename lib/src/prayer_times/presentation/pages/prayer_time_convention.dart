@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_convention_data.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/custom_prayer_time_convention.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -106,6 +105,7 @@ class _PrayerTimeConventionState extends State<PrayerTimeConvention> {
                               prayerConventionName: item.prayerConventionName,
                               fajrAngle: state.selectedFajrAngle,
                               ishaAngle: state.selectedIshaAngle,
+                              userCoordinator: state.userCoordinator,
                             ));
                       },
                       child: Container(

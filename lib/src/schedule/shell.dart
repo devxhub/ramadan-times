@@ -200,7 +200,7 @@ class CommonDrawer extends StatelessWidget {
                     icon: const Icon(CupertinoIcons.globe),
                     title:
                         AppLocalizations.of(context)?.changeAppLanguage ?? "",
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return LanguageSelector();
@@ -303,21 +303,6 @@ class CommonDrawer extends StatelessWidget {
                       }
                     },
                   ),
-                  // DrawerItem(
-                  //   icon: Icon(Icons.feedback),
-                  //   title: "Feedback",
-                  // ),
-                  Gap(20.w),
-                  InkWell(
-                    onTap: () {
-                      context.goNamed("prayer_time_convention");
-                    },
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                          AppLocalizations.of(context)!.prayerTimeConvention),
-                    ),
-                  )
                 ],
               ),
             ),
