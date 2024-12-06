@@ -34,7 +34,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 title: Text('Show Imsak in Prayer Times page'),
                 value: state.isImsakEnable,
                 onChanged: (value) {
-                  context.read<PrayerTimeBloc>().add(PrayerTimeEvent.isImsakTimeShow(context: context, isImsakEnable: value));
+                  context.read<PrayerTimeBloc>().add(
+                      PrayerTimeEvent.isImsakTimeShow(
+                          context: context, isImsakEnable: value));
                 },
               );
             },
@@ -50,13 +52,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text('Location'),
             subtitle: Text('-'),
           ),
-          SwitchListTile(
-            title: Text('Auto-detect Location'),
-            value: autoDetectLocation,
-            onChanged: (value) {
-              setState(() {
-                autoDetectLocation = value;
-              });
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+            builder: (context, state) {
+              return SwitchListTile(
+                title: Text('Auto-detect Location'),
+                value: state.isAutoDetectLocationEnable,
+                onChanged: (value) {
+                  context.read<PrayerTimeBloc>().add(
+                      PrayerTimeEvent.autoDetectLocationStatusChange(
+                          context: context,isAutoDetectLocationEnable: value));
+                },
+              );
             },
           ),
           SwitchListTile(
