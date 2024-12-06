@@ -35,6 +35,12 @@ mixin _$PrayerTimeEvent {
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -57,6 +63,11 @@ mixin _$PrayerTimeEvent {
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -79,6 +90,10 @@ mixin _$PrayerTimeEvent {
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -101,6 +116,10 @@ mixin _$PrayerTimeEvent {
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -117,6 +136,10 @@ mixin _$PrayerTimeEvent {
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) =>
@@ -132,6 +155,10 @@ mixin _$PrayerTimeEvent {
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -270,6 +297,12 @@ class _$PrayerTimesDataLoadedImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -295,6 +328,11 @@ class _$PrayerTimesDataLoadedImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -320,6 +358,10 @@ class _$PrayerTimesDataLoadedImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -348,6 +390,10 @@ class _$PrayerTimesDataLoadedImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -367,6 +413,10 @@ class _$PrayerTimesDataLoadedImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -385,6 +435,10 @@ class _$PrayerTimesDataLoadedImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -478,6 +532,12 @@ class _$CountryDataLoadedImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -503,6 +563,11 @@ class _$CountryDataLoadedImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -528,6 +593,10 @@ class _$CountryDataLoadedImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -556,6 +625,10 @@ class _$CountryDataLoadedImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -575,6 +648,10 @@ class _$CountryDataLoadedImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -593,6 +670,10 @@ class _$CountryDataLoadedImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -704,6 +785,12 @@ class _$LocationPermissionImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -729,6 +816,11 @@ class _$LocationPermissionImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -754,6 +846,10 @@ class _$LocationPermissionImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -782,6 +878,10 @@ class _$LocationPermissionImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -801,6 +901,10 @@ class _$LocationPermissionImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -819,6 +923,10 @@ class _$LocationPermissionImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -947,6 +1055,12 @@ class _$SelectCountryImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -972,6 +1086,11 @@ class _$SelectCountryImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -997,6 +1116,10 @@ class _$SelectCountryImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1025,6 +1148,10 @@ class _$SelectCountryImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -1044,6 +1171,10 @@ class _$SelectCountryImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -1062,6 +1193,10 @@ class _$SelectCountryImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -1191,6 +1326,12 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -1216,6 +1357,11 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1241,6 +1387,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1269,6 +1419,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -1288,6 +1442,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -1306,6 +1464,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -1401,6 +1563,12 @@ class _$ClearSelectedLocationImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -1426,6 +1594,11 @@ class _$ClearSelectedLocationImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1451,6 +1624,10 @@ class _$ClearSelectedLocationImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1479,6 +1656,10 @@ class _$ClearSelectedLocationImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -1498,6 +1679,10 @@ class _$ClearSelectedLocationImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -1516,6 +1701,10 @@ class _$ClearSelectedLocationImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -1638,6 +1827,12 @@ class _$SubmitLocationImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -1663,6 +1858,11 @@ class _$SubmitLocationImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1688,6 +1888,10 @@ class _$SubmitLocationImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1716,6 +1920,10 @@ class _$SubmitLocationImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -1735,6 +1943,10 @@ class _$SubmitLocationImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -1753,6 +1965,10 @@ class _$SubmitLocationImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -1886,6 +2102,12 @@ class _$IsDistrictSelectedImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -1911,6 +2133,11 @@ class _$IsDistrictSelectedImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1936,6 +2163,10 @@ class _$IsDistrictSelectedImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -1964,6 +2195,10 @@ class _$IsDistrictSelectedImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -1983,6 +2218,10 @@ class _$IsDistrictSelectedImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -2001,6 +2240,10 @@ class _$IsDistrictSelectedImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -2144,6 +2387,12 @@ class _$WeatherDataLoadedImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -2169,6 +2418,11 @@ class _$WeatherDataLoadedImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -2194,6 +2448,10 @@ class _$WeatherDataLoadedImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -2222,6 +2480,10 @@ class _$WeatherDataLoadedImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -2241,6 +2503,10 @@ class _$WeatherDataLoadedImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -2259,6 +2525,10 @@ class _$WeatherDataLoadedImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -2285,6 +2555,794 @@ abstract class _WeatherDataLoaded implements PrayerTimeEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WeatherDataLoadedImplCopyWith<_$WeatherDataLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IsImsakTimeShowImplCopyWith<$Res> {
+  factory _$$IsImsakTimeShowImplCopyWith(_$IsImsakTimeShowImpl value,
+          $Res Function(_$IsImsakTimeShowImpl) then) =
+      __$$IsImsakTimeShowImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, bool isImsakEnable});
+}
+
+/// @nodoc
+class __$$IsImsakTimeShowImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res, _$IsImsakTimeShowImpl>
+    implements _$$IsImsakTimeShowImplCopyWith<$Res> {
+  __$$IsImsakTimeShowImplCopyWithImpl(
+      _$IsImsakTimeShowImpl _value, $Res Function(_$IsImsakTimeShowImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? isImsakEnable = null,
+  }) {
+    return _then(_$IsImsakTimeShowImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      isImsakEnable: null == isImsakEnable
+          ? _value.isImsakEnable
+          : isImsakEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IsImsakTimeShowImpl
+    with DiagnosticableTreeMixin
+    implements _IsImsakTimeShow {
+  const _$IsImsakTimeShowImpl(
+      {required this.context, required this.isImsakEnable});
+
+  @override
+  final BuildContext context;
+  @override
+  final bool isImsakEnable;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.isImsakTimeShow(context: $context, isImsakEnable: $isImsakEnable)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PrayerTimeEvent.isImsakTimeShow'))
+      ..add(DiagnosticsProperty('context', context))
+      ..add(DiagnosticsProperty('isImsakEnable', isImsakEnable));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IsImsakTimeShowImpl &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.isImsakEnable, isImsakEnable) ||
+                other.isImsakEnable == isImsakEnable));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context, isImsakEnable);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IsImsakTimeShowImplCopyWith<_$IsImsakTimeShowImpl> get copyWith =>
+      __$$IsImsakTimeShowImplCopyWithImpl<_$IsImsakTimeShowImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)
+        selectAngle,
+  }) {
+    return isImsakTimeShow(context, isImsakEnable);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)?
+        selectAngle,
+  }) {
+    return isImsakTimeShow?.call(context, isImsakEnable);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)?
+        selectAngle,
+    required TResult orElse(),
+  }) {
+    if (isImsakTimeShow != null) {
+      return isImsakTimeShow(context, isImsakEnable);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+  }) {
+    return isImsakTimeShow(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+  }) {
+    return isImsakTimeShow?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    required TResult orElse(),
+  }) {
+    if (isImsakTimeShow != null) {
+      return isImsakTimeShow(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsImsakTimeShow implements PrayerTimeEvent {
+  const factory _IsImsakTimeShow(
+      {required final BuildContext context,
+      required final bool isImsakEnable}) = _$IsImsakTimeShowImpl;
+
+  BuildContext get context;
+  bool get isImsakEnable;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$IsImsakTimeShowImplCopyWith<_$IsImsakTimeShowImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ImsakTimeDataLoadedImplCopyWith<$Res> {
+  factory _$$ImsakTimeDataLoadedImplCopyWith(_$ImsakTimeDataLoadedImpl value,
+          $Res Function(_$ImsakTimeDataLoadedImpl) then) =
+      __$$ImsakTimeDataLoadedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ImsakTimeDataLoadedImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res, _$ImsakTimeDataLoadedImpl>
+    implements _$$ImsakTimeDataLoadedImplCopyWith<$Res> {
+  __$$ImsakTimeDataLoadedImplCopyWithImpl(_$ImsakTimeDataLoadedImpl _value,
+      $Res Function(_$ImsakTimeDataLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ImsakTimeDataLoadedImpl
+    with DiagnosticableTreeMixin
+    implements _ImsakTimeDataLoaded {
+  const _$ImsakTimeDataLoadedImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.imsakTimeDataLoaded()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'PrayerTimeEvent.imsakTimeDataLoaded'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ImsakTimeDataLoadedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)
+        selectAngle,
+  }) {
+    return imsakTimeDataLoaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)?
+        selectAngle,
+  }) {
+    return imsakTimeDataLoaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)?
+        selectAngle,
+    required TResult orElse(),
+  }) {
+    if (imsakTimeDataLoaded != null) {
+      return imsakTimeDataLoaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+  }) {
+    return imsakTimeDataLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+  }) {
+    return imsakTimeDataLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    required TResult orElse(),
+  }) {
+    if (imsakTimeDataLoaded != null) {
+      return imsakTimeDataLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImsakTimeDataLoaded implements PrayerTimeEvent {
+  const factory _ImsakTimeDataLoaded() = _$ImsakTimeDataLoadedImpl;
+}
+
+/// @nodoc
+abstract class _$$AutoDetectLocationStatusChangeImplCopyWith<$Res> {
+  factory _$$AutoDetectLocationStatusChangeImplCopyWith(
+          _$AutoDetectLocationStatusChangeImpl value,
+          $Res Function(_$AutoDetectLocationStatusChangeImpl) then) =
+      __$$AutoDetectLocationStatusChangeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, bool isAutoDetectLocationEnable});
+}
+
+/// @nodoc
+class __$$AutoDetectLocationStatusChangeImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res,
+        _$AutoDetectLocationStatusChangeImpl>
+    implements _$$AutoDetectLocationStatusChangeImplCopyWith<$Res> {
+  __$$AutoDetectLocationStatusChangeImplCopyWithImpl(
+      _$AutoDetectLocationStatusChangeImpl _value,
+      $Res Function(_$AutoDetectLocationStatusChangeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? isAutoDetectLocationEnable = null,
+  }) {
+    return _then(_$AutoDetectLocationStatusChangeImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      isAutoDetectLocationEnable: null == isAutoDetectLocationEnable
+          ? _value.isAutoDetectLocationEnable
+          : isAutoDetectLocationEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AutoDetectLocationStatusChangeImpl
+    with DiagnosticableTreeMixin
+    implements _AutoDetectLocationStatusChange {
+  const _$AutoDetectLocationStatusChangeImpl(
+      {required this.context, required this.isAutoDetectLocationEnable});
+
+  @override
+  final BuildContext context;
+  @override
+  final bool isAutoDetectLocationEnable;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.autoDetectLocationStatusChange(context: $context, isAutoDetectLocationEnable: $isAutoDetectLocationEnable)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'PrayerTimeEvent.autoDetectLocationStatusChange'))
+      ..add(DiagnosticsProperty('context', context))
+      ..add(DiagnosticsProperty(
+          'isAutoDetectLocationEnable', isAutoDetectLocationEnable));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AutoDetectLocationStatusChangeImpl &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.isAutoDetectLocationEnable,
+                    isAutoDetectLocationEnable) ||
+                other.isAutoDetectLocationEnable ==
+                    isAutoDetectLocationEnable));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, context, isAutoDetectLocationEnable);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AutoDetectLocationStatusChangeImplCopyWith<
+          _$AutoDetectLocationStatusChangeImpl>
+      get copyWith => __$$AutoDetectLocationStatusChangeImplCopyWithImpl<
+          _$AutoDetectLocationStatusChangeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)
+        selectAngle,
+  }) {
+    return autoDetectLocationStatusChange(context, isAutoDetectLocationEnable);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)?
+        selectAngle,
+  }) {
+    return autoDetectLocationStatusChange?.call(
+        context, isAutoDetectLocationEnable);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle, double ishaAngle, String prayerConventionName)?
+        selectAngle,
+    required TResult orElse(),
+  }) {
+    if (autoDetectLocationStatusChange != null) {
+      return autoDetectLocationStatusChange(
+          context, isAutoDetectLocationEnable);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+  }) {
+    return autoDetectLocationStatusChange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+  }) {
+    return autoDetectLocationStatusChange?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    required TResult orElse(),
+  }) {
+    if (autoDetectLocationStatusChange != null) {
+      return autoDetectLocationStatusChange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AutoDetectLocationStatusChange implements PrayerTimeEvent {
+  const factory _AutoDetectLocationStatusChange(
+          {required final BuildContext context,
+          required final bool isAutoDetectLocationEnable}) =
+      _$AutoDetectLocationStatusChangeImpl;
+
+  BuildContext get context;
+  bool get isAutoDetectLocationEnable;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AutoDetectLocationStatusChangeImplCopyWith<
+          _$AutoDetectLocationStatusChangeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2425,6 +3483,12 @@ class _$SelectPrayerConventionImpl
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -2451,6 +3515,11 @@ class _$SelectPrayerConventionImpl
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -2477,6 +3546,10 @@ class _$SelectPrayerConventionImpl
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -2506,6 +3579,10 @@ class _$SelectPrayerConventionImpl
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -2525,6 +3602,10 @@ class _$SelectPrayerConventionImpl
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -2543,6 +3624,10 @@ class _$SelectPrayerConventionImpl
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -2691,6 +3776,12 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     required TResult Function(
             BuildContext context, double latitude, double longitude)
         weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
     required TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)
         selectPrayerConvention,
@@ -2716,6 +3807,11 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
         isDistrictSelected,
     TResult? Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult? Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -2741,6 +3837,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
         isDistrictSelected,
     TResult Function(BuildContext context, double latitude, double longitude)?
         weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
     TResult Function(BuildContext context, String prayerConventionName,
             double fajrAngle, double ishaAngle)?
         selectPrayerConvention,
@@ -2769,6 +3869,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
     required TResult Function(_SelectPrayerConvention value)
         selectPrayerConvention,
     required TResult Function(_SelectAngle value) selectAngle,
@@ -2788,6 +3892,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
   }) {
@@ -2806,6 +3914,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     required TResult orElse(),
@@ -2848,6 +3960,8 @@ mixin _$PrayerTimeState {
   bool get isDistrictSelected => throw _privateConstructorUsedError;
   PrayerTimeStatus get prayerTimeStatus => throw _privateConstructorUsedError;
   PrayerStatus get prayerStatus => throw _privateConstructorUsedError;
+  bool get isImsakEnable => throw _privateConstructorUsedError;
+  bool get isAutoDetectLocationEnable => throw _privateConstructorUsedError;
   String get selectedPrayerConventionName => throw _privateConstructorUsedError;
   double get selectedFajrAngle => throw _privateConstructorUsedError;
   double get selectedIshaAngle => throw _privateConstructorUsedError;
@@ -2876,6 +3990,8 @@ abstract class $PrayerTimeStateCopyWith<$Res> {
       bool isDistrictSelected,
       PrayerTimeStatus prayerTimeStatus,
       PrayerStatus prayerStatus,
+      bool isImsakEnable,
+      bool isAutoDetectLocationEnable,
       String selectedPrayerConventionName,
       double selectedFajrAngle,
       double selectedIshaAngle});
@@ -2906,6 +4022,8 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
     Object? isDistrictSelected = null,
     Object? prayerTimeStatus = null,
     Object? prayerStatus = null,
+    Object? isImsakEnable = null,
+    Object? isAutoDetectLocationEnable = null,
     Object? selectedPrayerConventionName = null,
     Object? selectedFajrAngle = null,
     Object? selectedIshaAngle = null,
@@ -2951,6 +4069,14 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
           ? _value.prayerStatus
           : prayerStatus // ignore: cast_nullable_to_non_nullable
               as PrayerStatus,
+      isImsakEnable: null == isImsakEnable
+          ? _value.isImsakEnable
+          : isImsakEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAutoDetectLocationEnable: null == isAutoDetectLocationEnable
+          ? _value.isAutoDetectLocationEnable
+          : isAutoDetectLocationEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedPrayerConventionName: null == selectedPrayerConventionName
           ? _value.selectedPrayerConventionName
           : selectedPrayerConventionName // ignore: cast_nullable_to_non_nullable
@@ -2986,6 +4112,8 @@ abstract class _$$PrayerTimeStateImplCopyWith<$Res>
       bool isDistrictSelected,
       PrayerTimeStatus prayerTimeStatus,
       PrayerStatus prayerStatus,
+      bool isImsakEnable,
+      bool isAutoDetectLocationEnable,
       String selectedPrayerConventionName,
       double selectedFajrAngle,
       double selectedIshaAngle});
@@ -3014,6 +4142,8 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
     Object? isDistrictSelected = null,
     Object? prayerTimeStatus = null,
     Object? prayerStatus = null,
+    Object? isImsakEnable = null,
+    Object? isAutoDetectLocationEnable = null,
     Object? selectedPrayerConventionName = null,
     Object? selectedFajrAngle = null,
     Object? selectedIshaAngle = null,
@@ -3059,6 +4189,14 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
           ? _value.prayerStatus
           : prayerStatus // ignore: cast_nullable_to_non_nullable
               as PrayerStatus,
+      isImsakEnable: null == isImsakEnable
+          ? _value.isImsakEnable
+          : isImsakEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAutoDetectLocationEnable: null == isAutoDetectLocationEnable
+          ? _value.isAutoDetectLocationEnable
+          : isAutoDetectLocationEnable // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedPrayerConventionName: null == selectedPrayerConventionName
           ? _value.selectedPrayerConventionName
           : selectedPrayerConventionName // ignore: cast_nullable_to_non_nullable
@@ -3091,6 +4229,8 @@ class _$PrayerTimeStateImpl
       this.isDistrictSelected = true,
       this.prayerTimeStatus = PrayerTimeStatus.success,
       this.prayerStatus = PrayerStatus.success,
+      this.isImsakEnable = false,
+      this.isAutoDetectLocationEnable = false,
       this.selectedPrayerConventionName = '',
       this.selectedFajrAngle = 0.0,
       this.selectedIshaAngle = 0.0});
@@ -3125,6 +4265,12 @@ class _$PrayerTimeStateImpl
   final PrayerStatus prayerStatus;
   @override
   @JsonKey()
+  final bool isImsakEnable;
+  @override
+  @JsonKey()
+  final bool isAutoDetectLocationEnable;
+  @override
+  @JsonKey()
   final String selectedPrayerConventionName;
   @override
   @JsonKey()
@@ -3135,7 +4281,7 @@ class _$PrayerTimeStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, weatherResponse: $weatherResponse, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus, selectedPrayerConventionName: $selectedPrayerConventionName, selectedFajrAngle: $selectedFajrAngle, selectedIshaAngle: $selectedIshaAngle)';
+    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, weatherResponse: $weatherResponse, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus, isImsakEnable: $isImsakEnable, isAutoDetectLocationEnable: $isAutoDetectLocationEnable, selectedPrayerConventionName: $selectedPrayerConventionName, selectedFajrAngle: $selectedFajrAngle, selectedIshaAngle: $selectedIshaAngle)';
   }
 
   @override
@@ -3154,6 +4300,9 @@ class _$PrayerTimeStateImpl
       ..add(DiagnosticsProperty('isDistrictSelected', isDistrictSelected))
       ..add(DiagnosticsProperty('prayerTimeStatus', prayerTimeStatus))
       ..add(DiagnosticsProperty('prayerStatus', prayerStatus))
+      ..add(DiagnosticsProperty('isImsakEnable', isImsakEnable))
+      ..add(DiagnosticsProperty(
+          'isAutoDetectLocationEnable', isAutoDetectLocationEnable))
       ..add(DiagnosticsProperty(
           'selectedPrayerConventionName', selectedPrayerConventionName))
       ..add(DiagnosticsProperty('selectedFajrAngle', selectedFajrAngle))
@@ -3187,6 +4336,12 @@ class _$PrayerTimeStateImpl
                 other.prayerTimeStatus == prayerTimeStatus) &&
             (identical(other.prayerStatus, prayerStatus) ||
                 other.prayerStatus == prayerStatus) &&
+            (identical(other.isImsakEnable, isImsakEnable) ||
+                other.isImsakEnable == isImsakEnable) &&
+            (identical(other.isAutoDetectLocationEnable,
+                    isAutoDetectLocationEnable) ||
+                other.isAutoDetectLocationEnable ==
+                    isAutoDetectLocationEnable) &&
             (identical(other.selectedPrayerConventionName,
                     selectedPrayerConventionName) ||
                 other.selectedPrayerConventionName ==
@@ -3210,6 +4365,8 @@ class _$PrayerTimeStateImpl
       isDistrictSelected,
       prayerTimeStatus,
       prayerStatus,
+      isImsakEnable,
+      isAutoDetectLocationEnable,
       selectedPrayerConventionName,
       selectedFajrAngle,
       selectedIshaAngle);
@@ -3236,6 +4393,8 @@ abstract class _PrayerTimeState implements PrayerTimeState {
       final bool isDistrictSelected,
       final PrayerTimeStatus prayerTimeStatus,
       final PrayerStatus prayerStatus,
+      final bool isImsakEnable,
+      final bool isAutoDetectLocationEnable,
       final String selectedPrayerConventionName,
       final double selectedFajrAngle,
       final double selectedIshaAngle}) = _$PrayerTimeStateImpl;
@@ -3260,6 +4419,10 @@ abstract class _PrayerTimeState implements PrayerTimeState {
   PrayerTimeStatus get prayerTimeStatus;
   @override
   PrayerStatus get prayerStatus;
+  @override
+  bool get isImsakEnable;
+  @override
+  bool get isAutoDetectLocationEnable;
   @override
   String get selectedPrayerConventionName;
   @override
