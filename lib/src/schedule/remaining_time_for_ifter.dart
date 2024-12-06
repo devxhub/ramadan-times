@@ -41,7 +41,7 @@ class _RemainingTimeContainerForIftarTimeState
   @override
   Widget build(BuildContext context) {
     DateTime ifterDateTime =
-        DateTime.parse(widget.ifterTime.toString().replaceFirst(' ', 'T'));
+    DateTime.parse(widget.ifterTime.toString().replaceFirst(' ', 'T'));
 
     DateTime endTime = DateTime(
       DateTime.now().year,
@@ -74,49 +74,47 @@ class _RemainingTimeContainerForIftarTimeState
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.ofIfter ?? "",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: 18.sp,
-                      height: 1.4,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
-                AutoSizeText(
+                Text(
                   AppLocalizations.of(context)?.remaining ?? "",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontSize: 14.sp,
-                        height: 1.4,
-                        color: Colors.white70,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontSize: 14.sp,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const Spacer(),
                 if (DateTime.now().isBefore(endTime))
                   CountdownTimer(
                     onEnd: () async {
                       SharedPreferences preferences =
-                          await SharedPreferences.getInstance();
+                      await SharedPreferences.getInstance();
 
                       context.read<HomeBloc>().add(
-                            DataFetched(
-                                date: DateFormat("dd-MM-yyyy").format(
-                                  DateTime.now(),
-                                ),
-                                city: District.fromJson(jsonDecode(preferences
-                                        .getString("current_location")!))
-                                    .bn_name),
-                          );
+                        DataFetched(
+                            date: DateFormat("dd-MM-yyyy").format(
+                              DateTime.now(),
+                            ),
+                            city: District.fromJson(jsonDecode(preferences
+                                .getString("current_location")!))
+                                .bn_name),
+                      );
                     },
                     endTime: endTime.millisecondsSinceEpoch,
                     widgetBuilder: (_, CurrentRemainingTime? time) {
                       if (time == null) {
                         return const Text("");
                       }
-                      return AutoSizeText(
+                      return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                            '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -132,10 +130,10 @@ class _RemainingTimeContainerForIftarTimeState
                       if (time == null) {
                         return const Text("");
                       }
-                      return AutoSizeText(
+                      return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}')
+                            '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -151,7 +149,7 @@ class _RemainingTimeContainerForIftarTimeState
           right: 8,
           child: Image.asset(
             "assets/images/timer.png",
-            height: 60,
+            height: 60.h,
             width: 60.w,
           ),
         )

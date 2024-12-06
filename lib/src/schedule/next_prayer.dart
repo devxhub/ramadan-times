@@ -12,62 +12,64 @@ class NextPrayer extends StatelessWidget {
     super.key,
   });
 
-  String formatTime(DateTime date) {
-    return DateFormat('hh:mm a').format(date);
+  String formatTime(DateTime date, BuildContext context) {
+    return DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName)
+        .format(date);
   }
 
   PrayerTime? getNextPrayerTime(
       Map<String, String> today, Map<String, String> nextDay) {
     DateTime now = DateTime.now();
 
-    DateTime convertToDate(String timeString) {
-      return DateTime.parse(timeString.replaceFirst(' ', 'T'));
+    // Convert time string to DateTime
+    DateTime convertToDateTime(String timeString) {
+      var date = DateTime.parse(timeString.replaceFirst(' ', 'T'));
+      return date;
     }
 
-    String formatTime(DateTime date) {
-      return DateFormat('hh:mm a').format(date);
+    // Helper function to check if a prayer time is upcoming
+    bool isUpcomingPrayer(DateTime prayerTimeStart) {
+      return now.isBefore(prayerTimeStart);
     }
 
+    // Define the prayer times for today and next day
     List<PrayerTime> prayerTimes = [
       PrayerTime(
           name: "Fajr",
-          start: formatTime(convertToDate(today['fajrStart']!)),
-          end: formatTime(convertToDate(today['fajrEnd']!))),
+          start: convertToDateTime(today['fajrStart']!),
+          end: convertToDateTime(today['fajrEnd']!)),
       PrayerTime(
           name: "Dhuhr",
-          start: formatTime(convertToDate(today['dhuhrStart']!)),
-          end: formatTime(convertToDate(today['dhuhrEnd']!))),
+          start: convertToDateTime(today['dhuhrStart']!),
+          end: convertToDateTime(today['dhuhrEnd']!)),
       PrayerTime(
           name: "Asr",
-          start: formatTime(convertToDate(today['asrStart']!)),
-          end: formatTime(convertToDate(today['asrEnd']!))),
+          start: convertToDateTime(today['asrStart']!),
+          end: convertToDateTime(today['asrEnd']!)),
       PrayerTime(
           name: "Maghrib",
-          start: formatTime(convertToDate(today['maghribStart']!)),
-          end: formatTime(convertToDate(today['maghribEnd']!))),
+          start: convertToDateTime(today['maghribStart']!),
+          end: convertToDateTime(today['maghribEnd']!)),
       PrayerTime(
           name: "Isha",
-          start: formatTime(convertToDate(today['ishaStart']!)),
-          end: formatTime(convertToDate(today['ishaEnd']!))),
+          start: convertToDateTime(today['ishaStart']!),
+          end: convertToDateTime(today['ishaEnd']!)),
       PrayerTime(
-          name: "Fajr (Next Day)",
-          start: formatTime(convertToDate(nextDay['fajrStart']!)),
-          end: formatTime(convertToDate(nextDay['fajrEnd']!))),
+          name: "FajrNext",
+          start: convertToDateTime(nextDay['fajrStart']!),
+          end: convertToDateTime(nextDay['fajrEnd']!)),
     ];
 
-    var nextPrayer = prayerTimes.firstWhere(
-      (prayer) {
-        return now.isBefore(
-          convertToDate(
-              today['${prayer.name.toLowerCase().split(' ')[0]}Start']!),
-        );
-      },
+    // Find the next prayer time
+    PrayerTime? nextPrayer = prayerTimes.firstWhere(
+          (prayer) => isUpcomingPrayer(prayer.start),
       orElse: () {
-        // Return a default or next day's Fajr if no prayer is found today
+        // If no prayer is found for today, return the first prayer of the next day
         return prayerTimes.last;
       },
     );
 
+    print('Next prayer is: ${nextPrayer.name} at ${nextPrayer.start}');
     return nextPrayer;
   }
 
@@ -102,63 +104,78 @@ class NextPrayer extends StatelessWidget {
             'fajrStart': state.prayerTimesResponseNextDay.fajrStart!,
             'fajrEnd': state.prayerTimesResponseNextDay.fajrEnd!,
           };
+          var nextPrayer = getNextPrayerTime(todayModel, nextDayModel);
           return Container(
-            margin: const EdgeInsets.only(top: 24, left: 1, right: 1),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            margin: EdgeInsets.only(top: 24.h, left: 1.w, right: 1.w),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   const Color(0xffD9DFE0),
                   const Color(0xffD9DFE0).withOpacity(0),
                 ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(24)),
+                borderRadius: BorderRadius.circular(24.r)),
             child: Row(
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
+                    Text(
                       AppLocalizations.of(context)?.nextPrayer ?? "",
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(fontSize: 18.sp),
                     ),
-                    AutoSizeText(
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Text(
                       AppLocalizations.of(context)?.prayerName(
-                            getNextPrayerTime(todayModel, nextDayModel)!.name,
-                          ) ??
+                        nextPrayer!.name,
+                      ) ??
                           "",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: const Color(0xff674cec),
                           height: 1,
-                          fontSize: 20.sp),
+                          fontSize: 18.sp),
                     )
                   ],
                 ),
                 const Spacer(),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
                       color: const Color(0xfff2f2f7),
                       borderRadius: BorderRadius.circular(15.r)),
-                  child: AutoSizeText.rich(
-                    TextSpan(
-                        text: getNextPrayerTime(todayModel, nextDayModel)!
-                            .start
-                            .toString(),
+                  child: Row(
+                    children: [
+                      Text(
+                        formatTime(nextPrayer!.start, context),
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp,
-                            color: const Color(0xff674cec)),
-                        children: [
-                          TextSpan(
-                              text: " - ",
-                              style: Theme.of(context).textTheme.titleLarge),
-                          TextSpan(
-                            text: getNextPrayerTime(todayModel, nextDayModel)!
-                                .end
-                                .toString(),
-                          ),
-                        ]),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp,
+                          color: const Color(0xff674cec),
+                        ),
+                      ),
+                      Text(
+                        " - ",
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp,
+                          color: const Color(0xff674cec),
+                        ),
+                      ),
+                      Text(
+                        formatTime(nextPrayer.end, context),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14.sp,
+                          color: const Color(0xff674cec),
+                        ),
+                      ),
+                    ],
                   ),
                 )
               ],

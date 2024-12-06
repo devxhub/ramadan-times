@@ -1,0 +1,103 @@
+{
+  "@locale": "fi_FI",
+    "prayerTimes": "Rukousajat",
+    "fajr": "Fajr",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha",
+    "awabin": "Awabin",
+    "tahajjud": "Tahajjud",
+    "afterIsha": "Ishan jälkeen",
+      "prohibitedPrayerTimes": "Kielletty rukousaika",
+      "morning": "Aamu",
+      "noon": "Keskipäivä",
+      "evening": "Ilta",
+    "month": "Kuukausi",
+    "twoWeek": "kaksi viikkoa",
+    "week": "viikko",
+    "quran": "Koraani",
+
+    "locationSettings": "Sijaintiasetukset",
+    "selectYourCountry": "Valitse maasi",
+    "selectCountry": "Valitse maa",
+    "selectYourCity": "Valitse kaupunkisi",
+    "selectACity": "Valitse kaupunki",
+    "pleaseSelectYourCity": "Valitse kaupunki",
+    "save": "Tallentaa",
+
+  "english": "Englanti",
+  "bangla": "Bengali",
+  "finnish": "Suomi",
+  "schedule": "Aikataulu",
+  "maslaMasail": "Masala - Masael",
+  "calendar": "Kalenteri",
+  "ramadanMubarak": "Ramadan Mubarak",
+  "nextPrayer": "Viimeinen rukous",
+  "sehriTime": "Sehrin aika",
+  "ifterTime": "Iftarin aika",
+  "remaining": "Aikaa jäljellä",
+  "ofIfter": "Iftarin",
+  "ofSehri": "Sehrin",
+  "nextDay": "Seuraavan päivän",
+  "sehri": "Sehri",
+  "sehriDua": "Sehrin Dua",
+  "ifter": "Iftar",
+  "ifterDua": "Iftarin Dua",
+  "changeAppLanguage": "Vaihda sovelluksen kieli",
+  "changeAppLocation": "Vaihda sijainti",
+  "shareApp": "Jaa sovellus",
+  "rateThisApp": "Arvostele tämä sovellus",
+  "chooseYourLanguage": "Valitse kielesi",
+  "chooseYourLocation": "Valitse sijaintisi",
+  "save": "Tallenna",
+  "hijriDate": "Hijri-päivämäärä",
+  "prayer": "Rukous",
+  "privacyPolicy": "Tietosuojakäytäntö",
+  "timeRemaining": "Aikaa jäljellä",
+  "greetings": "Tervetuloa {userName}",
+  "formattedTime": "{date}",
+  "@formattedTime": {
+    "description": "Muotoiltu aika",
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "jm"
+      }
+    }
+  },
+  "@greetings": {
+    "description": "Tervehdysviesti käyttäjälle",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Hadisur"
+      }
+    }
+  },
+  "arabicDate": "{day} {month}, {year} AH",
+  "@arabicDate": {
+    "placeholders": {
+      "day": {
+        "type": "String",
+        "format": "compact"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "String",
+        "format": "compact"
+      }
+    }
+  },
+  "prayerName": "{name, select, Fajr{Fajr} Sunrise{Auringonnousu} Dhuhr{Dhuhr} Asr{Asr} Sunset{Auringonlasku} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr} other{name}}, ",
+  "@prayerName": {
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "format": "compact"
+      }
+    }
+  }
+}

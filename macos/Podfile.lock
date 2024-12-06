@@ -1,19 +1,28 @@
 PODS:
   - audio_session (0.0.1):
     - FlutterMacOS
-  - flutter_local_notifications (0.0.1):
+  - connectivity_macos (0.0.1):
     - FlutterMacOS
+    - Reachability
   - FlutterMacOS (1.0.0)
-  - in_app_review (0.2.0):
+  - geolocator_apple (1.2.0):
+    - FlutterMacOS
+  - in_app_review (2.0.0):
     - FlutterMacOS
   - just_audio (0.0.1):
+    - FlutterMacOS
+  - location (0.0.1):
     - FlutterMacOS
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - Reachability (3.7.6)
   - share_plus (0.0.1):
     - FlutterMacOS
   - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
   - url_launcher_macos (0.0.1):
@@ -21,46 +30,63 @@ PODS:
 
 DEPENDENCIES:
   - audio_session (from `Flutter/ephemeral/.symlinks/plugins/audio_session/macos`)
-  - flutter_local_notifications (from `Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos`)
+  - connectivity_macos (from `Flutter/ephemeral/.symlinks/plugins/connectivity_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
+  - geolocator_apple (from `Flutter/ephemeral/.symlinks/plugins/geolocator_apple/macos`)
   - in_app_review (from `Flutter/ephemeral/.symlinks/plugins/in_app_review/macos`)
   - just_audio (from `Flutter/ephemeral/.symlinks/plugins/just_audio/macos`)
-  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos`)
+  - location (from `Flutter/ephemeral/.symlinks/plugins/location/macos`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
   - share_plus (from `Flutter/ephemeral/.symlinks/plugins/share_plus/macos`)
-  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/macos`)
+  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - sqflite_darwin (from `Flutter/ephemeral/.symlinks/plugins/sqflite_darwin/darwin`)
   - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
+
+SPEC REPOS:
+  trunk:
+    - Reachability
 
 EXTERNAL SOURCES:
   audio_session:
     :path: Flutter/ephemeral/.symlinks/plugins/audio_session/macos
-  flutter_local_notifications:
-    :path: Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos
+  connectivity_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/connectivity_macos/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
+  geolocator_apple:
+    :path: Flutter/ephemeral/.symlinks/plugins/geolocator_apple/macos
   in_app_review:
     :path: Flutter/ephemeral/.symlinks/plugins/in_app_review/macos
   just_audio:
     :path: Flutter/ephemeral/.symlinks/plugins/just_audio/macos
+  location:
+    :path: Flutter/ephemeral/.symlinks/plugins/location/macos
   path_provider_foundation:
-    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
   share_plus:
     :path: Flutter/ephemeral/.symlinks/plugins/share_plus/macos
   shared_preferences_foundation:
-    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/macos
+    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin
+  sqflite_darwin:
+    :path: Flutter/ephemeral/.symlinks/plugins/sqflite_darwin/darwin
   url_launcher_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
 
 SPEC CHECKSUMS:
   audio_session: dea1f41890dbf1718f04a56f1d6150fd50039b72
-  flutter_local_notifications: 3805ca215b2fb7f397d78b66db91f6a747af52e4
+  connectivity_macos: 5dae6ee11d320fac7c05f0d08bd08fc32b5514d9
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
-  in_app_review: a850789fad746e89bce03d4aeee8078b45a53fd0
+  geolocator_apple: 72a78ae3f3e4ec0db62117bd93e34523f5011d58
+  in_app_review: a6a031b9acd03c7d103e341aa334adf2c493fb93
   just_audio: 9b67ca7b97c61cfc9784ea23cd8cc55eb226d489
-  path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
-  share_plus: 76dd39142738f7a68dd57b05093b5e8193f220f7
-  shared_preferences_foundation: 986fc17f3d3251412d18b0265f9c64113a8c2472
-  url_launcher_macos: 5335912b679c073563f29d89d33d10d459f95451
+  location: 7cdb0665bd6577d382b0a343acdadbcb7f964775
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  Reachability: fd0ecd23705e2599e4cceeb943222ae02296cbc6
+  share_plus: 1fa619de8392a4398bfaf176d441853922614e89
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
+  sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
+  url_launcher_macos: c82c93949963e55b228a30115bd219499a6fe404
 
 PODFILE CHECKSUM: 353c8bcc5d5b0994e508d035b5431cfe18c1dea7
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.16.2
