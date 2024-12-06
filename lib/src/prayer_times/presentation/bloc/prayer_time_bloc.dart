@@ -219,7 +219,6 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             return;
           }
         }
-
         if (permission == LocationPermission.deniedForever) {
           _saveLocationToPreferences(23.7115253, 90.4111451);
           emit(
@@ -323,10 +322,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       emit(
         state.copyWith(
           userCoordinator: coordinator,
+
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
     }
+
   }
 
   Future<void> _saveCurrentLocationToPreferences(double lat, double lng,

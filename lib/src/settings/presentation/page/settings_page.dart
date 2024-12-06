@@ -109,7 +109,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
-
   String getPrayerAngle(
     BuildContext context,
     String prayerConventionName,
