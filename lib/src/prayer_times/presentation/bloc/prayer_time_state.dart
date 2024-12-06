@@ -26,7 +26,6 @@ class PrayerTimeState with _$PrayerTimeState {
     @Default(PrayerStatus.success) PrayerStatus prayerStatus,
     @Default(false) bool isImsakEnable,
     @Default(false) bool isAutoDetectLocationEnable,
-   // @Default(false) bool isAutoDetectLocationEnable,
     @Default('') String selectedPrayerConventionName,
     @Default(0.0) double selectedFajrAngle,
     @Default(0.0) double selectedIshaAngle,
