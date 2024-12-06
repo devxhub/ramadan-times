@@ -46,7 +46,7 @@ class _SchedulePageState extends State<SchedulePage> {
     context
         .read<PrayerTimeBloc>()
         .add(PrayerTimeEvent.locationPermission(context: context));
-    print("Init called ===");
+
     super.initState();
   }
 
