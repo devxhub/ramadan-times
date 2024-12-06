@@ -9,9 +9,15 @@ import 'package:ramadantimes/src/component/splash_page.dart';
 import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/location_select.dart';
 import '../l10n/app_localizations.dart';
+import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import '../l10n/l10n.dart';
 import 'bloc/language_bloc/language_bloc.dart';
 import 'langauage/language_screen.dart';
+import 'prayer_times/presentation/pages/prayer_time_convention.dart';
+import '../l10n/l10n.dart';
+import 'bloc/language_bloc/language_bloc.dart';
+import 'langauage/language_screen.dart';
+import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import 'quran/presentation/pages/quran_surah_view.dart';
 import 'schedule/schedule.dart';
 import 'schedule/shell.dart';
@@ -136,16 +142,14 @@ final GoRouter _router = GoRouter(
       },
     ),
 
-    // GoRoute(
-    //   parentNavigatorKey: _rootNavigatorKey,
-    //   path: '/quran_ayah',
-    //   name: "quran_ayah",
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     return const QuranAyahView(
-    //       surahModel: ,
-    //     );
-    //   },
-    // ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/prayer_time_convention',
+      name: "prayer_time_convention",
+      builder: (BuildContext context, GoRouterState state) {
+        return PrayerTimeConvention();
+      },
+    ),
 
     // GoRoute(
     //   parentNavigatorKey: _rootNavigatorKey,

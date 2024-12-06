@@ -1,3 +1,4 @@
+import 'package:adhan/adhan.dart';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -16,6 +17,7 @@ import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart'
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../data/repositories/prayer_convertion_util.dart';
 part 'prayer_time_event.dart';
 part 'prayer_time_state.dart';
 part 'prayer_time_bloc.freezed.dart';
@@ -42,6 +44,9 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _weatherDataLoaded(event, emit),
         clearSelectedLocation: (event) async =>
             await _clearSelectedLocation(event, emit),
+        selectPrayerConvention: (event) async =>
+            await _selectPrayerConvention(event, emit),
+        selectAngle: (event) async => await _selectAngle(event, emit),
       );
     });
   }
@@ -54,24 +59,41 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         prayerStatus: PrayerStatus.initial,
       ),
     );
+
+    String? selectedConvention = await readSelectedConvention();
+    double? fajrAngle = await readFajrAngle();
+    double? ishaAngle = await readIshaAngle();
+    print("xxx $selectedConvention $fajrAngle $ishaAngle");
     try {
       final prayerTimeDataResponse =
           await prayerTimeRepository.generatePrayerTimes(
         latitude: event.latitude,
         longitude: event.longitude,
         date: DateTime.now(),
+        calculationMethod:
+            getCalculationMethod(selectedConvention ?? 'Muslim World League'),
+        fajrAngle: fajrAngle ?? 15.0,
+        ishaAngle: ishaAngle ?? 15.0,
       );
       final prayerTimeDataResponseNextDay =
           await prayerTimeRepository.generatePrayerTimes(
         latitude: event.latitude,
         longitude: event.longitude,
         date: nextDay,
+        calculationMethod:
+            getCalculationMethod(selectedConvention ?? 'Muslim World League'),
+        fajrAngle: fajrAngle ?? 15.0,
+        ishaAngle: ishaAngle ?? 15.0,
       );
       emit(
         state.copyWith(
           prayerTimesResponse: prayerTimeDataResponse,
           prayerTimesResponseNextDay: prayerTimeDataResponseNextDay,
           prayerStatus: PrayerStatus.success,
+          selectedPrayerConventionName:
+              selectedConvention ?? 'Muslim World League',
+          selectedFajrAngle: fajrAngle ?? 15.0,
+          selectedIshaAngle: ishaAngle ?? 15.0,
         ),
       );
     } catch (e) {
@@ -124,19 +146,19 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       ),
     );
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    double userLat=prefs.getDouble('currentLatitude')??0.0;
-    double userLng=prefs.getDouble('currentLongitude')??0.0;
-    String userCity=prefs.getString('currentCity')??"";
-    String userCountry=prefs.getString('currentCountry')??"";
-    String userIsoCountryCode=prefs.getString('isoCountryCode')??"";
+    double userLat = prefs.getDouble('currentLatitude') ?? 0.0;
+    double userLng = prefs.getDouble('currentLongitude') ?? 0.0;
+    String userCity = prefs.getString('currentCity') ?? "";
+    String userCountry = prefs.getString('currentCountry') ?? "";
+    String userIsoCountryCode = prefs.getString('isoCountryCode') ?? "";
     var coordinator = UserCoordinator(
       userLat: userLat,
       userLng: userLng,
-      userCountry:userCountry,
+      userCountry: userCountry,
       userCity: userCity,
       userCountryIso: userIsoCountryCode,
     );
-    if(userCity.isEmpty==true){
+    if (userCity.isEmpty == true) {
       try {
         bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
         if (!serviceEnabled) {
@@ -144,9 +166,11 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         }
 
         LocationPermission permission = await Geolocator.checkPermission();
-        ConnectivityResult connection = await Connectivity().checkConnectivity();
+        ConnectivityResult connection =
+            await Connectivity().checkConnectivity();
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
+        double currentLatitude =
+            prefs.getDouble('currentLatitude') ?? 23.7115253;
         double currentLongitude =
             prefs.getDouble('currentLongitude') ?? 90.4111451;
         String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
@@ -195,7 +219,6 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             return;
           }
         }
-
         if (permission == LocationPermission.deniedForever) {
           _saveLocationToPreferences(23.7115253, 90.4111451);
           emit(
@@ -251,13 +274,13 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         );
         _saveCurrentLocationToPreferences(position.latitude, position.longitude,
             country!, city!, isoCountryCode!);
-      }
-      catch (e) {
+      } catch (e) {
         if (kDebugMode) {
           print("Error fetching location: $e");
         }
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        double currentLatitude = prefs.getDouble('currentLatitude') ?? 23.7115253;
+        double currentLatitude =
+            prefs.getDouble('currentLatitude') ?? 23.7115253;
         double currentLongitude =
             prefs.getDouble('currentLongitude') ?? 90.4111451;
         String currentCity = prefs.getString('currentCity') ?? "Bangladesh";
@@ -286,19 +309,20 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           ),
         );
       }
-    }else{
+    } else {
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-        latitude: coordinator.userLat??23.7115253,
-        longitude: coordinator.userLng??90.4111451,
+        latitude: coordinator.userLat ?? 23.7115253,
+        longitude: coordinator.userLng ?? 90.4111451,
       ));
       prayerBloc.add(PrayerTimeEvent.weatherDataLoaded(
-        latitude: coordinator.userLat??23.7115253,
-        longitude: coordinator.userLng??90.4111451,
+        latitude: coordinator.userLat ?? 23.7115253,
+        longitude: coordinator.userLng ?? 90.4111451,
         context: event.context,
       ));
       emit(
         state.copyWith(
-          userCoordinator:coordinator,
+          userCoordinator: coordinator,
+
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
@@ -399,7 +423,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       longitude: event.userCoordinator.userLng ?? 0.0,
       context: event.context,
     ));
-_saveCurrentLocationToPreferences(event.userCoordinator.userLat ?? 0.0,event.userCoordinator.userLng ?? 0.0, event.userCoordinator.userCountry??'', event.userCoordinator.userCity??"",event.userCoordinator.userCountryIso??'');
+    _saveCurrentLocationToPreferences(
+        event.userCoordinator.userLat ?? 0.0,
+        event.userCoordinator.userLng ?? 0.0,
+        event.userCoordinator.userCountry ?? '',
+        event.userCoordinator.userCity ?? "",
+        event.userCoordinator.userCountryIso ?? '');
     emit(
       state.copyWith(
           userCoordinator: event.userCoordinator,
@@ -428,5 +457,44 @@ _saveCurrentLocationToPreferences(event.userCoordinator.userLat ?? 0.0,event.use
         selectedCountry: null,
       ),
     );
+  }
+
+  _selectPrayerConvention(
+    _SelectPrayerConvention event,
+    Emitter<PrayerTimeState> emit,
+  ) async {
+    final prayerBloc = event.context.read<PrayerTimeBloc>();
+
+    await writeSelectedConvention(event.prayerConventionName);
+    await writeFajrAngle(event.fajrAngle);
+    await writeIshaAngle(event.ishaAngle);
+    emit(PrayerTimeState(
+      selectedPrayerConventionName: event.prayerConventionName,
+      selectedFajrAngle: event.fajrAngle,
+      selectedIshaAngle: event.ishaAngle,
+    ));
+    print(state.selectedPrayerConventionName);
+    print(state.selectedFajrAngle);
+    print(state.selectedIshaAngle);
+
+    prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+      latitude: state.userCoordinator.userLat!,
+      longitude: state.userCoordinator.userLng!,
+    ));
+  }
+
+  _selectAngle(_SelectAngle event, Emitter<PrayerTimeState> emit) async {
+    await writeSelectedConvention(event.prayerConventionName);
+    await writeFajrAngle(event.fajrAngle);
+    await writeIshaAngle(event.ishaAngle);
+    emit(PrayerTimeState(
+      selectedPrayerConventionName: event.prayerConventionName,
+      selectedFajrAngle: event.fajrAngle,
+      selectedIshaAngle: event.ishaAngle,
+    ));
+
+    print(state.selectedPrayerConventionName);
+    print(state.selectedFajrAngle);
+    print(state.selectedIshaAngle);
   }
 }

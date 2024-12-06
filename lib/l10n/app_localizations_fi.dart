@@ -203,4 +203,40 @@ class AppLocalizationsFi extends AppLocalizations {
     );
     return '$_temp0, ';
   }
+
+  @override
+  String get prayerTimeConvention => 'Rukousajan käytäntö';
+
+  @override
+  String get customAngles => 'Mukautetut kulmat';
+
+  @override
+  String get fajrAngle => 'Fajr-kulma';
+
+  @override
+  String get ishaAngle => 'Isha-kulma';
+
+  @override
+  String get ishaInterval => 'Isha-väli';
+
+  @override
+  String get minutes => 'minuuttia';
+
+  @override
+  String get maghribAngle => 'Maghrib-kulma';
+
+  @override
+  String get selectFajrAngle => 'Valitse Fajr-kulma:';
+
+  @override
+  String get ishaAngle => 'Isha Angle';
+
+  @override
+  String get ishaInterval => 'Isha Interval';
+
+  @override
+  String get minutes => 'minutes';
+
+  @override
+  String get maghribAngle => 'Maghrib Angle';
 }

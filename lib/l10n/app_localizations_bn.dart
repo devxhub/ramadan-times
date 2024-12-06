@@ -222,4 +222,31 @@ class AppLocalizationsBn extends AppLocalizations {
     );
     return '$_temp0 ';
   }
+
+  @override
+  String get prayerTimeConvention => 'নামাজের সময় সম্মেলন';
+
+  @override
+  String get customAngles => 'কাস্টম কোণ';
+
+  @override
+  String get fajrAngle => 'ফজর কোণ';
+
+  @override
+  String get ishaAngle => 'ইশা কোণ';
+
+  @override
+  String get ishaInterval => 'ইশার ব্যবধান';
+
+  @override
+  String get minutes => 'মিনিট';
+
+  @override
+  String get maghribAngle => 'মাগরিব কোণ';
+
+  @override
+  String get selectFajrAngle => 'ফজর কোণ নির্বাচন করুন:';
+
+  @override
+  String get selectIshaAngle => 'ইশা কোণ নির্বাচন করুন:';
 }

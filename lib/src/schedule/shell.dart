@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:in_app_review/in_app_review.dart';
@@ -11,7 +12,6 @@ import 'package:ramadantimes/src/langauage/language_screen.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
 import '../bloc/navigation_cubit/navigation_cubit.dart';
 import '../models/named_navigation_bar.dart';
 import '../services/api_service.dart';
@@ -307,6 +307,17 @@ class CommonDrawer extends StatelessWidget {
                   //   icon: Icon(Icons.feedback),
                   //   title: "Feedback",
                   // ),
+                  Gap(20.w),
+                  InkWell(
+                    onTap: () {
+                      context.goNamed("prayer_time_convention");
+                    },
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                          AppLocalizations.of(context)!.prayerTimeConvention),
+                    ),
+                  )
                 ],
               ),
             ),

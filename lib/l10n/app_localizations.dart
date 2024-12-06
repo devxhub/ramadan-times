@@ -438,6 +438,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr} other{Fajr}}, '**
   String prayerName(String name);
+
+  /// No description provided for @prayerTimeConvention.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Time Convention'**
+  String get prayerTimeConvention;
+
+  /// No description provided for @customAngles.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Angle'**
+  String get customAngles;
+
+  /// No description provided for @fajrAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr Angle'**
+  String get fajrAngle;
+
+  /// No description provided for @ishaAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha Angle'**
+  String get ishaAngle;
+
+  /// No description provided for @ishaInterval.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha Interval'**
+  String get ishaInterval;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'minutes'**
+  String get minutes;
+
+  /// No description provided for @maghribAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib Angle'**
+  String get maghribAngle;
+
+  /// No description provided for @selectFajrAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Fajr Angle:'**
+  String get selectFajrAngle;
+
+  /// No description provided for @selectIshaAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Isha Angle:'**
+  String get selectIshaAngle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

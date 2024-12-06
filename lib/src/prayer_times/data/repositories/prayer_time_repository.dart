@@ -18,28 +18,26 @@ class PrayerTimeRepository {
     dioClient = DioClient(_baseUrl, dio);
   }
 
-  Future<PrayerTimesResponse> generatePrayerTimes(
-      {required double latitude,
-      required double longitude,
-      required date}) async {
-    print("Final state is lat lng$latitude===$longitude");
+  Future<PrayerTimesResponse> generatePrayerTimes({
+    required double latitude,
+    required double longitude,
+    required date,
+    required CalculationMethod calculationMethod,
+    required double fajrAngle,
+    required double ishaAngle,
+  }) async {
     if (latitude.isFinite) {
-      final coordinates = Coordinates(latitude, longitude); // Example: London
-      CalculationParameters calculationMethod = CalculationParameters(
-        method: CalculationMethod.muslim_world_league,
-        fajrAngle: 18.0,
-        ishaAngle: 17.0,
-        ishaInterval: 0,
-        madhab: Madhab.hanafi,
-        highLatitudeRule: HighLatitudeRule.middle_of_the_night,
-      );
+      final coordinates = Coordinates(latitude, longitude);
+      CalculationParameters calculationParams =
+          getCalculationParameters(calculationMethod, fajrAngle, ishaAngle);
+
       try {
         final date = DateTime.now();
 
         final prayerTimesForDay = PrayerTimes(
             coordinates,
             DateComponents(date.year, date.month, date.day),
-            calculationMethod); // 5 mins before and after Dhuhr
+            calculationParams); // 5 mins before and after Dhuhr
         final tahajjudEnd = prayerTimesForDay.fajr
             .subtract(Duration(minutes: 10)); // End 10 minutes before Fajr
 
@@ -127,5 +125,41 @@ class PrayerTimeRepository {
     final response = await http.get(Uri.parse(weatherUrl));
 
     return WeatherModel.fromRawJson(response.body);
+  }
+
+  CalculationParameters getCalculationParameters(
+      CalculationMethod calculationMethod, double fajrAngle, double ishaAngle) {
+    switch (calculationMethod) {
+      case CalculationMethod.other:
+        return CalculationParameters(
+          method: calculationMethod,
+          fajrAngle:
+              calculationMethod == CalculationMethod.other ? fajrAngle : 0.0,
+          ishaAngle:
+              calculationMethod == CalculationMethod.other ? ishaAngle : 0.0,
+          ishaInterval: 0,
+        );
+      case CalculationMethod.muslim_world_league:
+        return CalculationMethod.muslim_world_league.getParameters();
+      case CalculationMethod.egyptian:
+        return CalculationMethod.egyptian.getParameters();
+      case CalculationMethod.karachi:
+        return CalculationMethod.karachi.getParameters();
+      case CalculationMethod.umm_al_qura:
+        return CalculationMethod.umm_al_qura.getParameters();
+      case CalculationMethod.kuwait:
+        return CalculationMethod.kuwait.getParameters();
+      case CalculationMethod.moon_sighting_committee:
+        return CalculationMethod.moon_sighting_committee.getParameters();
+      case CalculationMethod.singapore:
+        return CalculationMethod.singapore.getParameters();
+      case CalculationMethod.north_america:
+        return CalculationMethod.north_america.getParameters();
+      case CalculationMethod.turkey:
+        return CalculationMethod.turkey.getParameters();
+
+      default:
+        return CalculationMethod.muslim_world_league.getParameters();
+    }
   }
 }

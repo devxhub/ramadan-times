@@ -221,4 +221,31 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0, ';
   }
+
+  @override
+  String get prayerTimeConvention => 'Prayer Time Convention';
+
+  @override
+  String get customAngles => 'Custom Angle';
+
+  @override
+  String get fajrAngle => 'Fajr Angle';
+
+  @override
+  String get ishaAngle => 'Isha Angle';
+
+  @override
+  String get ishaInterval => 'Isha Interval';
+
+  @override
+  String get minutes => 'minutes';
+
+  @override
+  String get maghribAngle => 'Maghrib Angle';
+
+  @override
+  String get selectFajrAngle => 'Select Fajr Angle:';
+
+  @override
+  String get selectIshaAngle => 'Select Isha Angle:';
 }

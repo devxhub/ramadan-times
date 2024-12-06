@@ -130,15 +130,6 @@ class _QuranSurahViewState extends State<QuranSurahView> {
                                       ),
                                     ),
                                   ),
-                                  // Gap(5.h),
-                                  // Text(
-                                  //   getSurahName(surah.surahNumber, state.languageCode),
-                                  //   style: TextStyle(
-                                  //     fontSize: 13.sp,
-                                  //     fontWeight: FontWeight.bold,
-                                  //     color: Colors.deepPurple,
-                                  //   ),
-                                  // ),
                                 ],
                               ),
                               Spacer(),
