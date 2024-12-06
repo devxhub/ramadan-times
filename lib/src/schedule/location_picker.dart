@@ -98,7 +98,7 @@ class _LocationPickerState extends State<LocationPicker> {
                   underline: const SizedBox(),
                   icon: const Icon(Icons.keyboard_arrow_down),
                   items: data.map(
-                    (e) {
+                        (e) {
                       return DropdownMenuItem(
                           value: e, child: AutoSizeText(e.bn_name.toString()));
                     },
@@ -116,12 +116,12 @@ class _LocationPickerState extends State<LocationPicker> {
                     print("object");
                     if (!mounted) return;
                     context.read<HomeBloc>().add(
-                          DataFetched(
-                              date: DateFormat("dd-MM-yyyy").format(
-                                DateTime.now(),
-                              ),
-                              city: v!.name),
-                        );
+                      DataFetched(
+                          date: DateFormat("dd-MM-yyyy").format(
+                            DateTime.now(),
+                          ),
+                          city: v!.name),
+                    );
                     print("object1");
                   },
                 ),

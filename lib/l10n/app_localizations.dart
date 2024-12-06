@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_bn.dart';
 import 'app_localizations_en.dart';
+import 'app_localizations_fi.dart';
 
 // ignore_for_file: type=lint
 
@@ -92,176 +93,333 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('bn'),
-    Locale('en')
+    Locale('en'),
+    Locale('fi')
   ];
 
-  /// No description provided for @schedule.
+  /// No description provided for @prohibitedPrayerTimes.
   ///
   /// In en, this message translates to:
-  /// **'সময়সূচী'**
-  String get schedule;
+  /// **'Prohibited Prayer Times'**
+  String get prohibitedPrayerTimes;
 
-  /// No description provided for @maslaMasail.
+  /// No description provided for @morning.
   ///
   /// In en, this message translates to:
-  /// **'মাসআলা- মাসায়েল'**
-  String get maslaMasail;
+  /// **'Morning'**
+  String get morning;
 
-  /// No description provided for @calendar.
+  /// No description provided for @noon.
   ///
   /// In en, this message translates to:
-  /// **'ক্যালেন্ডার'**
-  String get calendar;
+  /// **'Noon'**
+  String get noon;
 
-  /// No description provided for @ramadanMubarak.
+  /// No description provided for @evening.
   ///
   /// In en, this message translates to:
-  /// **'রমজান মুবারক'**
-  String get ramadanMubarak;
+  /// **'Evening'**
+  String get evening;
 
-  /// No description provided for @nextPrayer.
+  /// No description provided for @month.
   ///
   /// In en, this message translates to:
-  /// **'পরবতী নামাজ'**
-  String get nextPrayer;
+  /// **'Month'**
+  String get month;
 
-  /// No description provided for @sehriTime.
+  /// No description provided for @twoWeek.
   ///
   /// In en, this message translates to:
-  /// **'সেহরির সময়'**
-  String get sehriTime;
+  /// **'Two Weeks'**
+  String get twoWeek;
 
-  /// No description provided for @ifterTime.
+  /// No description provided for @week.
   ///
   /// In en, this message translates to:
-  /// **'ইফতারের সময়'**
-  String get ifterTime;
+  /// **'Week'**
+  String get week;
 
-  /// No description provided for @remaining.
+  /// No description provided for @locationSettings.
   ///
   /// In en, this message translates to:
-  /// **'সময় বাকি'**
-  String get remaining;
+  /// **'Location Settings'**
+  String get locationSettings;
 
-  /// No description provided for @ofIfter.
+  /// No description provided for @selectYourCountry.
   ///
   /// In en, this message translates to:
-  /// **'ইফতারের'**
-  String get ofIfter;
+  /// **'Select Your Country'**
+  String get selectYourCountry;
 
-  /// No description provided for @ofSehri.
+  /// No description provided for @selectCountry.
   ///
   /// In en, this message translates to:
-  /// **'সেহরির'**
-  String get ofSehri;
+  /// **'Select a Country'**
+  String get selectCountry;
 
-  /// No description provided for @nextDay.
+  /// No description provided for @selectYourCity.
   ///
   /// In en, this message translates to:
-  /// **'পরবর্তী দিনের'**
-  String get nextDay;
+  /// **'Select Your City'**
+  String get selectYourCity;
 
-  /// No description provided for @sehri.
+  /// No description provided for @selectACity.
   ///
   /// In en, this message translates to:
-  /// **'সেহরি'**
-  String get sehri;
+  /// **'Select a City'**
+  String get selectACity;
 
-  /// No description provided for @sehriDua.
+  /// No description provided for @selectYourDistrict.
   ///
   /// In en, this message translates to:
-  /// **'সেহরির দোয়া'**
-  String get sehriDua;
+  /// **'Select Your District'**
+  String get selectYourDistrict;
 
-  /// No description provided for @ifter.
+  /// No description provided for @pleaseSelectYourCity.
   ///
   /// In en, this message translates to:
-  /// **'ইফতার'**
-  String get ifter;
-
-  /// No description provided for @ifterDua.
-  ///
-  /// In en, this message translates to:
-  /// **'ইফতারের দোয়া'**
-  String get ifterDua;
-
-  /// No description provided for @changeAppLanguage.
-  ///
-  /// In en, this message translates to:
-  /// **'ভাষা পরিবর্তন করুন'**
-  String get changeAppLanguage;
-
-  /// No description provided for @changeAppLocation.
-  ///
-  /// In en, this message translates to:
-  /// **'অবস্থান পরিবর্তন করুন'**
-  String get changeAppLocation;
-
-  /// No description provided for @shareApp.
-  ///
-  /// In en, this message translates to:
-  /// **'শেয়ার করুন'**
-  String get shareApp;
-
-  /// No description provided for @rateThisApp.
-  ///
-  /// In en, this message translates to:
-  /// **'রেটিং দিন'**
-  String get rateThisApp;
-
-  /// No description provided for @chooseYourLanguage.
-  ///
-  /// In en, this message translates to:
-  /// **'আপনার ভাষা নির্বাচন করুন'**
-  String get chooseYourLanguage;
-
-  /// No description provided for @chooseYourLocation.
-  ///
-  /// In en, this message translates to:
-  /// **'আপনার অবস্থান নির্বাচন করুন'**
-  String get chooseYourLocation;
+  /// **'Please select a city'**
+  String get pleaseSelectYourCity;
 
   /// No description provided for @save.
   ///
   /// In en, this message translates to:
-  /// **'সংরক্ষণ করুন'**
+  /// **'Save'**
   String get save;
-
-  /// No description provided for @hijriDate.
-  ///
-  /// In en, this message translates to:
-  /// **'হিজরি তারিখ'**
-  String get hijriDate;
-
-  /// No description provided for @prayer.
-  ///
-  /// In en, this message translates to:
-  /// **'নামায'**
-  String get prayer;
-
-  /// No description provided for @privacyPolicy.
-  ///
-  /// In en, this message translates to:
-  /// **'গোপনীয়তা নীতি'**
-  String get privacyPolicy;
-
-  /// No description provided for @timeRemaining.
-  ///
-  /// In en, this message translates to:
-  /// **'সময় বাকি'**
-  String get timeRemaining;
-
-  /// A message of greetings to user
-  ///
-  /// In en, this message translates to:
-  /// **'স্বাগতম {userName}'**
-  String greetings(String userName);
 
   /// No description provided for @quran.
   ///
   /// In en, this message translates to:
   /// **'Quran'**
   String get quran;
+
+  /// No description provided for @prayerTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Times'**
+  String get prayerTimes;
+
+  /// No description provided for @fajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr'**
+  String get fajr;
+
+  /// No description provided for @dhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhuhr'**
+  String get dhuhr;
+
+  /// No description provided for @asr.
+  ///
+  /// In en, this message translates to:
+  /// **'Asr'**
+  String get asr;
+
+  /// No description provided for @maghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib'**
+  String get maghrib;
+
+  /// No description provided for @isha.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha'**
+  String get isha;
+
+  /// No description provided for @awabin.
+  ///
+  /// In en, this message translates to:
+  /// **'Awabin'**
+  String get awabin;
+
+  /// No description provided for @tahajjud.
+  ///
+  /// In en, this message translates to:
+  /// **'Tahajjud'**
+  String get tahajjud;
+
+  /// No description provided for @afterIsha.
+  ///
+  /// In en, this message translates to:
+  /// **'After Isha'**
+  String get afterIsha;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @bangla.
+  ///
+  /// In en, this message translates to:
+  /// **'Bangla'**
+  String get bangla;
+
+  /// No description provided for @finnish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finnish'**
+  String get finnish;
+
+  /// No description provided for @schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'schedule'**
+  String get schedule;
+
+  /// No description provided for @maslaMasail.
+  ///
+  /// In en, this message translates to:
+  /// **'Masala - Masael'**
+  String get maslaMasail;
+
+  /// No description provided for @calendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get calendar;
+
+  /// No description provided for @ramadanMubarak.
+  ///
+  /// In en, this message translates to:
+  /// **'Ramadan Mubarak'**
+  String get ramadanMubarak;
+
+  /// No description provided for @nextPrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'last prayer'**
+  String get nextPrayer;
+
+  /// No description provided for @sehriTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Sehri time'**
+  String get sehriTime;
+
+  /// No description provided for @ifterTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar time'**
+  String get ifterTime;
+
+  /// No description provided for @remaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Time remaining'**
+  String get remaining;
+
+  /// No description provided for @ofIfter.
+  ///
+  /// In en, this message translates to:
+  /// **'of Iftar'**
+  String get ofIfter;
+
+  /// No description provided for @ofSehri.
+  ///
+  /// In en, this message translates to:
+  /// **'of Sehri'**
+  String get ofSehri;
+
+  /// No description provided for @nextDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Next day\'s'**
+  String get nextDay;
+
+  /// No description provided for @sehri.
+  ///
+  /// In en, this message translates to:
+  /// **'Sehri'**
+  String get sehri;
+
+  /// No description provided for @sehriDua.
+  ///
+  /// In en, this message translates to:
+  /// **'Sehri\'s Dua'**
+  String get sehriDua;
+
+  /// No description provided for @ifter.
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar'**
+  String get ifter;
+
+  /// No description provided for @ifterDua.
+  ///
+  /// In en, this message translates to:
+  /// **'Iftar\'s Dua'**
+  String get ifterDua;
+
+  /// No description provided for @changeAppLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change the language'**
+  String get changeAppLanguage;
+
+  /// No description provided for @changeAppLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Change location'**
+  String get changeAppLocation;
+
+  /// No description provided for @shareApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Share the app'**
+  String get shareApp;
+
+  /// No description provided for @rateThisApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate this app'**
+  String get rateThisApp;
+
+  /// No description provided for @chooseYourLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your language'**
+  String get chooseYourLanguage;
+
+  /// No description provided for @chooseYourLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your location'**
+  String get chooseYourLocation;
+
+  /// No description provided for @hijriDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Hijri date'**
+  String get hijriDate;
+
+  /// No description provided for @prayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer'**
+  String get prayer;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @timeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining Time'**
+  String get timeRemaining;
+
+  /// A message of greetings to user
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome {userName}'**
+  String greetings(String userName);
 
   /// Formatted Time
   ///
@@ -278,7 +436,7 @@ abstract class AppLocalizations {
   /// No description provided for @prayerName.
   ///
   /// In en, this message translates to:
-  /// **'{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr (Next Day)} other{Fajr}}, '**
+  /// **'{name, select, Fajr{Fajr} Sunrise{Sunrise} Dhuhr{Dhuhr} Asr{Asr} Sunset{Sunset} Maghrib{Maghrib} Isha{Isha} FajrNext{Fajr} other{Fajr}}, '**
   String prayerName(String name);
 }
 
@@ -291,7 +449,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['bn', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['bn', 'en', 'fi'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -304,6 +462,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'bn': return AppLocalizationsBn();
     case 'en': return AppLocalizationsEn();
+    case 'fi': return AppLocalizationsFi();
   }
 
   throw FlutterError(

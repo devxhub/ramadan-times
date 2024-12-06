@@ -124,91 +124,84 @@ class CurrentPrayer extends StatelessWidget {
       sunset: today.sunset,
     );
 
-    return Row(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                AutoSizeText(
-                  "${AppLocalizations.of(context)?.prayerName(
-                        getCurrentPrayer(
-                                timingsToday, timingsNextToday)['name'] ??
-                            "",
-                      ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: const Color(0xff000000),
-                      fontSize: 18.sp,
-                      height: 1,
-                      fontWeight: FontWeight.w600),
+        Text(
+          "${AppLocalizations.of(context)?.prayerName(
+            getCurrentPrayer(
+                timingsToday, timingsNextToday)['name'] ??
+                "",
+          ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              color: const Color(0xff000000),
+              fontSize: 18.sp,
+              height: 1,
+              fontWeight: FontWeight.w600),
+        ),
+        Text(
+          "${AppLocalizations.of(context)?.timeRemaining ?? ""} ",
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              fontSize: 16.sp,
+              color: const Color(0xff6348EB),
+              fontWeight: FontWeight.w600),
+        ),
+        CountdownTimer(
+          endTime: DateTime(
+            DateTime.now().year,
+            DateTime.now().month,
+            (getCurrentPrayer(timingsToday, timingsNextToday)["name"] ==
+                "Isha" &&
+                !DateTime.now().isAfter(DateTime(
+                    DateTime.now().year,
+                    DateTime.now().month,
+                    DateTime.now().day,
+                    23,
+                    59,
+                    59)))
+                ? DateTime.now().day + 1
+                : DateTime.now().day,
+            int.parse(getCurrentPrayer(
+                timingsToday, timingsNextToday)["end_hour"]),
+            int.parse(getCurrentPrayer(
+                timingsToday, timingsNextToday)["end_minute"]),
+          ).millisecondsSinceEpoch,
+          onEnd: () async {
+            SharedPreferences preferences =
+            await SharedPreferences.getInstance();
+
+            context.read<HomeBloc>().add(
+              DataFetched(
+                date: DateFormat("dd-MM-yyyy").format(
+                  DateTime.now(),
                 ),
-                AutoSizeText(
-                  " ${AppLocalizations.of(context)?.timeRemaining ?? ""} ",
+                city: District.fromJson(jsonDecode(
+                    preferences.getString("current_location")!))
+                    .bn_name,
+              ),
+            );
+          },
+          widgetBuilder: (_, CurrentRemainingTime? time) {
+            if (time == null) {
+              return const Text("");
+            }
+            return Row(
+              children: [
+                Text(
+                  AppLocalizations.of(context)?.localeName == "bn"
+                      ? engToBn(
+                      '${time.hours?.toString().padLeft(2, "0") ?? "00"} ঘ. : ${time.min?.toString().padLeft(2, "0") ?? "00"} মি. : ${time.sec.toString().padLeft(2, "0")} সে.', context)
+                      : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: const Color(0xff6348EB),
-                      fontWeight: FontWeight.w600),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700),
                 ),
               ],
-            ),
-            CountdownTimer(
-              endTime: DateTime(
-                DateTime.now().year,
-                DateTime.now().month,
-                (getCurrentPrayer(timingsToday, timingsNextToday)["name"] ==
-                            "Isha" &&
-                        !DateTime.now().isAfter(DateTime(
-                            DateTime.now().year,
-                            DateTime.now().month,
-                            DateTime.now().day,
-                            23,
-                            59,
-                            59)))
-                    ? DateTime.now().day + 1
-                    : DateTime.now().day,
-                int.parse(getCurrentPrayer(
-                    timingsToday, timingsNextToday)["end_hour"]),
-                int.parse(getCurrentPrayer(
-                    timingsToday, timingsNextToday)["end_minute"]),
-              ).millisecondsSinceEpoch,
-              onEnd: () async {
-                SharedPreferences preferences =
-                    await SharedPreferences.getInstance();
-
-                context.read<HomeBloc>().add(
-                      DataFetched(
-                        date: DateFormat("dd-MM-yyyy").format(
-                          DateTime.now(),
-                        ),
-                        city: District.fromJson(jsonDecode(
-                                preferences.getString("current_location")!))
-                            .bn_name,
-                      ),
-                    );
-              },
-              widgetBuilder: (_, CurrentRemainingTime? time) {
-                if (time == null) {
-                  return const Text("");
-                }
-                return Row(
-                  children: [
-                    AutoSizeText(
-                      AppLocalizations.of(context)?.localeName == "bn"
-                          ? engToBn(
-                              '${time.hours?.toString().padLeft(2, "0") ?? "00"} ঘ. : ${time.min?.toString().padLeft(2, "0") ?? "00"} মি. : ${time.sec.toString().padLeft(2, "0")} সে.')
-                          : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: const Color(0xff6348EB),
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                );
-              },
-            )
-          ],
-        ),
+            );
+          },
+        )
       ],
     );
   }
