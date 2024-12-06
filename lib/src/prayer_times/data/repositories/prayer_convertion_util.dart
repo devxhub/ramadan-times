@@ -1,16 +1,37 @@
 import 'package:adhan/adhan.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-final GetStorage _box = GetStorage();
+// Write methods
+Future<void> writeSelectedConvention(String value) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('selectedConvention', value);
+}
 
-Future<void> writeSelectedConvention(String value) =>
-    _box.write('selectedConvention', value);
-Future<void> writeFajrAngle(double value) => _box.write('fajrAngle', value);
-Future<void> writeIshaAngle(double value) => _box.write('ishaAngle', value);
+Future<void> writeFajrAngle(double value) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setDouble('fajrAngle', value);
+}
 
-String readSelectedConvention() => _box.read('selectedConvention');
-double readFajrAngle() => _box.read('fajrAngle');
-double readIshaAngle() => _box.read('ishaAngle');
+Future<void> writeIshaAngle(double value) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setDouble('ishaAngle', value);
+}
+
+// Read methods
+Future<String?> readSelectedConvention() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getString('selectedConvention');
+}
+
+Future<double?> readFajrAngle() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getDouble('fajrAngle');
+}
+
+Future<double?> readIshaAngle() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getDouble('ishaAngle');
+}
 
 CalculationMethod getCalculationMethod(String prayerConventionName) {
   switch (prayerConventionName) {

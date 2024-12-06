@@ -46,6 +46,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _clearSelectedLocation(event, emit),
         selectPrayerConvention: (event) async =>
             await _selectPrayerConvention(event, emit),
+        selectAngle: (event) async => await _selectAngle(event, emit),
       );
     });
   }
@@ -59,9 +60,9 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       ),
     );
 
-    String selectedConvention = readSelectedConvention();
-    double fajrAngle = readFajrAngle();
-    double ishaAngle = readIshaAngle();
+    String? selectedConvention = await readSelectedConvention();
+    double? fajrAngle = await readFajrAngle();
+    double? ishaAngle = await readIshaAngle();
     print("xxx $selectedConvention $fajrAngle $ishaAngle");
     try {
       final prayerTimeDataResponse =
@@ -69,27 +70,30 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         latitude: event.latitude,
         longitude: event.longitude,
         date: DateTime.now(),
-        calculationMethod: getCalculationMethod(selectedConvention),
-        fajrAngle: fajrAngle,
-        ishaAngle: ishaAngle,
+        calculationMethod:
+            getCalculationMethod(selectedConvention ?? 'Muslim World League'),
+        fajrAngle: fajrAngle ?? 15.0,
+        ishaAngle: ishaAngle ?? 15.0,
       );
       final prayerTimeDataResponseNextDay =
           await prayerTimeRepository.generatePrayerTimes(
         latitude: event.latitude,
         longitude: event.longitude,
         date: nextDay,
-        calculationMethod: getCalculationMethod(selectedConvention),
-        fajrAngle: fajrAngle,
-        ishaAngle: ishaAngle,
+        calculationMethod:
+            getCalculationMethod(selectedConvention ?? 'Muslim World League'),
+        fajrAngle: fajrAngle ?? 15.0,
+        ishaAngle: ishaAngle ?? 15.0,
       );
       emit(
         state.copyWith(
           prayerTimesResponse: prayerTimeDataResponse,
           prayerTimesResponseNextDay: prayerTimeDataResponseNextDay,
           prayerStatus: PrayerStatus.success,
-          selectedPrayerConventionName: selectedConvention,
-          selectedFajrAngle: fajrAngle,
-          selectedIshaAngle: ishaAngle,
+          selectedPrayerConventionName:
+              selectedConvention ?? 'Muslim World League',
+          selectedFajrAngle: fajrAngle ?? 15.0,
+          selectedIshaAngle: ishaAngle ?? 15.0,
         ),
       );
     } catch (e) {
@@ -463,16 +467,33 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
+    emit(PrayerTimeState(
+      selectedPrayerConventionName: event.prayerConventionName,
+      selectedFajrAngle: event.fajrAngle,
+      selectedIshaAngle: event.ishaAngle,
+    ));
+    print(state.selectedPrayerConventionName);
+    print(state.selectedFajrAngle);
+    print(state.selectedIshaAngle);
 
+    prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+      latitude: state.userCoordinator.userLat!,
+      longitude: state.userCoordinator.userLng!,
+    ));
+  }
+
+  _selectAngle(_SelectAngle event, Emitter<PrayerTimeState> emit) async {
+    await writeSelectedConvention(event.prayerConventionName);
+    await writeFajrAngle(event.fajrAngle);
+    await writeIshaAngle(event.ishaAngle);
     emit(PrayerTimeState(
       selectedPrayerConventionName: event.prayerConventionName,
       selectedFajrAngle: event.fajrAngle,
       selectedIshaAngle: event.ishaAngle,
     ));
 
-    prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
-      latitude: state.userCoordinator.userLat!,
-      longitude: state.userCoordinator.userLng!,
-    ));
+    print(state.selectedPrayerConventionName);
+    print(state.selectedFajrAngle);
+    print(state.selectedIshaAngle);
   }
 }

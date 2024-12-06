@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_convention_data.dart';
+import 'package:ramadantimes/src/prayer_times/presentation/pages/custom_prayer_time_convention.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../data/models/prayer_convention_model.dart';
 import '../../data/repositories/prayer_convertion_util.dart';
@@ -51,65 +52,75 @@ class _PrayerTimeConventionState extends State<PrayerTimeConvention> {
             },
             itemBuilder: (context, index) {
               var item = prayerConventionList[index];
-              double customFajrTime = readFajrAngle();
-              double customIshaTime = readIshaAngle();
-              return Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.prayerConventionName,
-                        style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
+              return InkWell(
+                onTap: () {
+                  if (item.prayerConventionName == "Custom Angle") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CustomPrayerTimeConvention(),
                       ),
-                      Text(
-                        getPrayerAngle(
-                            context, item, customFajrTime, customIshaTime),
-                        style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w600,
+                    );
+                  }
+                },
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.prayerConventionName,
+                          style: TextStyle(
+                            color: Colors.deepPurple,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  InkWell(
-                    onTap: () {
-                      context
-                          .read<PrayerTimeBloc>()
-                          .add(PrayerTimeEvent.selectPrayerConvention(
-                            context: context,
-                            prayerConventionName: item.prayerConventionName,
-                            fajrAngle: 0.0,
-                            ishaAngle: 0.0,
-                          ));
-                    },
-                    child: Container(
-                      width: 20.w,
-                      height: 20.h,
-                      padding: EdgeInsets.all(5.w),
-                      decoration: BoxDecoration(
-                        color: state.selectedPrayerConventionName ==
-                                item.prayerConventionName
-                            ? Colors.deepPurple
-                            : Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(
+                        Text(
+                          getPrayerAngle(context, item, state.selectedFajrAngle,
+                              state.selectedIshaAngle),
+                          style: TextStyle(
+                            color: Colors.deepPurple,
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        context
+                            .read<PrayerTimeBloc>()
+                            .add(PrayerTimeEvent.selectPrayerConvention(
+                              context: context,
+                              prayerConventionName: item.prayerConventionName,
+                              fajrAngle: state.selectedFajrAngle,
+                              ishaAngle: state.selectedIshaAngle,
+                            ));
+                      },
+                      child: Container(
+                        width: 20.w,
+                        height: 20.h,
+                        padding: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
                           color: state.selectedPrayerConventionName ==
                                   item.prayerConventionName
-                              ? Colors.black
-                              : Colors.deepPurple,
-                          width: 2.0,
+                              ? Colors.deepPurple
+                              : Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: state.selectedPrayerConventionName ==
+                                    item.prayerConventionName
+                                ? Colors.black
+                                : Colors.deepPurple,
+                            width: 2.0,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           );
