@@ -205,23 +205,29 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get prayerTimeConvention => 'Prayer Time Convention';
+  String get prayerTimeConvention => 'Rukousajan käytäntö';
 
   @override
-  String get customAngles => 'Custom Angles';
+  String get customAngles => 'Mukautetut kulmat';
 
   @override
-  String get fajrAngle => 'Fajr Angle';
+  String get fajrAngle => 'Fajr-kulma';
 
   @override
-  String get ishaAngle => 'Isha Angle';
+  String get ishaAngle => 'Isha-kulma';
 
   @override
-  String get ishaInterval => 'Isha Interval';
+  String get ishaInterval => 'Isha-väli';
 
   @override
-  String get minutes => 'minutes';
+  String get minutes => 'minuuttia';
 
   @override
-  String get maghribAngle => 'Maghrib Angle';
+  String get maghribAngle => 'Maghrib-kulma';
+
+  @override
+  String get selectFajrAngle => 'Valitse Fajr-kulma:';
+
+  @override
+  String get selectIshaAngle => 'Valitse Isha-kulma:';
 }

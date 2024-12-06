@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 class PrayerTimesResponse {
   final String? fajrStart;
   final String? fajrEnd;

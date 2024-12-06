@@ -108,5 +108,8 @@
    "ishaAngle": "ইশা কোণ",
    "ishaInterval": "ইশার ব্যবধান",
    "minutes":"মিনিট",
-    "maghribAngle": "মাগরিব কোণ"
+   "maghribAngle": "মাগরিব কোণ",
+   "selectFajrAngle": "ফজর কোণ নির্বাচন করুন:",
+   "selectIshaAngle": "ইশা কোণ নির্বাচন করুন:"
+
 }

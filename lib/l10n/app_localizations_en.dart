@@ -226,7 +226,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prayerTimeConvention => 'Prayer Time Convention';
 
   @override
-  String get customAngles => 'Custom Angles';
+  String get customAngles => 'Custom Angle';
 
   @override
   String get fajrAngle => 'Fajr Angle';
@@ -242,4 +242,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get maghribAngle => 'Maghrib Angle';
+
+  @override
+  String get selectFajrAngle => 'Select Fajr Angle:';
+
+  @override
+  String get selectIshaAngle => 'Select Isha Angle:';
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_time_format_model.dart';
-
+import '../../../../l10n/app_localizations.dart';
 import '../bloc/prayer_time_bloc.dart';
 
 class CustomPrayerTimeConvention extends StatefulWidget {
@@ -41,7 +40,7 @@ class _CustomPrayerTimeConventionState
           ),
         ),
         title: Text(
-          'Custom Angle',
+          AppLocalizations.of(context)!.customAngles,
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
@@ -51,15 +50,13 @@ class _CustomPrayerTimeConventionState
       ),
       body: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
         builder: (context, state) {
-          print(state.selectedFajrAngle);
-          print(state.selectedIshaAngle);
           return Padding(
             padding: EdgeInsets.all(16.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Select Fajr Angle:',
+                  AppLocalizations.of(context)!.selectFajrAngle,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
@@ -84,7 +81,7 @@ class _CustomPrayerTimeConventionState
                 ),
                 SizedBox(height: 20.h),
                 Text(
-                  'Select Isha Angle:',
+                  AppLocalizations.of(context)!.selectIshaAngle,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),

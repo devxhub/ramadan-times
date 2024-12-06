@@ -99,5 +99,15 @@
         "format": "compact"
       }
     }
-  }
+  },
+  "quran": "Koraani",
+  "prayerTimeConvention": "Rukousajan käytäntö",
+  "customAngles": "Mukautetut kulmat",
+  "fajrAngle": "Fajr-kulma",
+  "ishaAngle": "Isha-kulma",
+  "ishaInterval": "Isha-väli",
+  "minutes": "minuuttia",
+  "maghribAngle": "Maghrib-kulma",
+  "selectFajrAngle": "Valitse Fajr-kulma:",
+  "selectIshaAngle": "Valitse Isha-kulma:"
 }

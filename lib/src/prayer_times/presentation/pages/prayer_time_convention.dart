@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_convention_data.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/custom_prayer_time_convention.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../settings/presentation/page/settings_page.dart';
 import '../../data/models/prayer_convention_model.dart';
-import '../../data/repositories/prayer_convertion_util.dart';
 import '../bloc/prayer_time_bloc.dart';
 
 class PrayerTimeConvention extends StatefulWidget {
@@ -23,7 +22,14 @@ class _PrayerTimeConventionState extends State<PrayerTimeConvention> {
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
-            context.goNamed("schedule");
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return SettingsScreen();
+                },
+              ),
+            );
           },
           child: Padding(
             padding: EdgeInsets.only(left: 10.w),
@@ -69,7 +75,9 @@ class _PrayerTimeConventionState extends State<PrayerTimeConvention> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          item.prayerConventionName,
+                          item.prayerConventionName == 'Custom Angle'
+                              ? AppLocalizations.of(context)!.customAngles
+                              : item.prayerConventionName,
                           style: TextStyle(
                             color: Colors.deepPurple,
                             fontSize: 15.sp,
@@ -112,9 +120,12 @@ class _PrayerTimeConventionState extends State<PrayerTimeConvention> {
                           border: Border.all(
                             color: state.selectedPrayerConventionName ==
                                     item.prayerConventionName
-                                ? Colors.black
+                                ? Colors.blue.shade700
                                 : Colors.deepPurple,
-                            width: 2.0,
+                            width: state.selectedPrayerConventionName ==
+                                    item.prayerConventionName
+                                ? 3.0
+                                : 2.0,
                           ),
                         ),
                       ),

@@ -305,17 +305,6 @@ class CommonDrawer extends StatelessWidget {
                   //   icon: Icon(Icons.feedback),
                   //   title: "Feedback",
                   // ),
-                  Gap(20.w),
-                  InkWell(
-                    onTap: () {
-                      context.goNamed("prayer_time_convention");
-                    },
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                          AppLocalizations.of(context)!.prayerTimeConvention),
-                    ),
-                  )
                 ],
               ),
             ),

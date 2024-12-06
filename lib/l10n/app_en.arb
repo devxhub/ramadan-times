@@ -102,10 +102,12 @@
   },
    "quran": "Quran",
    "prayerTimeConvention": "Prayer Time Convention",
-   "customAngles": "Custom Angles",
+   "customAngles": "Custom Angle",
    "fajrAngle": "Fajr Angle",
    "ishaAngle": "Isha Angle",
    "ishaInterval": "Isha Interval",
    "minutes":"minutes",
-   "maghribAngle": "Maghrib Angle"
+   "maghribAngle": "Maghrib Angle",
+   "selectFajrAngle": "Select Fajr Angle:",
+   "selectIshaAngle": "Select Isha Angle:"
 }

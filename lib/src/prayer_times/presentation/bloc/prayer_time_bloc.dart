@@ -1,4 +1,3 @@
-import 'package:adhan/adhan.dart';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -17,7 +16,6 @@ import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart'
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
 import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../data/repositories/prayer_convertion_util.dart';
 part 'prayer_time_event.dart';
 part 'prayer_time_state.dart';

@@ -243,4 +243,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get maghribAngle => 'মাগরিব কোণ';
+
+  @override
+  String get selectFajrAngle => 'ফজর কোণ নির্বাচন করুন:';
+
+  @override
+  String get selectIshaAngle => 'ইশা কোণ নির্বাচন করুন:';
 }

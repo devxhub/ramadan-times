@@ -448,7 +448,7 @@ abstract class AppLocalizations {
   /// No description provided for @customAngles.
   ///
   /// In en, this message translates to:
-  /// **'Custom Angles'**
+  /// **'Custom Angle'**
   String get customAngles;
 
   /// No description provided for @fajrAngle.
@@ -480,6 +480,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Maghrib Angle'**
   String get maghribAngle;
+
+  /// No description provided for @selectFajrAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Fajr Angle:'**
+  String get selectFajrAngle;
+
+  /// No description provided for @selectIshaAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Isha Angle:'**
+  String get selectIshaAngle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
