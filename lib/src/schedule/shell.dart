@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
+import 'package:ramadantimes/src/langauage/language_screen.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -197,6 +198,13 @@ class CommonDrawer extends StatelessWidget {
                     icon: const Icon(CupertinoIcons.globe),
                     title:
                         AppLocalizations.of(context)?.changeAppLanguage ?? "",
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return LanguageSelector();
+                        },
+                      ));
+                    },
                   ),
                   DrawerItem(
                     icon: const Icon(Icons.location_pin),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,6 +10,9 @@ import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/location_select.dart';
 import '../l10n/app_localizations.dart';
 import 'prayer_times/presentation/pages/prayer_time_convention.dart';
+import '../l10n/l10n.dart';
+import 'bloc/language_bloc/language_bloc.dart';
+import 'langauage/language_screen.dart';
 import 'quran/presentation/pages/quran_surah_view.dart';
 import 'schedule/schedule.dart';
 import 'schedule/shell.dart';
@@ -25,16 +30,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Intl.defaultLocale = 'bn_BD';
 
-    return ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp.router(
+    return BlocBuilder<LanguageBloc, LanguageState>(
+      builder: (context, state) {
+        return ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          ensureScreenSize: true,
+          child: MaterialApp.router(
             routerConfig: _router,
             title: 'Ramadan Times',
             debugShowCheckedModeBanner: false,
-            useInheritedMediaQuery: true,
             theme: ThemeData(
               textTheme:
                   GoogleFonts.anekBanglaTextTheme(Theme.of(context).textTheme),
@@ -47,18 +53,18 @@ class MyApp extends StatelessWidget {
                           : const IconThemeData(size: 32))),
               useMaterial3: true,
             ),
-            locale: const Locale("bn", "BD"),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            builder: (context, child) {
-              return MediaQuery(
-                data: MediaQuery.of(context)
-                    .copyWith(textScaler: TextScaler.linear(1.0)),
-                child: child!,
-              );
-            },
-          );
-        });
+            supportedLocales: L10n.all,
+            locale: Locale(state.locale.toString()),
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -103,6 +109,13 @@ final GoRouter _router = GoRouter(
       name: "location_select",
       builder: (BuildContext context, GoRouterState state) {
         return const UserLocationSelect();
+      },
+    ),
+    GoRoute(
+      path: '/language_selector',
+      name: "language_selector",
+      builder: (BuildContext context, GoRouterState state) {
+        return const LanguageSelector();
       },
     ),
     GoRoute(

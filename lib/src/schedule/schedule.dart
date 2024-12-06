@@ -82,15 +82,6 @@ class _SchedulePageState extends State<SchedulePage> {
         onRefresh: () async {
           // SharedPreferences preferences = await SharedPreferences.getInstance();
           if (!mounted) return;
-          // context.read<HomeBloc>().add(
-          //       DataFetched(
-          //           date: DateFormat("dd-MM-yyyy").format(
-          //             DateTime.now(),
-          //           ),
-          //           city: District.fromJson(jsonDecode(
-          //                   preferences.getString("current_location") ?? ''))
-          //               .bn_name),
-          //     );
         },
         child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
           builder: (context, state) {

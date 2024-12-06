@@ -8,8 +8,7 @@ import 'package:ramadantimes/src/models/masail/masail/result.dart';
 import '../../l10n/app_localizations.dart';
 
 class MaslaMasailDetailsPage extends StatefulWidget {
-  const MaslaMasailDetailsPage({Key? key, required this.result})
-      : super(key: key);
+  const MaslaMasailDetailsPage({super.key, required this.result});
   final Result result;
   @override
   State<MaslaMasailDetailsPage> createState() => _MaslaMasailDetailsPageState();
@@ -61,7 +60,7 @@ class _MaslaMasailDetailsPageState extends State<MaslaMasailDetailsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AutoSizeText(
+                Text(
                   widget.result.title ?? "",
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.titleLarge,
