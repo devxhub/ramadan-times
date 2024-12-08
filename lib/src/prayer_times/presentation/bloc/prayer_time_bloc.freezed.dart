@@ -52,6 +52,11 @@ mixin _$PrayerTimeEvent {
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,6 +93,10 @@ mixin _$PrayerTimeEvent {
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -123,6 +132,10 @@ mixin _$PrayerTimeEvent {
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +161,11 @@ mixin _$PrayerTimeEvent {
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -168,6 +186,11 @@ mixin _$PrayerTimeEvent {
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -188,6 +211,10 @@ mixin _$PrayerTimeEvent {
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -341,6 +368,11 @@ class _$PrayerTimesDataLoadedImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return prayerTimesDataLoaded(latitude, longitude);
   }
@@ -380,6 +412,10 @@ class _$PrayerTimesDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return prayerTimesDataLoaded?.call(latitude, longitude);
   }
@@ -418,6 +454,10 @@ class _$PrayerTimesDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (prayerTimesDataLoaded != null) {
@@ -449,6 +489,11 @@ class _$PrayerTimesDataLoadedImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return prayerTimesDataLoaded(this);
   }
@@ -472,6 +517,11 @@ class _$PrayerTimesDataLoadedImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return prayerTimesDataLoaded?.call(this);
   }
@@ -495,6 +545,10 @@ class _$PrayerTimesDataLoadedImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (prayerTimesDataLoaded != null) {
@@ -603,6 +657,11 @@ class _$CountryDataLoadedImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return countryDataLoaded();
   }
@@ -642,6 +701,10 @@ class _$CountryDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return countryDataLoaded?.call();
   }
@@ -680,6 +743,10 @@ class _$CountryDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (countryDataLoaded != null) {
@@ -711,6 +778,11 @@ class _$CountryDataLoadedImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return countryDataLoaded(this);
   }
@@ -734,6 +806,11 @@ class _$CountryDataLoadedImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return countryDataLoaded?.call(this);
   }
@@ -757,6 +834,10 @@ class _$CountryDataLoadedImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (countryDataLoaded != null) {
@@ -883,6 +964,11 @@ class _$LocationPermissionImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return locationPermission(context);
   }
@@ -922,6 +1008,10 @@ class _$LocationPermissionImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return locationPermission?.call(context);
   }
@@ -960,6 +1050,10 @@ class _$LocationPermissionImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (locationPermission != null) {
@@ -991,6 +1085,11 @@ class _$LocationPermissionImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return locationPermission(this);
   }
@@ -1014,6 +1113,11 @@ class _$LocationPermissionImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return locationPermission?.call(this);
   }
@@ -1037,6 +1141,10 @@ class _$LocationPermissionImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (locationPermission != null) {
@@ -1180,6 +1288,11 @@ class _$SelectCountryImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return selectCountry(context, country);
   }
@@ -1219,6 +1332,10 @@ class _$SelectCountryImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return selectCountry?.call(context, country);
   }
@@ -1257,6 +1374,10 @@ class _$SelectCountryImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectCountry != null) {
@@ -1288,6 +1409,11 @@ class _$SelectCountryImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return selectCountry(this);
   }
@@ -1311,6 +1437,11 @@ class _$SelectCountryImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return selectCountry?.call(this);
   }
@@ -1334,6 +1465,10 @@ class _$SelectCountryImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectCountry != null) {
@@ -1478,6 +1613,11 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return selectCity(context, district);
   }
@@ -1517,6 +1657,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return selectCity?.call(context, district);
   }
@@ -1555,6 +1699,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectCity != null) {
@@ -1586,6 +1734,11 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return selectCity(this);
   }
@@ -1609,6 +1762,11 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return selectCity?.call(this);
   }
@@ -1632,6 +1790,10 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectCity != null) {
@@ -1742,6 +1904,11 @@ class _$ClearSelectedLocationImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return clearSelectedLocation();
   }
@@ -1781,6 +1948,10 @@ class _$ClearSelectedLocationImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return clearSelectedLocation?.call();
   }
@@ -1819,6 +1990,10 @@ class _$ClearSelectedLocationImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (clearSelectedLocation != null) {
@@ -1850,6 +2025,11 @@ class _$ClearSelectedLocationImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return clearSelectedLocation(this);
   }
@@ -1873,6 +2053,11 @@ class _$ClearSelectedLocationImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return clearSelectedLocation?.call(this);
   }
@@ -1896,6 +2081,10 @@ class _$ClearSelectedLocationImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (clearSelectedLocation != null) {
@@ -2033,6 +2222,11 @@ class _$SubmitLocationImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return submitLocation(context, userCoordinator);
   }
@@ -2072,6 +2266,10 @@ class _$SubmitLocationImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return submitLocation?.call(context, userCoordinator);
   }
@@ -2110,6 +2308,10 @@ class _$SubmitLocationImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (submitLocation != null) {
@@ -2141,6 +2343,11 @@ class _$SubmitLocationImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return submitLocation(this);
   }
@@ -2164,6 +2371,11 @@ class _$SubmitLocationImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return submitLocation?.call(this);
   }
@@ -2187,6 +2399,10 @@ class _$SubmitLocationImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (submitLocation != null) {
@@ -2335,6 +2551,11 @@ class _$IsDistrictSelectedImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return isDistrictSelected(context, this.isDistrictSelected);
   }
@@ -2374,6 +2595,10 @@ class _$IsDistrictSelectedImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return isDistrictSelected?.call(context, this.isDistrictSelected);
   }
@@ -2412,6 +2637,10 @@ class _$IsDistrictSelectedImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (isDistrictSelected != null) {
@@ -2443,6 +2672,11 @@ class _$IsDistrictSelectedImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return isDistrictSelected(this);
   }
@@ -2466,6 +2700,11 @@ class _$IsDistrictSelectedImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return isDistrictSelected?.call(this);
   }
@@ -2489,6 +2728,10 @@ class _$IsDistrictSelectedImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (isDistrictSelected != null) {
@@ -2647,6 +2890,11 @@ class _$WeatherDataLoadedImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return weatherDataLoaded(context, latitude, longitude);
   }
@@ -2686,6 +2934,10 @@ class _$WeatherDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return weatherDataLoaded?.call(context, latitude, longitude);
   }
@@ -2724,6 +2976,10 @@ class _$WeatherDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (weatherDataLoaded != null) {
@@ -2755,6 +3011,11 @@ class _$WeatherDataLoadedImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return weatherDataLoaded(this);
   }
@@ -2778,6 +3039,11 @@ class _$WeatherDataLoadedImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return weatherDataLoaded?.call(this);
   }
@@ -2801,6 +3067,10 @@ class _$WeatherDataLoadedImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (weatherDataLoaded != null) {
@@ -2951,6 +3221,11 @@ class _$IsImsakTimeShowImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return isImsakTimeShow(context, isImsakEnable);
   }
@@ -2990,6 +3265,10 @@ class _$IsImsakTimeShowImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return isImsakTimeShow?.call(context, isImsakEnable);
   }
@@ -3028,6 +3307,10 @@ class _$IsImsakTimeShowImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (isImsakTimeShow != null) {
@@ -3059,6 +3342,11 @@ class _$IsImsakTimeShowImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return isImsakTimeShow(this);
   }
@@ -3082,6 +3370,11 @@ class _$IsImsakTimeShowImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return isImsakTimeShow?.call(this);
   }
@@ -3105,6 +3398,10 @@ class _$IsImsakTimeShowImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (isImsakTimeShow != null) {
@@ -3214,6 +3511,11 @@ class _$ImsakTimeDataLoadedImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return imsakTimeDataLoaded();
   }
@@ -3253,6 +3555,10 @@ class _$ImsakTimeDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return imsakTimeDataLoaded?.call();
   }
@@ -3291,6 +3597,10 @@ class _$ImsakTimeDataLoadedImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (imsakTimeDataLoaded != null) {
@@ -3322,6 +3632,11 @@ class _$ImsakTimeDataLoadedImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return imsakTimeDataLoaded(this);
   }
@@ -3345,6 +3660,11 @@ class _$ImsakTimeDataLoadedImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return imsakTimeDataLoaded?.call(this);
   }
@@ -3368,6 +3688,10 @@ class _$ImsakTimeDataLoadedImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (imsakTimeDataLoaded != null) {
@@ -3514,6 +3838,11 @@ class _$AutoDetectLocationStatusChangeImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return autoDetectLocationStatusChange(context, isAutoDetectLocationEnable);
   }
@@ -3553,6 +3882,10 @@ class _$AutoDetectLocationStatusChangeImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return autoDetectLocationStatusChange?.call(
         context, isAutoDetectLocationEnable);
@@ -3592,6 +3925,10 @@ class _$AutoDetectLocationStatusChangeImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (autoDetectLocationStatusChange != null) {
@@ -3624,6 +3961,11 @@ class _$AutoDetectLocationStatusChangeImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return autoDetectLocationStatusChange(this);
   }
@@ -3647,6 +3989,11 @@ class _$AutoDetectLocationStatusChangeImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return autoDetectLocationStatusChange?.call(this);
   }
@@ -3670,6 +4017,10 @@ class _$AutoDetectLocationStatusChangeImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (autoDetectLocationStatusChange != null) {
@@ -3863,6 +4214,11 @@ class _$SelectPrayerConventionImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return selectPrayerConvention(
         context, prayerConventionName, fajrAngle, ishaAngle, userCoordinator);
@@ -3903,6 +4259,10 @@ class _$SelectPrayerConventionImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return selectPrayerConvention?.call(
         context, prayerConventionName, fajrAngle, ishaAngle, userCoordinator);
@@ -3942,6 +4302,10 @@ class _$SelectPrayerConventionImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectPrayerConvention != null) {
@@ -3974,6 +4338,11 @@ class _$SelectPrayerConventionImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return selectPrayerConvention(this);
   }
@@ -3997,6 +4366,11 @@ class _$SelectPrayerConventionImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return selectPrayerConvention?.call(this);
   }
@@ -4020,6 +4394,10 @@ class _$SelectPrayerConventionImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectPrayerConvention != null) {
@@ -4212,6 +4590,11 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return selectAngle(
         fajrAngle, ishaAngle, prayerConventionName, userCoordinator, context);
@@ -4252,6 +4635,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return selectAngle?.call(
         fajrAngle, ishaAngle, prayerConventionName, userCoordinator, context);
@@ -4291,6 +4678,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectAngle != null) {
@@ -4323,6 +4714,11 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return selectAngle(this);
   }
@@ -4346,6 +4742,11 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return selectAngle?.call(this);
   }
@@ -4369,6 +4770,10 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectAngle != null) {
@@ -4515,6 +4920,11 @@ class _$SelectCustomImsakTimeImpl
             BuildContext context)
         selectAngle,
     required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
   }) {
     return selectCustomImsakTime(customImsakTime);
   }
@@ -4554,6 +4964,10 @@ class _$SelectCustomImsakTimeImpl
             BuildContext context)?
         selectAngle,
     TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
   }) {
     return selectCustomImsakTime?.call(customImsakTime);
   }
@@ -4592,6 +5006,10 @@ class _$SelectCustomImsakTimeImpl
             BuildContext context)?
         selectAngle,
     TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectCustomImsakTime != null) {
@@ -4623,6 +5041,11 @@ class _$SelectCustomImsakTimeImpl
     required TResult Function(_SelectAngle value) selectAngle,
     required TResult Function(_SelectCustomImsakTime value)
         selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
   }) {
     return selectCustomImsakTime(this);
   }
@@ -4646,6 +5069,11 @@ class _$SelectCustomImsakTimeImpl
     TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult? Function(_SelectAngle value)? selectAngle,
     TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
   }) {
     return selectCustomImsakTime?.call(this);
   }
@@ -4669,6 +5097,10 @@ class _$SelectCustomImsakTimeImpl
     TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
     TResult Function(_SelectAngle value)? selectAngle,
     TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
     required TResult orElse(),
   }) {
     if (selectCustomImsakTime != null) {
@@ -4692,6 +5124,940 @@ abstract class _SelectCustomImsakTime implements PrayerTimeEvent {
 }
 
 /// @nodoc
+abstract class _$$ManuallyPrayerTimeChangeImplCopyWith<$Res> {
+  factory _$$ManuallyPrayerTimeChangeImplCopyWith(
+          _$ManuallyPrayerTimeChangeImpl value,
+          $Res Function(_$ManuallyPrayerTimeChangeImpl) then) =
+      __$$ManuallyPrayerTimeChangeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ManualPrayerTime manualPrayerTime, String prayerName});
+}
+
+/// @nodoc
+class __$$ManuallyPrayerTimeChangeImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res, _$ManuallyPrayerTimeChangeImpl>
+    implements _$$ManuallyPrayerTimeChangeImplCopyWith<$Res> {
+  __$$ManuallyPrayerTimeChangeImplCopyWithImpl(
+      _$ManuallyPrayerTimeChangeImpl _value,
+      $Res Function(_$ManuallyPrayerTimeChangeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? manualPrayerTime = null,
+    Object? prayerName = null,
+  }) {
+    return _then(_$ManuallyPrayerTimeChangeImpl(
+      manualPrayerTime: null == manualPrayerTime
+          ? _value.manualPrayerTime
+          : manualPrayerTime // ignore: cast_nullable_to_non_nullable
+              as ManualPrayerTime,
+      prayerName: null == prayerName
+          ? _value.prayerName
+          : prayerName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ManuallyPrayerTimeChangeImpl
+    with DiagnosticableTreeMixin
+    implements _ManuallyPrayerTimeChange {
+  const _$ManuallyPrayerTimeChangeImpl(
+      {required this.manualPrayerTime, required this.prayerName});
+
+  @override
+  final ManualPrayerTime manualPrayerTime;
+  @override
+  final String prayerName;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.manuallyPrayerTimeChange(manualPrayerTime: $manualPrayerTime, prayerName: $prayerName)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'PrayerTimeEvent.manuallyPrayerTimeChange'))
+      ..add(DiagnosticsProperty('manualPrayerTime', manualPrayerTime))
+      ..add(DiagnosticsProperty('prayerName', prayerName));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ManuallyPrayerTimeChangeImpl &&
+            (identical(other.manualPrayerTime, manualPrayerTime) ||
+                other.manualPrayerTime == manualPrayerTime) &&
+            (identical(other.prayerName, prayerName) ||
+                other.prayerName == prayerName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, manualPrayerTime, prayerName);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ManuallyPrayerTimeChangeImplCopyWith<_$ManuallyPrayerTimeChangeImpl>
+      get copyWith => __$$ManuallyPrayerTimeChangeImplCopyWithImpl<
+          _$ManuallyPrayerTimeChangeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle, UserCoordinator userCoordinator)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)
+        selectAngle,
+    required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeChange(manualPrayerTime, prayerName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeChange?.call(manualPrayerTime, prayerName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
+    required TResult orElse(),
+  }) {
+    if (manuallyPrayerTimeChange != null) {
+      return manuallyPrayerTimeChange(manualPrayerTime, prayerName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+    required TResult Function(_SelectCustomImsakTime value)
+        selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeChange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+    TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeChange?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+    required TResult orElse(),
+  }) {
+    if (manuallyPrayerTimeChange != null) {
+      return manuallyPrayerTimeChange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ManuallyPrayerTimeChange implements PrayerTimeEvent {
+  const factory _ManuallyPrayerTimeChange(
+      {required final ManualPrayerTime manualPrayerTime,
+      required final String prayerName}) = _$ManuallyPrayerTimeChangeImpl;
+
+  ManualPrayerTime get manualPrayerTime;
+  String get prayerName;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ManuallyPrayerTimeChangeImplCopyWith<_$ManuallyPrayerTimeChangeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ManuallyPrayerTimeDataLoadedImplCopyWith<$Res> {
+  factory _$$ManuallyPrayerTimeDataLoadedImplCopyWith(
+          _$ManuallyPrayerTimeDataLoadedImpl value,
+          $Res Function(_$ManuallyPrayerTimeDataLoadedImpl) then) =
+      __$$ManuallyPrayerTimeDataLoadedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ManuallyPrayerTimeDataLoadedImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res,
+        _$ManuallyPrayerTimeDataLoadedImpl>
+    implements _$$ManuallyPrayerTimeDataLoadedImplCopyWith<$Res> {
+  __$$ManuallyPrayerTimeDataLoadedImplCopyWithImpl(
+      _$ManuallyPrayerTimeDataLoadedImpl _value,
+      $Res Function(_$ManuallyPrayerTimeDataLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ManuallyPrayerTimeDataLoadedImpl
+    with DiagnosticableTreeMixin
+    implements _ManuallyPrayerTimeDataLoaded {
+  const _$ManuallyPrayerTimeDataLoadedImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.manuallyPrayerTimeDataLoaded()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty(
+        'type', 'PrayerTimeEvent.manuallyPrayerTimeDataLoaded'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ManuallyPrayerTimeDataLoadedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle, UserCoordinator userCoordinator)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)
+        selectAngle,
+    required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeDataLoaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeDataLoaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
+    required TResult orElse(),
+  }) {
+    if (manuallyPrayerTimeDataLoaded != null) {
+      return manuallyPrayerTimeDataLoaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+    required TResult Function(_SelectCustomImsakTime value)
+        selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeDataLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+    TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+  }) {
+    return manuallyPrayerTimeDataLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+    required TResult orElse(),
+  }) {
+    if (manuallyPrayerTimeDataLoaded != null) {
+      return manuallyPrayerTimeDataLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ManuallyPrayerTimeDataLoaded implements PrayerTimeEvent {
+  const factory _ManuallyPrayerTimeDataLoaded() =
+      _$ManuallyPrayerTimeDataLoadedImpl;
+}
+
+/// @nodoc
+abstract class _$$OnchangeTimeSelectedImplCopyWith<$Res> {
+  factory _$$OnchangeTimeSelectedImplCopyWith(_$OnchangeTimeSelectedImpl value,
+          $Res Function(_$OnchangeTimeSelectedImpl) then) =
+      __$$OnchangeTimeSelectedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int onchangeTime});
+}
+
+/// @nodoc
+class __$$OnchangeTimeSelectedImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res, _$OnchangeTimeSelectedImpl>
+    implements _$$OnchangeTimeSelectedImplCopyWith<$Res> {
+  __$$OnchangeTimeSelectedImplCopyWithImpl(_$OnchangeTimeSelectedImpl _value,
+      $Res Function(_$OnchangeTimeSelectedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? onchangeTime = null,
+  }) {
+    return _then(_$OnchangeTimeSelectedImpl(
+      onchangeTime: null == onchangeTime
+          ? _value.onchangeTime
+          : onchangeTime // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnchangeTimeSelectedImpl
+    with DiagnosticableTreeMixin
+    implements _OnchangeTimeSelected {
+  const _$OnchangeTimeSelectedImpl({required this.onchangeTime});
+
+  @override
+  final int onchangeTime;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.onchangeTimeSelected(onchangeTime: $onchangeTime)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PrayerTimeEvent.onchangeTimeSelected'))
+      ..add(DiagnosticsProperty('onchangeTime', onchangeTime));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnchangeTimeSelectedImpl &&
+            (identical(other.onchangeTime, onchangeTime) ||
+                other.onchangeTime == onchangeTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, onchangeTime);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnchangeTimeSelectedImplCopyWith<_$OnchangeTimeSelectedImpl>
+      get copyWith =>
+          __$$OnchangeTimeSelectedImplCopyWithImpl<_$OnchangeTimeSelectedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle, UserCoordinator userCoordinator)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)
+        selectAngle,
+    required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
+  }) {
+    return onchangeTimeSelected(onchangeTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
+  }) {
+    return onchangeTimeSelected?.call(onchangeTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
+    required TResult orElse(),
+  }) {
+    if (onchangeTimeSelected != null) {
+      return onchangeTimeSelected(onchangeTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+    required TResult Function(_SelectCustomImsakTime value)
+        selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
+  }) {
+    return onchangeTimeSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+    TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+  }) {
+    return onchangeTimeSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+    required TResult orElse(),
+  }) {
+    if (onchangeTimeSelected != null) {
+      return onchangeTimeSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnchangeTimeSelected implements PrayerTimeEvent {
+  const factory _OnchangeTimeSelected({required final int onchangeTime}) =
+      _$OnchangeTimeSelectedImpl;
+
+  int get onchangeTime;
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnchangeTimeSelectedImplCopyWith<_$OnchangeTimeSelectedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PrayerTimeState {
   PrayerTimesResponse get prayerTimesResponse =>
       throw _privateConstructorUsedError;
@@ -4711,6 +6077,8 @@ mixin _$PrayerTimeState {
   double get selectedFajrAngle => throw _privateConstructorUsedError;
   double get selectedIshaAngle => throw _privateConstructorUsedError;
   int get imsakTime => throw _privateConstructorUsedError;
+  int get selectedTime => throw _privateConstructorUsedError;
+  ManualPrayerTime get manualPrayerTime => throw _privateConstructorUsedError;
 
   /// Create a copy of PrayerTimeState
   /// with the given fields replaced by the non-null parameter values.
@@ -4741,7 +6109,9 @@ abstract class $PrayerTimeStateCopyWith<$Res> {
       String selectedPrayerConventionName,
       double selectedFajrAngle,
       double selectedIshaAngle,
-      int imsakTime});
+      int imsakTime,
+      int selectedTime,
+      ManualPrayerTime manualPrayerTime});
 }
 
 /// @nodoc
@@ -4775,6 +6145,8 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
     Object? selectedFajrAngle = null,
     Object? selectedIshaAngle = null,
     Object? imsakTime = null,
+    Object? selectedTime = null,
+    Object? manualPrayerTime = null,
   }) {
     return _then(_value.copyWith(
       prayerTimesResponse: null == prayerTimesResponse
@@ -4841,6 +6213,14 @@ class _$PrayerTimeStateCopyWithImpl<$Res, $Val extends PrayerTimeState>
           ? _value.imsakTime
           : imsakTime // ignore: cast_nullable_to_non_nullable
               as int,
+      selectedTime: null == selectedTime
+          ? _value.selectedTime
+          : selectedTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      manualPrayerTime: null == manualPrayerTime
+          ? _value.manualPrayerTime
+          : manualPrayerTime // ignore: cast_nullable_to_non_nullable
+              as ManualPrayerTime,
     ) as $Val);
   }
 }
@@ -4869,7 +6249,9 @@ abstract class _$$PrayerTimeStateImplCopyWith<$Res>
       String selectedPrayerConventionName,
       double selectedFajrAngle,
       double selectedIshaAngle,
-      int imsakTime});
+      int imsakTime,
+      int selectedTime,
+      ManualPrayerTime manualPrayerTime});
 }
 
 /// @nodoc
@@ -4901,6 +6283,8 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
     Object? selectedFajrAngle = null,
     Object? selectedIshaAngle = null,
     Object? imsakTime = null,
+    Object? selectedTime = null,
+    Object? manualPrayerTime = null,
   }) {
     return _then(_$PrayerTimeStateImpl(
       prayerTimesResponse: null == prayerTimesResponse
@@ -4967,6 +6351,14 @@ class __$$PrayerTimeStateImplCopyWithImpl<$Res>
           ? _value.imsakTime
           : imsakTime // ignore: cast_nullable_to_non_nullable
               as int,
+      selectedTime: null == selectedTime
+          ? _value.selectedTime
+          : selectedTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      manualPrayerTime: null == manualPrayerTime
+          ? _value.manualPrayerTime
+          : manualPrayerTime // ignore: cast_nullable_to_non_nullable
+              as ManualPrayerTime,
     ));
   }
 }
@@ -4992,7 +6384,9 @@ class _$PrayerTimeStateImpl
       this.selectedPrayerConventionName = '',
       this.selectedFajrAngle = 0.0,
       this.selectedIshaAngle = 0.0,
-      this.imsakTime = 0});
+      this.imsakTime = 0,
+      this.selectedTime = 0,
+      this.manualPrayerTime = const ManualPrayerTime()});
 
   @override
   @JsonKey()
@@ -5040,10 +6434,16 @@ class _$PrayerTimeStateImpl
   @override
   @JsonKey()
   final int imsakTime;
+  @override
+  @JsonKey()
+  final int selectedTime;
+  @override
+  @JsonKey()
+  final ManualPrayerTime manualPrayerTime;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, weatherResponse: $weatherResponse, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus, isImsakEnable: $isImsakEnable, isAutoDetectLocationEnable: $isAutoDetectLocationEnable, selectedPrayerConventionName: $selectedPrayerConventionName, selectedFajrAngle: $selectedFajrAngle, selectedIshaAngle: $selectedIshaAngle, imsakTime: $imsakTime)';
+    return 'PrayerTimeState(prayerTimesResponse: $prayerTimesResponse, prayerTimesResponseNextDay: $prayerTimesResponseNextDay, countryResponse: $countryResponse, userCoordinator: $userCoordinator, weatherResponse: $weatherResponse, selectedCountry: $selectedCountry, selectedDistrict: $selectedDistrict, isDistrictSelected: $isDistrictSelected, prayerTimeStatus: $prayerTimeStatus, prayerStatus: $prayerStatus, isImsakEnable: $isImsakEnable, isAutoDetectLocationEnable: $isAutoDetectLocationEnable, selectedPrayerConventionName: $selectedPrayerConventionName, selectedFajrAngle: $selectedFajrAngle, selectedIshaAngle: $selectedIshaAngle, imsakTime: $imsakTime, selectedTime: $selectedTime, manualPrayerTime: $manualPrayerTime)';
   }
 
   @override
@@ -5069,7 +6469,9 @@ class _$PrayerTimeStateImpl
           'selectedPrayerConventionName', selectedPrayerConventionName))
       ..add(DiagnosticsProperty('selectedFajrAngle', selectedFajrAngle))
       ..add(DiagnosticsProperty('selectedIshaAngle', selectedIshaAngle))
-      ..add(DiagnosticsProperty('imsakTime', imsakTime));
+      ..add(DiagnosticsProperty('imsakTime', imsakTime))
+      ..add(DiagnosticsProperty('selectedTime', selectedTime))
+      ..add(DiagnosticsProperty('manualPrayerTime', manualPrayerTime));
   }
 
   @override
@@ -5114,7 +6516,11 @@ class _$PrayerTimeStateImpl
             (identical(other.selectedIshaAngle, selectedIshaAngle) ||
                 other.selectedIshaAngle == selectedIshaAngle) &&
             (identical(other.imsakTime, imsakTime) ||
-                other.imsakTime == imsakTime));
+                other.imsakTime == imsakTime) &&
+            (identical(other.selectedTime, selectedTime) ||
+                other.selectedTime == selectedTime) &&
+            (identical(other.manualPrayerTime, manualPrayerTime) ||
+                other.manualPrayerTime == manualPrayerTime));
   }
 
   @override
@@ -5135,7 +6541,9 @@ class _$PrayerTimeStateImpl
       selectedPrayerConventionName,
       selectedFajrAngle,
       selectedIshaAngle,
-      imsakTime);
+      imsakTime,
+      selectedTime,
+      manualPrayerTime);
 
   /// Create a copy of PrayerTimeState
   /// with the given fields replaced by the non-null parameter values.
@@ -5164,7 +6572,9 @@ abstract class _PrayerTimeState implements PrayerTimeState {
       final String selectedPrayerConventionName,
       final double selectedFajrAngle,
       final double selectedIshaAngle,
-      final int imsakTime}) = _$PrayerTimeStateImpl;
+      final int imsakTime,
+      final int selectedTime,
+      final ManualPrayerTime manualPrayerTime}) = _$PrayerTimeStateImpl;
 
   @override
   PrayerTimesResponse get prayerTimesResponse;
@@ -5198,6 +6608,10 @@ abstract class _PrayerTimeState implements PrayerTimeState {
   double get selectedIshaAngle;
   @override
   int get imsakTime;
+  @override
+  int get selectedTime;
+  @override
+  ManualPrayerTime get manualPrayerTime;
 
   /// Create a copy of PrayerTimeState
   /// with the given fields replaced by the non-null parameter values.
