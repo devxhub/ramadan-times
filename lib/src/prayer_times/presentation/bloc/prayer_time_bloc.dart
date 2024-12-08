@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meta/meta.dart';
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/manual_prayer_time.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
@@ -51,6 +52,9 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
         selectCustomImsakTime: (event) async => await _selectCustomImsakTime(event, emit),
+        manuallyPrayerTimeChange: (event) async => await _manuallyPrayerTimeChange(event, emit),
+        manuallyPrayerTimeDataLoaded: (event) async => await _manuallyPrayerTimeDataLoaded(event, emit),
+        onchangeTimeSelected: (event) async => await _onchangeTimeSelected(event, emit),
       );
     });
   }
@@ -548,5 +552,40 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('customImsakTime', event.customImsakTime);
     emit( state.copyWith(imsakTime:event.customImsakTime));
+  }_manuallyPrayerTimeDataLoaded(_ManuallyPrayerTimeDataLoaded event, Emitter<PrayerTimeState> emit) async {
+     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final fazr= prefs.getInt('Fajr');
+     final dhuhr= prefs.getInt('Dhuhr');
+    final asr= prefs.getInt('Asr');
+    final maghrib= prefs.getInt('Maghrib');
+    final isha= prefs.getInt('Isha');
+    final sunrise= prefs.getInt('Sunrise');
+    final manualPrayerTime=ManualPrayerTime(
+      manualFajrTime: fazr,
+      manualSunriseTime: sunrise,
+      manualDhuhrTime: dhuhr,
+      manualAsrTime: asr,
+      manualMaghribTime: maghrib,
+      manualIshaTime: isha,
+
+    );
+
+    emit( state.copyWith(manualPrayerTime:manualPrayerTime));
+  }_manuallyPrayerTimeChange(_ManuallyPrayerTimeChange event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final updatedManualPrayerTime = event.manualPrayerTime;
+    await prefs.setInt('Fajr', event.manualPrayerTime.manualFajrTime??0);
+    await prefs.setInt('Dhuhr', event.manualPrayerTime.manualDhuhrTime??0);
+    await prefs.setInt('Asr', event.manualPrayerTime.manualAsrTime??0);
+    await prefs.setInt('Maghrib', event.manualPrayerTime.manualMaghribTime??0);
+    await prefs.setInt('Isha', event.manualPrayerTime.manualIshaTime??0);
+    await prefs.setInt('Sunrise', event.manualPrayerTime.manualSunriseTime??0);
+
+    emit( state.copyWith(manualPrayerTime:updatedManualPrayerTime ));
+  }
+  _onchangeTimeSelected(_OnchangeTimeSelected event, Emitter<PrayerTimeState> emit) async {
+    emit( state.copyWith(
+      selectedTime: event.onchangeTime
+    ));
   }
 }

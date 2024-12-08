@@ -70,6 +70,7 @@ dependencies:
   table_calendar: ^3.0.9
   url_launcher: ^6.2.1
   shimmer: ^3.0.0
+  wheel_slider: ^1.2.1
 
 dev_dependencies:
   build_runner: ^2.4.6
