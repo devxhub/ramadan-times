@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nextgen_button/nextgen_button.dart';
+import 'package:ramadantimes/src/bloc/location/country_cubit.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
@@ -20,6 +21,9 @@ class UserLocationSelect extends StatefulWidget {
 class _UserLocationSelectState extends State<UserLocationSelect> {
   Country? selectedCountry;
   District? selectedLocation;
+  List<Country> filterCountryList = [];
+  TextEditingController countryEditingController = TextEditingController();
+  TextEditingController cityEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -30,6 +34,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -38,6 +43,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
       body: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
         builder: (context, prayerTimeState) {
           final countryList = prayerTimeState.countryResponse.countries ?? [];
+          filterCountryList = prayerTimeState.countryResponse.countries ?? [];
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 32.w),
             child: Column(
@@ -49,32 +55,125 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(height: 8.h),
-                DropdownButtonFormField<Country>(
-                  decoration: InputDecoration(
-                    labelText: "Select a Country",
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    border: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular(12.r), // Circular border
-                    ),
-                  ),
-                  value: prayerTimeState.selectedCountry,
-                  isExpanded: true,
-                  menuMaxHeight: 400.h,
-                  items: countryList.map((country) {
-                    return DropdownMenuItem<Country>(
-                      value: country,
-                      child: Text(country.name ?? "Unknown"),
-                    );
-                  }).toList(),
-                  onChanged: (Country? newValue) {
-                    context.read<PrayerTimeBloc>().add(
-                          PrayerTimeEvent.selectCountry(
-                            context: context,
-                            country: newValue ?? Country(),
+                Autocomplete<Country>(
+                  optionsViewBuilder: (context, onSelected, options) {
+                    return Container(
+                      height: 300.w,
+                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.r),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 6,
+                              offset: Offset(0, 2),
+                            ),
+                          ]),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: options.length,
+                            itemBuilder: (context, index) {
+                              final option = options.elementAt(index);
+                              return option.name == 'No results found'
+                                  ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "No results found",
+                                        style: TextStyle(color: Colors.grey, fontSize: 16.sp),
+                                      ),
+                                    ],
+                                  )
+                                  : ListTile(
+                                title: Text(option.name ?? ''),
+                                onTap: () {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  context.read<CountryCubit>().selectedCountry(option.name ?? '');
+                                  context.read<PrayerTimeBloc>().add(
+                                    PrayerTimeEvent.selectCountry(
+                                      context: context,
+                                      country: option,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           ),
-                        );
+                        ),
+                      ),
+                    );
                   },
+                  optionsBuilder: (TextEditingValue textEditingValue) async {
+                    if (textEditingValue.text.isEmpty) {
+                      return countryList;
+                    }
+
+                    final query = textEditingValue.text.toLowerCase();
+
+                    // Exact matches: names that start with the search query
+                    final exactMatches = filterCountryList.where((skatepark) =>
+                        skatepark.name?.toLowerCase().startsWith(query) ??
+                        false);
+
+                    // Partial matches: names that contain the search query but don't start with it
+                    final partialMatches = filterCountryList.where(
+                        (skatepark) =>
+                            skatepark.name?.toLowerCase().contains(query) ??
+                            false &&
+                                !(skatepark.name
+                                        ?.toLowerCase()
+                                        .startsWith(query) ??
+                                    false));
+
+                    // Combine exact matches first, followed by partial matches
+                    final filteredSkateparksData = [
+                      ...exactMatches,
+                      // ...partialMatches,
+                    ];
+                    // Return options or a placeholder for no results
+                    return filteredSkateparksData.isEmpty
+                        ? [Country(name: 'No results found')]
+                        : filteredSkateparksData;
+                  },
+                  fieldViewBuilder: (context, textEditingController,
+                          textSearchFocus, function) =>
+                      BlocBuilder<CountryCubit, String>(
+                    builder: (context, country) {
+                      textEditingController.text = country;
+                      return TextFormField(
+                        focusNode: textSearchFocus,
+                        onTapOutside: (PointerDownEvent event) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          textEditingController.clear();
+                        },
+                        onChanged: (value) {
+                          if (prayerTimeState
+                                  .selectedCountry?.name?.isNotEmpty ==
+                              true) {
+                            context
+                                .read<PrayerTimeBloc>()
+                                .add(PrayerTimeEvent.clearSelectedLocation());
+                          }
+                        },
+                        autofillHints: filterCountryList
+                            .map((skatepark) => skatepark.name ?? '')
+                            .toList(),
+                        enableSuggestions: true,
+                        controller: textEditingController,
+                        decoration: InputDecoration(
+                          labelText: "Select a Country",
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.circular(12.r), // Circular border
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 if (prayerTimeState.selectedCountry?.name
                         ?.toString()
@@ -93,34 +192,163 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         loading: () => const Center(
                           child: CircularProgressIndicator.adaptive(),
                         ),
-                        data: (data) => DropdownButtonFormField<District>(
-                          decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            labelText: "Select a City",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
-                            ),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 12.w, vertical: 8.h),
-                          ),
-                          value: prayerTimeState.selectedDistrict,
-                          isExpanded: true,
-                          menuMaxHeight: 400.h,
-                          items: data.map((district) {
-                            return DropdownMenuItem<District>(
-                              value: district,
-                              child: Text(district.name ?? "Unknown"),
-                            );
-                          }).toList(),
-                          onChanged: (District? value) async {
-                            context.read<PrayerTimeBloc>().add(
-                                  PrayerTimeEvent.selectCity(
-                                    context: context,
-                                    district: value ?? District(),
+                        data: (data) {
+                          return Autocomplete<District>(
+                            optionsViewBuilder: (context, onSelected, options) {
+                              if (options.isEmpty) {
+                                return Column(
+                                  children: [
+                                    SizedBox(height: 300.h,),
+                                    Text(
+                                      "No results found",
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 16.sp),
+                                    ),
+                                  ],
+                                );
+                              }
+                              return ClipRRect(
+                                clipBehavior: Clip.hardEdge,
+                                borderRadius: BorderRadius.circular(12.r),
+                                child: DecoratedBox(
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white),
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: const BouncingScrollPhysics(),
+                                    primary: true,
+                                    itemCount: options.length,
+                                    itemBuilder: (context, index) {
+                                      final option = options.elementAt(index);
+                                      if (option.name == 'No results found') {
+                                        return Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 16.0.w,
+                                              vertical: height / 2),
+                                          child: Center(
+                                            child: Text(
+                                              "No results found",
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 16.sp),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      return Material(
+                                        color: Colors.transparent,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            // textEditingController
+                                            //     .clear();
+                                            cityEditingController.clear();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+
+                                            context
+                                                .read<CityCubit>()
+                                                .selectedCity(
+                                                    option.name ?? '');
+
+                                            context
+                                                .read<PrayerTimeBloc>()
+                                                .add(
+                                                  PrayerTimeEvent.selectCity(
+                                                    context: context,
+                                                    district: option,
+                                                  ),
+                                                );
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 16.0.w,
+                                                vertical: 8.h),
+                                            child: Text(option.name ?? ''),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                            optionsBuilder:
+                                (TextEditingValue textEditingValue) async {
+                              if (textEditingValue.text.isEmpty) {
+                                return data;
+                              }
+
+                              final query = textEditingValue.text.toLowerCase();
+
+                              // Exact matches: names that start with the search query
+                              final exactMatches = data.where((skatepark) =>
+                                  skatepark.name
+                                      ?.toLowerCase()
+                                      .startsWith(query) ??
+                                  false);
+
+                              // Partial matches: names that contain the search query but don't start with it
+                              final partialMatches = data.where((skatepark) =>
+                                  skatepark.name
+                                      ?.toLowerCase()
+                                      .contains(query) ??
+                                  false &&
+                                      !(skatepark.name
+                                              ?.toLowerCase()
+                                              .startsWith(query) ??
+                                          false));
+
+                              // Combine exact matches first, followed by partial matches
+                              final filteredSkateparksData = [
+                                ...exactMatches,
+                                // ...partialMatches
+                              ];
+
+                              // Return options or a placeholder for no results
+                              return filteredSkateparksData.isEmpty
+                                  ? [District(name: 'No results found')]
+                                  : filteredSkateparksData;
+                            },
+                            fieldViewBuilder: (context, textEditingController,
+                                    textSearchFocus, function) =>
+                                BlocBuilder<CityCubit, String>(
+                              builder: (context, city) {
+                                textEditingController.text = city;
+                                return TextFormField(
+                                  focusNode: textSearchFocus,
+                                  onTapOutside: (PointerDownEvent event) {
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                    textEditingController.clear();
+                                  },
+                                  onChanged: (value) {
+                                    if (prayerTimeState.selectedDistrict?.name
+                                            ?.isNotEmpty ==
+                                        true) {
+                                      context.read<PrayerTimeBloc>().add(
+                                          PrayerTimeEvent.clearSelectedCity());
+                                    }
+                                  },
+                                  autofillHints: data
+                                      .map((skatepark) => skatepark.name ?? '')
+                                      .toList(),
+                                  enableSuggestions: true,
+                                  controller: textEditingController,
+                                  decoration: InputDecoration(
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.never,
+                                    labelText: "Select a City",
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 8.h),
                                   ),
                                 );
-                          },
-                        ),
+                              },
+                            ),
+                          );
+                        },
                         error: (e) => Container(),
                       );
                     },
@@ -135,12 +363,72 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                 Expanded(child: SizedBox()),
                 NextGenButton(
                   onTap: () {
-                    if (prayerTimeState.selectedCountry?.name
-                            .toString()
-                            .toLowerCase() ==
-                        "bangladesh") {
-                      if (prayerTimeState.selectedDistrict?.name?.isNotEmpty ==
-                          true) {
+                    if (isCountryInList(
+                        prayerTimeState.selectedCountry?.name ?? '',
+                        countryList)) {
+                      if (prayerTimeState.selectedCountry?.name
+                              .toString()
+                              .toLowerCase() ==
+                          "bangladesh") {
+                        if (prayerTimeState
+                                .selectedDistrict?.name?.isNotEmpty ==
+                            true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Country saved successfully!',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black,
+                            ),
+                          );
+                          context.read<CountryCubit>().selectedCountry('');
+                          context.read<CityCubit>().selectedCity('');
+                          context.read<PrayerTimeBloc>().add(
+                                PrayerTimeEvent.submitLocation(
+                                  context: context,
+                                  userCoordinator: UserCoordinator(
+                                    userCountryIso: prayerTimeState
+                                            .selectedCountry?.countryCode ??
+                                        "",
+                                    userCity: prayerTimeState
+                                            .selectedDistrict?.name ??
+                                        "",
+                                    userCountry:
+                                        prayerTimeState.selectedCountry?.name ??
+                                            '',
+                                    userLng: double.parse(prayerTimeState
+                                            .selectedDistrict?.lon
+                                            .toString() ??
+                                        ""),
+                                    userLat: double.parse(prayerTimeState
+                                            .selectedDistrict?.lat
+                                            .toString() ??
+                                        ""),
+                                  ),
+                                ),
+                              );
+                        } else {
+                          context.read<CityCubit>().selectedCity('');
+                          context.read<PrayerTimeBloc>().add(
+                                PrayerTimeEvent.isDistrictSelected(
+                                  context: context,
+                                  isDistrictSelected: false,
+                                ),
+                              );
+                        }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Country saved successfully!',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            backgroundColor: Colors.black,
+                          ),
+                        );
+                        context.read<CountryCubit>().selectedCountry('');
+                        context.read<CityCubit>().selectedCity('');
                         context.read<PrayerTimeBloc>().add(
                               PrayerTimeEvent.submitLocation(
                                 context: context,
@@ -148,58 +436,44 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                   userCountryIso: prayerTimeState
                                           .selectedCountry?.countryCode ??
                                       "",
-                                  userCity:
-                                      prayerTimeState.selectedDistrict?.name ??
-                                          "",
+                                  userCity: prayerTimeState
+                                          .selectedCountry?.capitalCity ??
+                                      "",
                                   userCountry:
                                       prayerTimeState.selectedCountry?.name ??
                                           '',
-                                  userLng: double.parse(prayerTimeState
-                                          .selectedDistrict?.lon
-                                          .toString() ??
-                                      ""),
-                                  userLat: double.parse(prayerTimeState
-                                          .selectedDistrict?.lat
-                                          .toString() ??
-                                      ""),
+                                  userLng:
+                                      prayerTimeState.selectedCountry?.long,
+                                  userLat: prayerTimeState.selectedCountry?.lat,
                                 ),
-                              ),
-                            );
-                      } else {
-                        context.read<PrayerTimeBloc>().add(
-                              PrayerTimeEvent.isDistrictSelected(
-                                context: context,
-                                isDistrictSelected: false,
                               ),
                             );
                       }
                     } else {
-                      context.read<PrayerTimeBloc>().add(
-                            PrayerTimeEvent.submitLocation(
-                              context: context,
-                              userCoordinator: UserCoordinator(
-                                userCountryIso: prayerTimeState
-                                        .selectedCountry?.countryCode ??
-                                    "",
-                                userCity: prayerTimeState
-                                        .selectedCountry?.capitalCity ??
-                                    "",
-                                userCountry:
-                                    prayerTimeState.selectedCountry?.name ?? '',
-                                userLng: prayerTimeState.selectedCountry?.long,
-                                userLat: prayerTimeState.selectedCountry?.lat,
-                              ),
-                            ),
-                          );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Country is not found in the list!',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
                     }
                   },
-                  color: const Color(0xff674cec), // Set the background color
-                  borderColor: Colors.transparent, // No border
-                  height: 40.h, // Adjust the height of the button
-                  width: 300.w, // Adjust the width of the button
-                  radius: 8.0, // Optional: Add corner radius
+                  color: const Color(0xff674cec),
+                  // Set the background color
+                  borderColor: Colors.transparent,
+                  // No border
+                  height: 40.h,
+                  // Adjust the height of the button
+                  width: 300.w,
+                  // Adjust the width of the button
+                  radius: 8.0,
+                  // Optional: Add corner radius
                   isLoading: prayerTimeState.prayerTimeStatus ==
-                      PrayerTimeStatus.initial, // Show loading indicator
+                      PrayerTimeStatus.initial,
+                  // Show loading indicator
                   titleText: Text(
                     "Save",
                     style: TextStyle(
@@ -218,5 +492,11 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
         },
       ),
     );
+  }
+
+  bool isCountryInList(String countryName, List<Country> countryList) {
+    // Find if any country in the list has the same name (case-insensitive)
+    return countryList.any(
+        (country) => country.name?.toLowerCase() == countryName.toLowerCase());
   }
 }

@@ -42,6 +42,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _weatherDataLoaded(event, emit),
         clearSelectedLocation: (event) async =>
             await _clearSelectedLocation(event, emit),
+        clearSelectedCity: (event) async =>
+            await _clearSelectedCity(event, emit),
       );
     });
   }
@@ -426,6 +428,15 @@ _saveCurrentLocationToPreferences(event.userCoordinator.userLat ?? 0.0,event.use
       state.copyWith(
         selectedDistrict: null,
         selectedCountry: null,
+      ),
+    );
+  }
+
+  _clearSelectedCity(
+      _ClearSelectedCity event, Emitter<PrayerTimeState> emit) {
+    emit(
+      state.copyWith(
+        selectedDistrict: null,
       ),
     );
   }

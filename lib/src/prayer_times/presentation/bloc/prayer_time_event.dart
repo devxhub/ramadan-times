@@ -16,6 +16,8 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
       required District district}) = _SelectCity;
   const factory PrayerTimeEvent.clearSelectedLocation() =
       _ClearSelectedLocation;
+  const factory PrayerTimeEvent.clearSelectedCity() =
+      _ClearSelectedCity;
   const factory PrayerTimeEvent.submitLocation(
       {required BuildContext context,
       required UserCoordinator userCoordinator}) = _SubmitLocation;
