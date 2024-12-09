@@ -53,6 +53,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
         selectCustomImsakTime: (event) async => await _selectCustomImsakTime(event, emit),
+        clearSelectedCity: (event) async =>
+            await _clearSelectedCity(event, emit),
       );
     });
   }
@@ -559,5 +561,14 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('customImsakTime', event.customImsakTime);
     emit( state.copyWith(imsakTime:event.customImsakTime));
+  }
+
+  _clearSelectedCity(
+      _ClearSelectedCity event, Emitter<PrayerTimeState> emit) {
+    emit(
+      state.copyWith(
+        selectedDistrict: null,
+      ),
+    );
   }
 }
