@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ramadantimes/src/bloc/NextDayTiming/next_day_timing_cubit.dart';
 import 'package:ramadantimes/src/bloc/language_bloc/language_bloc.dart';
+import 'package:ramadantimes/src/bloc/location/country_cubit.dart';
 import 'package:ramadantimes/src/calender/data/repositories/calender_repository.dart';
 import 'package:ramadantimes/src/calender/presentation/bloc/calendar_bloc.dart';
 import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
@@ -68,6 +69,16 @@ void main() async {
     BlocProvider<LanguageBloc>(
       create: (BuildContext context) {
         return LanguageBloc();
+      },
+    ),
+    BlocProvider<CountryCubit>(
+      create: (BuildContext context) {
+        return CountryCubit();
+      },
+    ),
+    BlocProvider<CityCubit>(
+      create: (BuildContext context) {
+        return CityCubit();
       },
     ),
     BlocProvider<LocationCubit>(
