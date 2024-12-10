@@ -91,7 +91,6 @@
       }
     }
   },
-  
   "prayerName": "{name, select, Fajr{ফজর} Sunrise{সূর্যোদয়} Dhuhr{যোহর} Asr{আছর} Sunset{সূর্যাস্ত} Maghrib{মাগরিব} Isha{ঈশা} Ishrak{ইশরাক} FajrNext{ফজর} other{ফজর}} ",
   "@prayerName": {
     "placeholders": {
@@ -110,5 +109,13 @@
    "minutes":"মিনিট",
    "maghribAngle": "মাগরিব কোণ",
    "selectFajrAngle": "ফজর কোণ নির্বাচন করুন:",
-   "selectIshaAngle": "ইশা কোণ নির্বাচন করুন:"
+   "selectIshaAngle": "ইশা কোণ নির্বাচন করুন:",
+   "showImsakInPrayerTimesPage": "নামাজের সময়সূচি পৃষ্ঠায় ইমসাক প্রদর্শন করুন",
+    "manualCorrection": "ম্যানুয়াল সংশোধন",
+    "minute":"মিনিট",
+     "selectedTime":"নির্বাচিত সময়",
+     "sunRise":"সূর্যোদয়",
+     "resetTime":"সময় রিসেট করুন",
+      "done": "সম্পন্ন",
+      "cancel": "বাতিল"
 }

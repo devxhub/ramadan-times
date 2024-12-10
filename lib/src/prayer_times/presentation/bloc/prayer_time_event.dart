@@ -51,4 +51,12 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
   const factory PrayerTimeEvent.selectCustomImsakTime({
     required int customImsakTime,
   }) = _SelectCustomImsakTime;
+  const factory PrayerTimeEvent.manuallyPrayerTimeChange({
+    required ManualPrayerTime manualPrayerTime,
+    required String prayerName,
+  }) = _ManuallyPrayerTimeChange;
+  const factory PrayerTimeEvent.manuallyPrayerTimeDataLoaded() = _ManuallyPrayerTimeDataLoaded;
+  const factory PrayerTimeEvent.onchangeTimeSelected({required int onchangeTime}) = _OnchangeTimeSelected;
+  const factory PrayerTimeEvent.resetManualPrayerTime() = _ResetManualPrayerTime;
+  const factory PrayerTimeEvent.selectedTimeUpdate({required int time}) = _SelectedTimeUpdate;
 }

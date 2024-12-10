@@ -492,6 +492,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select Isha Angle:'**
   String get selectIshaAngle;
+
+  /// No description provided for @showImsakInPrayerTimesPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Imsak in Prayer Times page'**
+  String get showImsakInPrayerTimesPage;
+
+  /// No description provided for @manualCorrection.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual Corrections'**
+  String get manualCorrection;
+
+  /// No description provided for @minute.
+  ///
+  /// In en, this message translates to:
+  /// **'minute'**
+  String get minute;
+
+  /// No description provided for @selectedTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Time'**
+  String get selectedTime;
+
+  /// No description provided for @sunRise.
+  ///
+  /// In en, this message translates to:
+  /// **'Sun Rise'**
+  String get sunRise;
+
+  /// No description provided for @resetTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Time'**
+  String get resetTime;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

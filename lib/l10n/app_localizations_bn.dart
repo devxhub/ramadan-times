@@ -249,4 +249,28 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get selectIshaAngle => 'ইশা কোণ নির্বাচন করুন:';
+
+  @override
+  String get showImsakInPrayerTimesPage => 'নামাজের সময়সূচি পৃষ্ঠায় ইমসাক প্রদর্শন করুন';
+
+  @override
+  String get manualCorrection => 'ম্যানুয়াল সংশোধন';
+
+  @override
+  String get minute => 'মিনিট';
+
+  @override
+  String get selectedTime => 'নির্বাচিত সময়';
+
+  @override
+  String get sunRise => 'সূর্যোদয়';
+
+  @override
+  String get resetTime => 'সময় রিসেট করুন';
+
+  @override
+  String get done => 'সম্পন্ন';
+
+  @override
+  String get cancel => 'বাতিল';
 }

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import '../../../prayer_times/presentation/pages/manual_prayer_time.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
-                title: Text('Show Imsak in Prayer Times page'),
+                title: Text(AppLocalizations.of(context)!.showImsakInPrayerTimesPage),
                 value: state.isImsakEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
@@ -94,10 +95,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
               );
             },
           ),
-          ListTile(
-            title: Text('Manual corrections'),
-            subtitle: Text('0, 0, 0, 0, 0, 0'),
-          ),
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+            builder: (context, state) {
+    return GestureDetector(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ManualCorrectionsScreen(),
+                ),
+              );
+            },
+            child: ListTile(
+              title: Text(AppLocalizations.of(context)!.manualCorrection),
+              subtitle: Text('${state.manualPrayerTime.manualFajrTime??0},${state.manualPrayerTime.manualSunriseTime??0}, ${state.manualPrayerTime.manualDhuhrTime??0}, ${state.manualPrayerTime.manualAsrTime??0}, ${state.manualPrayerTime.manualMaghribTime??0},${state.manualPrayerTime.manualIshaTime??0}'),
+            ),
+          );
+  },
+),
           ListTile(
             title: Text('Asr calculation – Juristic method'),
             subtitle: Text('Standard (Shafi, Maliki, Hanbali)'),
