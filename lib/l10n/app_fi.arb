@@ -109,5 +109,13 @@
   "minutes": "minuuttia",
   "maghribAngle": "Maghrib-kulma",
   "selectFajrAngle": "Valitse Fajr-kulma:",
-  "selectIshaAngle": "Valitse Isha-kulma:"
+  "selectIshaAngle": "Valitse Isha-kulma:",
+  "showImsakInPrayerTimesPage": "Näytä Imsak rukousaikojen sivulla ja viimeistele",
+   "manualCorrection": "Manuaaliset korjaukset",
+     "minute": "minuuttia",
+      "selectedTime":"Valittu aika",
+      "sunRise":"Auringon nousu",
+      "resetTime":"Nollaa aika",
+       "done": "Valmis",
+       "cancel": "Peruuta"
 }

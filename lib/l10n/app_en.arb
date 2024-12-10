@@ -109,5 +109,14 @@
    "minutes":"minutes",
    "maghribAngle": "Maghrib Angle",
    "selectFajrAngle": "Select Fajr Angle:",
-   "selectIshaAngle": "Select Isha Angle:"
+   "selectIshaAngle": "Select Isha Angle:",
+   "showImsakInPrayerTimesPage": "Show Imsak in Prayer Times page",
+    "manualCorrection":"Manual Corrections",
+    "minute":"minute",
+    "selectedTime":"Selected Time",
+    "sunRise":"Sun Rise",
+    "resetTime":"Reset Time",
+    "done":"Done",
+    "cancel":"Cancel"
+
 }

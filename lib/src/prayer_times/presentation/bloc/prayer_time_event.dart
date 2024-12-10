@@ -58,4 +58,5 @@ class PrayerTimeEvent with _$PrayerTimeEvent {
   const factory PrayerTimeEvent.manuallyPrayerTimeDataLoaded() = _ManuallyPrayerTimeDataLoaded;
   const factory PrayerTimeEvent.onchangeTimeSelected({required int onchangeTime}) = _OnchangeTimeSelected;
   const factory PrayerTimeEvent.resetManualPrayerTime() = _ResetManualPrayerTime;
+  const factory PrayerTimeEvent.selectedTimeUpdate({required int time}) = _SelectedTimeUpdate;
 }

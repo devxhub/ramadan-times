@@ -32,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
-                title: Text('Show Imsak in Prayer Times page'),
+                title: Text(AppLocalizations.of(context)!.showImsakInPrayerTimesPage),
                 value: state.isImsakEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
@@ -107,7 +107,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               );
             },
             child: ListTile(
-              title: Text('Manual corrections'),
+              title: Text(AppLocalizations.of(context)!.manualCorrection),
               subtitle: Text('${state.manualPrayerTime.manualFajrTime??0},${state.manualPrayerTime.manualSunriseTime??0}, ${state.manualPrayerTime.manualDhuhrTime??0}, ${state.manualPrayerTime.manualAsrTime??0}, ${state.manualPrayerTime.manualMaghribTime??0},${state.manualPrayerTime.manualIshaTime??0}'),
             ),
           );

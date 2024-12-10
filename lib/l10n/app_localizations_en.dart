@@ -248,4 +248,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectIshaAngle => 'Select Isha Angle:';
+
+  @override
+  String get showImsakInPrayerTimesPage => 'Show Imsak in Prayer Times page';
+
+  @override
+  String get manualCorrection => 'Manual Corrections';
+
+  @override
+  String get minute => 'minute';
+
+  @override
+  String get selectedTime => 'Selected Time';
+
+  @override
+  String get sunRise => 'Sun Rise';
+
+  @override
+  String get resetTime => 'Reset Time';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get cancel => 'Cancel';
 }

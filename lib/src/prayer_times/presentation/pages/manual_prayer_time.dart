@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nextgen_button/nextgen_button.dart';
+import 'package:ramadantimes/src/component/eng_to_bn.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/manual_prayer_time.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:wheel_slider/wheel_slider.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class ManualCorrectionsScreen extends StatefulWidget {
   @override
@@ -32,7 +35,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Manual corrections'),
+        title: Text( AppLocalizations.of(context)!.manualCorrection),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -62,11 +65,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                       },
                       child: ListTile(
                         title: Text(
-                          'Fajr',
+                          AppLocalizations.of(context)?.fajr??'',
                           style: TextStyle(color: Colors.black,fontSize: 16.sp),
                         ),
                         subtitle: Text(
-                          "${state.manualPrayerTime.manualFajrTime??0}",
+                          "${engToBn(state.manualPrayerTime.manualFajrTime.toString(), context)}",
                           style: TextStyle(color: Colors.black54,fontSize: 12.sp),
                         ),
                       ),
@@ -78,11 +81,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                       },
                       child: ListTile(
                         title: Text(
-                          'Sunrise',
+                          AppLocalizations.of(context)?.sunRise??'',
                           style: TextStyle(color: Colors.black,fontSize: 16.sp),
                         ),
                         subtitle: Text(
-                          "${state.manualPrayerTime.manualSunriseTime??0}",
+                          "${engToBn(state.manualPrayerTime.manualSunriseTime.toString(), context)}",
                           style: TextStyle(color: Colors.black54,fontSize: 12.sp),
                         ),
                       ),
@@ -94,11 +97,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                       },
                       child: ListTile(
                         title: Text(
-                          'Dhuhr',
+                          AppLocalizations.of(context)?.dhuhr??'',
                           style: TextStyle(color: Colors.black,fontSize: 16.sp),
                         ),
                         subtitle: Text(
-                          "${state.manualPrayerTime.manualDhuhrTime??0}",
+                          "${engToBn(state.manualPrayerTime.manualDhuhrTime.toString(), context)}",
                           style: TextStyle(color: Colors.black54,fontSize: 12.sp),
                         ),
                       ),
@@ -110,11 +113,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                       },
                       child: ListTile(
                         title: Text(
-                          'Asr',
+                          AppLocalizations.of(context)?.asr??'',
                           style: TextStyle(color: Colors.black,fontSize: 16.sp),
                         ),
                         subtitle: Text(
-                          "${state.manualPrayerTime.manualAsrTime??0}",
+                          "${engToBn(state.manualPrayerTime.manualAsrTime.toString(), context)}",
                           style: TextStyle(color: Colors.black54,fontSize: 12.sp),
                         ),
                       ),
@@ -126,11 +129,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                       },
                       child: ListTile(
                         title: Text(
-                          'Maghrib',
+                          AppLocalizations.of(context)?.maghrib??'',
                           style: TextStyle(color: Colors.black,fontSize: 16.sp),
                         ),
                         subtitle: Text(
-                          "${state.manualPrayerTime.manualMaghribTime??0}",
+                          "${engToBn(state.manualPrayerTime.manualMaghribTime.toString(), context)}",
                           style: TextStyle(color: Colors.black54,fontSize: 12.sp),
                         ),
                       ),
@@ -142,11 +145,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                       },
                       child: ListTile(
                         title: Text(
-                          'Isha\'a',
+                AppLocalizations.of(context)?.isha??'',
                           style: TextStyle(color: Colors.black,fontSize: 16.sp),
                         ),
                         subtitle: Text(
-                          "${state.manualPrayerTime.manualIshaTime??0}",
+                          "${engToBn((state.manualPrayerTime.manualIshaTime.toString())??"0", context)}",
                           style: TextStyle(color: Colors.black54,fontSize: 12.sp),
                         ),
                       ),
@@ -169,7 +172,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
           isLoading: state.prayerTimeStatus ==
               PrayerTimeStatus.initial, // Show loading indicator
           titleText: Text(
-            "Reset Time",
+            AppLocalizations.of(context)?.resetTime??'',
             style: TextStyle(
               fontSize: 16.w,
               fontWeight: FontWeight.w700,
@@ -189,9 +192,8 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
   void showSliderDialog(BuildContext context, int initialValue,String prayerName) {
     final FixedExtentScrollController scrollController =
     FixedExtentScrollController(initialItem: initialValue + 59); // Map initial value to index
-
     int selectedValue = initialValue;
-
+context.read<PrayerTimeBloc>().add(PrayerTimeEvent.selectedTimeUpdate(time: initialValue));
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -200,8 +202,8 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
             return BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
               builder: (context, state) {
     return AlertDialog(
-              title: const Text(
-                "Manual Corrections",
+              title:  Text(
+                AppLocalizations.of(context)!.manualCorrection,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               content: Column(
@@ -237,7 +239,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                           childDelegate: ListWheelChildBuilderDelegate(
                             builder: (context, index) {
                               final value = index - 59;
-                              final isSelected = value == state.selectedTime||value==selectedValue;
+                              final isSelected = value == state.selectedTime;
 
                               return Center(
                                 child: AnimatedDefaultTextStyle(
@@ -248,7 +250,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                                     isSelected ? FontWeight.bold : FontWeight.normal,
                                     color: isSelected ? Colors.black : Colors.grey,
                                   ),
-                                  child: Text('$value minute'),
+                                  child: Text('${engToBn(value.toString(), context)} ${AppLocalizations.of(context)?.minute}'),
                                 ),
                               );
                             },
@@ -261,7 +263,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Selected Time: ${state.selectedTime} minute',
+                    '${AppLocalizations.of(context)?.selectedTime}: ${engToBn(state.selectedTime.toString(), context)} ${AppLocalizations.of(context)?.minute}',
                     style: const TextStyle(fontSize: 16),
                   ),
                 ],
@@ -269,7 +271,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context)?.cancel??""),
                 ),
                 TextButton(
                   onPressed: () {
@@ -286,7 +288,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                   //  onValueSelected(selectedValue); // Pass the selected value
                     Navigator.of(context).pop();
                   },
-                  child: const Text('Done'),
+                  child:  Text(AppLocalizations.of(context)?.done??""),
                 ),
               ],
             );

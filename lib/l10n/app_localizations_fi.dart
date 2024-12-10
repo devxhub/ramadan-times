@@ -230,4 +230,28 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get selectIshaAngle => 'Valitse Isha-kulma:';
+
+  @override
+  String get showImsakInPrayerTimesPage => 'Näytä Imsak rukousaikojen sivulla ja viimeistele';
+
+  @override
+  String get manualCorrection => 'Manuaaliset korjaukset';
+
+  @override
+  String get minute => 'minuuttia';
+
+  @override
+  String get selectedTime => 'Valittu aika';
+
+  @override
+  String get sunRise => 'Auringon nousu';
+
+  @override
+  String get resetTime => 'Nollaa aika';
+
+  @override
+  String get done => 'Valmis';
+
+  @override
+  String get cancel => 'Peruuta';
 }

@@ -56,6 +56,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         manuallyPrayerTimeDataLoaded: (event) async => await _manuallyPrayerTimeDataLoaded(event, emit),
         onchangeTimeSelected: (event) async => await _onchangeTimeSelected(event, emit),
         resetManualPrayerTime: (event) async => await _resetManualPrayerTime(event, emit),
+        selectedTimeUpdate: (event) async => await _selectedTimeUpdate(event, emit),
       );
     });
   }
@@ -600,6 +601,11 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await prefs.setInt('Sunrise',0);
     emit( state.copyWith(
         manualPrayerTime:ManualPrayerTime()
+    ));
+  }
+ _selectedTimeUpdate(_SelectedTimeUpdate event, Emitter<PrayerTimeState> emit) async {
+    emit( state.copyWith(
+      selectedTime: event.time
     ));
   }
 
