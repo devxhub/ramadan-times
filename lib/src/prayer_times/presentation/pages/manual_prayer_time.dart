@@ -38,122 +38,123 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
       ),
       body: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
   builder: (context, state) {
-    return Padding(
-        padding:  EdgeInsets.all(8.sp),
-        child: Card(
-          elevation: 4,
-          margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          color: Colors.white,
-          child: SizedBox(
-            height: 385.h,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showSliderDialog(context,state.manualPrayerTime.manualFajrTime??0,'Fajr');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        'Fajr',
-                        style: TextStyle(color: Colors.black,fontSize: 16.sp),
-                      ),
-                      subtitle: Text(
-                        "${state.manualPrayerTime.manualFajrTime??0}",
-                        style: TextStyle(color: Colors.black54,fontSize: 12.sp),
-                      ),
-                    ),
-                  ),
-                  Divider(color: Colors.black, height: 1),
-                  GestureDetector(
-                    onTap: () {
-                      showSliderDialog(context,state.manualPrayerTime.manualSunriseTime??0,'Sunrise');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        'Sunrise',
-                        style: TextStyle(color: Colors.black,fontSize: 16.sp),
-                      ),
-                      subtitle: Text(
-                        "${state.manualPrayerTime.manualSunriseTime??0}",
-                        style: TextStyle(color: Colors.black54,fontSize: 12.sp),
-                      ),
-                    ),
-                  ),
-                  Divider(color: Colors.black, height: 1),
-                  GestureDetector(
-                    onTap: () {
-                      showSliderDialog(context, state.manualPrayerTime.manualDhuhrTime??0,'Dhuhr');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        'Dhuhr',
-                        style: TextStyle(color: Colors.black,fontSize: 16.sp),
-                      ),
-                      subtitle: Text(
-                        "${state.manualPrayerTime.manualDhuhrTime??0}",
-                        style: TextStyle(color: Colors.black54,fontSize: 12.sp),
-                      ),
-                    ),
-                  ),
-                  Divider(color: Colors.black, height: 1),
-                  GestureDetector(
-                    onTap: () {
-                      showSliderDialog(context,state.manualPrayerTime.manualAsrTime??0,'Asr');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        'Asr',
-                        style: TextStyle(color: Colors.black,fontSize: 16.sp),
-                      ),
-                      subtitle: Text(
-                        "${state.manualPrayerTime.manualAsrTime??0}",
-                        style: TextStyle(color: Colors.black54,fontSize: 12.sp),
-                      ),
-                    ),
-                  ),
-                  Divider(color: Colors.black, height: 1),
-                  GestureDetector(
-                    onTap: () {
-                      showSliderDialog(context,state.manualPrayerTime.manualMaghribTime??0,'Maghrib');
-                    },
-                    child: ListTile(
-                      title: Text(
-                        'Maghrib',
-                        style: TextStyle(color: Colors.black,fontSize: 16.sp),
-                      ),
-                      subtitle: Text(
-                        "${state.manualPrayerTime.manualMaghribTime??0}",
-                        style: TextStyle(color: Colors.black54,fontSize: 12.sp),
-                      ),
-                    ),
-                  ),
-                  Divider(color: Colors.black, height: 1),
-                  GestureDetector(
-                    onTap: () {
-                      showSliderDialog(context, state.manualPrayerTime.manualIshaTime??0,"Isha");
-                    },
-                    child: ListTile(
-                      title: Text(
-                        'Isha\'a',
-                        style: TextStyle(color: Colors.black,fontSize: 16.sp),
-                      ),
-                      subtitle: Text(
-                        "${state.manualPrayerTime.manualIshaTime??0}",
-                        style: TextStyle(color: Colors.black54,fontSize: 12.sp),
-                      ),
-                    ),
-                  ),
-                ],
+    return Column(
+      children: [
+        Padding(
+            padding:  EdgeInsets.all(8.sp),
+            child: Card(
+              elevation: 4,
+              margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.r),
               ),
-            ),
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showSliderDialog(context,state.manualPrayerTime.manualFajrTime??0,'Fajr');
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Fajr',
+                          style: TextStyle(color: Colors.black,fontSize: 16.sp),
+                        ),
+                        subtitle: Text(
+                          "${state.manualPrayerTime.manualFajrTime??0}",
+                          style: TextStyle(color: Colors.black54,fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                    Divider(color: Colors.black, height: 1.h),
+                    GestureDetector(
+                      onTap: () {
+                        showSliderDialog(context,state.manualPrayerTime.manualSunriseTime??0,'Sunrise');
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Sunrise',
+                          style: TextStyle(color: Colors.black,fontSize: 16.sp),
+                        ),
+                        subtitle: Text(
+                          "${state.manualPrayerTime.manualSunriseTime??0}",
+                          style: TextStyle(color: Colors.black54,fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                    Divider(color: Colors.black, height: 1),
+                    GestureDetector(
+                      onTap: () {
+                        showSliderDialog(context, state.manualPrayerTime.manualDhuhrTime??0,'Dhuhr');
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Dhuhr',
+                          style: TextStyle(color: Colors.black,fontSize: 16.sp),
+                        ),
+                        subtitle: Text(
+                          "${state.manualPrayerTime.manualDhuhrTime??0}",
+                          style: TextStyle(color: Colors.black54,fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                    Divider(color: Colors.black, height: 1),
+                    GestureDetector(
+                      onTap: () {
+                        showSliderDialog(context,state.manualPrayerTime.manualAsrTime??0,'Asr');
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Asr',
+                          style: TextStyle(color: Colors.black,fontSize: 16.sp),
+                        ),
+                        subtitle: Text(
+                          "${state.manualPrayerTime.manualAsrTime??0}",
+                          style: TextStyle(color: Colors.black54,fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                    Divider(color: Colors.black, height: 1),
+                    GestureDetector(
+                      onTap: () {
+                        showSliderDialog(context,state.manualPrayerTime.manualMaghribTime??0,'Maghrib');
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Maghrib',
+                          style: TextStyle(color: Colors.black,fontSize: 16.sp),
+                        ),
+                        subtitle: Text(
+                          "${state.manualPrayerTime.manualMaghribTime??0}",
+                          style: TextStyle(color: Colors.black54,fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                    Divider(color: Colors.black, height: 1),
+                    GestureDetector(
+                      onTap: () {
+                        showSliderDialog(context, state.manualPrayerTime.manualIshaTime??0,"Isha");
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Isha\'a',
+                          style: TextStyle(color: Colors.black,fontSize: 16.sp),
+                        ),
+                        subtitle: Text(
+                          "${state.manualPrayerTime.manualIshaTime??0}",
+                          style: TextStyle(color: Colors.black54,fontSize: 12.sp),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
           ),
-        )
-      );
+      ],
+    );
   },
 ),
       backgroundColor: Colors.white, // White background
