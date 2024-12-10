@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nextgen_button/nextgen_button.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/manual_prayer_time.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:wheel_slider/wheel_slider.dart';
@@ -29,6 +30,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Manual corrections'),
         leading: IconButton(
@@ -36,6 +38,7 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
           onPressed: () => Navigator.pop(context),
         ),
       ),
+
       body: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
   builder: (context, state) {
     return Column(
@@ -153,11 +156,31 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
               ),
             )
           ),
+        SizedBox(height: 32.h,),
+        NextGenButton(
+          onTap: () {
+            context.read<PrayerTimeBloc>().add(PrayerTimeEvent.resetManualPrayerTime());
+          },
+          color: const Color(0xff674cec), // Set the background color
+          borderColor: Colors.transparent, // No border
+          height: 40.h, // Adjust the height of the button
+          width: 330.w, // Adjust the width of the button
+          radius: 8.0, // Optional: Add corner radius
+          isLoading: state.prayerTimeStatus ==
+              PrayerTimeStatus.initial, // Show loading indicator
+          titleText: Text(
+            "Reset Time",
+            style: TextStyle(
+              fontSize: 16.w,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ],
     );
   },
 ),
-      backgroundColor: Colors.white, // White background
     );
   }
 
@@ -210,13 +233,11 @@ ManualPrayerTime manualPrayerTime=ManualPrayerTime();
                           itemExtent: 50,
                           onSelectedItemChanged: (index) {
                             context.read<PrayerTimeBloc>().add(PrayerTimeEvent.onchangeTimeSelected(onchangeTime: index-59));
-
-                            print("Selected value is ${state.selectedTime}");
                           },
                           childDelegate: ListWheelChildBuilderDelegate(
                             builder: (context, index) {
                               final value = index - 59;
-                              final isSelected = value == state.selectedTime;
+                              final isSelected = value == state.selectedTime||value==selectedValue;
 
                               return Center(
                                 child: AnimatedDefaultTextStyle(

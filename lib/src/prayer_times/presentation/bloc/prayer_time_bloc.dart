@@ -55,6 +55,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         manuallyPrayerTimeChange: (event) async => await _manuallyPrayerTimeChange(event, emit),
         manuallyPrayerTimeDataLoaded: (event) async => await _manuallyPrayerTimeDataLoaded(event, emit),
         onchangeTimeSelected: (event) async => await _onchangeTimeSelected(event, emit),
+        resetManualPrayerTime: (event) async => await _resetManualPrayerTime(event, emit),
       );
     });
   }
@@ -588,4 +589,18 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       selectedTime: event.onchangeTime
     ));
   }
+
+  _resetManualPrayerTime(_ResetManualPrayerTime event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('Fajr', 0);
+    await prefs.setInt('Dhuhr',0);
+    await prefs.setInt('Asr', 0);
+    await prefs.setInt('Maghrib', 0);
+    await prefs.setInt('Isha', 0);
+    await prefs.setInt('Sunrise',0);
+    emit( state.copyWith(
+        manualPrayerTime:ManualPrayerTime()
+    ));
+  }
+
 }
