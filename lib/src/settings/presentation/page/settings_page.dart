@@ -48,10 +48,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          ListTile(
-            title: Text('Location'),
-            subtitle: Text('-'),
-          ),
+          // ListTile(
+          //   title: Text('Location'),
+          //   subtitle: Text('-'),
+          // ),
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
@@ -60,20 +60,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
                       PrayerTimeEvent.autoDetectLocationStatusChange(
-                          context: context,isAutoDetectLocationEnable: value));
+                          context: context, isAutoDetectLocationEnable: value));
                 },
               );
             },
           ),
-          SwitchListTile(
-            title: Text('Automatic settings'),
-            value: automaticSettings,
-            onChanged: (value) {
-              setState(() {
-                automaticSettings = value;
-              });
-            },
-          ),
+          // SwitchListTile(
+          //   title: Text('Automatic settings'),
+          //   value: automaticSettings,
+          //   onChanged: (value) {
+          //     setState(() {
+          //       automaticSettings = value;
+          //     });
+          //   },
+          // ),
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return ListTile(
@@ -98,77 +98,84 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text('Manual corrections'),
             subtitle: Text('0, 0, 0, 0, 0, 0'),
           ),
-          ListTile(
-            title: Text('Asr calculation – Juristic method'),
-            subtitle: Text('Standard (Shafi, Maliki, Hanbali)'),
-          ),
-          ListTile(
-            title: Text('High Latitude Adjustment'),
-            subtitle: Text('Angle-based method'),
-          ),
-          ListTile(
-            title: Text('Daylight Saving Time'),
-            subtitle: Text('Auto'),
-          ),
+          // ListTile(
+          //   title: Text('Asr calculation – Juristic method'),
+          //   subtitle: Text('Standard (Shafi, Maliki, Hanbali)'),
+          // ),
+          // ListTile(
+          //   title: Text('High Latitude Adjustment'),
+          //   subtitle: Text('Angle-based method'),
+          // ),
+          // ListTile(
+          //   title: Text('Daylight Saving Time'),
+          //   subtitle: Text('Auto'),
+          // ),
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
-  builder: (context, state) {
-    return GestureDetector(
-      onTap: (){
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text(
-                'Imsak',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              content: SizedBox(
-                width: double.maxFinite,
-                height: 400, // Adjust the height as needed
-                child: ListView.builder(
-                  itemCount: 31, // Number of options
-                  itemBuilder: (context, index) {
-                    return RadioListTile<int>(
-                      value: index,
-                      groupValue: state.imsakTime,
-                      onChanged: (value) {
-                        context.read<PrayerTimeBloc>().add(
-                            PrayerTimeEvent.selectCustomImsakTime(customImsakTime: value??0));
-                        Navigator.pop(context); // Close dialog on selection
-                      },
-                      title: Text(
-                        '$index minute${index >= 1 ? '' : 's'}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      activeColor: Colors.teal, // Matches your screenshot
-                    );
-                  },
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(
+                          'Imsak',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        content: SizedBox(
+                          width: double.maxFinite,
+                          height: 400, // Adjust the height as needed
+                          child: ListView.builder(
+                            itemCount: 31, // Number of options
+                            itemBuilder: (context, index) {
+                              return RadioListTile<int>(
+                                value: index,
+                                groupValue: state.imsakTime,
+                                onChanged: (value) {
+                                  context.read<PrayerTimeBloc>().add(
+                                      PrayerTimeEvent.selectCustomImsakTime(
+                                          customImsakTime: value ?? 0));
+                                  Navigator.pop(
+                                      context); // Close dialog on selection
+                                },
+                                title: Text(
+                                  '$index minute${index >= 1 ? '' : 's'}',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                activeColor:
+                                    Colors.teal, // Matches your screenshot
+                              );
+                            },
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text(
+                              'CANCEL',
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: ListTile(
+                  title: Text('Imsak'),
+                  subtitle: Text('${state.imsakTime} minutes before Fajr'),
                 ),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(
-                    'CANCEL',
-                    style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            );
-          },
-        );
-      },
-      child: ListTile(
-              title: Text('Imsak'),
-              subtitle: Text('${state.imsakTime} minutes before Fajr'),
-            ),
-    );
-  },
-),
+              );
+            },
+          ),
         ],
       ),
     );
   }
+
   String getPrayerAngle(
     BuildContext context,
     String prayerConventionName,
