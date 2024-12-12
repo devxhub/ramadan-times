@@ -5,36 +5,56 @@ class PrayerTimeRow extends StatelessWidget {
   final String prayerName;
   final String timeRange;
   final bool isCurrentPrayer;
+  final IconData icon;
 
   const PrayerTimeRow({
     super.key,
     required this.prayerName,
     required this.timeRange,
     required this.isCurrentPrayer,
+    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
+    return Container(
       margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.r),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          colors: [
+            Colors.white,
+            const Color.fromARGB(255, 225, 212, 246).withOpacity(0.5),
+            const Color.fromARGB(255, 167, 126, 237).withOpacity(0.8),
+          ],
+        ),
+        color: isCurrentPrayer ? Color(0xFFE6E6FA) : Colors.white,
+        borderRadius: BorderRadius.circular(10.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.deepPurple.withOpacity(0.2),
+            offset: Offset(0, 3),
+          )
+        ],
       ),
-      color: isCurrentPrayer ? Color(0xFFE6E6FA) : Colors.white,
       child: Padding(
-        padding: EdgeInsets.all(12.w),
+        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                CircleAvatar(
-                  radius: 12.r,
-                  backgroundColor: Color.fromARGB(255, 220, 220, 245),
-                  child: Icon(
-                    Icons.access_time,
-                    color: isCurrentPrayer ? Colors.red : Colors.deepPurple,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(1.r),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(6.r),
+                    child: Icon(
+                      size: 18.sp,
+                      icon,
+                      color: isCurrentPrayer ? Colors.red : Colors.deepPurple,
+                    ),
                   ),
                 ),
                 SizedBox(width: 10.w),

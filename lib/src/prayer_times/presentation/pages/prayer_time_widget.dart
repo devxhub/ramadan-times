@@ -56,18 +56,21 @@ class PrayerTimeWidget extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Column(
                   children: [
-                    state.isImsakEnable==true?
-                    PrayerTimeRow(
-                      prayerName: "Imsak",
-                      timeRange:
-                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.imsakStart.toString()).subtract(Duration(minutes: state.imsakTime)).toIso8601String()))} - ${convertUtcToLocalTime(state.prayerTimesResponse.imsakEnd.toString())}",
-                      isCurrentPrayer: false,
-                    ):SizedBox(),
+                    state.isImsakEnable == true
+                        ? PrayerTimeRow(
+                            prayerName: "Imsak",
+                            timeRange:
+                                "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.imsakStart.toString()).subtract(Duration(minutes: state.imsakTime)).toIso8601String()))} - ${convertUtcToLocalTime(state.prayerTimesResponse.imsakEnd.toString())}",
+                            isCurrentPrayer: false,
+                            icon: Icons.nightlight_round_rounded,
+                          )
+                        : SizedBox(),
                     PrayerTimeRow(
                       prayerName: "Fajr",
                       timeRange:
-                      "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.fajrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime??0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.fajrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime??0)).toIso8601String()))}",
+                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.fajrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime ?? 0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.fajrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime ?? 0)).toIso8601String()))}",
                       isCurrentPrayer: false,
+                      icon: Icons.sunny_snowing,
                     ),
                     // PrayerTimeRow(
                     //   prayerName: "Salatud Duha",
@@ -77,47 +80,52 @@ class PrayerTimeWidget extends StatelessWidget {
                     PrayerTimeRow(
                       prayerName: "Dhuhr",
                       timeRange:
-                      "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.dhuhrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualDhuhrTime??0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.dhuhrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualDhuhrTime??0)).toIso8601String()))}",
+                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.dhuhrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualDhuhrTime ?? 0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.dhuhrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualDhuhrTime ?? 0)).toIso8601String()))}",
                       isCurrentPrayer: false,
+                      icon: Icons.sunny,
                     ),
                     PrayerTimeRow(
                       prayerName: "Asr",
                       timeRange:
-                      "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.asrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime??0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.asrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime??0)).toIso8601String()))}",
+                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.asrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime ?? 0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.asrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime ?? 0)).toIso8601String()))}",
                       isCurrentPrayer: false,
+                      icon: Icons.sunny,
                     ),
                     PrayerTimeRow(
                       prayerName: "Maghrib",
-
                       timeRange:
-                      "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.maghribStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualMaghribTime??0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.maghribEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualMaghribTime??0)).toIso8601String()))}",
+                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.maghribStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualMaghribTime ?? 0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.maghribEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualMaghribTime ?? 0)).toIso8601String()))}",
                       isCurrentPrayer: false,
+                      icon: Icons.sunny_snowing,
                     ),
                     PrayerTimeRow(
                       prayerName: "Isha",
                       timeRange:
-                      "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.ishaStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualIshaTime??0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.ishaEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualIshaTime??0)).toIso8601String()))}",
+                          "${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.ishaStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualIshaTime ?? 0)).toIso8601String()))} - ${convertUtcToLocalTime((DateTime.parse(state.prayerTimesResponse.ishaEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualIshaTime ?? 0)).toIso8601String()))}",
                       isCurrentPrayer: false,
+                      icon: Icons.nightlight_round_rounded,
                     ),
                     PrayerTimeRow(
                       prayerName: "Awabin",
                       timeRange:
                           "${convertUtcToLocalTime(state.prayerTimesResponse.awwabinStart.toString())} - ${convertUtcToLocalTime(state.prayerTimesResponse.awwabinEnd.toString())}",
                       isCurrentPrayer: false,
+                      icon: Icons.nightlight_round_rounded,
                     ),
                     PrayerTimeRow(
                       prayerName: "Tahajjud",
                       timeRange:
                           "After Isha - ${convertUtcToLocalTime(state.prayerTimesResponse.tahajjudEnd.toString())}",
                       isCurrentPrayer: false,
+                      icon: Icons.nightlight_round_rounded,
                     ),
                   ],
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 8.h),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                   child: Divider(
-                    color: Colors.grey[300],
+                    color: Colors.grey[500],
                     thickness: 1,
                   ),
                 ),
@@ -129,7 +137,7 @@ class PrayerTimeWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.red,
                     ),
                   ),
                 ),
@@ -137,18 +145,21 @@ class PrayerTimeWidget extends StatelessWidget {
                 Column(
                   children: [
                     PrayerTimeRow(
+                      icon: Icons.sunny_snowing,
                       isCurrentPrayer: false,
                       prayerName: "Morning",
                       timeRange:
                           "${convertUtcToLocalTime(state.prayerTimesResponse.dawnStart.toString())} - ${convertUtcToLocalTime(state.prayerTimesResponse.dawnEnd.toString())}",
                     ),
                     PrayerTimeRow(
+                      icon: Icons.wb_sunny_sharp,
                       prayerName: "Noon",
                       timeRange:
                           "${convertUtcToLocalTime(state.prayerTimesResponse.noonStart.toString())} - ${convertUtcToLocalTime(state.prayerTimesResponse.noonEnd.toString())}",
                       isCurrentPrayer: false,
                     ),
                     PrayerTimeRow(
+                      icon: Icons.wb_sunny_outlined,
                       prayerName: "Evening",
                       timeRange:
                           "${convertUtcToLocalTime(state.prayerTimesResponse.eveningStart.toString())} - ${convertUtcToLocalTime(state.prayerTimesResponse.eveningEnd.toString())}",
