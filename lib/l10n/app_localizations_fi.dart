@@ -254,4 +254,49 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get cancel => 'Peruuta';
+
+  @override
+  String get playAyah => 'Toista ayah';
+
+  @override
+  String get playSurah => 'Toista sura';
+
+  @override
+  String get onInternetConnection => 'Ei internet-yhteyttä. Kytke internet päälle';
+
+  @override
+  String get translation => 'Käännös';
+
+  @override
+  String get transliteration => 'Transliteraatio';
+
+  @override
+  String get revealedIn => 'Ilmestynyt';
+
+  @override
+  String get nowPlaying => 'Nyt toistetaan';
+
+  @override
+  String get ayah => 'Ayah';
+
+  @override
+  String get makkah => 'Mekka';
+
+  @override
+  String get madinah => 'Medina';
+
+  @override
+  String get searchSurah => 'Etsi sura...';
+
+  @override
+  String get imsak => 'Imsak';
+
+  @override
+  String get autoDetectLocation => 'Automaattinen sijainnin tunnistus';
+
+  @override
+  String get prayerTimeCalculation => 'Rukousaikojen laskenta';
+
+  @override
+  String get minutesBeforeFajr => 'minuuttia ennen Fajr';
 }

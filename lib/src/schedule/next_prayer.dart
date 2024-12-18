@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,7 +61,7 @@ class NextPrayer extends StatelessWidget {
 
     // Find the next prayer time
     PrayerTime? nextPrayer = prayerTimes.firstWhere(
-          (prayer) => isUpcomingPrayer(prayer.start),
+      (prayer) => isUpcomingPrayer(prayer.start),
       orElse: () {
         // If no prayer is found for today, return the first prayer of the next day
         return prayerTimes.last;
@@ -133,8 +132,8 @@ class NextPrayer extends StatelessWidget {
                     ),
                     Text(
                       AppLocalizations.of(context)?.prayerName(
-                        nextPrayer!.name,
-                      ) ??
+                            nextPrayer!.name,
+                          ) ??
                           "",
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: const Color(0xff674cec),
@@ -154,26 +153,26 @@ class NextPrayer extends StatelessWidget {
                       Text(
                         formatTime(nextPrayer!.start, context),
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14.sp,
-                          color: const Color(0xff674cec),
-                        ),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
+                              color: const Color(0xff674cec),
+                            ),
                       ),
                       Text(
                         " - ",
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14.sp,
-                          color: const Color(0xff674cec),
-                        ),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
+                              color: const Color(0xff674cec),
+                            ),
                       ),
                       Text(
                         formatTime(nextPrayer.end, context),
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14.sp,
-                          color: const Color(0xff674cec),
-                        ),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
+                              color: const Color(0xff674cec),
+                            ),
                       ),
                     ],
                   ),

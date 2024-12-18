@@ -1,19 +1,12 @@
-import 'dart:convert';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
-import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
 import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../prayer_times/data/repositories/prayer_convertion_util.dart';
 import 'dua.dart';
 import 'next_prayer.dart';
 import 'next_sehri_ifter.dart';
@@ -43,7 +36,9 @@ class _SchedulePageState extends State<SchedulePage> {
 
     context.read<PrayerTimeBloc>().add(PrayerTimeEvent.countryDataLoaded());
     context.read<PrayerTimeBloc>().add(PrayerTimeEvent.imsakTimeDataLoaded());
-    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.manuallyPrayerTimeDataLoaded());
+    context
+        .read<PrayerTimeBloc>()
+        .add(PrayerTimeEvent.manuallyPrayerTimeDataLoaded());
     context
         .read<PrayerTimeBloc>()
         .add(PrayerTimeEvent.locationPermission(context: context));

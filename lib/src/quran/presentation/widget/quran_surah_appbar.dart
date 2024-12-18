@@ -91,7 +91,7 @@ class QuranSurahAppBar extends StatelessWidget {
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: 'Search Surah...',
+              hintText: AppLocalizations.of(context)!.searchSurah,
               hintStyle: TextStyle(fontSize: 13.sp),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),

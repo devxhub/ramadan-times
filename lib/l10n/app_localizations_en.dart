@@ -272,4 +272,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cancel => 'Cancel';
+
+  @override
+  String get playAyah => 'Play Ayah';
+
+  @override
+  String get playSurah => 'Play Surah';
+
+  @override
+  String get onInternetConnection => 'No internet connection. Please turn on internet';
+
+  @override
+  String get translation => 'Translation';
+
+  @override
+  String get transliteration => 'Transliteration';
+
+  @override
+  String get revealedIn => 'Revealed in';
+
+  @override
+  String get nowPlaying => 'Now Playing';
+
+  @override
+  String get ayah => 'Ayah';
+
+  @override
+  String get makkah => 'Makkah';
+
+  @override
+  String get madinah => 'Madinah';
+
+  @override
+  String get searchSurah => 'Search Surah...';
+
+  @override
+  String get imsak => 'Imsak';
+
+  @override
+  String get autoDetectLocation => 'Auto-detect Location';
+
+  @override
+  String get prayerTimeCalculation => 'Prayer Time Calculation';
+
+  @override
+  String get minutesBeforeFajr => 'minutes before Fajr';
 }

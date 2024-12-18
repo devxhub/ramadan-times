@@ -57,7 +57,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get quran => 'কুরআন';
 
   @override
-  String get prayerTimes => 'নামাজের সময়';
+  String get prayerTimes => 'নামাজের সময়সূচী';
 
   @override
   String get fajr => 'ফজর';
@@ -273,4 +273,49 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get cancel => 'বাতিল';
+
+  @override
+  String get playAyah => 'আয়াত চালান';
+
+  @override
+  String get playSurah => 'সূরা চালান';
+
+  @override
+  String get onInternetConnection => 'ইন্টারনেট সংযোগ নেই। দয়া করে ইন্টারনেট চালু করুন';
+
+  @override
+  String get translation => 'অনুবাদ';
+
+  @override
+  String get transliteration => 'উচ্চারণ';
+
+  @override
+  String get revealedIn => 'প্রকাশিত হয়েছে';
+
+  @override
+  String get nowPlaying => 'এখন চলছে';
+
+  @override
+  String get ayah => 'আয়াত';
+
+  @override
+  String get makkah => 'মক্কা';
+
+  @override
+  String get madinah => 'মদিনা';
+
+  @override
+  String get searchSurah => 'সূরা খুঁজুন...';
+
+  @override
+  String get imsak => 'ইমসাক';
+
+  @override
+  String get autoDetectLocation => 'অবস্থান স্বয়ংক্রিয় সনাক্তকরণ';
+
+  @override
+  String get prayerTimeCalculation => 'নামাজের সময় গণনা';
+
+  @override
+  String get minutesBeforeFajr => 'ফজরের আগে মিনিট';
 }

@@ -1,8 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../l10n/app_localizations.dart';
 import '../component/eng_to_bn.dart';
 
@@ -42,7 +40,7 @@ class _RemainingTimeContainerForSehriTimeState
   @override
   Widget build(BuildContext context) {
     DateTime sehriDateTime =
-    DateTime.parse(widget.sehriTime.toString().replaceFirst(' ', 'T'));
+        DateTime.parse(widget.sehriTime.toString().replaceFirst(' ', 'T'));
 
     DateTime endTime = DateTime(
       DateTime.now().year,
@@ -100,7 +98,8 @@ class _RemainingTimeContainerForSehriTimeState
                       return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                            '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
+                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
+                                context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
@@ -119,7 +118,8 @@ class _RemainingTimeContainerForSehriTimeState
                       return Text(
                         AppLocalizations.of(context)?.localeName == "bn"
                             ? engToBn(
-                            '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}', context)
+                                '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
+                                context)
                             : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: Colors.white,
