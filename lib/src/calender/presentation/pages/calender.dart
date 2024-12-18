@@ -27,12 +27,11 @@ class CalendarPageState extends State<CalendarPage> {
     super.initState();
 
     context.read<CalendarBloc>().add(
-      CalendarDaySelected(
-        selectedDay: DateTime.now(),
-        focusDay: DateTime.now(),
-      ),
-    );
-
+          CalendarDaySelected(
+            selectedDay: DateTime.now(),
+            focusDay: DateTime.now(),
+          ),
+        );
   }
 
   @override
@@ -42,11 +41,11 @@ class CalendarPageState extends State<CalendarPage> {
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     context.read<CalendarBloc>().add(CalendarDaySelected(
-      selectedDay: selectedDay,
-      focusDay: focusedDay,
-      latitude: 23.7115253,
-      longitude: 90.4111451,
-    ));
+          selectedDay: selectedDay,
+          focusDay: focusedDay,
+          latitude: 23.7115253,
+          longitude: 90.4111451,
+        ));
 
     setState(() {});
   }
@@ -84,16 +83,18 @@ class CalendarPageState extends State<CalendarPage> {
                         return Row(
                           children: [
                             Text(
-                              DateFormat('MMMM  yyyy', AppLocalizations.of(context)?.localeName).format(dateTime),
+                              DateFormat('MMMM  yyyy',
+                                      AppLocalizations.of(context)?.localeName)
+                                  .format(dateTime),
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
                                   .copyWith(
-                                //height: 1,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16.sp,
-                                color: Colors.white,
-                              ),
+                                    //height: 1,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16.sp,
+                                    color: Colors.white,
+                                  ),
                             ),
                             const Spacer(),
                             GestureDetector(
@@ -122,18 +123,19 @@ class CalendarPageState extends State<CalendarPage> {
                                   _calendarFormat == CalendarFormat.month
                                       ? AppLocalizations.of(context)!.month
                                       : _calendarFormat ==
-                                      CalendarFormat.twoWeeks
-                                      ? AppLocalizations.of(context)!.twoWeek
-                                      : AppLocalizations.of(context)!.week,
+                                              CalendarFormat.twoWeeks
+                                          ? AppLocalizations.of(context)!
+                                              .twoWeek
+                                          : AppLocalizations.of(context)!.week,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
                                       .copyWith(
-                                    overflow: TextOverflow.ellipsis,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14.sp,
-                                    color: Colors.white,
-                                  ),
+                                        overflow: TextOverflow.ellipsis,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 14.sp,
+                                        color: Colors.white,
+                                      ),
                                 ),
                               ),
                             ),
@@ -148,15 +150,17 @@ class CalendarPageState extends State<CalendarPage> {
                               shape: BoxShape.circle,
                               color: Colors.transparent),
                           child: Text(
-                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
+                            DateFormat('dd',
+                                    AppLocalizations.of(context)?.localeName)
+                                .format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
                                 ?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16.sp,
-                              color: Colors.white,
-                            ),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14.sp,
+                                  color: Colors.white,
+                                ),
                           ),
                         );
                       },
@@ -167,15 +171,17 @@ class CalendarPageState extends State<CalendarPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.white54),
                           child: Text(
-                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
+                            DateFormat('dd',
+                                    AppLocalizations.of(context)?.localeName)
+                                .format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
                                 ?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16.sp,
-                              color: Colors.black,
-                            ),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16.sp,
+                                  color: Colors.black,
+                                ),
                           ),
                         );
                       },
@@ -186,16 +192,18 @@ class CalendarPageState extends State<CalendarPage> {
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.white),
                           child: Text(
-                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
+                            DateFormat('dd',
+                                    AppLocalizations.of(context)?.localeName)
+                                .format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
                                 ?.copyWith(
-                              // height: 1,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16.sp,
-                              color: Colors.black,
-                            ),
+                                  // height: 1,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14.sp,
+                                  color: Colors.black,
+                                ),
                           ),
                         );
                       },
@@ -207,15 +215,17 @@ class CalendarPageState extends State<CalendarPage> {
                               shape: BoxShape.circle,
                               color: Colors.transparent),
                           child: Text(
-                            DateFormat('dd', AppLocalizations.of(context)?.localeName).format(dateTime),
+                            DateFormat('dd',
+                                    AppLocalizations.of(context)?.localeName)
+                                .format(dateTime),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
                                 ?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16.sp,
-                              color: Colors.grey,
-                            ),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16.sp,
+                                  color: Colors.grey,
+                                ),
                           ),
                         );
                       },
@@ -260,14 +270,40 @@ class CalendarPageState extends State<CalendarPage> {
                     lastDay: kLastDay,
                     locale: AppLocalizations.of(context)?.localeName,
                     daysOfWeekStyle: DaysOfWeekStyle(
-                        weekendStyle: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: Colors.white70),
-                        weekdayStyle: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: Colors.white70)),
+                      dowTextFormatter: (date, locale) {
+                        if (locale == 'bn') {
+                          switch (date.weekday) {
+                            case DateTime.sunday:
+                              return 'রবি';
+                            case DateTime.monday:
+                              return 'সোম';
+                            case DateTime.tuesday:
+                              return 'মঙ্গল';
+                            case DateTime.wednesday:
+                              return 'বুধ';
+                            case DateTime.thursday:
+                              return 'বৃহঃ';
+                            case DateTime.friday:
+                              return 'শুক্র';
+                            case DateTime.saturday:
+                              return 'শনি';
+                            default:
+                              return '';
+                          }
+                        }
+                        // Fallback to default localization
+                        return DateFormat.E(locale)
+                            .format(date); // Default short day names
+                      },
+                      weekendStyle: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: Colors.white70),
+                      weekdayStyle: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: Colors.white70),
+                    ),
                     daysOfWeekHeight: 32.spMin,
                     // pageJumpingEnabled: true,
                     focusedDay: state.focusDay ?? DateTime.now(),
@@ -329,7 +365,7 @@ class CalendarPageState extends State<CalendarPage> {
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 24),
                       padding:
-                      const EdgeInsets.only(top: 48, left: 24, right: 24),
+                          const EdgeInsets.only(top: 48, left: 24, right: 24),
                       decoration: BoxDecoration(
                           color: const Color(0xfff7f5ff),
                           borderRadius: BorderRadius.circular(48)),
@@ -355,7 +391,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -365,9 +401,9 @@ class CalendarPageState extends State<CalendarPage> {
                                           .textTheme
                                           .titleLarge!
                                           .copyWith(
-                                        fontSize: 18,
-                                        color: Colors.black87,
-                                      ),
+                                            fontSize: 18,
+                                            color: Colors.black87,
+                                          ),
                                     ),
                                     Text(
                                       "${engToBn(hijriDate.hDay.toString(), context)} ${hijriMonthLocal(hijriDate.longMonthName, context)} ${engToBn(hijriDate.hYear.toString(), context)}",
@@ -375,11 +411,11 @@ class CalendarPageState extends State<CalendarPage> {
                                           .textTheme
                                           .titleLarge!
                                           .copyWith(
-                                        height: 1.4,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                        color: const Color(0xff75718B),
-                                      ),
+                                            height: 1.4,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16,
+                                            color: const Color(0xff75718B),
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -398,9 +434,9 @@ class CalendarPageState extends State<CalendarPage> {
                                       .textTheme
                                       .titleLarge!
                                       .copyWith(
-                                    fontSize: 24,
-                                    color: Colors.black87,
-                                  ),
+                                        fontSize: 24,
+                                        color: Colors.black87,
+                                      ),
                                 ),
                                 const SizedBox(
                                   height: 16,
@@ -414,29 +450,29 @@ class CalendarPageState extends State<CalendarPage> {
                                         child: Column(
                                           children: List.generate(
                                               43,
-                                                  (index) => Column(
-                                                children: [
-                                                  Container(
-                                                    height: 6,
-                                                    width: 2,
-                                                    color: Colors.white,
-                                                  ),
-                                                  Container(
-                                                    height: 6,
-                                                    width: 2,
-                                                    color: Colors.grey,
-                                                  ),
-                                                ],
-                                              )),
+                                              (index) => Column(
+                                                    children: [
+                                                      Container(
+                                                        height: 6,
+                                                        width: 2,
+                                                        color: Colors.white,
+                                                      ),
+                                                      Container(
+                                                        height: 6,
+                                                        width: 2,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ],
+                                                  )),
                                         )),
                                     Column(
                                       children: [
                                         TimeCard(
                                           name: AppLocalizations.of(context)
-                                              ?.sehri ??
+                                                  ?.sehri ??
                                               "",
                                           startTime:
-                                          state.selectedEvent!.fajrStart!,
+                                              state.selectedEvent!.fajrStart!,
                                           adjustTime: -5,
                                         ),
                                         const SizedBox(
@@ -445,7 +481,7 @@ class CalendarPageState extends State<CalendarPage> {
                                         TimeCard(
                                           icon: "assets/images/sun.png",
                                           name: AppLocalizations.of(context)
-                                              ?.ifter ??
+                                                  ?.ifter ??
                                               "",
                                           startTime: state
                                               .selectedEvent!.maghribStart!,
@@ -456,10 +492,10 @@ class CalendarPageState extends State<CalendarPage> {
                                         ),
                                         TimeCard(
                                           name: AppLocalizations.of(context)
-                                              ?.prayerName("Fajr") ??
+                                                  ?.prayerName("Fajr") ??
                                               "",
                                           startTime:
-                                          state.selectedEvent!.fajrStart!,
+                                              state.selectedEvent!.fajrStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -468,10 +504,10 @@ class CalendarPageState extends State<CalendarPage> {
                                         TimeCard(
                                           icon: "assets/images/sun1.png",
                                           name: AppLocalizations.of(context)
-                                              ?.prayerName("Dhuhr") ??
+                                                  ?.prayerName("Dhuhr") ??
                                               "",
                                           startTime:
-                                          state.selectedEvent!.dhuhrStart!,
+                                              state.selectedEvent!.dhuhrStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -480,10 +516,10 @@ class CalendarPageState extends State<CalendarPage> {
                                         TimeCard(
                                           icon: "assets/images/sun1.png",
                                           name: AppLocalizations.of(context)
-                                              ?.prayerName("Asr") ??
+                                                  ?.prayerName("Asr") ??
                                               "",
                                           startTime:
-                                          state.selectedEvent!.asrStart!,
+                                              state.selectedEvent!.asrStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -492,7 +528,7 @@ class CalendarPageState extends State<CalendarPage> {
                                         TimeCard(
                                           icon: "assets/images/sun.png",
                                           name: AppLocalizations.of(context)
-                                              ?.prayerName("Maghrib") ??
+                                                  ?.prayerName("Maghrib") ??
                                               "",
                                           startTime: state
                                               .selectedEvent!.maghribStart!,
@@ -503,10 +539,10 @@ class CalendarPageState extends State<CalendarPage> {
                                         ),
                                         TimeCard(
                                           name: AppLocalizations.of(context)
-                                              ?.prayerName("Isha") ??
+                                                  ?.prayerName("Isha") ??
                                               "",
                                           startTime:
-                                          state.selectedEvent!.ishaStart!,
+                                              state.selectedEvent!.ishaStart!,
                                           adjustTime: 0,
                                         ),
                                         const SizedBox(
@@ -597,8 +633,9 @@ class TimeCard extends StatelessWidget {
     String formatTime(String utcTime, {int adjustTime = 0}) {
       DateTime utcDateTime = DateTime.parse(utcTime);
       DateTime adjustedDateTime =
-      utcDateTime.add(Duration(minutes: adjustTime));
-      return DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName).format(adjustedDateTime);
+          utcDateTime.add(Duration(minutes: adjustTime));
+      return DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName)
+          .format(adjustedDateTime);
     }
 
     return Row(
@@ -643,19 +680,19 @@ class TimeCard extends StatelessWidget {
                     Text(
                       name,
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                        color: Colors.black87,
-                      ),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Colors.black87,
+                          ),
                     ),
                     Text(
                       formatTime(startTime),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        height: 1,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        color: const Color(0xff75718B),
-                      ),
+                            height: 1,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: const Color(0xff75718B),
+                          ),
                     ),
                   ],
                 ),

@@ -7,9 +7,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:ramadantimes/src/component/eng_to_bn.dart';
 import 'package:ramadantimes/src/quran/presentation/bloc/quran_bloc.dart';
 import 'package:ramadantimes/src/quran/presentation/pages/quran_ayah_view.dart';
 import 'package:quran/quran.dart' as quran;
+import '../../../../l10n/app_localizations.dart';
 import '../../data/repository/quran_utils.dart';
 import '../widget/quran_surah_appbar.dart';
 
@@ -101,7 +103,8 @@ class _QuranSurahViewState extends State<QuranSurahView> {
                               CircleAvatar(
                                 radius: 16.r,
                                 child: Text(
-                                  surah.surahNumber.toString(),
+                                  engToBn(
+                                      surah.surahNumber.toString(), context),
                                   style: TextStyle(
                                     color: Colors.black,
                                   ),
@@ -180,7 +183,8 @@ class _QuranSurahViewState extends State<QuranSurahView> {
                                           );
                                         },
                                       ),
-                                      label: Text('Play Surah'),
+                                      label: Text(AppLocalizations.of(context)!
+                                          .playSurah),
                                     ),
                                   ),
                                 ],

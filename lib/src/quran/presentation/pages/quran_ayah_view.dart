@@ -6,6 +6,8 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:quran/quran.dart' as quran;
+import 'package:ramadantimes/l10n/app_localizations.dart';
+import 'package:ramadantimes/src/component/eng_to_bn.dart';
 
 import '../../data/repository/quran_utils.dart';
 
@@ -62,7 +64,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Now Playing: Ayah $ayahNumber",
+                "${AppLocalizations.of(context)!.nowPlaying}: ${AppLocalizations.of(context)!.ayah} ${engToBn(ayahNumber.toString(), context)}",
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
@@ -156,7 +158,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
         ),
         actions: [
           Text(
-            "Revealed in: ${quran.getPlaceOfRevelation(widget.surahNumber)}",
+            "${AppLocalizations.of(context)!.revealedIn}: ${quran.getPlaceOfRevelation(widget.surahNumber) == "Makkah" ? AppLocalizations.of(context)!.makkah : AppLocalizations.of(context)!.madinah}",
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.bold,
@@ -199,7 +201,8 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Transliteration: ',
+                              text:
+                                  '${AppLocalizations.of(context)!.transliteration}: ',
                               style: GoogleFonts.roboto(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.bold,
@@ -222,7 +225,8 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Translation: ',
+                              text:
+                                  '${AppLocalizations.of(context)!.translation}: ',
                               style: GoogleFonts.roboto(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.bold,
@@ -249,7 +253,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Ayah: ${index + 1}",
+                                "${AppLocalizations.of(context)!.ayah}: ${engToBn((index + 1).toString(), context)}",
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.bold,
@@ -283,7 +287,8 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                                   );
                                 },
                               ),
-                              label: Text('Play Ayah'),
+                              label:
+                                  Text(AppLocalizations.of(context)!.playAyah),
                             ),
                           ),
                         ],
@@ -305,7 +310,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
     if (connectivityResult == ConnectivityResult.none) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No internet connection. Please turn on internet'),
+          content: Text(AppLocalizations.of(context)!.onInternetConnection),
           backgroundColor: Colors.red,
         ),
       );

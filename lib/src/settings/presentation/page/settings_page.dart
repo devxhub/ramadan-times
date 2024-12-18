@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ramadantimes/src/component/eng_to_bn.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../prayer_times/presentation/pages/manual_prayer_time.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';
 
@@ -23,7 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Prayer Times'),
+        title: Text(AppLocalizations.of(context)!.prayerTimes),
         centerTitle: true,
       ),
       body: ListView(
@@ -46,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Divider(),
           ListTile(
             title: Text(
-              'Prayer Time Calculation',
+              AppLocalizations.of(context)!.prayerTimeCalculation,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
@@ -57,7 +57,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
-                title: Text('Auto-detect Location'),
+                title: Text(AppLocalizations.of(context)!.autoDetectLocation),
                 value: state.isAutoDetectLocationEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
@@ -136,7 +136,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     builder: (context) {
                       return AlertDialog(
                         title: Text(
-                          'Imsak',
+                          AppLocalizations.of(context)!.imsak,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
@@ -157,7 +157,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       context); // Close dialog on selection
                                 },
                                 title: Text(
-                                  '$index minute${index >= 1 ? '' : 's'}',
+                                  '${engToBn(index.toString(), context)} ${AppLocalizations.of(context)!.minute}',
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 activeColor:
@@ -170,7 +170,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           TextButton(
                             onPressed: () => Navigator.pop(context),
                             child: Text(
-                              'CANCEL',
+                              AppLocalizations.of(context)!.cancel,
                               style: TextStyle(
                                   color: Colors.purple,
                                   fontWeight: FontWeight.bold),
@@ -182,8 +182,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
                 child: ListTile(
-                  title: Text('Imsak'),
-                  subtitle: Text('${state.imsakTime} minutes before Fajr'),
+                  title: Text(AppLocalizations.of(context)!.imsak),
+                  subtitle: Text(
+                      '${state.imsakTime} ${AppLocalizations.of(context)!.minutesBeforeFajr}'),
                 ),
               );
             },

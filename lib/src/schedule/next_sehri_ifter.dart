@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import '../../l10n/app_localizations.dart';
 import '../services/utility.dart';
@@ -51,11 +50,13 @@ class NextSehriIftar extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: const Color(0xfff2f2f7),
                       borderRadius: BorderRadius.circular(15.r)),
-                  child: Text(formatTo12Hour(data.fajrStart!, context),
+                  child: Text(
+                    formatTo12Hour(data.fajrStart!, context),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: const Color(0xff674cec),
                         fontWeight: FontWeight.w700,
-                        fontSize: 20.sp),),
+                        fontSize: 20.sp),
+                  ),
                 )
               ],
             ),
@@ -85,12 +86,14 @@ class NextSehriIftar extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: const Color(0xffD9DFE0).withOpacity(.54),
                       borderRadius: BorderRadius.circular(15.r)),
-                  child: Text(formatTo12Hour(data.maghribStart!, context),
+                  child: Text(
+                    formatTo12Hour(data.maghribStart!, context),
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: const Color(0xff674cec),
                         fontWeight: FontWeight.w700,
                         fontSize: 20.sp),
-                  ),)
+                  ),
+                )
               ],
             ),
           ],
