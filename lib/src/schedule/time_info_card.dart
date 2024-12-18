@@ -32,7 +32,8 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
 
   @override
   Widget build(BuildContext context) {
-    var hijriDate = HijriCalendar.fromDate(widget.timeOfToday.date??DateTime.now());
+    var hijriDate =
+        HijriCalendar.fromDate(widget.timeOfToday.date ?? DateTime.now());
 
     return Container(
       // height: 200,
@@ -62,16 +63,17 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                       builder: (context, state) {
                         return state.weatherResponse.main?.temp != null
                             ? Text(
-                          engToBn(
-                              "${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°", context),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge
-                              ?.copyWith(
-                              fontSize: 40.sp,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xff36219E)),
-                        )
+                                engToBn(
+                                    "${state.weatherResponse.main?.temp?.toStringAsFixed(0)}°",
+                                    context),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                        fontSize: 40.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xff36219E)),
+                              )
                             : SizedBox.shrink();
                       },
                     ),
@@ -93,7 +95,9 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                           color: const Color(0xff36219E)),
                     ),
                     Text(
-                      DateFormat("EEEE, dd MMMM", AppLocalizations.of(context)?.localeName).format(DateTime.now()),
+                      DateFormat("EEEE, dd MMMM",
+                              AppLocalizations.of(context)?.localeName)
+                          .format(DateTime.now()),
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontSize: 12.sp, fontWeight: FontWeight.w600),
                     ),
@@ -117,23 +121,34 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                       Text(
                         "${AppLocalizations.of(context)?.prayerName("Sunrise") ?? ""}  ",
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 12.sp,
-                        ),
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
+                            ),
                       ),
-                      Text(DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName).format(
-                            () {
-                          DateTime sunsetTime =
-                          DateTime.parse(widget.timeOfToday.sunrise!);
-                          return DateTime(
-                              2023, 1, 1, sunsetTime.hour, sunsetTime.minute);
-                        }(),
-                      ),
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12.sp,
-                        ),
+                      BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+                        builder: (context, state) {
+                          return Text(
+                            DateFormat('hh:mm a',
+                                    AppLocalizations.of(context)?.localeName)
+                                .format(
+                              () {
+                                DateTime sunsetTime =
+                                    DateTime.parse(widget.timeOfToday.sunrise!);
+                                return DateTime(2023, 1, 1, sunsetTime.hour,
+                                        sunsetTime.minute)
+                                    .add(Duration(
+                                        minutes: state.manualPrayerTime
+                                            .manualSunriseTime));
+                              }(),
+                            ),
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 12.sp,
+                                    ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -146,18 +161,20 @@ class _TodayInfoCardState extends State<TodayInfoCard> {
                             fontWeight: FontWeight.w600, fontSize: 12.sp),
                       ),
                       Text(
-                        DateFormat('hh:mm a', AppLocalizations.of(context)?.localeName).format(
-                              () {
+                        DateFormat('hh:mm a',
+                                AppLocalizations.of(context)?.localeName)
+                            .format(
+                          () {
                             DateTime sunsetTime =
-                            DateTime.parse(widget.timeOfToday.sunset!);
+                                DateTime.parse(widget.timeOfToday.sunset!);
                             return DateTime(
                                 2023, 1, 1, sunsetTime.hour, sunsetTime.minute);
                           }(),
                         ),
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12.sp,
-                        ),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12.sp,
+                            ),
                       ),
                     ],
                   ),
