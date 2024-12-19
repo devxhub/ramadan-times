@@ -318,4 +318,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get minutesBeforeFajr => 'ফজরের আগে মিনিট';
+
+  @override
+  String get settings => 'সেটিংস';
 }

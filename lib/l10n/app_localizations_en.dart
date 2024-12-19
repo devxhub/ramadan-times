@@ -317,4 +317,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get minutesBeforeFajr => 'minutes before Fajr';
+
+  @override
+  String get settings => 'Settings';
 }

@@ -132,7 +132,8 @@
     "imsak":"Imsak",
     "autoDetectLocation": "Auto-detect Location",
     "prayerTimeCalculation":"Prayer Time Calculation",
-    "minutesBeforeFajr": "minutes before Fajr"
+    "minutesBeforeFajr": "minutes before Fajr",
+    "settings":"Settings"
 
  
 

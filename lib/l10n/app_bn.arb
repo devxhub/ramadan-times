@@ -132,7 +132,8 @@
    "imsak": "ইমসাক",
    "autoDetectLocation": "অবস্থান স্বয়ংক্রিয় সনাক্তকরণ",
    "prayerTimeCalculation": "নামাজের সময় গণনা",
-   "minutesBeforeFajr": "ফজরের আগে মিনিট"
+   "minutesBeforeFajr": "ফজরের আগে মিনিট",
+   "settings": "সেটিংস"
 
 
 }
