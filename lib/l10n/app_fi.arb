@@ -132,5 +132,6 @@
   "imsak": "Imsak",
   "autoDetectLocation": "Automaattinen sijainnin tunnistus",
   "prayerTimeCalculation": "Rukousaikojen laskenta",
-  "minutesBeforeFajr": "minuuttia ennen Fajr"
+  "minutesBeforeFajr": "minuuttia ennen Fajr",
+  "settings": "Asetukset"
 }

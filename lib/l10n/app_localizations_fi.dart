@@ -299,4 +299,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get minutesBeforeFajr => 'minuuttia ennen Fajr';
+
+  @override
+  String get settings => 'Asetukset';
 }

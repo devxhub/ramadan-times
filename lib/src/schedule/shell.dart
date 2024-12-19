@@ -212,7 +212,7 @@ class CommonDrawer extends StatelessWidget {
                   ),
                   DrawerItem(
                     icon: const Icon(Icons.settings),
-                    title: "Settings",
+                    title: AppLocalizations.of(context)!.settings,
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {

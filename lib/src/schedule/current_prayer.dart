@@ -184,9 +184,9 @@ class CurrentPrayer extends StatelessWidget {
                 Text(
                   AppLocalizations.of(context)?.localeName == "bn"
                       ? engToBn(
-                          '${time.hours?.toString().padLeft(2, "0") ?? "00"} ঘ. : ${time.min?.toString().padLeft(2, "0") ?? "00"} মি. : ${time.sec.toString().padLeft(2, "0")} সে.',
+                          '${time.hours?.toString().padLeft(2, "0") ?? "00"} ঘ : ${time.min?.toString().padLeft(2, "0") ?? "00"} মি : ${time.sec.toString().padLeft(2, "0")} সে',
                           context)
-                      : '${time.hours?.toString().padLeft(2, "0") ?? "00"} hr.: ${time.min?.toString().padLeft(2, "0") ?? "00"} min.: ${time.sec.toString().padLeft(2, "0")} sec.',
+                      : '${time.hours?.toString().padLeft(2, "0") ?? "00"} hr : ${time.min?.toString().padLeft(2, "0") ?? "00"} min : ${time.sec.toString().padLeft(2, "0")} sec',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: const Color(0xff6348EB),
                       fontSize: 14.sp,
