@@ -157,7 +157,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       context); // Close dialog on selection
                                 },
                                 title: Text(
-                                  '${engToBn(index.toString(), context)} ${AppLocalizations.of(context)!.minute}${AppLocalizations.of(context)!.localeName == "en" && index > 1 ? "s" : ""}',
+                                  '${engToBn(index.toString(), context)} ${AppLocalizations.of(context)!.localeName == "fi" ? index > 1 ? "minuuttia" : "minuutti" : "${AppLocalizations.of(context)!.minute}${AppLocalizations.of(context)!.localeName == "en" && index > 1 ? "s" : ""}"} ',
                                   style: TextStyle(fontSize: 16),
                                 ),
                                 activeColor:

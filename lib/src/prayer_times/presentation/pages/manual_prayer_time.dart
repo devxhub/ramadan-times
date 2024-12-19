@@ -320,7 +320,7 @@ class _ManualCorrectionsScreenState extends State<ManualCorrectionsScreen> {
                                             : Colors.grey,
                                       ),
                                       child: Text(
-                                          '${engToBn(value.toString(), context)} ${AppLocalizations.of(context)?.minute}${AppLocalizations.of(context)!.localeName == "en" && value == 1 || value == 0 || value == -1 ? "" : "s"}'),
+                                          '${engToBn(value.toString(), context)}  ${AppLocalizations.of(context)!.localeName == "fi" ? value == 1 || value == 0 || value == -1 ? "minuutti" : "minuuttia" : "${AppLocalizations.of(context)?.minute}${AppLocalizations.of(context)!.localeName == "en" ? value == 1 || value == 0 || value == -1 ? "" : "s" : ""}"} '),
                                     ),
                                   );
                                 },
@@ -332,7 +332,7 @@ class _ManualCorrectionsScreenState extends State<ManualCorrectionsScreen> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        '${AppLocalizations.of(context)?.selectedTime}: ${engToBn(state.selectedTime.toString(), context)} ${AppLocalizations.of(context)?.minute}${AppLocalizations.of(context)!.localeName == "en" && state.selectedTime == 1 || state.selectedTime == 0 || state.selectedTime == -1 ? "" : "s"}',
+                        '${AppLocalizations.of(context)?.selectedTime}: ${engToBn(state.selectedTime.toString(), context)} ${AppLocalizations.of(context)!.localeName == "fi" ? state.selectedTime == 1 || state.selectedTime == 0 || state.selectedTime == -1 ? "minuutti" : "minuuttia" : "${AppLocalizations.of(context)?.minute}${AppLocalizations.of(context)!.localeName == "en" ? state.selectedTime == 1 || state.selectedTime == 0 || state.selectedTime == -1 ? "" : "s" : ""}"}',
                         style: const TextStyle(fontSize: 16),
                       ),
                     ],
