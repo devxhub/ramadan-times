@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-import 'calendar_bloc.dart';
-
 abstract class HomeEvent extends Equatable {
   @override
   List<Object> get props => [];
@@ -16,9 +14,9 @@ class DataFetched extends HomeEvent {
   final int school;
   final int method;
   final bool isRefreshed;
- // final bool isFromDB;
+  // final bool isFromDB;
 
-  DataFetched( {
+  DataFetched({
     //required this.isFromDB,
     required this.date,
     this.country = "Bangladesh",
