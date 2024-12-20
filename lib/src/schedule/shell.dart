@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
 import 'package:ramadantimes/src/langauage/language_screen.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../bloc/navigation_cubit/navigation_cubit.dart';
@@ -271,9 +269,9 @@ class CommonDrawer extends StatelessWidget {
                     icon: const Icon(Icons.share),
                     title: AppLocalizations.of(context)?.shareApp ?? "",
                     onTap: () {
-                      Share.share(
-                          'check out this App https://play.google.com/store/apps/details?id=com.devxhub.ramadantimes',
-                          subject: 'Look what they made!');
+                      // Share.share(
+                      //     'check out this App https://play.google.com/store/apps/details?id=com.devxhub.ramadantimes',
+                      //     subject: 'Look what they made!');
                     },
                   ),
                   DrawerItem(
@@ -334,7 +332,7 @@ class DrawerItem extends StatelessWidget {
             SizedBox(
               width: 12.w,
             ),
-            AutoSizeText(
+            Text(
               title,
               style: Theme.of(context)
                   .textTheme

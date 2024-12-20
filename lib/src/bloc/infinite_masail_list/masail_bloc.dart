@@ -1,14 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_event.dart';
 import 'package:ramadantimes/src/models/masail/masail/masail.dart';
 import 'package:ramadantimes/src/models/masail/masail/result.dart';
 import 'package:ramadantimes/src/services/api_service_masail.dart';
-import 'package:stream_transform/stream_transform.dart';
-import '../../dbHelper/dbErrorHelper.dart';
 import 'masail_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,22 +13,15 @@ const throttleDuration = Duration(milliseconds: 100);
 
 // enum ArticleFilter { mostView, recent }
 
-EventTransformer<E> throttleDroppable<E>(Duration duration) {
-  return (events, mapper) {
-    return droppable<E>().call(events.throttle(duration), mapper);
-  };
-}
-
 class MasailBloc extends Bloc<MasailEvent, MasailState> {
   final MasailApiServices masailApi;
-  final dbHelperMasala = DBHelp1.instance;
+  // final dbHelperMasala = DBHelp1.instance;
 
   late List<Masail> localSQFMasala;
 
   MasailBloc({required this.masailApi}) : super(const MasailState()) {
     on<MasailFetched>(
       _onMasailFetched,
-      transformer: throttleDroppable(throttleDuration),
     );
 
     // on<ArticleFilterByNewest>(
