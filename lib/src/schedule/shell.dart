@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
 import 'package:ramadantimes/src/langauage/language_screen.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../bloc/navigation_cubit/navigation_cubit.dart';
@@ -177,133 +178,138 @@ class CommonDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      child: Container(
-        color: Colors.white,
-        child: Column(children: [
-          Image.asset("assets/images/drawer_head.png"),
-          Flexible(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              color: const Color(0xfff7f5ff),
-              padding: EdgeInsets.only(top: 12, bottom: 12, left: 24.w),
-              child: Column(
-                children: [
-                  DrawerItem(
-                    icon: const Icon(CupertinoIcons.globe),
-                    title:
-                        AppLocalizations.of(context)?.changeAppLanguage ?? "",
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return LanguageSelector();
+    return LayoutBuilder(builder: (context, constraints) {
+      bool isTablet = constraints.maxWidth > 700;
+        return Drawer(
+          elevation: 0,
+          width: MediaQuery.of(context).size.width / 1.5,
+          backgroundColor: Colors.transparent,
+          child: Container(
+            color: Colors.white,
+            child: Column(children: [
+              Image.asset("assets/images/drawer_head.png"),
+              Flexible(
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: const Color(0xfff7f5ff),
+                  padding: EdgeInsets.only(top: 12, bottom: 12, left: 24.w),
+                  child: Column(
+                    children: [
+                      DrawerItem(
+                        icon: const Icon(CupertinoIcons.globe),
+                        title:
+                            AppLocalizations.of(context)?.changeAppLanguage ?? "",
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return LanguageSelector();
+                            },
+                          ));
                         },
-                      ));
-                    },
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.location_pin),
-                    title:
-                        AppLocalizations.of(context)?.changeAppLocation ?? "",
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.settings),
-                    title: AppLocalizations.of(context)!.settings,
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return SettingsScreen();
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.location_pin),
+                        title:
+                            AppLocalizations.of(context)?.changeAppLocation ?? "",
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.settings),
+                        title: AppLocalizations.of(context)!.settings,
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return SettingsScreen();
+                            },
+                          ));
                         },
-                      ));
-                    },
-                  ),
-                  const Divider(
-                    color: Colors.white,
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.mosque_outlined),
-                    title: AppLocalizations.of(context)?.schedule ?? "",
-                    onTap: () {
-                      context.pop();
-                      context.goNamed("schedule");
+                      ),
+                      const Divider(
+                        color: Colors.white,
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.mosque_outlined),
+                        title: AppLocalizations.of(context)?.schedule ?? "",
+                        onTap: () {
+                          context.pop();
+                          context.goNamed("schedule");
 
-                      context.read<NavigationCubit>().getNavBarItem(0);
-                    },
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.book_rounded),
-                    title: AppLocalizations.of(context)?.maslaMasail ?? "",
-                    onTap: () {
-                      context.pop();
-                      context.goNamed("masla-masail");
+                          context.read<NavigationCubit>().getNavBarItem(0);
+                        },
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.book_rounded),
+                        title: AppLocalizations.of(context)?.maslaMasail ?? "",
+                        onTap: () {
+                          context.pop();
+                          context.goNamed("masla-masail");
 
-                      context.read<NavigationCubit>().getNavBarItem(1);
-                    },
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.calendar_month),
-                    title: AppLocalizations.of(context)?.calendar ?? "",
-                    onTap: () {
-                      context.pop();
-                      context.goNamed("calendar");
+                          context.read<NavigationCubit>().getNavBarItem(1);
+                        },
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.calendar_month),
+                        title: AppLocalizations.of(context)?.calendar ?? "",
+                        onTap: () {
+                          context.pop();
+                          context.goNamed("calendar");
 
-                      context.read<NavigationCubit>().getNavBarItem(2);
-                    },
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.menu_book),
-                    title: AppLocalizations.of(context)?.quran ?? "",
-                    onTap: () {
-                      context.pop();
-                      context.goNamed("quran_surah");
+                          context.read<NavigationCubit>().getNavBarItem(2);
+                        },
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.menu_book),
+                        title: AppLocalizations.of(context)?.quran ?? "",
+                        onTap: () {
+                          context.pop();
+                          context.goNamed("quran_surah");
 
-                      context.read<NavigationCubit>().getNavBarItem(2);
-                    },
-                  ),
-                  const Divider(
-                    color: Colors.white,
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.share),
-                    title: AppLocalizations.of(context)?.shareApp ?? "",
-                    onTap: () {
-                      // Share.share(
-                      //     'check out this App https://play.google.com/store/apps/details?id=com.devxhub.ramadantimes',
-                      //     subject: 'Look what they made!');
-                    },
-                  ),
-                  DrawerItem(
-                    icon: const Icon(Icons.star),
-                    title: AppLocalizations.of(context)?.rateThisApp ?? "",
-                    onTap: () async {
-                      context.pop();
-                      final InAppReview inAppReview = InAppReview.instance;
+                          context.read<NavigationCubit>().getNavBarItem(2);
+                        },
+                      ),
+                      const Divider(
+                        color: Colors.white,
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.share),
+                        title: AppLocalizations.of(context)?.shareApp ?? "",
+                        onTap: () {
+                          Share.share(
+                              'check out this App https://play.google.com/store/apps/details?id=com.devxhub.ramadantimes',
+                              subject: 'Look what they made!');
+                        },
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.star),
+                        title: AppLocalizations.of(context)?.rateThisApp ?? "",
+                        onTap: () async {
+                          context.pop();
+                          final InAppReview inAppReview = InAppReview.instance;
 
-                      if (await inAppReview.isAvailable()) {
-                        inAppReview.requestReview();
-                      }
-                    },
+                          if (await inAppReview.isAvailable()) {
+                            inAppReview.requestReview();
+                          }
+                        },
+                      ),
+                      DrawerItem(
+                        icon: const Icon(Icons.star),
+                        title: AppLocalizations.of(context)?.privacyPolicy ?? "",
+                        onTap: () async {
+                          if (!await launchUrlString(
+                              "https://devxhub.com/privacy-policy",
+                              mode: LaunchMode.externalApplication)) {
+                            throw Exception(
+                                'Could not launch https://devxhub.com/privacy-policy');
+                          }
+                        },
+                      ),
+                    ],
                   ),
-                  DrawerItem(
-                    icon: const Icon(Icons.star),
-                    title: AppLocalizations.of(context)?.privacyPolicy ?? "",
-                    onTap: () async {
-                      if (!await launchUrlString(
-                          "https://devxhub.com/privacy-policy",
-                          mode: LaunchMode.externalApplication)) {
-                        throw Exception(
-                            'Could not launch https://devxhub.com/privacy-policy');
-                      }
-                    },
-                  ),
-                ],
-              ),
-            ),
-          )
-        ]),
-      ),
+                ),
+              )
+            ]),
+          ),
+        );
+      }
     );
   }
 }
