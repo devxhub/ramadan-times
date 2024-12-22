@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -165,7 +164,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         height: 300.h,
                         width: 300.h,
                       ),
-                      AutoSizeText(
+                      Text(
                         "Please connect to the internet!!!",
                         style: TextStyle(fontSize: 24.sp),
                       ),
@@ -187,7 +186,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         height: 300.h,
                         width: 300.h,
                       ),
-                      AutoSizeText(
+                      Text(
                         "Something went wrong...",
                         style: TextStyle(fontSize: 24.sp),
                       ),

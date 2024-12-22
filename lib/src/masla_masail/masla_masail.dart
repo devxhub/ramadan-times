@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +9,7 @@ import 'package:ramadantimes/src/masla_masail/masail_details_page.dart';
 import '../../l10n/app_localizations.dart';
 
 class MaslaMasailPage extends StatefulWidget {
-  const MaslaMasailPage({Key? key}) : super(key: key);
+  const MaslaMasailPage({super.key});
   @override
   State<MaslaMasailPage> createState() => _MaslaMasailPageState();
 }
@@ -100,9 +99,9 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                           );
                         }
                         if (state.status == MasailStatus.failure) {
-                          return  SizedBox(
+                          return SizedBox(
                             height: 900.h,
-                            child:Padding(
+                            child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +112,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                     height: 300.h,
                                     width: 300.h,
                                   ),
-                                  AutoSizeText(
+                                  Text(
                                     "Failed to Fetch Articles!!!",
                                     style: TextStyle(fontSize: 20.sp),
                                   ),
@@ -121,11 +120,10 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                               ),
                             ),
                           );
-                        }
-                        else if (state.status == MasailStatus.noData) {
+                        } else if (state.status == MasailStatus.noData) {
                           return SizedBox(
                             height: 900.h,
-                            child:Padding(
+                            child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +134,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                     height: 300.h,
                                     width: 300.h,
                                   ),
-                                  AutoSizeText(
+                                  Text(
                                     "Please connect to the internet!!!",
                                     style: TextStyle(fontSize: 20.sp),
                                   ),
@@ -160,7 +158,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                       height: 300.h,
                                       width: 300.h,
                                     ),
-                                    AutoSizeText(
+                                    Text(
                                       "No Articles !!!",
                                       style: TextStyle(fontSize: 24.sp),
                                     ),
@@ -201,7 +199,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                             color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(12)),
-                                        child: AutoSizeText(
+                                        child: Text(
                                           state.posts[index].title ?? "",
                                           style: Theme.of(context)
                                               .textTheme
@@ -226,7 +224,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
 }
 
 class BottomLoader extends StatelessWidget {
-  const BottomLoader({Key? key}) : super(key: key);
+  const BottomLoader({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,15 +1,10 @@
-import 'dart:convert';
-
-import 'package:ramadantimes/src/models/calendar_model/calendar_model.dart';
 import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
-
 import '../models/masail/masail/masail.dart';
 import '../models/timing/timeofmonth.dart';
 import '../models/timing/timing.dart';
-
 
 class DBHelp1 {
   // static Database? db;
@@ -35,7 +30,6 @@ class DBHelp1 {
   }
 
   static Future _onCreate(Database db, int version) async {
-
     await db.execute('''
 
       CREATE TABLE timingTable(
@@ -45,7 +39,7 @@ class DBHelp1 {
               datum TEXT            
              
             )
-    ''');//timingTable end
+    '''); //timingTable end
 
     await db.execute('''
 
@@ -55,7 +49,7 @@ class DBHelp1 {
               meta TEXT,
               links TEXT                     
             )
-    ''');//masala table create end
+    '''); //masala table create end
     await db.execute('''
 
       CREATE TABLE calendarTables(
@@ -64,7 +58,7 @@ class DBHelp1 {
               status TEXT,
               data TEXT                     
             )
-    ''');//calendar table create end
+    '''); //calendar table create end
     await db.execute('''
 
       CREATE TABLE weatherTables(
@@ -78,40 +72,36 @@ class DBHelp1 {
               sea_level TEXT,
               grnd_level TEXT       
             )
-    ''');//weather table create end
-
+    '''); //weather table create end
   }
 
   Future<void> createRamadanTimes(List<Timing> timing) async {
     Database db = await DBHelp1.initDB();
-    db.delete('timingTable');//delete previous data
-    for(var data in timing){
+    db.delete('timingTable'); //delete previous data
+    for (var data in timing) {
       await db.insert('timingTable', data.toMap());
     }
-
-  }//insert data to timingtable
+  } //insert data to timingtable
 
   Future<void> createMAsalaData(Masail masail) async {
-
     Database dbMasala = await DBHelp1.initDB();
-    dbMasala.delete('masalaTables');//delete previous data
+    dbMasala.delete('masalaTables'); //delete previous data
     await dbMasala.insert('masalaTables', masail.toMap());
-  }//insert data to masalaTables
+  } //insert data to masalaTables
 
   Future<void> createCalendar(TimeOfMonth timeOfMonth) async {
     Database db = await DBHelp1.initDB();
-    db.delete('calendarTables');//delete previous data
+    db.delete('calendarTables'); //delete previous data
 
-      await db.insert('calendarTables', timeOfMonth.toMap());
-  }//insert data to timingtable
-  
+    await db.insert('calendarTables', timeOfMonth.toMap());
+  } //insert data to timingtable
+
   Future<void> createWeather(Main weatherModelTemp) async {
     Database db = await DBHelp1.initDB();
-    db.delete('weatherTables');//delete previous data
+    db.delete('weatherTables'); //delete previous data
 
-      await db.insert('weatherTables', weatherModelTemp.toMap());
-  }//insert data to weathertable
-
+    await db.insert('weatherTables', weatherModelTemp.toMap());
+  } //insert data to weathertable
 
   Future<List<Main>> readWeatherlList() async {
     Database dbWeather = await DBHelp1.initDB();
@@ -124,10 +114,8 @@ class DBHelp1 {
         : [];
 
     return weatherListHere;
+  } //query or retrive data to weatherTables
 
-  }//query or retrive data to weatherTables
-
-  
   Future<List<Masail>> readMasailList() async {
     Database dbMasala = await DBHelp1.initDB();
 
@@ -138,9 +126,7 @@ class DBHelp1 {
         ? mapsMasalaList.map((e) => Masail.fromMap(e)).toList()
         : [];
     return mapsMasalaListHere;
-
-  }//query or retrive data to masalaTables
-
+  } //query or retrive data to masalaTables
 
   Future<List<TimeOfMonth>> readCalendar() async {
     Database dbMasala = await DBHelp1.initDB();
@@ -148,24 +134,22 @@ class DBHelp1 {
     var calendarRowList = await dbMasala.query('calendarTables');
     // print("-----------------------Calendar---------------------------");
     // print(mapsCalendarList);
-    List<TimeOfMonth> calenderList = calendarRowList.isNotEmpty ? calendarRowList.map((e) => TimeOfMonth.fromMap(e)).toList():[];
+    List<TimeOfMonth> calenderList = calendarRowList.isNotEmpty
+        ? calendarRowList.map((e) => TimeOfMonth.fromMap(e)).toList()
+        : [];
     return calenderList;
-
-  }//query or retrive data to masalaTables
-
+  } //query or retrive data to masalaTables
 
   Future<List<Timing>> readRamadanTimes() async {
     Database db = await DBHelp1.initDB();
 
     var timing = await db.query('timingTable');
 
-
-    List<Timing> timingList = timing.isNotEmpty
-        ? timing.map((e) => Timing.fromMap(e)).toList()
-        : [];
+    List<Timing> timingList =
+        timing.isNotEmpty ? timing.map((e) => Timing.fromMap(e)).toList() : [];
 
     return timingList;
-  }//query or retrive data to timingtable
+  } //query or retrive data to timingtable
 
   static Future<int> updateRamadanTimes(Timing timing) async {
     Database db = await DBHelp1.initDB();
