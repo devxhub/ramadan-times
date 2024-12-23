@@ -42,6 +42,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             await _weatherDataLoaded(event, emit),
         clearSelectedLocation: (event) async =>
             await _clearSelectedLocation(event, emit),
+        clearSelectedCity: (event) async =>
+            await _clearSelectedCity(event, emit),
         imsakTimeDataLoaded: (event) async =>
             await _imsakTimeDataLoaded(event, emit),
         isImsakTimeShow: (event) async => await _isImsakTimeShow(event, emit),
@@ -478,6 +480,15 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       state.copyWith(
         selectedDistrict: null,
         selectedCountry: null,
+      ),
+    );
+  }
+
+  _clearSelectedCity(
+      _ClearSelectedCity event, Emitter<PrayerTimeState> emit) {
+    emit(
+      state.copyWith(
+        selectedDistrict: null,
       ),
     );
   }

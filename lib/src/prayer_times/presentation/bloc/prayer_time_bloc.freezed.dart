@@ -27,6 +27,7 @@ mixin _$PrayerTimeEvent {
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -69,6 +70,7 @@ mixin _$PrayerTimeEvent {
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -111,6 +113,7 @@ mixin _$PrayerTimeEvent {
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -155,6 +158,7 @@ mixin _$PrayerTimeEvent {
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -185,6 +189,7 @@ mixin _$PrayerTimeEvent {
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -212,6 +217,7 @@ mixin _$PrayerTimeEvent {
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -356,6 +362,7 @@ class _$PrayerTimesDataLoadedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -401,6 +408,7 @@ class _$PrayerTimesDataLoadedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -446,6 +454,7 @@ class _$PrayerTimesDataLoadedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -496,6 +505,7 @@ class _$PrayerTimesDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -529,6 +539,7 @@ class _$PrayerTimesDataLoadedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -559,6 +570,7 @@ class _$PrayerTimesDataLoadedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -658,6 +670,7 @@ class _$CountryDataLoadedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -703,6 +716,7 @@ class _$CountryDataLoadedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -748,6 +762,7 @@ class _$CountryDataLoadedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -798,6 +813,7 @@ class _$CountryDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -831,6 +847,7 @@ class _$CountryDataLoadedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -861,6 +878,7 @@ class _$CountryDataLoadedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -978,6 +996,7 @@ class _$LocationPermissionImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -1023,6 +1042,7 @@ class _$LocationPermissionImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -1068,6 +1088,7 @@ class _$LocationPermissionImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -1118,6 +1139,7 @@ class _$LocationPermissionImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -1151,6 +1173,7 @@ class _$LocationPermissionImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -1181,6 +1204,7 @@ class _$LocationPermissionImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -1315,6 +1339,7 @@ class _$SelectCountryImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -1360,6 +1385,7 @@ class _$SelectCountryImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -1405,6 +1431,7 @@ class _$SelectCountryImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -1455,6 +1482,7 @@ class _$SelectCountryImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -1488,6 +1516,7 @@ class _$SelectCountryImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -1518,6 +1547,7 @@ class _$SelectCountryImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -1653,6 +1683,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -1698,6 +1729,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -1743,6 +1775,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -1793,6 +1826,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -1826,6 +1860,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -1856,6 +1891,7 @@ class _$SelectCityImpl with DiagnosticableTreeMixin implements _SelectCity {
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -1957,6 +1993,7 @@ class _$ClearSelectedLocationImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -2002,6 +2039,7 @@ class _$ClearSelectedLocationImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -2047,6 +2085,7 @@ class _$ClearSelectedLocationImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -2097,6 +2136,7 @@ class _$ClearSelectedLocationImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -2130,6 +2170,7 @@ class _$ClearSelectedLocationImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -2160,6 +2201,7 @@ class _$ClearSelectedLocationImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -2187,6 +2229,303 @@ class _$ClearSelectedLocationImpl
 
 abstract class _ClearSelectedLocation implements PrayerTimeEvent {
   const factory _ClearSelectedLocation() = _$ClearSelectedLocationImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearSelectedCityImplCopyWith<$Res> {
+  factory _$$ClearSelectedCityImplCopyWith(_$ClearSelectedCityImpl value,
+          $Res Function(_$ClearSelectedCityImpl) then) =
+      __$$ClearSelectedCityImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSelectedCityImplCopyWithImpl<$Res>
+    extends _$PrayerTimeEventCopyWithImpl<$Res, _$ClearSelectedCityImpl>
+    implements _$$ClearSelectedCityImplCopyWith<$Res> {
+  __$$ClearSelectedCityImplCopyWithImpl(_$ClearSelectedCityImpl _value,
+      $Res Function(_$ClearSelectedCityImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of PrayerTimeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearSelectedCityImpl
+    with DiagnosticableTreeMixin
+    implements _ClearSelectedCity {
+  const _$ClearSelectedCityImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PrayerTimeEvent.clearSelectedCity()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'PrayerTimeEvent.clearSelectedCity'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearSelectedCityImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double latitude, double longitude)
+        prayerTimesDataLoaded,
+    required TResult Function() countryDataLoaded,
+    required TResult Function(BuildContext context) locationPermission,
+    required TResult Function(BuildContext context, Country country)
+        selectCountry,
+    required TResult Function(BuildContext context, District district)
+        selectCity,
+    required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
+    required TResult Function(
+            BuildContext context, UserCoordinator userCoordinator)
+        submitLocation,
+    required TResult Function(BuildContext context, bool isDistrictSelected)
+        isDistrictSelected,
+    required TResult Function(
+            BuildContext context, double latitude, double longitude)
+        weatherDataLoaded,
+    required TResult Function(BuildContext context, bool isImsakEnable)
+        isImsakTimeShow,
+    required TResult Function() imsakTimeDataLoaded,
+    required TResult Function(
+            BuildContext context, bool isAutoDetectLocationEnable)
+        autoDetectLocationStatusChange,
+    required TResult Function(BuildContext context, String prayerConventionName,
+            double fajrAngle, double ishaAngle, UserCoordinator userCoordinator)
+        selectPrayerConvention,
+    required TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)
+        selectAngle,
+    required TResult Function(int customImsakTime) selectCustomImsakTime,
+    required TResult Function(
+            ManualPrayerTime manualPrayerTime, String prayerName)
+        manuallyPrayerTimeChange,
+    required TResult Function() manuallyPrayerTimeDataLoaded,
+    required TResult Function(int onchangeTime) onchangeTimeSelected,
+    required TResult Function() resetManualPrayerTime,
+    required TResult Function(int time) selectedTimeUpdate,
+  }) {
+    return clearSelectedCity();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult? Function()? countryDataLoaded,
+    TResult? Function(BuildContext context)? locationPermission,
+    TResult? Function(BuildContext context, Country country)? selectCountry,
+    TResult? Function(BuildContext context, District district)? selectCity,
+    TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
+    TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult? Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult? Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult? Function(BuildContext context, bool isImsakEnable)?
+        isImsakTimeShow,
+    TResult? Function()? imsakTimeDataLoaded,
+    TResult? Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult? Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult? Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult? Function(int customImsakTime)? selectCustomImsakTime,
+    TResult? Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult? Function()? manuallyPrayerTimeDataLoaded,
+    TResult? Function(int onchangeTime)? onchangeTimeSelected,
+    TResult? Function()? resetManualPrayerTime,
+    TResult? Function(int time)? selectedTimeUpdate,
+  }) {
+    return clearSelectedCity?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double latitude, double longitude)? prayerTimesDataLoaded,
+    TResult Function()? countryDataLoaded,
+    TResult Function(BuildContext context)? locationPermission,
+    TResult Function(BuildContext context, Country country)? selectCountry,
+    TResult Function(BuildContext context, District district)? selectCity,
+    TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
+    TResult Function(BuildContext context, UserCoordinator userCoordinator)?
+        submitLocation,
+    TResult Function(BuildContext context, bool isDistrictSelected)?
+        isDistrictSelected,
+    TResult Function(BuildContext context, double latitude, double longitude)?
+        weatherDataLoaded,
+    TResult Function(BuildContext context, bool isImsakEnable)? isImsakTimeShow,
+    TResult Function()? imsakTimeDataLoaded,
+    TResult Function(BuildContext context, bool isAutoDetectLocationEnable)?
+        autoDetectLocationStatusChange,
+    TResult Function(
+            BuildContext context,
+            String prayerConventionName,
+            double fajrAngle,
+            double ishaAngle,
+            UserCoordinator userCoordinator)?
+        selectPrayerConvention,
+    TResult Function(
+            double fajrAngle,
+            double ishaAngle,
+            String prayerConventionName,
+            UserCoordinator userCoordinator,
+            BuildContext context)?
+        selectAngle,
+    TResult Function(int customImsakTime)? selectCustomImsakTime,
+    TResult Function(ManualPrayerTime manualPrayerTime, String prayerName)?
+        manuallyPrayerTimeChange,
+    TResult Function()? manuallyPrayerTimeDataLoaded,
+    TResult Function(int onchangeTime)? onchangeTimeSelected,
+    TResult Function()? resetManualPrayerTime,
+    TResult Function(int time)? selectedTimeUpdate,
+    required TResult orElse(),
+  }) {
+    if (clearSelectedCity != null) {
+      return clearSelectedCity();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PrayerTimesDataLoaded value)
+        prayerTimesDataLoaded,
+    required TResult Function(_CountryDataLoaded value) countryDataLoaded,
+    required TResult Function(_LocationPermission value) locationPermission,
+    required TResult Function(_SelectCountry value) selectCountry,
+    required TResult Function(_SelectCity value) selectCity,
+    required TResult Function(_ClearSelectedLocation value)
+        clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
+    required TResult Function(_SubmitLocation value) submitLocation,
+    required TResult Function(_IsDistrictSelected value) isDistrictSelected,
+    required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
+    required TResult Function(_IsImsakTimeShow value) isImsakTimeShow,
+    required TResult Function(_ImsakTimeDataLoaded value) imsakTimeDataLoaded,
+    required TResult Function(_AutoDetectLocationStatusChange value)
+        autoDetectLocationStatusChange,
+    required TResult Function(_SelectPrayerConvention value)
+        selectPrayerConvention,
+    required TResult Function(_SelectAngle value) selectAngle,
+    required TResult Function(_SelectCustomImsakTime value)
+        selectCustomImsakTime,
+    required TResult Function(_ManuallyPrayerTimeChange value)
+        manuallyPrayerTimeChange,
+    required TResult Function(_ManuallyPrayerTimeDataLoaded value)
+        manuallyPrayerTimeDataLoaded,
+    required TResult Function(_OnchangeTimeSelected value) onchangeTimeSelected,
+    required TResult Function(_ResetManualPrayerTime value)
+        resetManualPrayerTime,
+    required TResult Function(_SelectedTimeUpdate value) selectedTimeUpdate,
+  }) {
+    return clearSelectedCity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult? Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult? Function(_LocationPermission value)? locationPermission,
+    TResult? Function(_SelectCountry value)? selectCountry,
+    TResult? Function(_SelectCity value)? selectCity,
+    TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
+    TResult? Function(_SubmitLocation value)? submitLocation,
+    TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult? Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult? Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult? Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult? Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult? Function(_SelectAngle value)? selectAngle,
+    TResult? Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult? Function(_ManuallyPrayerTimeChange value)?
+        manuallyPrayerTimeChange,
+    TResult? Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult? Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+    TResult? Function(_ResetManualPrayerTime value)? resetManualPrayerTime,
+    TResult? Function(_SelectedTimeUpdate value)? selectedTimeUpdate,
+  }) {
+    return clearSelectedCity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PrayerTimesDataLoaded value)? prayerTimesDataLoaded,
+    TResult Function(_CountryDataLoaded value)? countryDataLoaded,
+    TResult Function(_LocationPermission value)? locationPermission,
+    TResult Function(_SelectCountry value)? selectCountry,
+    TResult Function(_SelectCity value)? selectCity,
+    TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
+    TResult Function(_SubmitLocation value)? submitLocation,
+    TResult Function(_IsDistrictSelected value)? isDistrictSelected,
+    TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
+    TResult Function(_IsImsakTimeShow value)? isImsakTimeShow,
+    TResult Function(_ImsakTimeDataLoaded value)? imsakTimeDataLoaded,
+    TResult Function(_AutoDetectLocationStatusChange value)?
+        autoDetectLocationStatusChange,
+    TResult Function(_SelectPrayerConvention value)? selectPrayerConvention,
+    TResult Function(_SelectAngle value)? selectAngle,
+    TResult Function(_SelectCustomImsakTime value)? selectCustomImsakTime,
+    TResult Function(_ManuallyPrayerTimeChange value)? manuallyPrayerTimeChange,
+    TResult Function(_ManuallyPrayerTimeDataLoaded value)?
+        manuallyPrayerTimeDataLoaded,
+    TResult Function(_OnchangeTimeSelected value)? onchangeTimeSelected,
+    TResult Function(_ResetManualPrayerTime value)? resetManualPrayerTime,
+    TResult Function(_SelectedTimeUpdate value)? selectedTimeUpdate,
+    required TResult orElse(),
+  }) {
+    if (clearSelectedCity != null) {
+      return clearSelectedCity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearSelectedCity implements PrayerTimeEvent {
+  const factory _ClearSelectedCity() = _$ClearSelectedCityImpl;
 }
 
 /// @nodoc
@@ -2288,6 +2627,7 @@ class _$SubmitLocationImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -2333,6 +2673,7 @@ class _$SubmitLocationImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -2378,6 +2719,7 @@ class _$SubmitLocationImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -2428,6 +2770,7 @@ class _$SubmitLocationImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -2461,6 +2804,7 @@ class _$SubmitLocationImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -2491,6 +2835,7 @@ class _$SubmitLocationImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -2630,6 +2975,7 @@ class _$IsDistrictSelectedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -2675,6 +3021,7 @@ class _$IsDistrictSelectedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -2720,6 +3067,7 @@ class _$IsDistrictSelectedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -2770,6 +3118,7 @@ class _$IsDistrictSelectedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -2803,6 +3152,7 @@ class _$IsDistrictSelectedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -2833,6 +3183,7 @@ class _$IsDistrictSelectedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -2982,6 +3333,7 @@ class _$WeatherDataLoadedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -3027,6 +3379,7 @@ class _$WeatherDataLoadedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -3072,6 +3425,7 @@ class _$WeatherDataLoadedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -3122,6 +3476,7 @@ class _$WeatherDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -3155,6 +3510,7 @@ class _$WeatherDataLoadedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -3185,6 +3541,7 @@ class _$WeatherDataLoadedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -3326,6 +3683,7 @@ class _$IsImsakTimeShowImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -3371,6 +3729,7 @@ class _$IsImsakTimeShowImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -3416,6 +3775,7 @@ class _$IsImsakTimeShowImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -3466,6 +3826,7 @@ class _$IsImsakTimeShowImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -3499,6 +3860,7 @@ class _$IsImsakTimeShowImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -3529,6 +3891,7 @@ class _$IsImsakTimeShowImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -3629,6 +3992,7 @@ class _$ImsakTimeDataLoadedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -3674,6 +4038,7 @@ class _$ImsakTimeDataLoadedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -3719,6 +4084,7 @@ class _$ImsakTimeDataLoadedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -3769,6 +4135,7 @@ class _$ImsakTimeDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -3802,6 +4169,7 @@ class _$ImsakTimeDataLoadedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -3832,6 +4200,7 @@ class _$ImsakTimeDataLoadedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -3969,6 +4338,7 @@ class _$AutoDetectLocationStatusChangeImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -4014,6 +4384,7 @@ class _$AutoDetectLocationStatusChangeImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -4060,6 +4431,7 @@ class _$AutoDetectLocationStatusChangeImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -4111,6 +4483,7 @@ class _$AutoDetectLocationStatusChangeImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -4144,6 +4517,7 @@ class _$AutoDetectLocationStatusChangeImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -4174,6 +4548,7 @@ class _$AutoDetectLocationStatusChangeImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -4358,6 +4733,7 @@ class _$SelectPrayerConventionImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -4404,6 +4780,7 @@ class _$SelectPrayerConventionImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -4450,6 +4827,7 @@ class _$SelectPrayerConventionImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -4501,6 +4879,7 @@ class _$SelectPrayerConventionImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -4534,6 +4913,7 @@ class _$SelectPrayerConventionImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -4564,6 +4944,7 @@ class _$SelectPrayerConventionImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -4747,6 +5128,7 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -4793,6 +5175,7 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -4839,6 +5222,7 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -4890,6 +5274,7 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -4923,6 +5308,7 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -4953,6 +5339,7 @@ class _$SelectAngleImpl with DiagnosticableTreeMixin implements _SelectAngle {
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -5090,6 +5477,7 @@ class _$SelectCustomImsakTimeImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -5135,6 +5523,7 @@ class _$SelectCustomImsakTimeImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -5180,6 +5569,7 @@ class _$SelectCustomImsakTimeImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -5230,6 +5620,7 @@ class _$SelectCustomImsakTimeImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -5263,6 +5654,7 @@ class _$SelectCustomImsakTimeImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -5293,6 +5685,7 @@ class _$SelectCustomImsakTimeImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -5434,6 +5827,7 @@ class _$ManuallyPrayerTimeChangeImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -5479,6 +5873,7 @@ class _$ManuallyPrayerTimeChangeImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -5524,6 +5919,7 @@ class _$ManuallyPrayerTimeChangeImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -5574,6 +5970,7 @@ class _$ManuallyPrayerTimeChangeImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -5607,6 +6004,7 @@ class _$ManuallyPrayerTimeChangeImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -5637,6 +6035,7 @@ class _$ManuallyPrayerTimeChangeImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -5740,6 +6139,7 @@ class _$ManuallyPrayerTimeDataLoadedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -5785,6 +6185,7 @@ class _$ManuallyPrayerTimeDataLoadedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -5830,6 +6231,7 @@ class _$ManuallyPrayerTimeDataLoadedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -5880,6 +6282,7 @@ class _$ManuallyPrayerTimeDataLoadedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -5913,6 +6316,7 @@ class _$ManuallyPrayerTimeDataLoadedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -5943,6 +6347,7 @@ class _$ManuallyPrayerTimeDataLoadedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -6063,6 +6468,7 @@ class _$OnchangeTimeSelectedImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -6108,6 +6514,7 @@ class _$OnchangeTimeSelectedImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -6153,6 +6560,7 @@ class _$OnchangeTimeSelectedImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -6203,6 +6611,7 @@ class _$OnchangeTimeSelectedImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -6236,6 +6645,7 @@ class _$OnchangeTimeSelectedImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -6266,6 +6676,7 @@ class _$OnchangeTimeSelectedImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -6365,6 +6776,7 @@ class _$ResetManualPrayerTimeImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -6410,6 +6822,7 @@ class _$ResetManualPrayerTimeImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -6455,6 +6868,7 @@ class _$ResetManualPrayerTimeImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -6505,6 +6919,7 @@ class _$ResetManualPrayerTimeImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -6538,6 +6953,7 @@ class _$ResetManualPrayerTimeImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -6568,6 +6984,7 @@ class _$ResetManualPrayerTimeImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -6685,6 +7102,7 @@ class _$SelectedTimeUpdateImpl
     required TResult Function(BuildContext context, District district)
         selectCity,
     required TResult Function() clearSelectedLocation,
+    required TResult Function() clearSelectedCity,
     required TResult Function(
             BuildContext context, UserCoordinator userCoordinator)
         submitLocation,
@@ -6730,6 +7148,7 @@ class _$SelectedTimeUpdateImpl
     TResult? Function(BuildContext context, Country country)? selectCountry,
     TResult? Function(BuildContext context, District district)? selectCity,
     TResult? Function()? clearSelectedLocation,
+    TResult? Function()? clearSelectedCity,
     TResult? Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult? Function(BuildContext context, bool isDistrictSelected)?
@@ -6775,6 +7194,7 @@ class _$SelectedTimeUpdateImpl
     TResult Function(BuildContext context, Country country)? selectCountry,
     TResult Function(BuildContext context, District district)? selectCity,
     TResult Function()? clearSelectedLocation,
+    TResult Function()? clearSelectedCity,
     TResult Function(BuildContext context, UserCoordinator userCoordinator)?
         submitLocation,
     TResult Function(BuildContext context, bool isDistrictSelected)?
@@ -6825,6 +7245,7 @@ class _$SelectedTimeUpdateImpl
     required TResult Function(_SelectCity value) selectCity,
     required TResult Function(_ClearSelectedLocation value)
         clearSelectedLocation,
+    required TResult Function(_ClearSelectedCity value) clearSelectedCity,
     required TResult Function(_SubmitLocation value) submitLocation,
     required TResult Function(_IsDistrictSelected value) isDistrictSelected,
     required TResult Function(_WeatherDataLoaded value) weatherDataLoaded,
@@ -6858,6 +7279,7 @@ class _$SelectedTimeUpdateImpl
     TResult? Function(_SelectCountry value)? selectCountry,
     TResult? Function(_SelectCity value)? selectCity,
     TResult? Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult? Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult? Function(_SubmitLocation value)? submitLocation,
     TResult? Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult? Function(_WeatherDataLoaded value)? weatherDataLoaded,
@@ -6888,6 +7310,7 @@ class _$SelectedTimeUpdateImpl
     TResult Function(_SelectCountry value)? selectCountry,
     TResult Function(_SelectCity value)? selectCity,
     TResult Function(_ClearSelectedLocation value)? clearSelectedLocation,
+    TResult Function(_ClearSelectedCity value)? clearSelectedCity,
     TResult Function(_SubmitLocation value)? submitLocation,
     TResult Function(_IsDistrictSelected value)? isDistrictSelected,
     TResult Function(_WeatherDataLoaded value)? weatherDataLoaded,
