@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_countdown_timer/current_remaining_time.dart';
@@ -130,10 +128,8 @@ class CurrentPrayer extends StatelessWidget {
       children: [
         Text(
           "${AppLocalizations.of(context)?.prayerName(
-            getCurrentPrayer(
-                timingsToday, timingsNextToday)['name'] ??
-                "",
-          ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
+                getCurrentPrayer(timingsToday, timingsNextToday)['name'] ?? "",
+              ) ?? ""} ${AppLocalizations.of(context)?.prayer}",
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
               color: const Color(0xff000000),
               fontSize: 18.sp,
@@ -152,35 +148,30 @@ class CurrentPrayer extends StatelessWidget {
             DateTime.now().year,
             DateTime.now().month,
             (getCurrentPrayer(timingsToday, timingsNextToday)["name"] ==
-                "Isha" &&
-                !DateTime.now().isAfter(DateTime(
-                    DateTime.now().year,
-                    DateTime.now().month,
-                    DateTime.now().day,
-                    23,
-                    59,
-                    59)))
+                        "Isha" &&
+                    !DateTime.now().isAfter(DateTime(DateTime.now().year,
+                        DateTime.now().month, DateTime.now().day, 23, 59, 59)))
                 ? DateTime.now().day + 1
                 : DateTime.now().day,
-            int.parse(getCurrentPrayer(
-                timingsToday, timingsNextToday)["end_hour"]),
-            int.parse(getCurrentPrayer(
-                timingsToday, timingsNextToday)["end_minute"]),
+            int.parse(
+                getCurrentPrayer(timingsToday, timingsNextToday)["end_hour"]),
+            int.parse(
+                getCurrentPrayer(timingsToday, timingsNextToday)["end_minute"]),
           ).millisecondsSinceEpoch,
           onEnd: () async {
             SharedPreferences preferences =
-            await SharedPreferences.getInstance();
+                await SharedPreferences.getInstance();
 
             context.read<HomeBloc>().add(
-              DataFetched(
-                date: DateFormat("dd-MM-yyyy").format(
-                  DateTime.now(),
-                ),
-                city: District.fromJson(jsonDecode(
-                    preferences.getString("current_location")!))
-                    .bn_name,
-              ),
-            );
+                  DataFetched(
+                    date: DateFormat("dd-MM-yyyy").format(
+                      DateTime.now(),
+                    ),
+                    city: District.fromJson(jsonDecode(
+                            preferences.getString("current_location")!))
+                        .bn_name,
+                  ),
+                );
           },
           widgetBuilder: (_, CurrentRemainingTime? time) {
             if (time == null) {
@@ -191,8 +182,9 @@ class CurrentPrayer extends StatelessWidget {
                 Text(
                   AppLocalizations.of(context)?.localeName == "bn"
                       ? engToBn(
-                      '${time.hours?.toString().padLeft(2, "0") ?? "00"} ঘ. : ${time.min?.toString().padLeft(2, "0") ?? "00"} মি. : ${time.sec.toString().padLeft(2, "0")} সে.', context)
-                      : '${time.hours?.toString().padLeft(2, "0") ?? "00"} : ${time.min?.toString().padLeft(2, "0") ?? "00"} : ${time.sec.toString().padLeft(2, "0")}',
+                          '${time.hours?.toString().padLeft(2, "0") ?? "00"} ঘ : ${time.min?.toString().padLeft(2, "0") ?? "00"} মি : ${time.sec.toString().padLeft(2, "0")} সে',
+                          context)
+                      : '${time.hours?.toString().padLeft(2, "0") ?? "00"} hr : ${time.min?.toString().padLeft(2, "0") ?? "00"} min : ${time.sec.toString().padLeft(2, "0")} sec',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: const Color(0xff6348EB),
                       fontSize: 14.sp,

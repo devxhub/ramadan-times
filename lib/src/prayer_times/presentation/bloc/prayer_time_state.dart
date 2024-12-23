@@ -30,5 +30,7 @@ class PrayerTimeState with _$PrayerTimeState {
     @Default(0.0) double selectedFajrAngle,
     @Default(0.0) double selectedIshaAngle,
     @Default(0) int imsakTime,
+    @Default(0) int selectedTime,
+    @Default(ManualPrayerTime()) ManualPrayerTime manualPrayerTime,
   }) = _PrayerTimeState;
 }

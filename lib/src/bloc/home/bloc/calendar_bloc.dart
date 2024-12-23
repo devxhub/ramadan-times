@@ -1,55 +1,35 @@
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:connectivity/connectivity.dart';
-import 'package:flutter/material.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:path/path.dart';
-import 'package:ramadantimes/src/dbHelper/database_helper.dart';
 import 'package:ramadantimes/src/dbHelper/dbErrorHelper.dart';
-import 'package:ramadantimes/src/dbHelper/dbhelp.dart';
 import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../models/address/district.dart';
 import '../../../models/timing/timing.dart';
 import '../../../services/api_service.dart';
 import 'calendar_event.dart';
 import 'calendar_state.dart';
 
-import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:stream_transform/stream_transform.dart';
-
 const throttleDuration = Duration(milliseconds: 100);
-
-EventTransformer<E> throttleDroppable<E>(Duration duration) {
-  return (events, mapper) {
-    return droppable<E>().call(events.throttle(duration), mapper);
-  };
-}
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final ApiServices apiService;
 
-  final dbHelper=DBHelp1.instance; //database initialize
+  final dbHelper = DBHelp1.instance; //database initialize
 
-  late List<Timing>timeOfLocalSQF;//offline data store
+  late List<Timing> timeOfLocalSQF; //offline data store
 
   late WeatherModelFinal weatherData;
 
-  late List<Main> localSQFweather;
-
-
+  late List<Main> localSQFWeather;
 
   HomeBloc({required this.apiService}) : super(HomeState()) {
     on<DataFetched>(
       _onDataFetched,
-      transformer: throttleDroppable(throttleDuration),
     );
-
   }
-
 
   Future<void> _onDataFetched(
     DataFetched event,
@@ -67,7 +47,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       SharedPreferences preferences = await SharedPreferences.getInstance();
 
-
       District? d = District.fromJson(jsonDecode(
           preferences.getString("current_location") ??
               jsonEncode(District(
@@ -79,34 +58,25 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                   lon: "90.4111451",
                   url: "www.dhaka.gov.bd"))));
 
-
-
       List<String> temp = event.date.split("-");
-
-
-
 
       DateTime nextDate =
           DateTime(int.parse(temp[2]), int.parse(temp[1]), int.parse(temp[0]))
               .add(const Duration(days: 1));
 
-
       //internet connectivity check and show per prediction
       var connectivityResult = await (Connectivity().checkConnectivity());
-      if(connectivityResult==ConnectivityResult.none){
+      if (connectivityResult == ConnectivityResult.none) {
+        localSQFWeather = await dbHelper.readWeatherlList();
 
-        localSQFweather=await dbHelper.readWeatherlList();
-
-       //showAlertDialog
+        //showAlertDialog
         timeOfLocalSQF = await dbHelper.readRamadanTimes();
-        if(timeOfLocalSQF.isEmpty){
+        if (timeOfLocalSQF.isEmpty) {
           return emit(state.copyWith(
             status: HomeStatus.noData,
-
           ));
         }
-      }
-      else{
+      } else {
         final Timing timeOfToday = await apiService.timingByCity(
             date: event.date,
             method: event.method,
@@ -122,34 +92,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
         //weather
 
-        weatherData=await apiService.fetchWeatherData(d.lat!,d.lon!);
+        weatherData = await apiService.fetchWeatherData(d.lat!, d.lon!);
 
-
-
-       dbHelper.createWeather(weatherData.main!);  //calendar data store or save data or create data call
-        localSQFweather=await dbHelper.readWeatherlList();
-
-
-
-
+        dbHelper.createWeather(weatherData
+            .main!); //calendar data store or save data or create data call
+        localSQFWeather = await dbHelper.readWeatherlList();
 
         //for offline timingTable data store
-        final timeList=[timeOfToday,timeOfNextDay];
+        final timeList = [timeOfToday, timeOfNextDay];
         dbHelper.createRamadanTimes(timeList);
         timeOfLocalSQF = await dbHelper.readRamadanTimes();
 
-       // print(timeOfLocalSQF.toString());
+        // print(timeOfLocalSQF.toString());
       }
       return emit(state.copyWith(
         status: HomeStatus.success,
         timeOfToday: timeOfLocalSQF.first,
         timeOfNextDay: timeOfLocalSQF.last,
-        weatherData: localSQFweather.first,
-
+        weatherData: localSQFWeather.first,
       ));
     } on Exception catch (_) {
       emit(state.copyWith(status: HomeStatus.failure));
     }
   }
 }
-

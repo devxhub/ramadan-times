@@ -57,7 +57,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get quran => 'কুরআন';
 
   @override
-  String get prayerTimes => 'নামাজের সময়';
+  String get prayerTimes => 'নামাজের সময়সূচী';
 
   @override
   String get fajr => 'ফজর';
@@ -249,4 +249,76 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get selectIshaAngle => 'ইশা কোণ নির্বাচন করুন:';
+
+  @override
+  String get showImsakInPrayerTimesPage => 'নামাজের সময়সূচি পৃষ্ঠায় ইমসাক প্রদর্শন করুন';
+
+  @override
+  String get manualCorrection => 'ম্যানুয়াল সংশোধন';
+
+  @override
+  String get minute => 'মিনিট';
+
+  @override
+  String get selectedTime => 'নির্বাচিত সময়';
+
+  @override
+  String get sunRise => 'সূর্যোদয়';
+
+  @override
+  String get resetTime => 'সময় রিসেট করুন';
+
+  @override
+  String get done => 'সম্পন্ন';
+
+  @override
+  String get cancel => 'বাতিল';
+
+  @override
+  String get playAyah => 'আয়াত চালান';
+
+  @override
+  String get playSurah => 'সূরা চালান';
+
+  @override
+  String get onInternetConnection => 'ইন্টারনেট সংযোগ নেই। দয়া করে ইন্টারনেট চালু করুন';
+
+  @override
+  String get translation => 'অনুবাদ';
+
+  @override
+  String get transliteration => 'উচ্চারণ';
+
+  @override
+  String get revealedIn => 'প্রকাশিত হয়েছে';
+
+  @override
+  String get nowPlaying => 'এখন চলছে';
+
+  @override
+  String get ayah => 'আয়াত';
+
+  @override
+  String get makkah => 'মক্কা';
+
+  @override
+  String get madinah => 'মদিনা';
+
+  @override
+  String get searchSurah => 'সূরা খুঁজুন...';
+
+  @override
+  String get imsak => 'ইমসাক';
+
+  @override
+  String get autoDetectLocation => 'অবস্থান স্বয়ংক্রিয় সনাক্তকরণ';
+
+  @override
+  String get prayerTimeCalculation => 'নামাজের সময় গণনা';
+
+  @override
+  String get minutesBeforeFajr => 'ফজরের আগে মিনিট';
+
+  @override
+  String get settings => 'সেটিংস';
 }

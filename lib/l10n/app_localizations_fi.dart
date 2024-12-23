@@ -230,4 +230,76 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get selectIshaAngle => 'Valitse Isha-kulma:';
+
+  @override
+  String get showImsakInPrayerTimesPage => 'Näytä Imsak rukousaikojen sivulla ja viimeistele';
+
+  @override
+  String get manualCorrection => 'Manuaaliset korjaukset';
+
+  @override
+  String get minute => 'minuuttia';
+
+  @override
+  String get selectedTime => 'Valittu aika';
+
+  @override
+  String get sunRise => 'Auringon nousu';
+
+  @override
+  String get resetTime => 'Nollaa aika';
+
+  @override
+  String get done => 'Valmis';
+
+  @override
+  String get cancel => 'Peruuta';
+
+  @override
+  String get playAyah => 'Toista ayah';
+
+  @override
+  String get playSurah => 'Toista sura';
+
+  @override
+  String get onInternetConnection => 'Ei internet-yhteyttä. Kytke internet päälle';
+
+  @override
+  String get translation => 'Käännös';
+
+  @override
+  String get transliteration => 'Transliteraatio';
+
+  @override
+  String get revealedIn => 'Ilmestynyt';
+
+  @override
+  String get nowPlaying => 'Nyt toistetaan';
+
+  @override
+  String get ayah => 'Ayah';
+
+  @override
+  String get makkah => 'Mekka';
+
+  @override
+  String get madinah => 'Medina';
+
+  @override
+  String get searchSurah => 'Etsi sura...';
+
+  @override
+  String get imsak => 'Imsak';
+
+  @override
+  String get autoDetectLocation => 'Automaattinen sijainnin tunnistus';
+
+  @override
+  String get prayerTimeCalculation => 'Rukousaikojen laskenta';
+
+  @override
+  String get minutesBeforeFajr => 'minuuttia ennen Fajr';
+
+  @override
+  String get settings => 'Asetukset';
 }

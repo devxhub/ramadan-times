@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ramadantimes/src/bloc/NextDayTiming/next_day_timing_cubit.dart';
 import 'package:ramadantimes/src/bloc/language_bloc/language_bloc.dart';
 import 'package:ramadantimes/src/bloc/location/country_cubit.dart';

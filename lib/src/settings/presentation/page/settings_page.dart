@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ramadantimes/src/component/eng_to_bn.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import '../../../prayer_times/presentation/pages/manual_prayer_time.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Prayer Times'),
+        title: Text(AppLocalizations.of(context)!.prayerTimes),
         centerTitle: true,
       ),
       body: ListView(
@@ -31,7 +32,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
-                title: Text('Show Imsak in Prayer Times page'),
+                title: Text(
+                    AppLocalizations.of(context)!.showImsakInPrayerTimesPage),
                 value: state.isImsakEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
@@ -44,36 +46,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Divider(),
           ListTile(
             title: Text(
-              'Prayer Time Calculation',
+              AppLocalizations.of(context)!.prayerTimeCalculation,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          ListTile(
-            title: Text('Location'),
-            subtitle: Text('-'),
-          ),
+          // ListTile(
+          //   title: Text('Location'),
+          //   subtitle: Text('-'),
+          // ),
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
-                title: Text('Auto-detect Location'),
+                title: Text(AppLocalizations.of(context)!.autoDetectLocation),
                 value: state.isAutoDetectLocationEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
                       PrayerTimeEvent.autoDetectLocationStatusChange(
-                          context: context,isAutoDetectLocationEnable: value));
+                          context: context, isAutoDetectLocationEnable: value));
                 },
               );
             },
           ),
-          SwitchListTile(
-            title: Text('Automatic settings'),
-            value: automaticSettings,
-            onChanged: (value) {
-              setState(() {
-                automaticSettings = value;
-              });
-            },
-          ),
+          // SwitchListTile(
+          //   title: Text('Automatic settings'),
+          //   value: automaticSettings,
+          //   onChanged: (value) {
+          //     setState(() {
+          //       automaticSettings = value;
+          //     });
+          //   },
+          // ),
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return ListTile(
@@ -94,81 +96,104 @@ class _SettingsScreenState extends State<SettingsScreen> {
               );
             },
           ),
-          ListTile(
-            title: Text('Manual corrections'),
-            subtitle: Text('0, 0, 0, 0, 0, 0'),
-          ),
-          ListTile(
-            title: Text('Asr calculation – Juristic method'),
-            subtitle: Text('Standard (Shafi, Maliki, Hanbali)'),
-          ),
-          ListTile(
-            title: Text('High Latitude Adjustment'),
-            subtitle: Text('Angle-based method'),
-          ),
-          ListTile(
-            title: Text('Daylight Saving Time'),
-            subtitle: Text('Auto'),
-          ),
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
-  builder: (context, state) {
-    return GestureDetector(
-      onTap: (){
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text(
-                'Imsak',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              content: SizedBox(
-                width: double.maxFinite,
-                height: 400, // Adjust the height as needed
-                child: ListView.builder(
-                  itemCount: 31, // Number of options
-                  itemBuilder: (context, index) {
-                    return RadioListTile<int>(
-                      value: index,
-                      groupValue: state.imsakTime,
-                      onChanged: (value) {
-                        context.read<PrayerTimeBloc>().add(
-                            PrayerTimeEvent.selectCustomImsakTime(customImsakTime: value??0));
-                        Navigator.pop(context); // Close dialog on selection
-                      },
-                      title: Text(
-                        '$index minute${index >= 1 ? '' : 's'}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      activeColor: Colors.teal, // Matches your screenshot
-                    );
-                  },
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ManualCorrectionsScreen(),
+                    ),
+                  );
+                },
+                child: ListTile(
+                  title: Text(AppLocalizations.of(context)!.manualCorrection),
+                  subtitle: Text(
+                      '${state.manualPrayerTime.manualFajrTime ?? 0},${state.manualPrayerTime.manualSunriseTime ?? 0}, ${state.manualPrayerTime.manualDhuhrTime ?? 0}, ${state.manualPrayerTime.manualAsrTime ?? 0}, ${state.manualPrayerTime.manualMaghribTime ?? 0},${state.manualPrayerTime.manualIshaTime ?? 0}'),
                 ),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(
-                    'CANCEL',
-                    style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
-                  ),
+              );
+            },
+          ),
+          // ListTile(
+          //   title: Text('Asr calculation – Juristic method'),
+          //   subtitle: Text('Standard (Shafi, Maliki, Hanbali)'),
+          // ),
+          // ListTile(
+          //   title: Text('High Latitude Adjustment'),
+          //   subtitle: Text('Angle-based method'),
+          // ),
+          // ListTile(
+          //   title: Text('Daylight Saving Time'),
+          //   subtitle: Text('Auto'),
+          // ),
+          BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(
+                          AppLocalizations.of(context)!.imsak,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        content: SizedBox(
+                          width: double.maxFinite,
+                          height: 400, // Adjust the height as needed
+                          child: ListView.builder(
+                            itemCount: 31, // Number of options
+                            itemBuilder: (context, index) {
+                              return RadioListTile<int>(
+                                value: index,
+                                groupValue: state.imsakTime,
+                                onChanged: (value) {
+                                  context.read<PrayerTimeBloc>().add(
+                                      PrayerTimeEvent.selectCustomImsakTime(
+                                          customImsakTime: value ?? 0));
+                                  Navigator.pop(
+                                      context); // Close dialog on selection
+                                },
+                                title: Text(
+                                  '${engToBn(index.toString(), context)} ${AppLocalizations.of(context)!.localeName == "fi" ? index > 1 ? "minuuttia" : "minuutti" : "${AppLocalizations.of(context)!.minute}${AppLocalizations.of(context)!.localeName == "en" && index > 1 ? "s" : ""}"} ',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                activeColor:
+                                    Colors.teal, // Matches your screenshot
+                              );
+                            },
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text(
+                              AppLocalizations.of(context)!.cancel,
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: ListTile(
+                  title: Text(AppLocalizations.of(context)!.imsak),
+                  subtitle: Text(
+                      '${state.imsakTime} ${AppLocalizations.of(context)!.minutesBeforeFajr}'),
                 ),
-              ],
-            );
-          },
-        );
-      },
-      child: ListTile(
-              title: Text('Imsak'),
-              subtitle: Text('${state.imsakTime} minutes before Fajr'),
-            ),
-    );
-  },
-),
+              );
+            },
+          ),
         ],
       ),
     );
   }
+
   String getPrayerAngle(
     BuildContext context,
     String prayerConventionName,

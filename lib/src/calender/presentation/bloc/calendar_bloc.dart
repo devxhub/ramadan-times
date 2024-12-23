@@ -4,24 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ramadantimes/src/calender/data/repositories/calender_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../dbHelper/dbErrorHelper.dart';
 import '../../../models/calendar_model/datum.dart';
 import '../../../models/timing/timeofmonth.dart';
 import 'calendar_event.dart';
 import 'calendar_state.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:stream_transform/stream_transform.dart';
 
 const throttleDuration = Duration(milliseconds: 100);
 
-EventTransformer<E> throttleDroppable<E>(Duration duration) {
-  return (events, mapper) {
-    return droppable<E>().call(events.throttle(duration), mapper);
-  };
-}
-
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  final dbHelperCalendar = DBHelp1.instance; //database initialize
   final CalenderRepository calenderRepository;
 
   late List<TimeOfMonth> localSQFCalendar;
@@ -35,7 +25,6 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     // );
     on<CalendarDaySelected>(
       _onCalendarDaySelected,
-      transformer: throttleDroppable(throttleDuration),
     );
   }
 

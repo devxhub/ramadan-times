@@ -1,12 +1,9 @@
 import 'dart:convert';
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../bloc/home/bloc/calendar_bloc.dart';
 import '../bloc/home/bloc/calendar_event.dart';
 import '../bloc/location/location_cubit.dart';
@@ -91,20 +88,27 @@ class _LocationPickerState extends State<LocationPicker> {
                   width: 8,
                 ),
                 DropdownButton<District>(
-                  hint: AutoSizeText(selectedLocation?.bn_name ?? ""),
+                  hint: Text(selectedLocation?.bn_name ?? ""),
                   // value: selectedLocation,
                   borderRadius: BorderRadius.circular(12.r),
                   menuMaxHeight: 600.h,
                   underline: const SizedBox(),
                   icon: const Icon(Icons.keyboard_arrow_down),
                   items: data.map(
-                        (e) {
+                    (e) {
                       return DropdownMenuItem(
-                          value: e, child: AutoSizeText(e.bn_name.toString()));
+                          value: e, child: Text(e.bn_name.toString()));
                     },
                   ).toList(),
                   onChanged: (v) async {
-                    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.prayerTimesDataLoaded(latitude: double.parse(v?.lat.toString()??"23.7115253"),longitude:double.parse(v?.lon.toString()??"90.4111451"), ));
+                    context
+                        .read<PrayerTimeBloc>()
+                        .add(PrayerTimeEvent.prayerTimesDataLoaded(
+                          latitude:
+                              double.parse(v?.lat.toString() ?? "23.7115253"),
+                          longitude:
+                              double.parse(v?.lon.toString() ?? "90.4111451"),
+                        ));
                     setState(() {
                       selectedLocation = v!;
                     });
@@ -116,12 +120,12 @@ class _LocationPickerState extends State<LocationPicker> {
                     print("object");
                     if (!mounted) return;
                     context.read<HomeBloc>().add(
-                      DataFetched(
-                          date: DateFormat("dd-MM-yyyy").format(
-                            DateTime.now(),
-                          ),
-                          city: v!.name),
-                    );
+                          DataFetched(
+                              date: DateFormat("dd-MM-yyyy").format(
+                                DateTime.now(),
+                              ),
+                              city: v!.name),
+                        );
                     print("object1");
                   },
                 ),

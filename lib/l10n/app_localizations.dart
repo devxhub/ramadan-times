@@ -492,6 +492,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select Isha Angle:'**
   String get selectIshaAngle;
+
+  /// No description provided for @showImsakInPrayerTimesPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Imsak in Prayer Times page'**
+  String get showImsakInPrayerTimesPage;
+
+  /// No description provided for @manualCorrection.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual Corrections'**
+  String get manualCorrection;
+
+  /// No description provided for @minute.
+  ///
+  /// In en, this message translates to:
+  /// **'minute'**
+  String get minute;
+
+  /// No description provided for @selectedTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Time'**
+  String get selectedTime;
+
+  /// No description provided for @sunRise.
+  ///
+  /// In en, this message translates to:
+  /// **'Sun Rise'**
+  String get sunRise;
+
+  /// No description provided for @resetTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Time'**
+  String get resetTime;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @playAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'Play Ayah'**
+  String get playAyah;
+
+  /// No description provided for @playSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'Play Surah'**
+  String get playSurah;
+
+  /// No description provided for @onInternetConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please turn on internet'**
+  String get onInternetConnection;
+
+  /// No description provided for @translation.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get translation;
+
+  /// No description provided for @transliteration.
+  ///
+  /// In en, this message translates to:
+  /// **'Transliteration'**
+  String get transliteration;
+
+  /// No description provided for @revealedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Revealed in'**
+  String get revealedIn;
+
+  /// No description provided for @nowPlaying.
+  ///
+  /// In en, this message translates to:
+  /// **'Now Playing'**
+  String get nowPlaying;
+
+  /// No description provided for @ayah.
+  ///
+  /// In en, this message translates to:
+  /// **'Ayah'**
+  String get ayah;
+
+  /// No description provided for @makkah.
+  ///
+  /// In en, this message translates to:
+  /// **'Makkah'**
+  String get makkah;
+
+  /// No description provided for @madinah.
+  ///
+  /// In en, this message translates to:
+  /// **'Madinah'**
+  String get madinah;
+
+  /// No description provided for @searchSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Surah...'**
+  String get searchSurah;
+
+  /// No description provided for @imsak.
+  ///
+  /// In en, this message translates to:
+  /// **'Imsak'**
+  String get imsak;
+
+  /// No description provided for @autoDetectLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-detect Location'**
+  String get autoDetectLocation;
+
+  /// No description provided for @prayerTimeCalculation.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Time Calculation'**
+  String get prayerTimeCalculation;
+
+  /// No description provided for @minutesBeforeFajr.
+  ///
+  /// In en, this message translates to:
+  /// **'minutes before Fajr'**
+  String get minutesBeforeFajr;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

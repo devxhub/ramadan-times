@@ -109,5 +109,32 @@
    "minutes":"minutes",
    "maghribAngle": "Maghrib Angle",
    "selectFajrAngle": "Select Fajr Angle:",
-   "selectIshaAngle": "Select Isha Angle:"
+   "selectIshaAngle": "Select Isha Angle:",
+   "showImsakInPrayerTimesPage": "Show Imsak in Prayer Times page",
+    "manualCorrection":"Manual Corrections",
+    "minute":"minute",
+    "selectedTime":"Selected Time",
+    "sunRise":"Sun Rise",
+    "resetTime":"Reset Time",
+    "done":"Done",
+    "cancel":"Cancel",
+    "playAyah":"Play Ayah",
+    "playSurah":"Play Surah",
+    "onInternetConnection":"No internet connection. Please turn on internet",
+    "translation":"Translation", 
+    "transliteration":"Transliteration", 
+    "revealedIn":"Revealed in",
+    "nowPlaying":"Now Playing",
+    "ayah":"Ayah",
+    "makkah":"Makkah",
+    "madinah":"Madinah",
+    "searchSurah": "Search Surah...",
+    "imsak":"Imsak",
+    "autoDetectLocation": "Auto-detect Location",
+    "prayerTimeCalculation":"Prayer Time Calculation",
+    "minutesBeforeFajr": "minutes before Fajr",
+    "settings":"Settings"
+
+ 
+
 }

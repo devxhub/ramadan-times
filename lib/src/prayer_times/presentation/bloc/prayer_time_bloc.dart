@@ -1,5 +1,4 @@
-import 'package:bloc/bloc.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +7,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meta/meta.dart';
 import 'package:ramadantimes/src/models/address/district.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
+import 'package:ramadantimes/src/prayer_times/data/models/manual_prayer_time.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
@@ -48,11 +47,23 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         imsakTimeDataLoaded: (event) async =>
             await _imsakTimeDataLoaded(event, emit),
         isImsakTimeShow: (event) async => await _isImsakTimeShow(event, emit),
-        autoDetectLocationStatusChange: (event) async => await _autoDetectLocationStatusChange(event, emit),
+        autoDetectLocationStatusChange: (event) async =>
+            await _autoDetectLocationStatusChange(event, emit),
         selectPrayerConvention: (event) async =>
             await _selectPrayerConvention(event, emit),
         selectAngle: (event) async => await _selectAngle(event, emit),
-        selectCustomImsakTime: (event) async => await _selectCustomImsakTime(event, emit),
+        selectCustomImsakTime: (event) async =>
+            await _selectCustomImsakTime(event, emit),
+        manuallyPrayerTimeChange: (event) async =>
+            await _manuallyPrayerTimeChange(event, emit),
+        manuallyPrayerTimeDataLoaded: (event) async =>
+            await _manuallyPrayerTimeDataLoaded(event, emit),
+        onchangeTimeSelected: (event) async =>
+            await _onchangeTimeSelected(event, emit),
+        resetManualPrayerTime: (event) async =>
+            await _resetManualPrayerTime(event, emit),
+        selectedTimeUpdate: (event) async =>
+            await _selectedTimeUpdate(event, emit),
       );
     });
   }
@@ -164,7 +175,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     String userCity = prefs.getString('currentCity') ?? "";
     String userCountry = prefs.getString('currentCountry') ?? "";
     String userIsoCountryCode = prefs.getString('isoCountryCode') ?? "";
-    bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
+    bool isAutoDetectLocationEnable =
+        prefs.getBool('isAutoDetectLocationEnable') ?? false;
 
     var coordinator = UserCoordinator(
       userLat: userLat,
@@ -173,7 +185,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       userCity: userCity,
       userCountryIso: userIsoCountryCode,
     );
-    if (userCity.isEmpty == true||isAutoDetectLocationEnable==true) {
+    if (userCity.isEmpty == true || isAutoDetectLocationEnable == true) {
       try {
         bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
         if (!serviceEnabled) {
@@ -181,7 +193,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         }
 
         LocationPermission permission = await Geolocator.checkPermission();
-        ConnectivityResult connection =
+        List<ConnectivityResult> connection =
             await Connectivity().checkConnectivity();
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         double currentLatitude =
@@ -192,7 +204,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         String currentCountry = prefs.getString('currentCountry') ?? "Dhaka";
         String currentIsoCode = prefs.getString('isoCountryCode') ?? "BD";
 
-        if (connection == ConnectivityResult.none) {
+        if (connection.contains(ConnectivityResult.none)) {
           permission = await Geolocator.requestPermission();
           if (permission == LocationPermission.denied) {
             _saveLocationToPreferences(23.7115253, 90.4111451);
@@ -487,13 +499,14 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     final isImsakEnable = prefs.getBool(
       'isImsakEnable',
     );
-    final customImsakTime =  prefs.getInt('customImsakTime');
-    bool isAutoDetectLocationEnable= prefs.getBool('isAutoDetectLocationEnable')??false;
+    final customImsakTime = prefs.getInt('customImsakTime');
+    bool isAutoDetectLocationEnable =
+        prefs.getBool('isAutoDetectLocationEnable') ?? false;
     emit(
-      state.copyWith(isImsakEnable: isImsakEnable ?? false,
-      isAutoDetectLocationEnable: isAutoDetectLocationEnable,
-        imsakTime: customImsakTime??0
-      ),
+      state.copyWith(
+          isImsakEnable: isImsakEnable ?? false,
+          isAutoDetectLocationEnable: isAutoDetectLocationEnable,
+          imsakTime: customImsakTime ?? 0),
     );
   }
 
@@ -506,14 +519,17 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       state.copyWith(isImsakEnable: event.isImsakEnable),
     );
   }
-  _autoDetectLocationStatusChange(
-      _AutoDetectLocationStatusChange event, Emitter<PrayerTimeState> emit) async {
+
+  _autoDetectLocationStatusChange(_AutoDetectLocationStatusChange event,
+      Emitter<PrayerTimeState> emit) async {
     final prayerBloc = event.context.read<PrayerTimeBloc>();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isAutoDetectLocationEnable', event.isAutoDetectLocationEnable);
+    await prefs.setBool(
+        'isAutoDetectLocationEnable', event.isAutoDetectLocationEnable);
     prayerBloc.add(PrayerTimeEvent.locationPermission(context: event.context));
     emit(
-      state.copyWith(isAutoDetectLocationEnable: event.isAutoDetectLocationEnable),
+      state.copyWith(
+          isAutoDetectLocationEnable: event.isAutoDetectLocationEnable),
     );
   }
 
@@ -526,12 +542,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
-    emit(
-        state.copyWith(selectedPrayerConventionName: event.prayerConventionName,
-          selectedFajrAngle: event.fajrAngle,
-          selectedIshaAngle: event.ishaAngle,
-          userCoordinator: event.userCoordinator,)
-    );
+    emit(state.copyWith(
+      selectedPrayerConventionName: event.prayerConventionName,
+      selectedFajrAngle: event.fajrAngle,
+      selectedIshaAngle: event.ishaAngle,
+      userCoordinator: event.userCoordinator,
+    ));
     prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
@@ -543,21 +559,81 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await writeSelectedConvention(event.prayerConventionName);
     await writeFajrAngle(event.fajrAngle);
     await writeIshaAngle(event.ishaAngle);
-    emit(
-
-      state.copyWith(selectedPrayerConventionName: event.prayerConventionName,
-        selectedFajrAngle: event.fajrAngle,
-        selectedIshaAngle: event.ishaAngle,
-        userCoordinator: event.userCoordinator,)
-    );
+    emit(state.copyWith(
+      selectedPrayerConventionName: event.prayerConventionName,
+      selectedFajrAngle: event.fajrAngle,
+      selectedIshaAngle: event.ishaAngle,
+      userCoordinator: event.userCoordinator,
+    ));
     prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
       latitude: event.userCoordinator.userLat!,
       longitude: event.userCoordinator.userLng!,
     ));
   }
-  _selectCustomImsakTime(_SelectCustomImsakTime event, Emitter<PrayerTimeState> emit) async {
+
+  _selectCustomImsakTime(
+      _SelectCustomImsakTime event, Emitter<PrayerTimeState> emit) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('customImsakTime', event.customImsakTime);
-    emit( state.copyWith(imsakTime:event.customImsakTime));
+    emit(state.copyWith(imsakTime: event.customImsakTime));
+  }
+
+  _manuallyPrayerTimeDataLoaded(_ManuallyPrayerTimeDataLoaded event,
+      Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final fazr = prefs.getInt('Fajr');
+    final dhuhr = prefs.getInt('Dhuhr');
+    final asr = prefs.getInt('Asr');
+    final maghrib = prefs.getInt('Maghrib');
+    final isha = prefs.getInt('Isha');
+    final sunrise = prefs.getInt('Sunrise');
+    final manualPrayerTime = ManualPrayerTime(
+      manualFajrTime: fazr,
+      manualSunriseTime: sunrise,
+      manualDhuhrTime: dhuhr,
+      manualAsrTime: asr,
+      manualMaghribTime: maghrib,
+      manualIshaTime: isha,
+    );
+
+    emit(state.copyWith(manualPrayerTime: manualPrayerTime));
+  }
+
+  _manuallyPrayerTimeChange(
+      _ManuallyPrayerTimeChange event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final updatedManualPrayerTime = event.manualPrayerTime;
+    await prefs.setInt('Fajr', event.manualPrayerTime.manualFajrTime ?? 0);
+    await prefs.setInt('Dhuhr', event.manualPrayerTime.manualDhuhrTime ?? 0);
+    await prefs.setInt('Asr', event.manualPrayerTime.manualAsrTime ?? 0);
+    await prefs.setInt(
+        'Maghrib', event.manualPrayerTime.manualMaghribTime ?? 0);
+    await prefs.setInt('Isha', event.manualPrayerTime.manualIshaTime ?? 0);
+    await prefs.setInt(
+        'Sunrise', event.manualPrayerTime.manualSunriseTime ?? 0);
+
+    emit(state.copyWith(manualPrayerTime: updatedManualPrayerTime));
+  }
+
+  _onchangeTimeSelected(
+      _OnchangeTimeSelected event, Emitter<PrayerTimeState> emit) async {
+    emit(state.copyWith(selectedTime: event.onchangeTime));
+  }
+
+  _resetManualPrayerTime(
+      _ResetManualPrayerTime event, Emitter<PrayerTimeState> emit) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('Fajr', 0);
+    await prefs.setInt('Dhuhr', 0);
+    await prefs.setInt('Asr', 0);
+    await prefs.setInt('Maghrib', 0);
+    await prefs.setInt('Isha', 0);
+    await prefs.setInt('Sunrise', 0);
+    emit(state.copyWith(manualPrayerTime: ManualPrayerTime()));
+  }
+
+  _selectedTimeUpdate(
+      _SelectedTimeUpdate event, Emitter<PrayerTimeState> emit) async {
+    emit(state.copyWith(selectedTime: event.time));
   }
 }

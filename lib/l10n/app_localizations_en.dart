@@ -248,4 +248,76 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectIshaAngle => 'Select Isha Angle:';
+
+  @override
+  String get showImsakInPrayerTimesPage => 'Show Imsak in Prayer Times page';
+
+  @override
+  String get manualCorrection => 'Manual Corrections';
+
+  @override
+  String get minute => 'minute';
+
+  @override
+  String get selectedTime => 'Selected Time';
+
+  @override
+  String get sunRise => 'Sun Rise';
+
+  @override
+  String get resetTime => 'Reset Time';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get playAyah => 'Play Ayah';
+
+  @override
+  String get playSurah => 'Play Surah';
+
+  @override
+  String get onInternetConnection => 'No internet connection. Please turn on internet';
+
+  @override
+  String get translation => 'Translation';
+
+  @override
+  String get transliteration => 'Transliteration';
+
+  @override
+  String get revealedIn => 'Revealed in';
+
+  @override
+  String get nowPlaying => 'Now Playing';
+
+  @override
+  String get ayah => 'Ayah';
+
+  @override
+  String get makkah => 'Makkah';
+
+  @override
+  String get madinah => 'Madinah';
+
+  @override
+  String get searchSurah => 'Search Surah...';
+
+  @override
+  String get imsak => 'Imsak';
+
+  @override
+  String get autoDetectLocation => 'Auto-detect Location';
+
+  @override
+  String get prayerTimeCalculation => 'Prayer Time Calculation';
+
+  @override
+  String get minutesBeforeFajr => 'minutes before Fajr';
+
+  @override
+  String get settings => 'Settings';
 }
