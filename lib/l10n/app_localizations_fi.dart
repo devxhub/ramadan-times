@@ -302,4 +302,22 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get settings => 'Asetukset';
+
+  @override
+  String get selectUserLocation => 'Valitse käyttäjän sijainti';
+
+  @override
+  String get noResultsFound => 'Ei tuloksia';
+
+  @override
+  String get selectACountry => 'Valitse maa';
+
+  @override
+  String get pleaseSelectACity => 'Valitse kaupunki';
+
+  @override
+  String get countrySavedSuccessfully => 'Maa tallennettu onnistuneesti!';
+
+  @override
+  String get countryIsNotFoundInTheList => 'Maata ei löytynyt luettelosta!';
 }

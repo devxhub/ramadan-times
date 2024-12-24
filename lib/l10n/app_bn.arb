@@ -133,7 +133,15 @@
    "autoDetectLocation": "অবস্থান স্বয়ংক্রিয় সনাক্তকরণ",
    "prayerTimeCalculation": "নামাজের সময় গণনা",
    "minutesBeforeFajr": "ফজরের আগে মিনিট",
-   "settings": "সেটিংস"
+   "settings": "সেটিংস",
+   "selectUserLocation": "ব্যবহারকারীর অবস্থান নির্বাচন করুন",
+   "selectYourCountry": "আপনার দেশ নির্বাচন করুন",
+   "noResultsFound": "কোন ফলাফল পাওয়া যায়নি",
+   "selectACountry": "একটি দেশ নির্বাচন করুন",
+   "selectYourCity": "আপনার শহর নির্বাচন করুন",
+   "pleaseSelectACity": "অনুগ্রহ করে একটি শহর নির্বাচন করুন",
+   "countrySavedSuccessfully": "দেশ সফলভাবে সংরক্ষণ করা হয়েছে!",
+   "countryIsNotFoundInTheList": "তালিকায় দেশটি পাওয়া যায়নি!"
 
 
 }

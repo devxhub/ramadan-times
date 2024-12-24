@@ -321,4 +321,22 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get settings => 'সেটিংস';
+
+  @override
+  String get selectUserLocation => 'ব্যবহারকারীর অবস্থান নির্বাচন করুন';
+
+  @override
+  String get noResultsFound => 'কোন ফলাফল পাওয়া যায়নি';
+
+  @override
+  String get selectACountry => 'একটি দেশ নির্বাচন করুন';
+
+  @override
+  String get pleaseSelectACity => 'অনুগ্রহ করে একটি শহর নির্বাচন করুন';
+
+  @override
+  String get countrySavedSuccessfully => 'দেশ সফলভাবে সংরক্ষণ করা হয়েছে!';
+
+  @override
+  String get countryIsNotFoundInTheList => 'তালিকায় দেশটি পাওয়া যায়নি!';
 }

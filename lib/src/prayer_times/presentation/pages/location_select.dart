@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nextgen_button/nextgen_button.dart';
+import 'package:ramadantimes/l10n/app_localizations.dart';
 import 'package:ramadantimes/src/bloc/location/country_cubit.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
 import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
@@ -38,7 +38,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: const Text("Select user location"),
+        title: Text(AppLocalizations.of(context)!.selectUserLocation),
       ),
       body: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
         builder: (context, prayerTimeState) {
@@ -50,7 +50,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Select Your Country",
+                  AppLocalizations.of(context)!.selectYourCountry,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
@@ -59,11 +59,13 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   optionsViewBuilder: (context, onSelected, options) {
                     return Container(
                       height: 300.w,
-                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
                         child: DecoratedBox(
-                          decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                          decoration:
+                              BoxDecoration(color: Colors.white, boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.1),
                               blurRadius: 6,
@@ -78,28 +80,36 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                               final option = options.elementAt(index);
                               return option.name == 'No results found'
                                   ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "No results found",
-                                        style: TextStyle(color: Colors.grey, fontSize: 16.sp),
-                                      ),
-                                    ],
-                                  )
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .noResultsFound,
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 16.sp),
+                                        ),
+                                      ],
+                                    )
                                   : ListTile(
-                                title: Text(option.name ?? ''),
-                                onTap: () {
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                  context.read<CountryCubit>().selectedCountry(option.name ?? '');
-                                  context.read<PrayerTimeBloc>().add(
-                                    PrayerTimeEvent.selectCountry(
-                                      context: context,
-                                      country: option,
-                                    ),
-                                  );
-                                },
-                              );
+                                      title: Text(option.name ?? ''),
+                                      onTap: () {
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                        context
+                                            .read<CountryCubit>()
+                                            .selectedCountry(option.name ?? '');
+                                        context.read<PrayerTimeBloc>().add(
+                                              PrayerTimeEvent.selectCountry(
+                                                context: context,
+                                                country: option,
+                                              ),
+                                            );
+                                      },
+                                    );
                             },
                           ),
                         ),
@@ -114,29 +124,19 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                     final query = textEditingValue.text.toLowerCase();
 
                     // Exact matches: names that start with the search query
-                    final exactMatches = filterCountryList.where((skatepark) =>
-                        skatepark.name?.toLowerCase().startsWith(query) ??
+                    final exactMatches = filterCountryList.where((location) =>
+                        location.name?.toLowerCase().startsWith(query) ??
                         false);
 
-                    // Partial matches: names that contain the search query but don't start with it
-                    final partialMatches = filterCountryList.where(
-                        (skatepark) =>
-                            skatepark.name?.toLowerCase().contains(query) ??
-                            false &&
-                                !(skatepark.name
-                                        ?.toLowerCase()
-                                        .startsWith(query) ??
-                                    false));
-
                     // Combine exact matches first, followed by partial matches
-                    final filteredSkateparksData = [
+                    final filteredSkateParksData = [
                       ...exactMatches,
                       // ...partialMatches,
                     ];
                     // Return options or a placeholder for no results
-                    return filteredSkateparksData.isEmpty
+                    return filteredSkateParksData.isEmpty
                         ? [Country(name: 'No results found')]
-                        : filteredSkateparksData;
+                        : filteredSkateParksData;
                   },
                   fieldViewBuilder: (context, textEditingController,
                           textSearchFocus, function) =>
@@ -164,7 +164,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         enableSuggestions: true,
                         controller: textEditingController,
                         decoration: InputDecoration(
-                          labelText: "Select a Country",
+                          labelText:
+                              AppLocalizations.of(context)!.selectACountry,
                           floatingLabelBehavior: FloatingLabelBehavior.never,
                           border: OutlineInputBorder(
                             borderRadius:
@@ -181,7 +182,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                     "bangladesh") ...[
                   SizedBox(height: 24.h),
                   Text(
-                    "Select Your City",
+                    AppLocalizations.of(context)!.selectYourCity,
                     style:
                         TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
@@ -198,9 +199,12 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                               if (options.isEmpty) {
                                 return Column(
                                   children: [
-                                    SizedBox(height: 300.h,),
+                                    SizedBox(
+                                      height: 300.h,
+                                    ),
                                     Text(
-                                      "No results found",
+                                      AppLocalizations.of(context)!
+                                          .noResultsFound,
                                       style: TextStyle(
                                           color: Colors.grey, fontSize: 16.sp),
                                     ),
@@ -211,8 +215,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                 clipBehavior: Clip.hardEdge,
                                 borderRadius: BorderRadius.circular(12.r),
                                 child: DecoratedBox(
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white),
+                                  decoration:
+                                      const BoxDecoration(color: Colors.white),
                                   child: ListView.builder(
                                     shrinkWrap: true,
                                     physics: const BouncingScrollPhysics(),
@@ -227,7 +231,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                               vertical: height / 2),
                                           child: Center(
                                             child: Text(
-                                              "No results found",
+                                              AppLocalizations.of(context)!
+                                                  .noResultsFound,
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 16.sp),
@@ -250,9 +255,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                                 .selectedCity(
                                                     option.name ?? '');
 
-                                            context
-                                                .read<PrayerTimeBloc>()
-                                                .add(
+                                            context.read<PrayerTimeBloc>().add(
                                                   PrayerTimeEvent.selectCity(
                                                     context: context,
                                                     district: option,
@@ -286,17 +289,6 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                       ?.toLowerCase()
                                       .startsWith(query) ??
                                   false);
-
-                              // Partial matches: names that contain the search query but don't start with it
-                              final partialMatches = data.where((skatepark) =>
-                                  skatepark.name
-                                      ?.toLowerCase()
-                                      .contains(query) ??
-                                  false &&
-                                      !(skatepark.name
-                                              ?.toLowerCase()
-                                              .startsWith(query) ??
-                                          false));
 
                               // Combine exact matches first, followed by partial matches
                               final filteredSkateparksData = [
@@ -337,7 +329,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                   decoration: InputDecoration(
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.never,
-                                    labelText: "Select a City",
+                                    labelText: AppLocalizations.of(context)!
+                                        .selectACity,
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12.r),
                                     ),
@@ -355,7 +348,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   ),
                   prayerTimeState.isDistrictSelected == false
                       ? Text(
-                          "Please Select a city",
+                          AppLocalizations.of(context)!.pleaseSelectACity,
                           style: TextStyle(color: Colors.red, fontSize: 14.sp),
                         )
                       : SizedBox()
@@ -376,7 +369,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'Country saved successfully!',
+                                AppLocalizations.of(context)!
+                                    .countrySavedSuccessfully,
                                 style: TextStyle(color: Colors.white),
                               ),
                               backgroundColor: Colors.black,
@@ -421,7 +415,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Country saved successfully!',
+                              AppLocalizations.of(context)!
+                                  .countrySavedSuccessfully,
                               style: TextStyle(color: Colors.white),
                             ),
                             backgroundColor: Colors.black,
@@ -453,7 +448,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'Country is not found in the list!',
+                            AppLocalizations.of(context)!
+                                .countryIsNotFoundInTheList,
                             style: TextStyle(color: Colors.white),
                           ),
                           backgroundColor: Colors.red,
@@ -475,7 +471,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                       PrayerTimeStatus.initial,
                   // Show loading indicator
                   titleText: Text(
-                    "Save",
+                    AppLocalizations.of(context)!.save,
                     style: TextStyle(
                       fontSize: 16.w,
                       fontWeight: FontWeight.w700,

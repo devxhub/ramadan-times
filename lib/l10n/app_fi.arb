@@ -133,5 +133,13 @@
   "autoDetectLocation": "Automaattinen sijainnin tunnistus",
   "prayerTimeCalculation": "Rukousaikojen laskenta",
   "minutesBeforeFajr": "minuuttia ennen Fajr",
-  "settings": "Asetukset"
+  "settings": "Asetukset",
+  "selectUserLocation": "Valitse käyttäjän sijainti",
+  "selectYourCountry": "Valitse maasi",
+  "noResultsFound": "Ei tuloksia",
+  "selectACountry": "Valitse maa",
+  "selectYourCity": "Valitse kaupunkisi",
+  "pleaseSelectACity": "Valitse kaupunki",
+  "countrySavedSuccessfully": "Maa tallennettu onnistuneesti!",
+  "countryIsNotFoundInTheList": "Maata ei löytynyt luettelosta!"
 }
