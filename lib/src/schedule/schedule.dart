@@ -81,8 +81,7 @@ class _SchedulePageState extends State<SchedulePage> {
         },
         child: BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
           builder: (context, state) {
-            if (state.prayerStatus == PrayerStatus.initial ||
-                state.prayerTimesResponse.fajrStart == null) {
+            if (state.prayerTimesResponse.fajrStart == null) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );

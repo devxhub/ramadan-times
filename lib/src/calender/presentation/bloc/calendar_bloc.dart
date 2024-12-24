@@ -45,8 +45,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
         double? longitude;
         getLatLongFromStorage() async {
           final SharedPreferences prefs = await SharedPreferences.getInstance();
-          latitude = prefs.getDouble('latitude');
-          longitude = prefs.getDouble('longitude');
+          latitude = prefs.getDouble('currentLatitude');
+          longitude = prefs.getDouble('currentLongitude');
         }
 
         await getLatLongFromStorage();
