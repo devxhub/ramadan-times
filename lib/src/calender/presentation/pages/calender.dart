@@ -8,6 +8,7 @@ import 'package:ramadantimes/src/calender/presentation/bloc/calendar_event.dart'
 import 'package:ramadantimes/src/calender/presentation/bloc/calendar_state.dart';
 import 'package:ramadantimes/src/calender/utils.dart';
 import 'package:ramadantimes/src/models/calendar_model/datum.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../component/eng_to_bn.dart';
@@ -158,7 +159,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 .titleLarge
                                 ?.copyWith(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 14.sp,
+                                  fontSize: isLargeScreen ? 10.sp : 14.sp,
                                   color: Colors.white,
                                 ),
                           ),
@@ -179,7 +180,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 .titleLarge
                                 ?.copyWith(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 16.sp,
+                                  fontSize: isLargeScreen ? 10.sp : 16.sp,
                                   color: Colors.black,
                                 ),
                           ),
@@ -201,7 +202,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 ?.copyWith(
                                   // height: 1,
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 14.sp,
+                                  fontSize: isLargeScreen ? 10.5.sp : 14.sp,
                                   color: Colors.black,
                                 ),
                           ),
@@ -401,7 +402,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           .textTheme
                                           .titleLarge!
                                           .copyWith(
-                                            fontSize: 18,
+                                            fontSize:
+                                                isLargeScreen ? 13.sp : 8.sp,
                                             color: Colors.black87,
                                           ),
                                     ),
@@ -413,7 +415,8 @@ class CalendarPageState extends State<CalendarPage> {
                                           .copyWith(
                                             height: 1.4,
                                             fontWeight: FontWeight.w700,
-                                            fontSize: 16,
+                                            fontSize:
+                                                isLargeScreen ? 11.sp : 7.sp,
                                             color: const Color(0xff75718B),
                                           ),
                                     ),
@@ -641,8 +644,8 @@ class TimeCard extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 20,
-          width: 20,
+          height: 12.h,
+          width: 9.w,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
@@ -666,8 +669,8 @@ class TimeCard extends StatelessWidget {
               children: [
                 Image.asset(
                   icon ?? "assets/images/moon1.png",
-                  height: 60,
-                  width: 32,
+                  height: isLargeScreen ? 60.h : 20.h,
+                  width: isLargeScreen ? 32.h : 12.w,
                 ),
                 const SizedBox(
                   width: 24,
@@ -681,7 +684,7 @@ class TimeCard extends StatelessWidget {
                       name,
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontWeight: FontWeight.w700,
-                            fontSize: 18,
+                            fontSize: isLargeScreen ? 11.sp : 7.sp,
                             color: Colors.black87,
                           ),
                     ),
@@ -690,7 +693,7 @@ class TimeCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             height: 1,
                             fontWeight: FontWeight.w700,
-                            fontSize: 16,
+                            fontSize: isLargeScreen ? 11.sp : 6.sp,
                             color: const Color(0xff75718B),
                           ),
                     ),

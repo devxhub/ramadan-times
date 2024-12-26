@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ramadantimes/src/component/eng_to_bn.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../prayer_times/presentation/pages/manual_prayer_time.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';
@@ -33,7 +34,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             builder: (context, state) {
               return SwitchListTile(
                 title: Text(
-                    AppLocalizations.of(context)!.showImsakInPrayerTimesPage),
+                  AppLocalizations.of(context)!.showImsakInPrayerTimesPage,
+                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                ),
                 value: state.isImsakEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
@@ -47,7 +50,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ListTile(
             title: Text(
               AppLocalizations.of(context)!.prayerTimeCalculation,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: isLargeScreen ? 12.sp : 5.sp),
             ),
           ),
           // ListTile(
@@ -57,7 +62,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           BlocBuilder<PrayerTimeBloc, PrayerTimeState>(
             builder: (context, state) {
               return SwitchListTile(
-                title: Text(AppLocalizations.of(context)!.autoDetectLocation),
+                title: Text(
+                  AppLocalizations.of(context)!.autoDetectLocation,
+                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                ),
                 value: state.isAutoDetectLocationEnable,
                 onChanged: (value) {
                   context.read<PrayerTimeBloc>().add(
@@ -89,9 +97,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   );
                 },
-                title: Text(AppLocalizations.of(context)!.prayerTimeConvention),
+                title: Text(
+                  AppLocalizations.of(context)!.prayerTimeConvention,
+                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                ),
                 subtitle: Text(
                   "${state.selectedPrayerConventionName == 'Custom Angle' ? AppLocalizations.of(context)!.customAngles : state.selectedPrayerConventionName}\n${getPrayerAngle(context, state.selectedPrayerConventionName, state.selectedFajrAngle, state.selectedIshaAngle)}",
+                  style: TextStyle(fontSize: isLargeScreen ? 8.sp : 4.sp),
                 ),
               );
             },
@@ -108,9 +120,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
                 child: ListTile(
-                  title: Text(AppLocalizations.of(context)!.manualCorrection),
+                  title: Text(
+                    AppLocalizations.of(context)!.manualCorrection,
+                    style: TextStyle(fontSize: isLargeScreen ? 12.sp : 4.sp),
+                  ),
                   subtitle: Text(
-                      '${state.manualPrayerTime.manualFajrTime ?? 0},${state.manualPrayerTime.manualSunriseTime ?? 0}, ${state.manualPrayerTime.manualDhuhrTime ?? 0}, ${state.manualPrayerTime.manualAsrTime ?? 0}, ${state.manualPrayerTime.manualMaghribTime ?? 0},${state.manualPrayerTime.manualIshaTime ?? 0}'),
+                    '${state.manualPrayerTime.manualFajrTime ?? 0},${state.manualPrayerTime.manualSunriseTime ?? 0}, ${state.manualPrayerTime.manualDhuhrTime ?? 0}, ${state.manualPrayerTime.manualAsrTime ?? 0}, ${state.manualPrayerTime.manualMaghribTime ?? 0},${state.manualPrayerTime.manualIshaTime ?? 0}',
+                    style: TextStyle(fontSize: isLargeScreen ? 8.sp : 4.sp),
+                  ),
                 ),
               );
             },
@@ -138,7 +155,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         title: Text(
                           AppLocalizations.of(context)!.imsak,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold,
+                              fontSize: isLargeScreen ? 12.sp : 5.sp),
                         ),
                         content: SizedBox(
                           width: double.maxFinite,
@@ -158,7 +176,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 },
                                 title: Text(
                                   '${engToBn(index.toString(), context)} ${AppLocalizations.of(context)!.localeName == "fi" ? index > 1 ? "minuuttia" : "minuutti" : "${AppLocalizations.of(context)!.minute}${AppLocalizations.of(context)!.localeName == "en" && index > 1 ? "s" : ""}"} ',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(
+                                      fontSize: isLargeScreen ? 12.sp : 5.sp),
                                 ),
                                 activeColor:
                                     Colors.teal, // Matches your screenshot
@@ -182,9 +201,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
                 child: ListTile(
-                  title: Text(AppLocalizations.of(context)!.imsak),
+                  title: Text(
+                    AppLocalizations.of(context)!.imsak,
+                    style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                  ),
                   subtitle: Text(
-                      '${state.imsakTime} ${AppLocalizations.of(context)!.minutesBeforeFajr}'),
+                    '${state.imsakTime} ${AppLocalizations.of(context)!.minutesBeforeFajr}',
+                    style: TextStyle(fontSize: isLargeScreen ? 10.sp : 5.sp),
+                  ),
                 ),
               );
             },
