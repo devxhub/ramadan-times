@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 
 import '../../l10n/app_localizations.dart';
 
@@ -38,18 +40,25 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
           children: [
             Text(
               "نَوَيْتُ اَنْ اُصُوْمَ غَدًا مِّنْ شَهْرِ رَمْضَانَ الْمُبَارَكِ فَرْضَا لَكَ يَا اللهُ فَتَقَبَّل مِنِّى اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْم",
-              style: Theme.of(context).textTheme.headlineSmall,
+              style: GoogleFonts.amiri(
+                height: isLargeScreen ? 2 : 1,
+                fontSize: isLargeScreen ? 13.sp : 8.5.sp,
+              ),
               textAlign: TextAlign.right,
             ),
             Text(
               "উচ্চারণ : নাওয়াইতু আন আছুমা গদাম মিং শাহরি রমাদ্বানাল মুবারকি ফারদ্বল্লাকা ইয়া আল্লাহু ফাতাক্বব্বাল মিন্নী ইন্নাকা আংতাস সামীউল আলীম",
               textAlign: TextAlign.justify,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: GoogleFonts.amiri(
+                fontSize: isLargeScreen ? 13.sp : 8.5.sp,
+              ),
             ),
             Text(
               "অর্থ : হে আল্লাহ! আমি আগামীকাল পবিত্র রমজানের তোমার পক্ষ থেকে নির্ধারিত ফরজ রোজা রাখার ইচ্ছা পোষণ (নিয়্যত) করলাম। অতএব তুমি আমার পক্ষ থেকে (আমার রোযা তথা পানাহার থেকে বিরত থাকাকে) কবুল কর, নিশ্চয়ই তুমি সর্বশ্রোতা ও সর্বজ্ঞানী।",
               textAlign: TextAlign.justify,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: GoogleFonts.amiri(
+                fontSize: 8.5.sp,
+              ),
             ),
           ],
         ),
@@ -66,17 +75,24 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
             Text(
               "اَللَّهُمَّ لَكَ صُمْتُ وَ عَلَى رِزْقِكَ وَ اَفْطَرْتُ بِرَحْمَتِكَ يَا اَرْحَمَ الرَّاحِيْمِيْن",
               textAlign: TextAlign.right,
-              style: Theme.of(context).textTheme.headlineSmall,
+              style: GoogleFonts.amiri(
+                height: isLargeScreen ? 2 : 1,
+                fontSize: isLargeScreen ? 13.sp : 8.5.sp,
+              ),
             ),
             Text(
               "উচ্চারণ : আল্লাহুম্মা লাকা ছুমতু ওয়া আলা রিযক্বিকা ওয়া আফতারতু বিরাহমাতিকা ইয়া আরহামার রাহিমিন",
               textAlign: TextAlign.justify,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: GoogleFonts.amiri(
+                fontSize: isLargeScreen ? 13.sp : 8.5.sp,
+              ),
             ),
             Text(
               "অর্থ : হে আল্লাহ! আমি তোমারই সন্তুষ্টির জন্য রোজা রেখেছি এবং তোমারই দেয়া রিযিক্বের মাধ্যমে ইফতার করছি।",
               textAlign: TextAlign.justify,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: GoogleFonts.amiri(
+                fontSize: isLargeScreen ? 13.sp : 8.5.sp,
+              ),
             ),
           ],
         ),
@@ -142,11 +158,11 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                               .textTheme
                               .bodyLarge
                               ?.copyWith(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: _selectedTab == 0
-                                  ? const Color(0xff6348EB)
-                                  : Colors.white),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: _selectedTab == 0
+                                      ? const Color(0xff6348EB)
+                                      : Colors.white),
                         )),
                   ),
                   InkWell(
@@ -168,11 +184,11 @@ class _DuaState extends State<Dua> with TickerProviderStateMixin {
                               .textTheme
                               .titleLarge
                               ?.copyWith(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: _selectedTab == 1
-                                  ? const Color(0xff6348EB)
-                                  : Colors.white),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: _selectedTab == 1
+                                      ? const Color(0xff6348EB)
+                                      : Colors.white),
                         )),
                   ),
                 ],
