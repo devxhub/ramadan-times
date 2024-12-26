@@ -64,7 +64,7 @@ class _MaslaMasailDetailsPageState extends State<MaslaMasailDetailsPage> {
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
-                      ?.copyWith(fontSize: isLargeScreen ? 12.sp : 8.sp),
+                      ?.copyWith(fontSize: isLargeScreen ? 12.sp : 13.sp),
                 ),
                 const Divider(),
                 Html(

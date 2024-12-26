@@ -25,19 +25,19 @@ class LanguageSelector extends StatelessWidget {
                     value: 'en',
                     child: Text(
                       AppLocalizations.of(context)!.english,
-                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 7.sp),
+                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 13.sp),
                     )),
                 DropdownMenuItem(
                     value: 'bn',
                     child: Text(
                       AppLocalizations.of(context)!.bangla,
-                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 7.sp),
+                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 13.sp),
                     )),
                 DropdownMenuItem(
                     value: 'fi',
                     child: Text(
                       AppLocalizations.of(context)!.finnish,
-                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 7.sp),
+                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 13.sp),
                     )),
               ],
               onChanged: (String? newValue) {

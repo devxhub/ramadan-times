@@ -159,7 +159,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 .titleLarge
                                 ?.copyWith(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: isLargeScreen ? 10.sp : 14.sp,
+                                  fontSize: isLargeScreen ? 10.sp : 16.sp,
                                   color: Colors.white,
                                 ),
                           ),
@@ -180,7 +180,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 .titleLarge
                                 ?.copyWith(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: isLargeScreen ? 10.sp : 16.sp,
+                                  fontSize: isLargeScreen ? 10.sp : 20.sp,
                                   color: Colors.black,
                                 ),
                           ),
@@ -202,7 +202,7 @@ class CalendarPageState extends State<CalendarPage> {
                                 ?.copyWith(
                                   // height: 1,
                                   fontWeight: FontWeight.w700,
-                                  fontSize: isLargeScreen ? 10.5.sp : 14.sp,
+                                  fontSize: isLargeScreen ? 10.5.sp : 16.sp,
                                   color: Colors.black,
                                 ),
                           ),
@@ -403,7 +403,7 @@ class CalendarPageState extends State<CalendarPage> {
                                           .titleLarge!
                                           .copyWith(
                                             fontSize:
-                                                isLargeScreen ? 13.sp : 8.sp,
+                                                isLargeScreen ? 13.sp : 16.sp,
                                             color: Colors.black87,
                                           ),
                                     ),
@@ -416,7 +416,7 @@ class CalendarPageState extends State<CalendarPage> {
                                             height: 1.4,
                                             fontWeight: FontWeight.w700,
                                             fontSize:
-                                                isLargeScreen ? 11.sp : 7.sp,
+                                                isLargeScreen ? 11.sp : 13.sp,
                                             color: const Color(0xff75718B),
                                           ),
                                     ),
@@ -644,8 +644,8 @@ class TimeCard extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 12.h,
-          width: 9.w,
+          height: isLargeScreen ? 12.h : 20,
+          width: isLargeScreen ? 9.w : 20,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
@@ -669,8 +669,8 @@ class TimeCard extends StatelessWidget {
               children: [
                 Image.asset(
                   icon ?? "assets/images/moon1.png",
-                  height: isLargeScreen ? 60.h : 20.h,
-                  width: isLargeScreen ? 32.h : 12.w,
+                  height: isLargeScreen ? 60.h : 60,
+                  width: isLargeScreen ? 32.h : 32,
                 ),
                 const SizedBox(
                   width: 24,
@@ -684,7 +684,7 @@ class TimeCard extends StatelessWidget {
                       name,
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontWeight: FontWeight.w700,
-                            fontSize: isLargeScreen ? 11.sp : 7.sp,
+                            fontSize: isLargeScreen ? 11.sp : 13.sp,
                             color: Colors.black87,
                           ),
                     ),
@@ -693,7 +693,7 @@ class TimeCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             height: 1,
                             fontWeight: FontWeight.w700,
-                            fontSize: isLargeScreen ? 11.sp : 6.sp,
+                            fontSize: isLargeScreen ? 11.sp : 12.sp,
                             color: const Color(0xff75718B),
                           ),
                     ),
