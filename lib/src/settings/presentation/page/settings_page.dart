@@ -35,7 +35,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               return SwitchListTile(
                 title: Text(
                   AppLocalizations.of(context)!.showImsakInPrayerTimesPage,
-                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 15.sp),
                 ),
                 value: state.isImsakEnable,
                 onChanged: (value) {
@@ -52,7 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               AppLocalizations.of(context)!.prayerTimeCalculation,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: isLargeScreen ? 12.sp : 5.sp),
+                  fontSize: isLargeScreen ? 12.sp : 15.sp),
             ),
           ),
           // ListTile(
@@ -64,7 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               return SwitchListTile(
                 title: Text(
                   AppLocalizations.of(context)!.autoDetectLocation,
-                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 15.sp),
                 ),
                 value: state.isAutoDetectLocationEnable,
                 onChanged: (value) {
@@ -99,11 +99,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
                 title: Text(
                   AppLocalizations.of(context)!.prayerTimeConvention,
-                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                  style: TextStyle(fontSize: isLargeScreen ? 12.sp : 15.sp),
                 ),
                 subtitle: Text(
                   "${state.selectedPrayerConventionName == 'Custom Angle' ? AppLocalizations.of(context)!.customAngles : state.selectedPrayerConventionName}\n${getPrayerAngle(context, state.selectedPrayerConventionName, state.selectedFajrAngle, state.selectedIshaAngle)}",
-                  style: TextStyle(fontSize: isLargeScreen ? 8.sp : 4.sp),
+                  style: TextStyle(fontSize: isLargeScreen ? 8.sp : 13.sp),
                 ),
               );
             },
@@ -122,11 +122,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: ListTile(
                   title: Text(
                     AppLocalizations.of(context)!.manualCorrection,
-                    style: TextStyle(fontSize: isLargeScreen ? 12.sp : 4.sp),
+                    style: TextStyle(fontSize: isLargeScreen ? 12.sp : 15.sp),
                   ),
                   subtitle: Text(
                     '${state.manualPrayerTime.manualFajrTime ?? 0},${state.manualPrayerTime.manualSunriseTime ?? 0}, ${state.manualPrayerTime.manualDhuhrTime ?? 0}, ${state.manualPrayerTime.manualAsrTime ?? 0}, ${state.manualPrayerTime.manualMaghribTime ?? 0},${state.manualPrayerTime.manualIshaTime ?? 0}',
-                    style: TextStyle(fontSize: isLargeScreen ? 8.sp : 4.sp),
+                    style: TextStyle(fontSize: isLargeScreen ? 8.sp : 13.sp),
                   ),
                 ),
               );
@@ -203,11 +203,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: ListTile(
                   title: Text(
                     AppLocalizations.of(context)!.imsak,
-                    style: TextStyle(fontSize: isLargeScreen ? 12.sp : 5.sp),
+                    style: TextStyle(fontSize: isLargeScreen ? 12.sp : 15.sp),
                   ),
                   subtitle: Text(
                     '${state.imsakTime} ${AppLocalizations.of(context)!.minutesBeforeFajr}',
-                    style: TextStyle(fontSize: isLargeScreen ? 10.sp : 5.sp),
+                    style: TextStyle(fontSize: isLargeScreen ? 10.sp : 13.sp),
                   ),
                 ),
               );
