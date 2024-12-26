@@ -208,7 +208,7 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                               ?.copyWith(
                                                   fontSize: isLargeScreen
                                                       ? 14.sp
-                                                      : 7.sp),
+                                                      : 12.sp),
                                         ),
                                       ),
                                     );
