@@ -36,7 +36,7 @@ class _QuranSurahViewState extends State<QuranSurahView> {
   void initState() {
     _searchController.addListener(_onSearchChanged);
 
-    context.read<QuranBloc>().add(QuranDataLoadEvent());
+    context.read<QuranBloc>().add(QuranDataLoadEvent(context: context));
     super.initState();
   }
 

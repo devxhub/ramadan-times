@@ -48,6 +48,12 @@ class QuranSurahAppBar extends StatelessWidget {
             BlocBuilder<QuranBloc, QuranState>(
               builder: (context, state) {
                 if (state is QuranLoaded) {
+                  String selectedLanguage =
+                      AppLocalizations.of(context)!.localeName == 'bn'
+                          ? 'banglaName'
+                          : AppLocalizations.of(context)!.localeName == 'fi'
+                              ? 'finnishName'
+                              : 'englishName';
                   return Padding(
                     padding: EdgeInsets.only(right: 10.w),
                     child: DropdownButton<String>(
@@ -61,8 +67,8 @@ class QuranSurahAppBar extends StatelessWidget {
                                 QuranLanguageChangeEvent(
                                   languageCode: newValue,
                                   language: quranLanguageList.firstWhere(
-                                      (item) =>
-                                          item['code'] == newValue)['Name']!,
+                                          (item) => item['code'] == newValue)[
+                                      selectedLanguage]!,
                                   quranSurahList: state.quranSurahList,
                                 ),
                               );
@@ -73,7 +79,7 @@ class QuranSurahAppBar extends StatelessWidget {
                         return DropdownMenuItem<String>(
                           value: language['code'],
                           child: Text(
-                            language['Name']!,
+                            language[selectedLanguage]!,
                           ),
                         );
                       }).toList(),

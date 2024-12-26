@@ -99,6 +99,20 @@ class CurrentPrayer extends StatelessWidget {
     }
   }
 
+  int getCountDownEndTime(Timings timingsToday, Timings timingsNextToday) {
+    return DateTime(
+      DateTime.now().year,
+      DateTime.now().month,
+      (getCurrentPrayer(timingsToday, timingsNextToday)["name"] == "Isha" &&
+              !DateTime.now().isAfter(DateTime(DateTime.now().year,
+                  DateTime.now().month, DateTime.now().day, 23, 59, 59)))
+          ? DateTime.now().day + 1
+          : DateTime.now().day,
+      int.parse(getCurrentPrayer(timingsToday, timingsNextToday)["end_hour"]),
+      int.parse(getCurrentPrayer(timingsToday, timingsNextToday)["end_minute"]),
+    ).millisecondsSinceEpoch;
+  }
+
   @override
   Widget build(BuildContext context) {
     Timings timingsToday = Timings(
@@ -144,20 +158,7 @@ class CurrentPrayer extends StatelessWidget {
               fontWeight: FontWeight.w600),
         ),
         CountdownTimer(
-          endTime: DateTime(
-            DateTime.now().year,
-            DateTime.now().month,
-            (getCurrentPrayer(timingsToday, timingsNextToday)["name"] ==
-                        "Isha" &&
-                    !DateTime.now().isAfter(DateTime(DateTime.now().year,
-                        DateTime.now().month, DateTime.now().day, 23, 59, 59)))
-                ? DateTime.now().day + 1
-                : DateTime.now().day,
-            int.parse(
-                getCurrentPrayer(timingsToday, timingsNextToday)["end_hour"]),
-            int.parse(
-                getCurrentPrayer(timingsToday, timingsNextToday)["end_minute"]),
-          ).millisecondsSinceEpoch,
+          endTime: getCountDownEndTime(timingsToday, timingsNextToday),
           onEnd: () async {
             SharedPreferences preferences =
                 await SharedPreferences.getInstance();

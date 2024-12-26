@@ -7,12 +7,17 @@ abstract class QuranEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class QuranDataLoadEvent extends QuranEvent {}
+class QuranDataLoadEvent extends QuranEvent {
+  final BuildContext context;
+
+  QuranDataLoadEvent({required this.context});
+}
 
 class QuranLanguageChangeEvent extends QuranEvent {
   final String languageCode;
   final String language;
   final List<QuranModel> quranSurahList;
+
   const QuranLanguageChangeEvent({
     required this.languageCode,
     required this.language,
