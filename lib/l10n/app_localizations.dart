@@ -636,6 +636,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settings;
+
+  /// No description provided for @selectUserLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Select user location'**
+  String get selectUserLocation;
+
+  /// No description provided for @noResultsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get noResultsFound;
+
+  /// No description provided for @selectACountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a Country'**
+  String get selectACountry;
+
+  /// No description provided for @pleaseSelectACity.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Select a city'**
+  String get pleaseSelectACity;
+
+  /// No description provided for @countrySavedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Country saved successfully!'**
+  String get countrySavedSuccessfully;
+
+  /// No description provided for @countryIsNotFoundInTheList.
+  ///
+  /// In en, this message translates to:
+  /// **'Country is not found in the list!'**
+  String get countryIsNotFoundInTheList;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

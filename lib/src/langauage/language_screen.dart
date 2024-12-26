@@ -11,25 +11,29 @@ class LanguageSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)?.changeAppLanguage??''),
+        title: Text(AppLocalizations.of(context)?.changeAppLanguage ?? ''),
       ),
       body: Center(
         child: BlocBuilder<LanguageBloc, LanguageState>(
           builder: (context, state) {
             return DropdownButton<String>(
-              value: Localizations
-                  .localeOf(context)
-                  .languageCode,
+              value: Localizations.localeOf(context).languageCode,
               items: [
-                DropdownMenuItem(value: 'en', child: Text(AppLocalizations.of(context)!.english)),
-                DropdownMenuItem(value: 'bn', child: Text(AppLocalizations.of(context)!.bangla)),
-                DropdownMenuItem(value: 'fi', child: Text(AppLocalizations.of(context)!.finnish)),
+                DropdownMenuItem(
+                    value: 'en',
+                    child: Text(AppLocalizations.of(context)!.english)),
+                DropdownMenuItem(
+                    value: 'bn',
+                    child: Text(AppLocalizations.of(context)!.bangla)),
+                DropdownMenuItem(
+                    value: 'fi',
+                    child: Text(AppLocalizations.of(context)!.finnish)),
               ],
               onChanged: (String? newValue) {
                 if (newValue != null) {
                   context
                       .read<LanguageBloc>()
-                      .add(ChangeLanguageEvent(Locale(newValue)));
+                      .add(ChangeLanguageEvent(Locale(newValue), context));
                 }
               },
             );

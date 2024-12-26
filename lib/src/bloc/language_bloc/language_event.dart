@@ -10,7 +10,8 @@ class InitializeLanguageEvent extends LanguageEvent {}
 
 class ChangeLanguageEvent extends LanguageEvent {
   final Locale locale;
-  const ChangeLanguageEvent(this.locale);
+  final BuildContext context;
+  const ChangeLanguageEvent(this.locale, this.context);
   @override
   List<Object> get props => [locale];
 }

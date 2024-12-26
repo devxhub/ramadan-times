@@ -133,7 +133,16 @@
     "autoDetectLocation": "Auto-detect Location",
     "prayerTimeCalculation":"Prayer Time Calculation",
     "minutesBeforeFajr": "minutes before Fajr",
-    "settings":"Settings"
+    "settings":"Settings",
+    "selectUserLocation":"Select user location",
+    "selectYourCountry":"Select Your Country",
+    "noResultsFound": "No results found",
+    "selectACountry":"Select a Country",
+    "selectYourCity":"Select Your City",
+    "pleaseSelectACity":"Please Select a city",
+    "countrySavedSuccessfully":"Country saved successfully!",
+    "countryIsNotFoundInTheList":"Country is not found in the list!"
+
 
  
 

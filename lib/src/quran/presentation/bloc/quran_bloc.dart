@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:ramadantimes/l10n/app_localizations.dart';
 import 'package:ramadantimes/src/quran/data/repository/quran_data.dart';
 import 'package:ramadantimes/src/quran/data/repository/quran_repository.dart';
 import '../../data/model/quran_model.dart';
@@ -14,9 +16,14 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
       try {
         emit(
           QuranLoaded(
-              languageCode: 'en',
-              language: 'English',
-              quranSurahList: quranSurahList),
+            languageCode: AppLocalizations.of(event.context)!.localeName == 'bn'
+                ? 'bn'
+                : 'en',
+            language: AppLocalizations.of(event.context)!.localeName == 'bn'
+                ? 'bn'
+                : 'English',
+            quranSurahList: quranSurahList,
+          ),
         );
       } catch (error) {
         emit(QuranError(errorMessage: error.toString()));

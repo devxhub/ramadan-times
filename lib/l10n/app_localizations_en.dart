@@ -320,4 +320,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settings => 'Settings';
+
+  @override
+  String get selectUserLocation => 'Select user location';
+
+  @override
+  String get noResultsFound => 'No results found';
+
+  @override
+  String get selectACountry => 'Select a Country';
+
+  @override
+  String get pleaseSelectACity => 'Please Select a city';
+
+  @override
+  String get countrySavedSuccessfully => 'Country saved successfully!';
+
+  @override
+  String get countryIsNotFoundInTheList => 'Country is not found in the list!';
 }

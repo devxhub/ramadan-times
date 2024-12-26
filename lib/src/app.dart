@@ -48,14 +48,14 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               textTheme:
-              GoogleFonts.anekBanglaTextTheme(Theme.of(context).textTheme),
+                  GoogleFonts.anekBanglaTextTheme(Theme.of(context).textTheme),
               primarySwatch: Colors.blue,
               navigationBarTheme: NavigationBarThemeData(
-                // indicatorShape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                  iconTheme: MaterialStateProperty.resolveWith((states) =>
-                  states.contains(MaterialState.selected)
-                      ? const IconThemeData(size: 32)
-                      : const IconThemeData(size: 32))),
+                  // indicatorShape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  iconTheme: WidgetStateProperty.resolveWith((states) =>
+                      states.contains(WidgetState.selected)
+                          ? const IconThemeData(size: 32)
+                          : const IconThemeData(size: 32))),
               useMaterial3: true,
             ),
             supportedLocales: L10n.all,

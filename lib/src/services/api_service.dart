@@ -111,11 +111,11 @@ class ApiServices {
 
   Future<TimeOfMonth> timingByMonth(
       {required String year,
-        required String month,
-        required String city,
-        required String? country,
-        int method = 2,
-        school = 1}) async {
+      required String month,
+      required String city,
+      required String? country,
+      int method = 2,
+      school = 1}) async {
     // SharedPreferences preferences = await SharedPreferences.getInstance();
     try {
       final response = await dioClient.get(
@@ -130,19 +130,17 @@ class ApiServices {
     }
   }
 
- late WeatherModelFinal weatherMap;
+  late WeatherModelFinal weatherMap;
 
-  Future< WeatherModelFinal> fetchWeatherData(String latitude,String longatute) async {
-
+  Future<WeatherModelFinal> fetchWeatherData(
+      String latitude, String longatute) async {
     String weatherUrl =
         "https://api.openweathermap.org/data/2.5/weather?lat=23.4605&lon=91.1815&units=metric&appid=f92bf340ade13c087f6334ed434f9761&fbclid=IwAR2MIhWnKnisutHJ1y1dgxc-XbFFbVlG_T_f8F9_fhd6ZFC4PRI3oNAWgMc";
 
-    var weatherResponce = await http.get(Uri.parse(weatherUrl));
+    var weatherResponse = await http.get(Uri.parse(weatherUrl));
 
-    weatherMap = WeatherModelFinal.fromJson(jsonDecode(weatherResponce.body));
+    weatherMap = WeatherModelFinal.fromJson(jsonDecode(weatherResponse.body));
 
     return weatherMap;
-
   }
-
 }

@@ -207,7 +207,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         if (connection.contains(ConnectivityResult.none)) {
           permission = await Geolocator.requestPermission();
           if (permission == LocationPermission.denied) {
-            _saveLocationToPreferences(23.7115253, 90.4111451);
+            _ensureLocationPreferencesAreSet();
             var userCoordinator = UserCoordinator(
               userLat: currentLatitude,
               userLng: currentLongitude,
@@ -228,7 +228,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         if (permission == LocationPermission.denied) {
           permission = await Geolocator.requestPermission();
           if (permission == LocationPermission.denied) {
-            _saveLocationToPreferences(23.7115253, 90.4111451);
+            _ensureLocationPreferencesAreSet();
             var userCoordinator = UserCoordinator(
               userLat: currentLatitude,
               userLng: currentLongitude,
@@ -236,6 +236,10 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
               userCity: currentCity,
               userCountryIso: currentIsoCode,
             );
+            prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
+              latitude: currentLatitude,
+              longitude: currentLongitude,
+            ));
 
             emit(
               state.copyWith(
@@ -243,11 +247,13 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
                 prayerTimeStatus: PrayerTimeStatus.success,
               ),
             );
+
             return;
           }
         }
         if (permission == LocationPermission.deniedForever) {
-          _saveLocationToPreferences(23.7115253, 90.4111451);
+          _ensureLocationPreferencesAreSet();
+
           emit(
             state.copyWith(
               userCoordinator: UserCoordinator(
@@ -277,7 +283,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
         String? country = placemarks.first.country;
         String? isoCountryCode = placemarks.first.country;
 
-        _saveLocationToPreferences(position.latitude, position.longitude);
+        _ensureLocationPreferencesAreSet();
 
         prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
           latitude: position.latitude,
@@ -335,6 +341,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             prayerTimeStatus: PrayerTimeStatus.failure,
           ),
         );
+      } finally {
+        emit(
+          state.copyWith(
+            prayerTimeStatus: PrayerTimeStatus.success,
+          ),
+        );
       }
     } else {
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
@@ -365,17 +377,28 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     await prefs.setString('isoCountryCode', countryCode);
   }
 
-  Future<void> _saveLocationToPreferences(double lat, double lng) async {
+  Future<void> _ensureLocationPreferencesAreSet() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('latitude', lat);
-    await prefs.setDouble('longitude', lng);
-  }
 
-  Future<Map<String, double>> loadSavedLocation() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final double lat = prefs.getDouble('latitude') ?? 23.7115253;
-    final double lng = prefs.getDouble('longitude') ?? 90.4111451;
-    return {'latitude': lat, 'longitude': lng};
+    final double? currentLatitude = prefs.getDouble('currentLatitude');
+    final double? currentLongitude = prefs.getDouble('currentLongitude');
+    final String? currentCity = prefs.getString('currentCity');
+    final String? currentCountry = prefs.getString('currentCountry');
+    final String? isoCountryCode = prefs.getString('isoCountryCode');
+
+    if (currentLatitude == null ||
+        currentLongitude == null ||
+        currentCity == null ||
+        currentCountry == null ||
+        isoCountryCode == null) {
+      await _saveCurrentLocationToPreferences(
+        23.7115253,
+        90.4111451,
+        'Bangladesh',
+        'Dhaka',
+        'BD',
+      );
+    }
   }
 
   Future<void> _weatherDataLoaded(
@@ -484,8 +507,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     );
   }
 
-  _clearSelectedCity(
-      _ClearSelectedCity event, Emitter<PrayerTimeState> emit) {
+  _clearSelectedCity(_ClearSelectedCity event, Emitter<PrayerTimeState> emit) {
     emit(
       state.copyWith(
         selectedDistrict: null,
