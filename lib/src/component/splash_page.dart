@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
-
-import '../services/responsive_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -23,11 +22,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    // Future.delayed(const Duration(seconds: 0), () {
-    //   _showBottomSheet();
-    // });
-    Future.delayed(const Duration(seconds: 2), () {
-      context.go("/");
+    Future.delayed(const Duration(seconds: 0), () {
+      _showBottomSheet();
     });
   }
 
@@ -73,7 +69,7 @@ class _SplashPageState extends State<SplashPage> {
                 ),
               ),
               Text(
-                'Muslim Times Pro',
+                'Muslim Times',
                 style: GoogleFonts.dmSans(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
@@ -82,7 +78,7 @@ class _SplashPageState extends State<SplashPage> {
               ),
               Gap(8.h),
               Text(
-                'Muslim Times Pro is a digital platform for all\nMuslims to follow prayer time',
+                'Muslim Times is a digital platform for all\nMuslims to follow prayer time',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                     fontSize: 16, color: HexColor("#1C1646")),
