@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ramadantimes/src/auth/presentation/pages/sign_in_page.dart';
 import 'package:ramadantimes/src/calender/presentation/pages/calender.dart';
 import 'package:ramadantimes/src/component/splash_page.dart';
 import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
@@ -148,6 +149,14 @@ final GoRouter _router = GoRouter(
       name: "prayer_time_convention",
       builder: (BuildContext context, GoRouterState state) {
         return PrayerTimeConvention();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/sign_in_page',
+      name: "sign_in_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return SignInPage();
       },
     ),
 
