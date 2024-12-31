@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../services/responsive_service.dart';
+
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -33,6 +35,8 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    CheckScreenSize().checkScreenSize(context);
+
     return SizedBox.expand(
       child: FittedBox(
         // If your background video doesn't look right, try changing the BoxFit property.

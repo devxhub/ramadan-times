@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ramadantimes/l10n/app_localizations.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 
 import '../bloc/language_bloc/language_bloc.dart';
 
@@ -21,13 +23,22 @@ class LanguageSelector extends StatelessWidget {
               items: [
                 DropdownMenuItem(
                     value: 'en',
-                    child: Text(AppLocalizations.of(context)!.english)),
+                    child: Text(
+                      AppLocalizations.of(context)!.english,
+                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 13.sp),
+                    )),
                 DropdownMenuItem(
                     value: 'bn',
-                    child: Text(AppLocalizations.of(context)!.bangla)),
+                    child: Text(
+                      AppLocalizations.of(context)!.bangla,
+                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 13.sp),
+                    )),
                 DropdownMenuItem(
                     value: 'fi',
-                    child: Text(AppLocalizations.of(context)!.finnish)),
+                    child: Text(
+                      AppLocalizations.of(context)!.finnish,
+                      style: TextStyle(fontSize: isLargeScreen ? 12.sp : 13.sp),
+                    )),
               ],
               onChanged: (String? newValue) {
                 if (newValue != null) {

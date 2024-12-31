@@ -5,6 +5,7 @@ import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_bloc.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_event.dart';
 import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
 import 'package:ramadantimes/src/masla_masail/masail_details_page.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 
 import '../../l10n/app_localizations.dart';
 
@@ -204,7 +205,10 @@ class _MaslaMasailPageState extends State<MaslaMasailPage> {
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleLarge
-                                              ?.copyWith(fontSize: 16),
+                                              ?.copyWith(
+                                                  fontSize: isLargeScreen
+                                                      ? 14.sp
+                                                      : 12.sp),
                                         ),
                                       ),
                                     );

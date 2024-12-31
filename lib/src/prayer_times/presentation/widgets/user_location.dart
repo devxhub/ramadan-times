@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 
 class UserLocation extends StatefulWidget {
   const UserLocation({super.key});
@@ -34,7 +35,7 @@ class _UserLocationState extends State<UserLocation> {
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             //height: 1,
                             fontWeight: FontWeight.w700,
-                            fontSize: 16,
+                            fontSize: isLargeScreen ? 10.5.sp : 7.sp,
                             color: Colors.black,
                           ),
                     ),

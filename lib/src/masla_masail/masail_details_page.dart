@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ramadantimes/src/models/masail/masail/result.dart';
+import 'package:ramadantimes/src/services/responsive_service.dart';
 import '../../l10n/app_localizations.dart';
 
 class MaslaMasailDetailsPage extends StatefulWidget {
@@ -60,7 +61,10 @@ class _MaslaMasailDetailsPageState extends State<MaslaMasailDetailsPage> {
                 Text(
                   widget.result.title ?? "",
                   textAlign: TextAlign.left,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontSize: isLargeScreen ? 12.sp : 13.sp),
                 ),
                 const Divider(),
                 Html(
@@ -70,7 +74,8 @@ class _MaslaMasailDetailsPageState extends State<MaslaMasailDetailsPage> {
 
                   style: {
                     "p": Style(
-                      fontSize: FontSize.large,
+                      fontSize:
+                          isLargeScreen ? FontSize.xxLarge : FontSize.large,
                       fontStyle: FontStyle.normal,
                       lineHeight: const LineHeight(1.5),
                     ),
