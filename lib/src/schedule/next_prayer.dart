@@ -86,23 +86,38 @@ class NextPrayer extends StatelessWidget {
             state.prayerTimesResponse.fajrStart == null) {
           return CircularProgressIndicator.adaptive();
         }
+
         if (state.prayerStatus == PrayerStatus.success) {
-          Map<String, String> todayModel = {
+       /*   Map<String, String> todayModel = {
             'fajrStart': state.prayerTimesResponse.fajrStart!,
             'fajrEnd': state.prayerTimesResponse.fajrEnd!,
             'dhuhrStart': state.prayerTimesResponse.dhuhrStart!,
             'dhuhrEnd': state.prayerTimesResponse.dhuhrEnd!,
-            'asrStart': state.prayerTimesResponse.asrStart!,
-            'asrEnd': state.prayerTimesResponse.asrEnd!,
+            // 'asrStart': state.prayerTimesResponse.asrStart!,
+            // 'asrEnd': state.prayerTimesResponse.asrEnd!,
+            'asrStart': (DateTime.parse(state.prayerTimesResponse.asrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime??0)).toIso8601String()),
+            'asrEnd': (DateTime.parse(state.prayerTimesResponse.asrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime??0)).toIso8601String()),
             'maghribStart': state.prayerTimesResponse.maghribStart!,
             'maghribEnd': state.prayerTimesResponse.maghribEnd!,
             'ishaStart': state.prayerTimesResponse.ishaStart!,
             'ishaEnd': state.prayerTimesResponse.ishaEnd!,
+          };*/
+          Map<String, String> todayModel = {
+            'fajrStart': (DateTime.parse(state.prayerTimesResponse.fajrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime)).toIso8601String()),
+            'fajrEnd': (DateTime.parse(state.prayerTimesResponse.fajrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime)).toIso8601String()),
+            'dhuhrStart':(DateTime.parse(state.prayerTimesResponse.dhuhrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualDhuhrTime)).toIso8601String()),
+            'dhuhrEnd': (DateTime.parse(state.prayerTimesResponse.dhuhrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualDhuhrTime)).toIso8601String()),
+            'asrStart': (DateTime.parse(state.prayerTimesResponse.asrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime)).toIso8601String()),
+            'asrEnd': (DateTime.parse(state.prayerTimesResponse.asrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualAsrTime)).toIso8601String()),
+            'maghribStart': (DateTime.parse(state.prayerTimesResponse.maghribStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualMaghribTime)).toIso8601String()),
+            'maghribEnd': (DateTime.parse(state.prayerTimesResponse.maghribEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualMaghribTime)).toIso8601String()),
+            'ishaStart':  (DateTime.parse(state.prayerTimesResponse.ishaStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualIshaTime)).toIso8601String()),
+            'ishaEnd': (DateTime.parse(state.prayerTimesResponse.ishaEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualIshaTime)).toIso8601String()),
           };
 
           Map<String, String> nextDayModel = {
-            'fajrStart': state.prayerTimesResponseNextDay.fajrStart!,
-            'fajrEnd': state.prayerTimesResponseNextDay.fajrEnd!,
+            'fajrStart':(DateTime.parse(state.prayerTimesResponseNextDay.fajrStart.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime)).toIso8601String()),
+            'fajrEnd': (DateTime.parse(state.prayerTimesResponseNextDay.fajrEnd.toString()).add(Duration(minutes: state.manualPrayerTime.manualFajrTime)).toIso8601String()),
           };
           var nextPrayer = getNextPrayerTime(todayModel, nextDayModel);
           return Container(
