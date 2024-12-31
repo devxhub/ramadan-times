@@ -235,10 +235,9 @@ class CommonDrawer extends StatelessWidget {
                       title: AppLocalizations.of(context)?.schedule ?? "",
                       onTap: () {
                         context.pop();
-                        context.goNamed("sign_in_page");
-                        // context.goNamed("schedule");
-                        //
-                        // context.read<NavigationCubit>().getNavBarItem(0);
+                        context.goNamed("schedule");
+
+                        context.read<NavigationCubit>().getNavBarItem(0);
                       },
                     ),
                     DrawerItem(
