@@ -1,9 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController =TextEditingController();
+  TextEditingController passwordController =TextEditingController();
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
+  @override
+  void initState() {
+    super.initState();
+
+    // Add a listener to detect focus changes
+    _emailFocusNode.addListener(() {
+      setState(() {}); // Update the UI when the focus changes
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose(); // Dispose of the focus node when the widget is removed
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color(0xffF7F5FF),
       appBar: AppBar(
@@ -55,10 +80,13 @@ class SignInPage extends StatelessWidget {
                   ),
                   SizedBox(height: 24.h),
                   TextFormField(
+                    focusNode: _emailFocusNode,
                     decoration: InputDecoration(
                       labelText: 'Your Email',
                       hintText: 'Enter your email',
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email,
+                         color: _emailFocusNode.hasFocus ? Colors.blue : Colors.grey,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),

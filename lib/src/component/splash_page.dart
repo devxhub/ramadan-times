@@ -156,7 +156,9 @@ class _SplashPageState extends State<SplashPage> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.goNamed("sign_in_page");
+                    },
                     child: Text(
                       'Sign in',
                       style: GoogleFonts.dmSans(
