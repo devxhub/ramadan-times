@@ -35,7 +35,7 @@ class _UserLocationState extends State<UserLocation> {
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             //height: 1,
                             fontWeight: FontWeight.w700,
-                            fontSize: isLargeScreen ? 10.5.sp : 7.sp,
+                            fontSize: isLargeScreen ? 10.5.sp : 13.sp,
                             color: Colors.black,
                           ),
                     ),
