@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/prayer_times.dart';
 import '../../l10n/app_localizations.dart';
 import '../services/utility.dart';
 

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ramadantimes/src/calender/data/repositories/calender_repository.dart';
+import 'package:muslimtimespro/src/calender/data/repositories/calender_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../models/calendar_model/datum.dart';
 import '../../../models/timing/timeofmonth.dart';

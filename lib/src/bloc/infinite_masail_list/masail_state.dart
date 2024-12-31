@@ -1,4 +1,4 @@
-import 'package:ramadantimes/src/models/masail/masail/result.dart';
+import 'package:muslimtimespro/src/models/masail/masail/result.dart';
 
 enum MasailStatus { initial, success, failure, noData }
 

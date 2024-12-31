@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nextgen_button/nextgen_button.dart';
-import 'package:ramadantimes/src/component/eng_to_bn.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/manual_prayer_time.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:muslimtimespro/src/component/eng_to_bn.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/manual_prayer_time.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 
 import '../../../../l10n/app_localizations.dart';

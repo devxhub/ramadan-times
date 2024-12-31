@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/forget_password_otp_page.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/forget_password_page.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/reset_password_page.dart';
-import 'package:ramadantimes/src/auth/presentation/pages/sign_in_page.dart';
-import 'package:ramadantimes/src/calender/presentation/pages/calender.dart';
-import 'package:ramadantimes/src/component/splash_page.dart';
-import 'package:ramadantimes/src/masla_masail/masla_masail.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/pages/location_select.dart';
+import 'package:muslimtimespro/src/auth/presentation/pages/sign_in_page.dart';
+import 'package:muslimtimespro/src/calender/presentation/pages/calender.dart';
+import 'package:muslimtimespro/src/component/splash_page.dart';
+import 'package:muslimtimespro/src/masla_masail/masla_masail.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/pages/location_select.dart';
 import '../l10n/app_localizations.dart';
 import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import '../l10n/l10n.dart';
@@ -177,7 +177,8 @@ final GoRouter _router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return ResetPasswordPage();
       },
-    ), GoRoute(
+    ),
+    GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: '/forget_password_otp_page',
       name: "forget_password_otp_page",

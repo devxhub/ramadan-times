@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:ramadantimes/l10n/app_localizations.dart';
-import 'package:ramadantimes/src/quran/data/repository/quran_data.dart';
-import 'package:ramadantimes/src/quran/data/repository/quran_repository.dart';
+import 'package:muslimtimespro/l10n/app_localizations.dart';
+import 'package:muslimtimespro/src/quran/data/repository/quran_data.dart';
+import 'package:muslimtimespro/src/quran/data/repository/quran_repository.dart';
 import '../../data/model/quran_model.dart';
 part 'quran_event.dart';
 part 'quran_state.dart';

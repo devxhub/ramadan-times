@@ -73,7 +73,7 @@ class _SplashPageState extends State<SplashPage> {
                 ),
               ),
               Text(
-                'Muslim Times',
+                'Muslim Times Pro',
                 style: GoogleFonts.dmSans(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class _SplashPageState extends State<SplashPage> {
               ),
               Gap(8.h),
               Text(
-                'Muslim Times is a digital platform for all\nMuslims to follow prayer time',
+                'Muslim Times Pro is a digital platform for all\nMuslims to follow prayer time',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.dmSans(
                     fontSize: 16, color: HexColor("#1C1646")),

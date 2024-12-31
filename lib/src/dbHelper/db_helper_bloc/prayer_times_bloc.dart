@@ -5,8 +5,8 @@
 // import 'package:bloc/bloc.dart';
 // import 'package:meta/meta.dart';
 // import 'package:path/path.dart';
-// import 'package:ramadantimes/src/dbHelper/database_helper.dart';
-// import 'package:ramadantimes/src/dbHelper/dbhelp.dart';
+// import 'package:muslimtimespro/src/dbHelper/database_helper.dart';
+// import 'package:muslimtimespro/src/dbHelper/dbhelp.dart';
 //
 // part 'prayer_times_event.dart';
 // part 'prayer_times_state.dart';

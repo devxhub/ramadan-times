@@ -22,13 +22,12 @@ class DBHelp {
 
   static Future<Database> initDB() async {
     var dbPath = await getDatabasesPath(); //veriable declar
-    String path = join(dbPath, "ramadantimes.db"); //initialize path
+    String path = join(dbPath, "muslimtimespro.db"); //initialize path
 
     return openDatabase(path, version: 1, onCreate: _onCreate); //opendatabase
   }
 
   static Future _onCreate(Database db, int version) async {
-
     db.execute('''
 
       CREATE TABLE timingTable(
@@ -39,7 +38,7 @@ class DBHelp {
               FOREIGN KEY (datumTableId) REFERENCES datumTable (id)       
                ON DELETE NO ACTION ON UPDATE NO ACTION 
             )
-    ''');//timingTable end
+    '''); //timingTable end
     db.execute('''
       CREATE TABLE datumTable(
               
@@ -219,22 +218,21 @@ class DBHelp {
     '''); // paramsTable end of methodTable
   }
 
-   Future<int> createRamadanTimes(Timing timing) async {
+  Future<int> createRamadanTimes(Timing timing) async {
     Database db = await DBHelp.initDB();
     return await db.insert('timingTable', timing.toJson());
-  }//insert data to timingtable
+  } //insert data to timingtable
 
-   Future<List<Timing>> readRamadanTimes() async {
+  Future<List<Timing>> readRamadanTimes() async {
     Database db = await DBHelp.initDB();
 
     var timing = await db.query('timingTable');
 
-    List<Timing> timingList = timing.isNotEmpty
-        ? timing.map((e) => Timing.fromJson(e)).toList()
-        : [];
+    List<Timing> timingList =
+        timing.isNotEmpty ? timing.map((e) => Timing.fromJson(e)).toList() : [];
 
     return timingList;
-  }//query or retrive data to timingtable
+  } //query or retrive data to timingtable
 
   static Future<int> updateRamadanTimes(Timing timing) async {
     Database db = await DBHelp.initDB();

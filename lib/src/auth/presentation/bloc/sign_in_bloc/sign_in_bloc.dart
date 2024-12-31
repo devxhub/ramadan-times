@@ -17,20 +17,17 @@ part 'sign_in_bloc.freezed.dart';
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final SignInRepository signInRepository;
 
-  SignInBloc({required this.signInRepository})
-      : super(const SignInState()) {
+  SignInBloc({required this.signInRepository}) : super(const SignInState()) {
     on<SignInEvent>((events, emit) async {
       await events.map(
         isPasswordObscure: (event) async =>
-      await _isPasswordObscure(event, emit),
+            await _isPasswordObscure(event, emit),
         isConfirmPasswordObscure: (event) async =>
-      await _isConfirmPasswordObscure(event, emit),
-        isConfirmNewPasswordObscure:(event) async =>
-        await _isConfirmNewPasswordObscure(event, emit) ,
-        isRemember: (event) async =>
-        await _isRemember(event, emit),
-       signInDataSubmit: (event) async =>
-        await _signInDataSubmit(event, emit),
+            await _isConfirmPasswordObscure(event, emit),
+        isConfirmNewPasswordObscure: (event) async =>
+            await _isConfirmNewPasswordObscure(event, emit),
+        isRemember: (event) async => await _isRemember(event, emit),
+        signInDataSubmit: (event) async => await _signInDataSubmit(event, emit),
       );
     });
   }
@@ -38,39 +35,40 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       _IsPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isPasswordObscure: !state.isPasswordObscure));
   }
+
   _isConfirmPasswordObscure(
       _IsConfirmPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isNewPasswordObscure: !state.isNewPasswordObscure));
-  }_isConfirmNewPasswordObscure(
-      _IsConfirmNewPasswordObscure event, Emitter<SignInState> emit) async {
-    emit(state.copyWith(isConfirmNewPasswordObscure: !state.isConfirmNewPasswordObscure));
   }
-  _isRemember(
-      _IsRemember event, Emitter<SignInState> emit) async {
+
+  _isConfirmNewPasswordObscure(
+      _IsConfirmNewPasswordObscure event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(
+        isConfirmNewPasswordObscure: !state.isConfirmNewPasswordObscure));
+  }
+
+  _isRemember(_IsRemember event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isRemember: event.isRememberMe));
   }
-  _signInDataSubmit(
-      _SignInDataSubmit event, Emitter<SignInState> emit) async {
-    emit(state.copyWith(
-        signInStatus: SignInStatus.inProgress
-    ));
+
+  _signInDataSubmit(_SignInDataSubmit event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(signInStatus: SignInStatus.inProgress));
     try {
-  final resp = await signInRepository.signInDataSubmit(email: event.userEmail, password: event.userPassword,);
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-await prefs.setString(Constant.token, resp.token??'');
-if(state.isRemember==true){
-  await prefs.setBool(Constant.isRememberMe, true);
-  await prefs.setString(Constant.email, event.userEmail);
-  await prefs.setString(Constant.password, event.userPassword);
-}
-event.context.goNamed("scheduled");
-  emit(state.copyWith(
-    signInResponse: resp,
-      signInStatus: SignInStatus.success
-  ));
+      final resp = await signInRepository.signInDataSubmit(
+        email: event.userEmail,
+        password: event.userPassword,
+      );
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString(Constant.token, resp.token ?? '');
+      if (state.isRemember == true) {
+        await prefs.setBool(Constant.isRememberMe, true);
+        await prefs.setString(Constant.email, event.userEmail);
+        await prefs.setString(Constant.password, event.userPassword);
+      }
+      event.context.goNamed("scheduled");
+      emit(state.copyWith(
+          signInResponse: resp, signInStatus: SignInStatus.success));
     } on DioException catch (e) {
-
-
       dynamic responseData = e.response?.data;
       String errorMessage = '';
 
@@ -100,11 +98,7 @@ event.context.goNamed("scheduled");
       //   msg: errorMessage,
       // );
 
-      emit(state.copyWith(
-signInStatus: SignInStatus.failure
-      ));
+      emit(state.copyWith(signInStatus: SignInStatus.failure));
     }
-
-
   }
 }

@@ -1,4 +1,4 @@
-package com.devxhub.ramadantimes
+package com.devxhub.muslimtimespro
 
 import io.flutter.embedding.android.FlutterActivity
 

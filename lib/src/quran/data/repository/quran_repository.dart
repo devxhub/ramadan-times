@@ -1,6 +1,6 @@
 // import 'dart:convert';
 // import 'package:http/http.dart' as http;
-// import 'package:ramadantimes/src/quran/data/model/quran_model.dart';
+// import 'package:muslimtimespro/src/quran/data/model/quran_model.dart';
 
 class QuranRepository {
   final String apiUrl = 'http://api.alquran.cloud/v1/quran';

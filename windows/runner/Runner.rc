@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.devxhub" "\0"
-            VALUE "FileDescription", "ramadantimes" "\0"
+            VALUE "FileDescription", "muslimtimespro" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "ramadantimes" "\0"
+            VALUE "InternalName", "muslimtimespro" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.devxhub. All rights reserved." "\0"
-            VALUE "OriginalFilename", "ramadantimes.exe" "\0"
-            VALUE "ProductName", "ramadantimes" "\0"
+            VALUE "OriginalFilename", "muslimtimespro.exe" "\0"
+            VALUE "ProductName", "muslimtimespro" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

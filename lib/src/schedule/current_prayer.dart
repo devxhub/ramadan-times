@@ -5,7 +5,7 @@ import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/prayer_times.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../l10n/app_localizations.dart';
 import '../bloc/home/bloc/calendar_bloc.dart';

@@ -1,5 +1,5 @@
-import 'package:ramadantimes/src/models/timing/timing.dart';
-import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
+import 'package:muslimtimespro/src/models/timing/timing.dart';
+import 'package:muslimtimespro/src/models/weather/weather_model_final.dart';
 
 enum HomeStatus { initial, success, failure, noData }
 
@@ -26,7 +26,7 @@ class HomeState {
       status: status ?? this.status,
       timeOfToday: timeOfToday ?? this.timeOfToday,
       timeOfNextDay: timeOfNextDay ?? this.timeOfNextDay,
-      weatherData: weatherData??this.weatherData,
+      weatherData: weatherData ?? this.weatherData,
     );
   }
 
@@ -35,5 +35,8 @@ class HomeState {
     return '''productState { status: $status, data: $timeOfToday,}''';
   }
 
-  List<Object> get props => [status, timeOfToday!,];
+  List<Object> get props => [
+        status,
+        timeOfToday!,
+      ];
 }
