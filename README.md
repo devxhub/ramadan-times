@@ -1,4 +1,4 @@
-# ramadantimes
+# muslimtimespro
 
 A new Flutter project.
 

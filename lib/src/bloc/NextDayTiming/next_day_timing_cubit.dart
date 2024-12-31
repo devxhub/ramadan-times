@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/bloc/home/home_state.dart';
-import 'package:ramadantimes/src/models/timing/timing.dart';
-import 'package:ramadantimes/src/services/api_service.dart';
+import 'package:muslimtimespro/src/bloc/home/home_state.dart';
+import 'package:muslimtimespro/src/models/timing/timing.dart';
+import 'package:muslimtimespro/src/services/api_service.dart';
 
 import '../api_result.dart';
 import '../network_exceptions.dart';

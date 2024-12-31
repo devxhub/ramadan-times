@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ramadantimes/src/bloc/network_exceptions.dart';
-import 'package:ramadantimes/src/models/timing/timing.dart';
-import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
+import 'package:muslimtimespro/src/bloc/network_exceptions.dart';
+import 'package:muslimtimespro/src/models/timing/timing.dart';
+import 'package:muslimtimespro/src/models/weather/weather_model_final.dart';
 
 import '../bloc/api_result.dart';
 import '../models/address/district.dart';

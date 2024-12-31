@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:adhan/adhan.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/country_response.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/prayer_times.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/weather_model.dart';
 import '../../../services/dio_client.dart';
 import 'package:http/http.dart' as http;
 
@@ -42,8 +42,9 @@ class PrayerTimeRepository {
             .subtract(Duration(minutes: 10)); // End 10 minutes before Fajr
 
         ///fazr
-        final imsakStart=prayerTimesForDay.fajr.subtract(Duration(minutes: 10));
-        final imsakend=prayerTimesForDay.fajr.subtract(Duration(minutes: 1));
+        final imsakStart =
+            prayerTimesForDay.fajr.subtract(Duration(minutes: 10));
+        final imsakend = prayerTimesForDay.fajr.subtract(Duration(minutes: 1));
         final fajrStart = prayerTimesForDay.fajr;
         final fajrEnd = prayerTimesForDay.sunrise;
         final dhuhrStart = prayerTimesForDay.dhuhr;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/component/eng_to_bn.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
-import 'package:ramadantimes/src/services/responsive_service.dart';
+import 'package:muslimtimespro/src/component/eng_to_bn.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:muslimtimespro/src/services/responsive_service.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../prayer_times/presentation/pages/manual_prayer_time.dart';
 import '../../../prayer_times/presentation/pages/prayer_time_convention.dart';

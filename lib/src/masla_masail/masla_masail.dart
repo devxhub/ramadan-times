@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_bloc.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_event.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_state.dart';
-import 'package:ramadantimes/src/masla_masail/masail_details_page.dart';
-import 'package:ramadantimes/src/services/responsive_service.dart';
+import 'package:muslimtimespro/src/bloc/infinite_masail_list/masail_bloc.dart';
+import 'package:muslimtimespro/src/bloc/infinite_masail_list/masail_event.dart';
+import 'package:muslimtimespro/src/bloc/infinite_masail_list/masail_state.dart';
+import 'package:muslimtimespro/src/masla_masail/masail_details_page.dart';
+import 'package:muslimtimespro/src/services/responsive_service.dart';
 
 import '../../l10n/app_localizations.dart';
 

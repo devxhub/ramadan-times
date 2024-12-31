@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:ramadantimes/src/models/calendar_model/datum.dart';
+import 'package:muslimtimespro/src/models/calendar_model/datum.dart';
 
 part 'timing.g.dart';
 
@@ -19,7 +19,8 @@ class Timing extends Equatable {
   }
 
   Map<String, dynamic> toJson() => _$TimingToJson(this);
-  Map<String, dynamic> toMap() => {'code': code, 'status': status, 'datum': jsonEncode(data)};
+  Map<String, dynamic> toMap() =>
+      {'code': code, 'status': status, 'datum': jsonEncode(data)};
 
   Timing copyWith({
     int? code,
@@ -32,8 +33,11 @@ class Timing extends Equatable {
       data: data ?? this.data,
     );
   }
-  factory Timing.fromMap(Map<String, dynamic> s) =>
-      Timing(code: s['code'], status: s['status'], data: Datum.fromJson(jsonDecode(s['datum'])));
+
+  factory Timing.fromMap(Map<String, dynamic> s) => Timing(
+      code: s['code'],
+      status: s['status'],
+      data: Datum.fromJson(jsonDecode(s['datum'])));
 
   @override
   bool get stringify => true;

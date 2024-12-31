@@ -25,7 +25,7 @@
 //
 //   static Future<Database> initDB() async {
 //     var dbPath = await getDatabasesPath(); //veriable declar
-//     String path = join(dbPath, "ramadantimes1.db"); //initialize path
+//     String path = join(dbPath, "muslimtimespro1.db"); //initialize path
 //
 //     return openDatabase(path, version: 1, onCreate: _onCreate); //opendatabase
 //   }

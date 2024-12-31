@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/models/masail/masail/result.dart';
-import 'package:ramadantimes/src/services/responsive_service.dart';
+import 'package:muslimtimespro/src/models/masail/masail/result.dart';
+import 'package:muslimtimespro/src/services/responsive_service.dart';
 import '../../l10n/app_localizations.dart';
 
 class MaslaMasailDetailsPage extends StatefulWidget {

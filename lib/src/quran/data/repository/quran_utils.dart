@@ -1,6 +1,6 @@
 import 'package:quran/quran.dart' as quran;
-import 'package:ramadantimes/src/quran/data/model/quran_transliteration_model.dart';
-import 'package:ramadantimes/src/quran/data/repository/quran_data_two.dart';
+import 'package:muslimtimespro/src/quran/data/model/quran_transliteration_model.dart';
+import 'package:muslimtimespro/src/quran/data/repository/quran_data_two.dart';
 import 'quran_custom_surah_name.dart';
 
 String getSurahName(int surahNumber, String languageCode) {

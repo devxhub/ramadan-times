@@ -7,13 +7,13 @@
 //
 // import 'package:intl/intl.dart';
 //
-// import 'package:ramadantimes/src/bloc/home/bloc/calendar_bloc.dart';
-// import 'package:ramadantimes/src/bloc/home/bloc/calendar_event.dart';
-// import 'package:ramadantimes/src/dbHelper/db_helper_bloc/prayer_times_bloc.dart';
+// import 'package:muslimtimespro/src/bloc/home/bloc/calendar_bloc.dart';
+// import 'package:muslimtimespro/src/bloc/home/bloc/calendar_event.dart';
+// import 'package:muslimtimespro/src/dbHelper/db_helper_bloc/prayer_times_bloc.dart';
 //
-// import 'package:ramadantimes/src/models/address/district.dart';
+// import 'package:muslimtimespro/src/models/address/district.dart';
 //
-// import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
+// import 'package:muslimtimespro/src/schedule/time_of_ifter.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 //
 // import '../bloc/home/bloc/calendar_state.dart';

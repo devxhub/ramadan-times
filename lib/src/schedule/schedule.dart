@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/models/address/district.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/pages/prayer_time_widget.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/widgets/user_location.dart';
-import 'package:ramadantimes/src/schedule/time_of_ifter.dart';
+import 'package:muslimtimespro/src/models/address/district.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/pages/prayer_time_widget.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/widgets/user_location.dart';
+import 'package:muslimtimespro/src/schedule/time_of_ifter.dart';
 import 'dua.dart';
 import 'next_prayer.dart';
 import 'next_sehri_ifter.dart';

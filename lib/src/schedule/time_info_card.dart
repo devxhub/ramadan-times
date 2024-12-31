@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
-import 'package:ramadantimes/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
+import 'package:muslimtimespro/src/prayer_times/presentation/bloc/prayer_time_bloc.dart';
 import '../../l10n/app_localizations.dart';
 import '../component/eng_to_bn.dart';
 import '../prayer_times/data/models/prayer_times.dart';

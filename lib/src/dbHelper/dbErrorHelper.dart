@@ -1,4 +1,4 @@
-import 'package:ramadantimes/src/models/weather/weather_model_final.dart';
+import 'package:muslimtimespro/src/models/weather/weather_model_final.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
@@ -24,7 +24,7 @@ class DBHelp1 {
 
   static Future<Database> initDB() async {
     var dbPath = await getDatabasesPath(); //veriable declar
-    String path = join(dbPath, "ramadantimes1.db"); //initialize path
+    String path = join(dbPath, "muslimtimespro1.db"); //initialize path
 
     return openDatabase(path, version: 1, onCreate: _onCreate); //opendatabase
   }

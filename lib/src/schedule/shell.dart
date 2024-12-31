@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:in_app_review/in_app_review.dart';
-import 'package:ramadantimes/l10n/app_localizations.dart';
-import 'package:ramadantimes/src/langauage/language_screen.dart';
-import 'package:ramadantimes/src/services/responsive_service.dart';
+import 'package:muslimtimespro/l10n/app_localizations.dart';
+import 'package:muslimtimespro/src/langauage/language_screen.dart';
+import 'package:muslimtimespro/src/services/responsive_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -278,7 +278,7 @@ class CommonDrawer extends StatelessWidget {
                       title: AppLocalizations.of(context)?.shareApp ?? "",
                       onTap: () {
                         Share.share(
-                            'check out this App https://play.google.com/store/apps/details?id=com.devxhub.ramadantimes',
+                            'check out this App https://play.google.com/store/apps/details?id=com.devxhub.muslimtimespro',
                             subject: 'Look what they made!');
                       },
                     ),

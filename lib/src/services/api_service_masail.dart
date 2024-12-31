@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:ramadantimes/src/models/masail/masail/masail.dart';
+import 'package:muslimtimespro/src/models/masail/masail/masail.dart';
 
 import 'dio_client.dart';
 

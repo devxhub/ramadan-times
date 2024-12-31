@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ramadantimes/src/services/utility.dart';
+import 'package:muslimtimespro/src/services/utility.dart';
 import '../../l10n/app_localizations.dart';
 
 class TimeContainerForSehriTime extends StatefulWidget {

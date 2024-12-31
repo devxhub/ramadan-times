@@ -1,5 +1,5 @@
 import 'package:adhan/adhan.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_convention_model.dart';
+import 'package:muslimtimespro/src/prayer_times/data/models/prayer_convention_model.dart';
 
 List<PrayerConventionModel> prayerConventionList = [
   PrayerConventionModel(

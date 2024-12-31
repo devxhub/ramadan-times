@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ramadantimes/src/models/address/district.dart';
-import 'package:ramadantimes/src/services/api_service.dart';
+import 'package:muslimtimespro/src/models/address/district.dart';
+import 'package:muslimtimespro/src/services/api_service.dart';
 
 import '../api_result.dart';
 import '../network_exceptions.dart';

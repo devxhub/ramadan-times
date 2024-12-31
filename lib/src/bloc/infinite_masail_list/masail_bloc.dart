@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:ramadantimes/src/bloc/infinite_masail_list/masail_event.dart';
-import 'package:ramadantimes/src/models/masail/masail/masail.dart';
-import 'package:ramadantimes/src/models/masail/masail/result.dart';
-import 'package:ramadantimes/src/services/api_service_masail.dart';
+import 'package:muslimtimespro/src/bloc/infinite_masail_list/masail_event.dart';
+import 'package:muslimtimespro/src/models/masail/masail/masail.dart';
+import 'package:muslimtimespro/src/models/masail/masail/result.dart';
+import 'package:muslimtimespro/src/services/api_service_masail.dart';
 import 'masail_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

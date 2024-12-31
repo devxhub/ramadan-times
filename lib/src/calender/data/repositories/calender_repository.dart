@@ -1,6 +1,6 @@
 import 'package:adhan/adhan.dart';
 import 'package:dio/dio.dart';
-import 'package:ramadantimes/src/calender/data/models/prayer_times.dart';
+import 'package:muslimtimespro/src/calender/data/models/prayer_times.dart';
 import '../../../services/dio_client.dart';
 
 class CalenderRepository {

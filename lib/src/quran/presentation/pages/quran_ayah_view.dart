@@ -6,8 +6,8 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:quran/quran.dart' as quran;
-import 'package:ramadantimes/l10n/app_localizations.dart';
-import 'package:ramadantimes/src/component/eng_to_bn.dart';
+import 'package:muslimtimespro/l10n/app_localizations.dart';
+import 'package:muslimtimespro/src/component/eng_to_bn.dart';
 
 import '../../data/repository/quran_utils.dart';
 
