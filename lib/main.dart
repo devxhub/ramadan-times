@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ramadantimes/src/auth/data/respositories/sign_in_repository.dart';
+import 'package:ramadantimes/src/auth/presentation/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:ramadantimes/src/bloc/NextDayTiming/next_day_timing_cubit.dart';
 import 'package:ramadantimes/src/bloc/language_bloc/language_bloc.dart';
 import 'package:ramadantimes/src/bloc/location/country_cubit.dart';
@@ -38,6 +40,11 @@ void main() async {
     BlocProvider<PrayerTimeBloc>(
       create: (BuildContext context) {
         return PrayerTimeBloc(prayerTimeRepository: PrayerTimeRepository());
+      },
+    ),
+    BlocProvider<SignInBloc>(
+      create: (BuildContext context) {
+        return SignInBloc(signInRepository: SignInRepository());
       },
     ),
     BlocProvider<NavigationCubit>(
