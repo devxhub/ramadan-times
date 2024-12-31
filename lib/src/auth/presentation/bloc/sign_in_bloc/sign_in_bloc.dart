@@ -18,40 +18,41 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final SignInRepository signInRepository;
 
   SignInBloc({required this.signInRepository}) : super(const SignInState()) {
+  SignInBloc({required signInRepository}) : super(const SignInState()) {
     on<SignInEvent>((events, emit) async {
       await events.map(
         isPasswordObscure: (event) async =>
-            await _isPasswordObscure(event, emit),
+            await isPasswordObscure(event, emit),
         isConfirmPasswordObscure: (event) async =>
-            await _isConfirmPasswordObscure(event, emit),
+            await isConfirmPasswordObscure(event, emit),
         isConfirmNewPasswordObscure: (event) async =>
-            await _isConfirmNewPasswordObscure(event, emit),
-        isRemember: (event) async => await _isRemember(event, emit),
-        signInDataSubmit: (event) async => await _signInDataSubmit(event, emit),
+            await isConfirmNewPasswordObscure(event, emit),
+        isRemember: (event) async => await isRemember(event, emit),
+        signInDataSubmit: (event) async => await signInDataSubmit(event, emit),
       );
     });
   }
-  _isPasswordObscure(
+  isPasswordObscure(
       _IsPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isPasswordObscure: !state.isPasswordObscure));
   }
 
-  _isConfirmPasswordObscure(
+  isConfirmPasswordObscure(
       _IsConfirmPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isNewPasswordObscure: !state.isNewPasswordObscure));
   }
 
-  _isConfirmNewPasswordObscure(
+  isConfirmNewPasswordObscure(
       _IsConfirmNewPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(
         isConfirmNewPasswordObscure: !state.isConfirmNewPasswordObscure));
   }
 
-  _isRemember(_IsRemember event, Emitter<SignInState> emit) async {
+  isRemember(_IsRemember event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isRemember: event.isRememberMe));
   }
 
-  _signInDataSubmit(_SignInDataSubmit event, Emitter<SignInState> emit) async {
+  signInDataSubmit(_SignInDataSubmit event, Emitter<SignInState> emit) async {
     emit(state.copyWith(signInStatus: SignInStatus.inProgress));
     try {
       final resp = await signInRepository.signInDataSubmit(

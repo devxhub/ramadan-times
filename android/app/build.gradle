@@ -67,10 +67,19 @@ android {
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
         }
+        debug {
+            keyAlias 'google-signin-key'
+            keyPassword '123456'
+            storeFile file('google-key.jks')
+            storePassword '123456'
+        }
     }
     buildTypes {
         release {
             signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 }
@@ -83,4 +92,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'com.google.android.gms:play-services-location:21.2.0'
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'
 }
