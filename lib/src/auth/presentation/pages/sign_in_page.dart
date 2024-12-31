@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -32,26 +33,27 @@ class SignInPage extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding:  EdgeInsets.all(24.0.sp),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  SizedBox(height: 8.h,),
                   Text(
                     'Welcome!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 24.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Text(
                     'Sign in to continue!',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: TextStyle(fontSize: 16.sp, color: Color(0xff75718B)),
                   ),
-                  SizedBox(height: 24),
+                  SizedBox(height: 24.h),
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: 'Your Email',
