@@ -8,6 +8,7 @@ import 'package:ramadantimes/src/auth/presentation/pages/forget_password/forget_
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/forget_password_page.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/reset_password_page.dart';
 import 'package:muslimtimespro/src/auth/presentation/pages/sign_in_page.dart';
+import 'package:muslimtimespro/src/auth/presentation/pages/sign_up_with_email.dart';
 import 'package:muslimtimespro/src/calender/presentation/pages/calender.dart';
 import 'package:muslimtimespro/src/component/splash_page.dart';
 import 'package:muslimtimespro/src/masla_masail/masla_masail.dart';
@@ -17,11 +18,6 @@ import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import '../l10n/l10n.dart';
 import 'bloc/language_bloc/language_bloc.dart';
 import 'langauage/language_screen.dart';
-import 'prayer_times/presentation/pages/prayer_time_convention.dart';
-import '../l10n/l10n.dart';
-import 'bloc/language_bloc/language_bloc.dart';
-import 'langauage/language_screen.dart';
-import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import 'quran/presentation/pages/quran_surah_view.dart';
 import 'schedule/schedule.dart';
 import 'schedule/shell.dart';
@@ -184,6 +180,15 @@ final GoRouter _router = GoRouter(
       name: "forget_password_otp_page",
       builder: (BuildContext context, GoRouterState state) {
         return ForgetPasswordOtpPage();
+      },
+    ),
+
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/sign_up_page',
+      name: "sign_up_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return SignUpWithEmail();
       },
     ),
 

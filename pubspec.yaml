@@ -35,17 +35,18 @@ dependencies:
   equatable: ^2.0.7
   flutter:
     sdk: flutter
+  firebase_core: ^3.9.0
   flutter_bloc: ^8.1.6
   flutter_countdown_timer: ^4.1.0
   flutter_html: ^3.0.0-beta.2
   flutter_localizations:
     sdk: flutter
-  flutter_native_splash: ^2.3.5
   flutter_screenutil: ^5.9.3
   flutter_spinkit: ^5.2.1
   flutter_svg: ^2.0.16
   font_awesome_flutter: ^10.8.0
   freezed_annotation: ^2.4.4
+  flutter_native_splash: ^2.2.11
   gap: ^3.0.1
   geocoding: ^3.0.0
   geolocator: ^13.0.2
@@ -145,3 +146,10 @@ flutter_icons:
   macos:
     generate: true
     image_path: "assets/images/muslim_time_logo.png"
+
+flutter_native_splash:
+  color: "#ffffff" 
+  image: "assets/images/muslim_time_logo.png" 
+  android: true
+  ios: true
+  web: false

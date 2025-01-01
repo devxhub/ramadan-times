@@ -19,6 +19,8 @@ import 'package:muslimtimespro/src/services/api_service.dart';
 import 'package:muslimtimespro/src/services/api_service_masail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'src/app.dart';
+import 'src/auth/data/respositories/sign_up_repository.dart';
+import 'src/auth/presentation/bloc/sign_up_bloc/sign_up_bloc.dart';
 import 'src/bloc/infinite_masail_list/masail_bloc.dart';
 import 'src/bloc/location/location_cubit.dart';
 import 'src/quran/presentation/bloc/quran_bloc.dart';
@@ -45,6 +47,11 @@ void main() async {
     BlocProvider<SignInBloc>(
       create: (BuildContext context) {
         return SignInBloc(signInRepository: SignInRepository());
+      },
+    ),
+    BlocProvider<SignUpBloc>(
+      create: (BuildContext context) {
+        return SignUpBloc(signUpRepository: SignUpRepository());
       },
     ),
     BlocProvider<NavigationCubit>(

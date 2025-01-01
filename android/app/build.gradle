@@ -67,20 +67,13 @@ android {
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
         }
-        debug {
-            keyAlias 'google-signin-key'
-            keyPassword '123456'
-            storeFile file('google-key.jks')
-            storePassword '123456'
-        }
+     
     }
     buildTypes {
         release {
             signingConfig signingConfigs.release
         }
-        debug {
-            signingConfig signingConfigs.debug
-        }
+   
     }
 }
 

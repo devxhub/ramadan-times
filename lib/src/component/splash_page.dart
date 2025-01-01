@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gap/gap.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:muslimtimespro/src/auth/presentation/bloc/sign_up_bloc/sign_up_bloc.dart';
 import '../services/responsive_service.dart';
 
 class SplashPage extends StatefulWidget {
@@ -20,12 +17,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 0), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       _showBottomSheet();
     });
   }
@@ -34,6 +29,7 @@ class _SplashPageState extends State<SplashPage> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      isDismissible: false,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(15.sp)),
       ),
@@ -93,7 +89,11 @@ class _SplashPageState extends State<SplashPage> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
-                    onPressed: _signInWithGoogle,
+                    onPressed: () {
+                      context
+                          .read<SignUpBloc>()
+                          .add(SignUpEvent.signWithGoogle());
+                    },
                     icon: Image(image: AssetImage('assets/images/Google.png')),
                     label: Text(
                       'Sign Up with Google',
@@ -113,7 +113,11 @@ class _SplashPageState extends State<SplashPage> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
-                    onPressed: _signInWithApple,
+                    onPressed: () {
+                      context
+                          .read<SignUpBloc>()
+                          .add(SignUpEvent.signWithApple());
+                    },
                     icon: Icon(Icons.apple),
                     label: Text('Sign Up with Apple'),
                     style: ElevatedButton.styleFrom(
@@ -130,7 +134,9 @@ class _SplashPageState extends State<SplashPage> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.go('/sign_up_page');
+                    },
                     icon: Icon(
                       Icons.email,
                       color: Colors.white,
@@ -176,35 +182,6 @@ class _SplashPageState extends State<SplashPage> {
         );
       },
     );
-  }
-
-  Future<void> _signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser != null) {
-        // Handle Google sign-in success
-        print(
-            'Google sign-in successful: ${googleUser.email} ${googleUser.photoUrl} ${googleUser.displayName}');
-      }
-    } catch (e) {
-      print('Google sign-in failed: $e');
-    }
-  }
-
-  Future<void> _signInWithApple() async {
-    try {
-      final credential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-      );
-      // Handle Apple sign-in success
-      print(
-          'Apple sign-in successful: ${credential.email} ${credential.givenName}${credential.familyName}');
-    } catch (e) {
-      print('Apple sign-in failed: $e');
-    }
   }
 
   @override

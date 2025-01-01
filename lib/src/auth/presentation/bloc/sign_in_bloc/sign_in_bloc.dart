@@ -18,7 +18,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final SignInRepository signInRepository;
 
   SignInBloc({required this.signInRepository}) : super(const SignInState()) {
-  SignInBloc({required signInRepository}) : super(const SignInState()) {
     on<SignInEvent>((events, emit) async {
       await events.map(
         isPasswordObscure: (event) async =>
@@ -32,8 +31,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       );
     });
   }
-  isPasswordObscure(
-      _IsPasswordObscure event, Emitter<SignInState> emit) async {
+  isPasswordObscure(_IsPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isPasswordObscure: !state.isPasswordObscure));
   }
 
