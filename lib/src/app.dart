@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ramadantimes/src/auth/presentation/pages/forget_password/forget_password_otp_page.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/forget_password_page.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/forget_password/reset_password_page.dart';
 import 'package:ramadantimes/src/auth/presentation/pages/sign_in_page.dart';
@@ -175,6 +176,13 @@ final GoRouter _router = GoRouter(
       name: "reset_password_page",
       builder: (BuildContext context, GoRouterState state) {
         return ResetPasswordPage();
+      },
+    ), GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/forget_password_otp_page',
+      name: "forget_password_otp_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return ForgetPasswordOtpPage();
       },
     ),
 
