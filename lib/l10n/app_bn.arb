@@ -141,7 +141,9 @@
    "selectYourCity": "আপনার শহর নির্বাচন করুন",
    "pleaseSelectACity": "অনুগ্রহ করে একটি শহর নির্বাচন করুন",
    "countrySavedSuccessfully": "দেশ সফলভাবে সংরক্ষণ করা হয়েছে!",
-   "countryIsNotFoundInTheList": "তালিকায় দেশটি পাওয়া যায়নি!"
-
+   "countryIsNotFoundInTheList": "তালিকায় দেশটি পাওয়া যায়নি!",
+   "passwordMustBeAtLeast8Characters":"পাসওয়ার্ড ন্যূনতম ৮ অক্ষরের হতে হবে।",
+"pleaseEnterYourEmailAddress":"দয়া করে,আপনার ইমেল লিখুন",
+ "pleaseEnterYourPassword":"দয়া করে,আপনার পাসওয়ার্ড লিখুন"
 
 }

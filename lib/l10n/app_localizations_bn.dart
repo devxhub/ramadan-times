@@ -339,4 +339,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get countryIsNotFoundInTheList => 'তালিকায় দেশটি পাওয়া যায়নি!';
+
+  @override
+  String get passwordMustBeAtLeast8Characters => 'পাসওয়ার্ড ন্যূনতম ৮ অক্ষরের হতে হবে।';
+
+  @override
+  String get pleaseEnterYourEmailAddress => 'দয়া করে,আপনার ইমেল লিখুন';
+
+  @override
+  String get pleaseEnterYourPassword => 'দয়া করে,আপনার পাসওয়ার্ড লিখুন';
 }

@@ -672,6 +672,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Country is not found in the list!'**
   String get countryIsNotFoundInTheList;
+
+  /// No description provided for @passwordMustBeAtLeast8Characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters.'**
+  String get passwordMustBeAtLeast8Characters;
+
+  /// No description provided for @pleaseEnterYourEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address'**
+  String get pleaseEnterYourEmailAddress;
+
+  /// No description provided for @pleaseEnterYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your Password'**
+  String get pleaseEnterYourPassword;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

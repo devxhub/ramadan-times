@@ -141,9 +141,10 @@
     "selectYourCity":"Select Your City",
     "pleaseSelectACity":"Please Select a city",
     "countrySavedSuccessfully":"Country saved successfully!",
-    "countryIsNotFoundInTheList":"Country is not found in the list!"
-
-
+    "countryIsNotFoundInTheList":"Country is not found in the list!",
+"passwordMustBeAtLeast8Characters":"Password must be at least 8 characters.",
+"pleaseEnterYourEmailAddress":"Please enter your email address",
+  "pleaseEnterYourPassword":"Please enter your Password"
  
 
 }

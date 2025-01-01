@@ -320,4 +320,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get countryIsNotFoundInTheList => 'Maata ei löytynyt luettelosta!';
+
+  @override
+  String get passwordMustBeAtLeast8Characters => 'Password must be at least 8 characters.';
+
+  @override
+  String get pleaseEnterYourEmailAddress => 'Please enter your email address';
+
+  @override
+  String get pleaseEnterYourPassword => 'Please enter your Password';
 }

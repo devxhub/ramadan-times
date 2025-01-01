@@ -1,57 +1,59 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
-// const _defaultConnectTimeout = Duration.millisecondsPerMinute;
-// const _defaultReceiveTimeout = Duration.millisecondsPerMinute;
-
+import 'package:shared_preferences/shared_preferences.dart';
 class DioClient {
   final String baseUrl;
   Dio? _dio;
   final List<Interceptor>? interceptors;
 
   DioClient(
-    this.baseUrl,
-    Dio dio, {
-    this.interceptors,
-  }) {
+      this.baseUrl,
+      Dio dio, {
+        this.interceptors,
+      }) {
     _dio = dio;
     _dio!
       ..options.baseUrl = baseUrl
-      // ..options.connectTimeout = _defaultConnectTimeout
-      // ..options.receiveTimeout = _defaultReceiveTimeout
+      ..options.connectTimeout = const Duration(minutes: 1)
+      ..options.receiveTimeout = const Duration(minutes: 1)
       ..httpClientAdapter
       ..options.headers = {
-        // 'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/json; charset=UTF-8',
         // 'Authorization': "Bearer " + "",
       };
     // if (interceptors?.isNotEmpty ?? false) {
     _dio!.interceptors.clear();
     dio.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
-      // final token = await WooApiServices().wooCommerce.getAuthTokenFromDb();
-      // print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>$token");
-      // final coCart = await ApiServices().getCoCart();
-      // final cartKey = coCart["cart_key"];
-      // if (token != "0") {
-      //   options.headers.addAll({
-      //     'Authorization': "Bearer $token",
-      //   });
-      // } else {
-      //   options.queryParameters.addAll({"cart_key": cartKey});
-      // }
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final String? token =  prefs.getString("token");
+      // String authTokentwo =
+      //     'Bearer 88|nli74du9OGIR3GDMOoaDWMOpSsee6BoJB6okgxB1';
+      //
+      const String authToken =
+          "2886|fy00BgVdFKrMtXrytp4dll3ocYUx8w5UUZ4ba24Xf267268d";
+      //String? authToken = await storage.read(key: "token");
+      options.headers.addAll({
+        'X-Requested-With': 'XMLHttpRequest',
+        "Content-Type": "application/json",
+        'Authorization': "Bearer $token",
+        //'Authorization': "Bearer $authToken",
+        'X-Platform': Platform.isIOS ? "IOS" : "ANDROID"
+      });
       // Do something before request is sent
       return handler.next(options); //continue
       // If you want to resolve the request with some custom data，
       // you can resolve a `Response` object eg: return `dio.resolve(response)`.
       // If you want to reject the request with a error message,
-      // you can reject a `DioError` object eg: return `dio.reject(dioError)`
+      // you can reject a `DioException` object eg: return `dio.reject(DioException)`
     }, onResponse: (response, handler) {
       // Do something with response data
       return handler.next(response); // continue
       // If you want to reject the request with a error message,
-      // you can reject a `DioError` object eg: return `dio.reject(dioError)`
-    }, onError: (DioError e, handler) {
+      // you can reject a `DioException` object eg: return `dio.reject(DioException)`
+    }, onError: (DioException e, handler) {
       // Do something with response error
       return handler.next(e); //continue
       // If you want to resolve the request with some custom data，
@@ -71,11 +73,11 @@ class DioClient {
     //   // If you want to resolve the request with some custom data，
     //   // you can return a `Response` object or return `dio.resolve(data)`.
     //   // If you want to reject the request with a error message,
-    //   // you can return a `DioError` object or return `dio.reject(errMsg)`
+    //   // you can return a `DioException` object or return `dio.reject(errMsg)`
     // }, onResponse: (Response response, RequestInterceptorHandler interceptorHandler)  {
     //   // Do something with response data
     //   return response; // continue
-    // }, onError: (DioError error, ErrorInterceptorHandler interceptorHandler) async {
+    // }, onError: (DioException error, ErrorInterceptorHandler interceptorHandler) async {
     //   SharedPreferences _prefs = await SharedPreferences.getInstance();
     //   if (error.response?.statusCode == 401) {
     //     RequestOptions options = error.response.request;
@@ -101,13 +103,13 @@ class DioClient {
   }
 
   Future<dynamic> get(
-    String uri, {
-    // Map<String, dynamic>? data,
-    Map<String, dynamic>? queryParameters,
-    Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onReceiveProgress,
-  }) async {
+      String uri, {
+        // Map<String, dynamic>? data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onReceiveProgress,
+      }) async {
     try {
       var response = await _dio!.get(
         uri,
@@ -127,15 +129,42 @@ class DioClient {
     }
   }
 
+  Future<Response<dynamic>> get0(
+      String uri, {
+        // Map<String, dynamic>? data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onReceiveProgress,
+      }) async {
+    try {
+      var response = await _dio!.get(
+        uri,
+        // data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return response;
+    } on SocketException catch (e) {
+      throw SocketException(e.toString());
+    } on FormatException catch (_) {
+      throw const FormatException("Unable to process the data");
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<dynamic> post(
-    String uri, {
-    data,
-    Map<String, dynamic>? queryParameters,
-    Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
+      String uri, {
+        data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onSendProgress,
+        ProgressCallback? onReceiveProgress,
+      }) async {
     try {
       var response = await _dio!.post(
         uri,
@@ -155,14 +184,14 @@ class DioClient {
   }
 
   Future<dynamic> patch(
-    String uri, {
-    data,
-    Map<String, dynamic>? queryParameters,
-    Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
+      String uri, {
+        data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onSendProgress,
+        ProgressCallback? onReceiveProgress,
+      }) async {
     try {
       var response = await _dio!.patch(
         uri,
@@ -181,13 +210,40 @@ class DioClient {
     }
   }
 
+  Future<dynamic> put(
+      String uri, {
+        data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onSendProgress,
+        ProgressCallback? onReceiveProgress,
+      }) async {
+    try {
+      var response = await _dio!.put(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return response.data;
+    } on FormatException catch (_) {
+      throw const FormatException("Unable to process the data");
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<dynamic> delete(
-    String uri, {
-    data,
-    Map<String, dynamic>? queryParameters,
-    Options? options,
-    CancelToken? cancelToken,
-  }) async {
+      String uri, {
+        data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+      }) async {
     try {
       var response = await _dio!.delete(
         uri,
@@ -201,6 +257,40 @@ class DioClient {
       throw const FormatException("Unable to process the data");
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<dynamic> uploadFile(
+      String uri, {
+        required String filePath,
+        String? fileName,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+        CancelToken? cancelToken,
+        ProgressCallback? onSendProgress,
+        ProgressCallback? onReceiveProgress,
+      }) async {
+    try {
+      File file = File(filePath);
+      String name = fileName ?? file.path.split('/').last;
+      FormData formData = FormData.fromMap({
+        "file": await MultipartFile.fromFile(
+          file.path,
+          filename: name,
+        ),
+      });
+      var response = await _dio!.post(
+        uri,
+        data: formData,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      return response.data;
+    } on DioError catch (e) {
+      throw DioError(error: e.error, requestOptions: e.requestOptions);
     }
   }
 }

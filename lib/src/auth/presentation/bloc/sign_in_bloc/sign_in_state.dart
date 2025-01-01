@@ -13,5 +13,8 @@ enum PrayerStatus { initial, success, failure, inProgress }
 class SignInState with _$SignInState {
   const factory SignInState({
     @Default(false) bool isRemember,
+    @Default(true) bool isPasswordObscure,
+    @Default(SignInStatus.initial) SignInStatus signInStatus,
+    @Default(SignInResponse()) SignInResponse signInResponse,
   }) = _SignInState;
 }

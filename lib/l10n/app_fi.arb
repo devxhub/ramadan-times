@@ -141,5 +141,8 @@
   "selectYourCity": "Valitse kaupunkisi",
   "pleaseSelectACity": "Valitse kaupunki",
   "countrySavedSuccessfully": "Maa tallennettu onnistuneesti!",
-  "countryIsNotFoundInTheList": "Maata ei löytynyt luettelosta!"
+  "countryIsNotFoundInTheList": "Maata ei löytynyt luettelosta!",
+  "passwordMustBeAtLeast8Characters":"Password must be at least 8 characters.",
+  "pleaseEnterYourEmailAddress":"Please enter your email address",
+   "pleaseEnterYourPassword":"Please enter your Password"
 }
