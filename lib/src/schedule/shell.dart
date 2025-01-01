@@ -197,40 +197,6 @@ class CommonDrawer extends StatelessWidget {
                 child: Column(
                   children: [
                     DrawerItem(
-                      icon: const Icon(CupertinoIcons.globe),
-                      title:
-                          AppLocalizations.of(context)?.changeAppLanguage ?? "",
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return LanguageSelector();
-                          },
-                        ));
-                      },
-                    ),
-                    DrawerItem(
-                      icon: const Icon(Icons.location_pin),
-                      title:
-                          AppLocalizations.of(context)?.changeAppLocation ?? "",
-                      onTap: () {
-                        GoRouter.of(context).push('/location_select');
-                      },
-                    ),
-                    DrawerItem(
-                      icon: const Icon(Icons.settings),
-                      title: AppLocalizations.of(context)!.settings,
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return SettingsScreen();
-                          },
-                        ));
-                      },
-                    ),
-                    const Divider(
-                      color: Colors.white,
-                    ),
-                    DrawerItem(
                       icon: const Icon(Icons.mosque_outlined),
                       title: AppLocalizations.of(context)?.schedule ?? "",
                       onTap: () {
@@ -268,6 +234,40 @@ class CommonDrawer extends StatelessWidget {
                         context.goNamed("quran_surah");
 
                         context.read<NavigationCubit>().getNavBarItem(2);
+                      },
+                    ),
+                    const Divider(
+                      color: Colors.white,
+                    ),
+                    DrawerItem(
+                      icon: const Icon(CupertinoIcons.globe),
+                      title:
+                          AppLocalizations.of(context)?.changeAppLanguage ?? "",
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return LanguageSelector();
+                          },
+                        ));
+                      },
+                    ),
+                    DrawerItem(
+                      icon: const Icon(Icons.location_pin),
+                      title:
+                          AppLocalizations.of(context)?.changeAppLocation ?? "",
+                      onTap: () {
+                        GoRouter.of(context).push('/location_select');
+                      },
+                    ),
+                    DrawerItem(
+                      icon: const Icon(Icons.settings),
+                      title: AppLocalizations.of(context)!.settings,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return SettingsScreen();
+                          },
+                        ));
                       },
                     ),
                     const Divider(
