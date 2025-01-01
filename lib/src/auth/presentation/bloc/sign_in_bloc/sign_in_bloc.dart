@@ -12,11 +12,11 @@ import 'package:muslimtimespro/src/prayer_times/data/models/user_coordinates.dar
 import 'package:muslimtimespro/src/prayer_times/data/models/weather_model.dart';
 import 'package:muslimtimespro/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ramadantimes/src/app.dart';
-import 'package:ramadantimes/src/auth/data/models/sign_in_response.dart';
-import 'package:ramadantimes/src/auth/data/respositories/sign_in_repository.dart';
-import 'package:ramadantimes/src/services/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../services/constants.dart';
+import '../../../data/models/sign_in_response.dart';
+import '../../../data/respositories/sign_in_repository.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
