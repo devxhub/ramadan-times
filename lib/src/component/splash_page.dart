@@ -165,7 +165,7 @@ class _SplashPageState extends State<SplashPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      context.goNamed("sign_in_page");
+                      context.pushNamed("sign_in_page");
                     },
                     child: Text(
                       'Sign in',
