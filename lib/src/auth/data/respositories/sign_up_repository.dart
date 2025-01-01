@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../../services/dio_client.dart';
-import '../model/sign_up_response.dart';
+import '../models/sign_up_response.dart';
 
 class SignUpRepository {
   late DioClient dioClient;

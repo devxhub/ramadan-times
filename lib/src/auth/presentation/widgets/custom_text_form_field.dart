@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -19,7 +18,11 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.focusNode,
-    this.maxLines = 1, this.floatingLabelBehavior, this.autoValidateMode, this.validator, this.onTap,
+    this.maxLines = 1,
+    this.floatingLabelBehavior,
+    this.autoValidateMode,
+    this.validator,
+    this.onTap,
   });
 
   final String labelText;
@@ -49,10 +52,10 @@ class CustomTextField extends StatelessWidget {
           prefixIconColor: WidgetStateColor.resolveWith((states) {
             if (states.contains(WidgetState.error)) {
               return Colors.red; // Color when there's an error
-            }else if (states.contains(WidgetState.focused)){
-            return HexColor("#6348EB");
+            } else if (states.contains(WidgetState.focused)) {
+              return HexColor("#6348EB");
             }
-            return Colors.grey ; // Default color
+            return Colors.grey; // Default color
           }),
           suffixIconColor: WidgetStateColor.resolveWith((states) {
             if (states.contains(WidgetState.error)) {
@@ -77,18 +80,19 @@ class CustomTextField extends StatelessWidget {
         autovalidateMode: autoValidateMode,
         decoration: InputDecoration(
           contentPadding:
-          EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 15.0.w),
+              EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 15.0.w),
           isDense: false,
           labelText: labelText,
           labelStyle: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             color: HexColor("#75718B"),
-          ),floatingLabelStyle: TextStyle(
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-          color: HexColor("#6348EB"),
-        ),
+          ),
+          floatingLabelStyle: TextStyle(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
+            color: HexColor("#6348EB"),
+          ),
           floatingLabelBehavior: floatingLabelBehavior,
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -136,10 +140,7 @@ class CustomTextField extends StatelessWidget {
           //helperStyle: theme.bodyTextStyle,
           prefixIcon: prefixIcon,
           suffix: suffixIcon,
-          hintStyle: TextStyle(
-              fontSize: 16.sp,
-              color: HexColor("#75718B80")
-          ),
+          hintStyle: TextStyle(fontSize: 16.sp, color: HexColor("#75718B80")),
         ),
         // style: theme.bodyLargeTextStyle,
       ),

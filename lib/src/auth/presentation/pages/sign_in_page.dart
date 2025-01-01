@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:ramadantimes/src/app.dart';
-import 'package:ramadantimes/src/auth/presentation/widgets/custom_text_form_field.dart';
-import 'package:ramadantimes/src/component/splash_page.dart';
-import 'package:ramadantimes/src/services/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../l10n/app_localizations.dart';
+import '../../../services/constants.dart';
 import '../bloc/sign_in_bloc/sign_in_bloc.dart';
+import '../widgets/custom_text_form_field.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

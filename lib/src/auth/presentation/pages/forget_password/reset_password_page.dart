@@ -3,12 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:hexcolor/hexcolor.dart';
-import 'package:ramadantimes/src/auth/presentation/widgets/custom_text_form_field.dart';
-
 import '../../../../../l10n/app_localizations.dart';
 import '../../bloc/sign_in_bloc/sign_in_bloc.dart';
+import '../../widgets/custom_text_form_field.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   @override
