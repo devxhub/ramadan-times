@@ -22,15 +22,12 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    isRememberMe();
     // Add a listener to detect focus changes
     _emailFocusNode.addListener(() {
       setState(() {}); // Update the UI when the focus changes
@@ -74,7 +71,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
             leading: GestureDetector(
               onTap: () {
-                context.pop;
+                context.pop();
               },
               child: SvgPicture.asset(
                 'assets/images/forward_back.svg',

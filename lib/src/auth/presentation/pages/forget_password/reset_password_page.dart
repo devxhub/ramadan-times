@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 import 'package:ramadantimes/src/auth/presentation/widgets/custom_text_form_field.dart';
 
@@ -30,11 +31,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     _passwordFocusNode.addListener(() {
       setState(() {}); // Update the UI when the focus changes
     });
+    _resetPasswordFocusNode.addListener(() {
+      setState(() {}); // Update the UI when the focus changes
+    });
   }
 
   @override
   void dispose() {
     _passwordFocusNode.dispose();
+    _resetPasswordFocusNode.dispose();
     super.dispose();
   }
 

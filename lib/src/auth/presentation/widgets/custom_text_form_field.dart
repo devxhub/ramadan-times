@@ -10,11 +10,11 @@ class CustomTextField extends StatelessWidget {
     this.labelText = '',
     this.helperText,
     this.editingController,
-    this.onTap,
     this.onChanged,
     this.error = false,
     this.textInputType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
+    this.obscureText = false,
     this.readOnly,
     this.prefixIcon,
     this.suffixIcon,
@@ -29,16 +29,17 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final String? helperText;
   final bool error;
-  final GestureTapCallback? onTap;
   final Function(String)? onChanged;
+  final Function()? onTap;
   final String? Function(String? value)? validator;
   final FloatingLabelBehavior? floatingLabelBehavior;
   final TextEditingController? editingController;
   final TextInputType textInputType;
   final TextInputAction textInputAction;
   final bool? readOnly;
-  final Widget? suffixIcon;
+  final bool obscureText;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final FocusNode? focusNode;
   final int maxLines;
   final AutovalidateMode? autoValidateMode;

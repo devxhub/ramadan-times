@@ -15,13 +15,6 @@ import 'package:go_router/go_router.dart';
 import 'package:ramadantimes/src/app.dart';
 import 'package:ramadantimes/src/auth/data/models/sign_in_response.dart';
 import 'package:ramadantimes/src/auth/data/respositories/sign_in_repository.dart';
-import 'package:ramadantimes/src/models/address/district.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/country_response.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/manual_prayer_time.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/prayer_times.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/user_coordinates.dart';
-import 'package:ramadantimes/src/prayer_times/data/models/weather_model.dart';
-import 'package:ramadantimes/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:ramadantimes/src/services/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,13 +29,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<SignInEvent>((events, emit) async {
       await events.map(
         isPasswordObscure: (event) async =>
-            await isPasswordObscure(event, emit),
+            await _isPasswordObscure(event, emit),
         isConfirmPasswordObscure: (event) async =>
-            await isConfirmPasswordObscure(event, emit),
+            await _isConfirmPasswordObscure(event, emit),
         isConfirmNewPasswordObscure: (event) async =>
-            await isConfirmNewPasswordObscure(event, emit),
-        isRemember: (event) async => await isRemember(event, emit),
-        signInDataSubmit: (event) async => await signInDataSubmit(event, emit),
+            await _isConfirmNewPasswordObscure(event, emit),
+        isRemember: (event) async => await _isRemember(event, emit),
+        signInDataSubmit: (event) async => await _signInDataSubmit(event, emit),
       );
     });
   }
@@ -50,18 +43,18 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(isPasswordObscure: !state.isPasswordObscure));
   }
 
-  isConfirmPasswordObscure(
+  _isConfirmPasswordObscure(
       _IsConfirmPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isNewPasswordObscure: !state.isNewPasswordObscure));
   }
 
-  isConfirmNewPasswordObscure(
+  _isConfirmNewPasswordObscure(
       _IsConfirmNewPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(
         isConfirmNewPasswordObscure: !state.isConfirmNewPasswordObscure));
   }
 
-  isRemember(_IsRemember event, Emitter<SignInState> emit) async {
+  _isRemember(_IsRemember event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isRemember: event.isRememberMe));
   }
 
