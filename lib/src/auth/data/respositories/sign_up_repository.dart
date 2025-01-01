@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 import '../../../services/dio_client.dart';
+import '../model/sign_up_response.dart';
 
 class SignUpRepository {
   late DioClient dioClient;
-  final String _baseUrl =
-      "https://your-api-base-url.com"; // Replace with your actual base URL
+  final String _baseUrl = "";
 
   SignUpRepository() {
     var dio = Dio();
     dioClient = DioClient(_baseUrl, dio);
   }
 
-  Future<Map<String, dynamic>> registerUser({
+  Future<SignUpResponse> registerUser({
     required String name,
     required String email,
     required String password,
@@ -23,35 +23,39 @@ class SignUpRepository {
       "password": password,
     };
 
-    try {
-      final Response response = await dioClient.post(
-        endpoint,
-        data: payload,
-      );
+    var response = {
+      "success": false,
+      "message": "Unknown error occurred.",
+    };
+    return SignUpResponse.fromJson(response);
+    // try {
+    //   final Response response = await dioClient.post(
+    //     endpoint,
+    //     data: payload,
+    //   );
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        return {
-          "success": response.data['success'],
-          "message": response.data['message'],
-        };
-      } else {
-        return {
-          "success": false,
-          "message": "Unexpected error occurred.",
-        };
-      }
-    } catch (error) {
-      if (error is DioException && error.response != null) {
-        return {
-          "success": false,
-          "message":
-              error.response?.data['message'] ?? "Unknown error occurred.",
-        };
-      }
-      return {
-        "success": false,
-        "message": "Failed to connect to the server.",
-      };
-    }
+    //   if (response.statusCode == 200 || response.statusCode == 201) {
+    //     return SignUpResponse.fromJson(response.data);
+    //   } else {
+    //     return SignUpResponse(
+    //       success: false,
+    //       message: "Unexpected error occurred.",
+    //     );
+    //   }
+    // } catch (error) {
+    //   if (error is DioException && error.response != null) {
+    //     return SignUpResponse.fromJson(
+    //       error.response?.data ??
+    //           {
+    //             "success": false,
+    //             "message": "Unknown error occurred.",
+    //           },
+    //     );
+    //   }
+    //   return SignUpResponse(
+    //     success: false,
+    //     message: "Failed to connect to the server.",
+    //   );
+    // }
   }
 }
