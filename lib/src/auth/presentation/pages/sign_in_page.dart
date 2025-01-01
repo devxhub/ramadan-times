@@ -29,12 +29,12 @@ class _SignInPageState extends State<SignInPage> {
   void initState() {
     super.initState();
     isRememberMe();
-    // Add a listener to detect focus changes
+
     _emailFocusNode.addListener(() {
-      setState(() {}); // Update the UI when the focus changes
+      setState(() {});
     });
     _passwordFocusNode.addListener(() {
-      setState(() {}); // Update the UI when the focus changes
+      setState(() {});
     });
   }
 

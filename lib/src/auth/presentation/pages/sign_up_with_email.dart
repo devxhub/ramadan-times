@@ -121,7 +121,16 @@ class SignUpWithEmail extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // if (formKey.currentState!.validate()) {
+                      //   context.goNamed("schedule");
+                      //   // context.read<SignInBloc>().add(
+                      //   //     SignInEvent.signInDataSubmit(
+                      //   //         userEmail: emailController.text,
+                      //   //         userPassword: passwordController.text,
+                      //   //         context: context));
+                      // }
+                    },
                     child: Text(
                       'Sign Up',
                       style: GoogleFonts.dmSans(
