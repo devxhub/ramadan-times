@@ -93,7 +93,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finnish => 'Finnish';
 
   @override
-  String get schedule => 'schedule';
+  String get schedule => 'Schedule';
 
   @override
   String get maslaMasail => 'Masala - Masael';

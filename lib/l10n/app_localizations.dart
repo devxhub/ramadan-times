@@ -268,7 +268,7 @@ abstract class AppLocalizations {
   /// No description provided for @schedule.
   ///
   /// In en, this message translates to:
-  /// **'schedule'**
+  /// **'Schedule'**
   String get schedule;
 
   /// No description provided for @maslaMasail.
