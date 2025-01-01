@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "275474517962",
+    "project_id": "muslimtimespro",
+    "storage_bucket": "muslimtimespro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275474517962:android:153caf8276c64fe1ac4933",
+        "android_client_info": {
+          "package_name": "com.devxhub.muslimtimespro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnRY53MbS_FMKbAfmFrQ2oygcpVdsLebE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
