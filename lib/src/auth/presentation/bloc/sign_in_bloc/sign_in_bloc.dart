@@ -3,14 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:muslimtimespro/src/auth/data/respositories/sign_in_repository.dart';
-import 'package:muslimtimespro/src/models/address/district.dart';
-import 'package:muslimtimespro/src/prayer_times/data/models/country_response.dart';
-import 'package:muslimtimespro/src/prayer_times/data/models/manual_prayer_time.dart';
-import 'package:muslimtimespro/src/prayer_times/data/models/prayer_times.dart';
-import 'package:muslimtimespro/src/prayer_times/data/models/user_coordinates.dart';
-import 'package:muslimtimespro/src/prayer_times/data/models/weather_model.dart';
-import 'package:muslimtimespro/src/prayer_times/data/repositories/prayer_time_repository.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,7 +31,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       );
     });
   }
-  isPasswordObscure(_IsPasswordObscure event, Emitter<SignInState> emit) async {
+  _isPasswordObscure(
+      _IsPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isPasswordObscure: !state.isPasswordObscure));
   }
 
@@ -58,7 +51,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(isRemember: event.isRememberMe));
   }
 
-  signInDataSubmit(_SignInDataSubmit event, Emitter<SignInState> emit) async {
+  _signInDataSubmit(_SignInDataSubmit event, Emitter<SignInState> emit) async {
     emit(state.copyWith(signInStatus: SignInStatus.inProgress));
     try {
       final resp = await signInRepository.signInDataSubmit(

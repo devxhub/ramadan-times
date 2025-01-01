@@ -23,10 +23,6 @@ class CustomTextField extends StatelessWidget {
     this.autoValidateMode,
     this.validator,
     this.onTap,
-    this.maxLines = 1,
-    this.floatingLabelBehavior,
-    this.validator,
-    this.autoValidateMode,
   });
 
   final String labelText;
