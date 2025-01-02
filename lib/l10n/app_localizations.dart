@@ -268,7 +268,7 @@ abstract class AppLocalizations {
   /// No description provided for @schedule.
   ///
   /// In en, this message translates to:
-  /// **'Schedule'**
+  /// **'schedule'**
   String get schedule;
 
   /// No description provided for @maslaMasail.
@@ -672,6 +672,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Country is not found in the list!'**
   String get countryIsNotFoundInTheList;
+
+  /// No description provided for @passwordMustBeAtLeast8Characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters.'**
+  String get passwordMustBeAtLeast8Characters;
+
+  /// No description provided for @pleaseEnterYourEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address'**
+  String get pleaseEnterYourEmailAddress;
+
+  /// No description provided for @pleaseEnterYourPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password'**
+  String get pleaseEnterYourPassword;
+
+  /// No description provided for @signUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUpTitle;
+
+  /// No description provided for @gettingStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Getting Started'**
+  String get gettingStarted;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to continue!'**
+  String get createAccount;
+
+  /// No description provided for @nameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameLabel;
+
+  /// No description provided for @nameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get nameHint;
+
+  /// No description provided for @emailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Email'**
+  String get emailLabel;
+
+  /// No description provided for @emailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get emailHint;
+
+  /// No description provided for @passwordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordLabel;
+
+  /// No description provided for @passwordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get passwordHint;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @confirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your confirm password'**
+  String get confirmPasswordHint;
+
+  /// No description provided for @signUpButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUpButton;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get signIn;
+
+  /// No description provided for @pleaseEnterYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address'**
+  String get pleaseEnterYourEmail;
+
+  /// No description provided for @passwordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters long'**
+  String get passwordTooShort;
+
+  /// No description provided for @confirmPasswordError.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password must match the password'**
+  String get confirmPasswordError;
+
+  /// No description provided for @pleaseEnterAValidEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get pleaseEnterAValidEmailAddress;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -320,4 +320,67 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get countryIsNotFoundInTheList => 'Maata ei löytynyt luettelosta!';
+
+  @override
+  String get passwordMustBeAtLeast8Characters => 'Password must be at least 8 characters.';
+
+  @override
+  String get pleaseEnterYourEmailAddress => 'Please enter your email address';
+
+  @override
+  String get pleaseEnterYourPassword => 'Syötä salasanasi';
+
+  @override
+  String get signUpTitle => 'Rekisteröidy';
+
+  @override
+  String get gettingStarted => 'Aloitetaan';
+
+  @override
+  String get createAccount => 'Luo tili jatkaaksesi!';
+
+  @override
+  String get nameLabel => 'Nimi';
+
+  @override
+  String get nameHint => 'Syötä nimesi';
+
+  @override
+  String get emailLabel => 'Sähköpostisi';
+
+  @override
+  String get emailHint => 'Syötä sähköpostisi';
+
+  @override
+  String get passwordLabel => 'Salasana';
+
+  @override
+  String get passwordHint => 'Syötä salasanasi';
+
+  @override
+  String get confirmPasswordLabel => 'Vahvista salasana';
+
+  @override
+  String get confirmPasswordHint => 'Syötä vahvistussalasanasi';
+
+  @override
+  String get signUpButton => 'Rekisteröidy';
+
+  @override
+  String get alreadyHaveAccount => 'Onko sinulla jo tili?';
+
+  @override
+  String get signIn => 'Kirjaudu sisään';
+
+  @override
+  String get pleaseEnterYourEmail => 'Syötä sähköpostiosoitteesi';
+
+  @override
+  String get passwordTooShort => 'Salasanan on oltava vähintään 8 merkkiä pitkä';
+
+  @override
+  String get confirmPasswordError => 'Vahvistussalasanan on oltava sama kuin salasana';
+
+  @override
+  String get pleaseEnterAValidEmailAddress => 'Anna kelvollinen sähköpostiosoite';
 }

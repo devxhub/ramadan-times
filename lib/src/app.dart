@@ -10,15 +10,14 @@ import 'package:muslimtimespro/src/component/splash_page.dart';
 import 'package:muslimtimespro/src/masla_masail/masla_masail.dart';
 import 'package:muslimtimespro/src/prayer_times/presentation/pages/location_select.dart';
 import '../l10n/app_localizations.dart';
+import 'auth/presentation/pages/forget_password/forget_password_otp_page.dart';
+import 'auth/presentation/pages/forget_password/forget_password_page.dart';
+import 'auth/presentation/pages/forget_password/reset_password_page.dart';
+import 'auth/presentation/pages/sign_up_with_email.dart';
 import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import '../l10n/l10n.dart';
 import 'bloc/language_bloc/language_bloc.dart';
 import 'langauage/language_screen.dart';
-import 'prayer_times/presentation/pages/prayer_time_convention.dart';
-import '../l10n/l10n.dart';
-import 'bloc/language_bloc/language_bloc.dart';
-import 'langauage/language_screen.dart';
-import 'prayer_times/presentation/pages/prayer_time_convention.dart';
 import 'quran/presentation/pages/quran_surah_view.dart';
 import 'schedule/schedule.dart';
 import 'schedule/shell.dart';
@@ -157,6 +156,39 @@ final GoRouter _router = GoRouter(
       name: "sign_in_page",
       builder: (BuildContext context, GoRouterState state) {
         return SignInPage();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/forgot_password_page',
+      name: "forgot_password_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return ForgotPasswordPage();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/reset_password_page',
+      name: "reset_password_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return ResetPasswordPage();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/forget_password_otp_page',
+      name: "forget_password_otp_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return ForgetPasswordOtpPage();
+      },
+    ),
+
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/sign_up_page',
+      name: "sign_up_page",
+      builder: (BuildContext context, GoRouterState state) {
+        return SignUpWithEmail();
       },
     ),
 

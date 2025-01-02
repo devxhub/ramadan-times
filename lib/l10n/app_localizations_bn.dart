@@ -339,4 +339,67 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get countryIsNotFoundInTheList => 'তালিকায় দেশটি পাওয়া যায়নি!';
+
+  @override
+  String get passwordMustBeAtLeast8Characters => 'পাসওয়ার্ড ন্যূনতম ৮ অক্ষরের হতে হবে।';
+
+  @override
+  String get pleaseEnterYourEmailAddress => 'দয়া করে,আপনার ইমেল লিখুন';
+
+  @override
+  String get pleaseEnterYourPassword => 'অনুগ্রহ করে আপনার পাসওয়ার্ড লিখুন';
+
+  @override
+  String get signUpTitle => 'নিবন্ধন করুন';
+
+  @override
+  String get gettingStarted => 'শুরু করুন';
+
+  @override
+  String get createAccount => 'চালিয়ে যেতে একটি অ্যাকাউন্ট তৈরি করুন!';
+
+  @override
+  String get nameLabel => 'নাম';
+
+  @override
+  String get nameHint => 'আপনার নাম লিখুন';
+
+  @override
+  String get emailLabel => 'আপনার ইমেল';
+
+  @override
+  String get emailHint => 'আপনার ইমেল লিখুন';
+
+  @override
+  String get passwordLabel => 'পাসওয়ার্ড';
+
+  @override
+  String get passwordHint => 'আপনার পাসওয়ার্ড লিখুন';
+
+  @override
+  String get confirmPasswordLabel => 'পাসওয়ার্ড নিশ্চিত করুন';
+
+  @override
+  String get confirmPasswordHint => 'আপনার নিশ্চিত পাসওয়ার্ড লিখুন';
+
+  @override
+  String get signUpButton => 'নিবন্ধন করুন';
+
+  @override
+  String get alreadyHaveAccount => 'আপনার কি অ্যাকাউন্ট আছে?';
+
+  @override
+  String get signIn => 'সাইন ইন করুন';
+
+  @override
+  String get pleaseEnterYourEmail => 'অনুগ্রহ করে আপনার ইমেল ঠিকানা লিখুন';
+
+  @override
+  String get passwordTooShort => 'পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে';
+
+  @override
+  String get confirmPasswordError => 'পাসওয়ার্ড নিশ্চিত পাসওয়ার্ডের সাথে মেলে না';
+
+  @override
+  String get pleaseEnterAValidEmailAddress => 'একটি বৈধ ইমেল ঠিকানা লিখুন';
 }

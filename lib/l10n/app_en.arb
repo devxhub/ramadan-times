@@ -29,7 +29,7 @@
   "english": "English",
   "bangla": "Bangla",
   "finnish": "Finnish",
-  "schedule": "Schedule",
+  "schedule": "schedule",
   "maslaMasail": "Masala - Masael",
   "calendar": "Calendar",
   "ramadanMubarak": "Ramadan Mubarak",
@@ -141,9 +141,29 @@
     "selectYourCity":"Select Your City",
     "pleaseSelectACity":"Please Select a city",
     "countrySavedSuccessfully":"Country saved successfully!",
-    "countryIsNotFoundInTheList":"Country is not found in the list!"
-
-
+    "countryIsNotFoundInTheList":"Country is not found in the list!",
+"passwordMustBeAtLeast8Characters":"Password must be at least 8 characters.",
+"pleaseEnterYourEmailAddress":"Please enter your email address",
+  "pleaseEnterYourPassword":"Please enter your Password",
+  "signUpTitle": "Sign Up",
+  "gettingStarted": "Getting Started",
+  "createAccount": "Create an account to continue!",
+  "nameLabel": "Name",
+  "nameHint": "Enter your name",
+  "emailLabel": "Your Email",
+  "emailHint": "Enter your email",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter your password",
+  "confirmPasswordLabel": "Confirm Password",
+  "confirmPasswordHint": "Enter your confirm password",
+  "signUpButton": "Sign Up",
+  "alreadyHaveAccount": "Don't have an account?",
+  "signIn": "Sign in",
+  "pleaseEnterYourEmail": "Please enter your email address",
+  "pleaseEnterYourPassword": "Please enter your password",
+  "passwordTooShort": "Password must be at least 8 characters long",
+  "confirmPasswordError": "Confirm password must match the password",
+  "pleaseEnterAValidEmailAddress": "Please enter a valid email address"
  
 
 }
