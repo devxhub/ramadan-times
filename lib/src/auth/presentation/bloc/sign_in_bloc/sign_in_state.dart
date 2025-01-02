@@ -11,7 +11,9 @@ class SignInState with _$SignInState {
     @Default(true) bool isPasswordObscure,
     @Default(true) bool isNewPasswordObscure,
     @Default(true) bool isConfirmNewPasswordObscure,
+    @Default("") String forgetPasswordMail,
     @Default(SignInStatus.initial) SignInStatus signInStatus,
     @Default(SignInResponse()) SignInResponse signInResponse,
+
   }) = _SignInState;
 }

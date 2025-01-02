@@ -25,6 +25,8 @@ mixin _$SignInEvent {
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,8 @@ mixin _$SignInEvent {
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +51,8 @@ mixin _$SignInEvent {
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +65,8 @@ mixin _$SignInEvent {
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +78,7 @@ mixin _$SignInEvent {
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +89,7 @@ mixin _$SignInEvent {
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -216,6 +226,8 @@ class _$SignInDataSubmitImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
   }) {
     return signInDataSubmit(userEmail, userPassword, context);
   }
@@ -230,6 +242,8 @@ class _$SignInDataSubmitImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
   }) {
     return signInDataSubmit?.call(userEmail, userPassword, context);
   }
@@ -244,6 +258,8 @@ class _$SignInDataSubmitImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (signInDataSubmit != null) {
@@ -262,6 +278,8 @@ class _$SignInDataSubmitImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
   }) {
     return signInDataSubmit(this);
   }
@@ -276,6 +294,7 @@ class _$SignInDataSubmitImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
   }) {
     return signInDataSubmit?.call(this);
   }
@@ -289,6 +308,7 @@ class _$SignInDataSubmitImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (signInDataSubmit != null) {
@@ -372,6 +392,8 @@ class _$IsPasswordObscureImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
   }) {
     return isPasswordObscure();
   }
@@ -386,6 +408,8 @@ class _$IsPasswordObscureImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
   }) {
     return isPasswordObscure?.call();
   }
@@ -400,6 +424,8 @@ class _$IsPasswordObscureImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isPasswordObscure != null) {
@@ -418,6 +444,8 @@ class _$IsPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
   }) {
     return isPasswordObscure(this);
   }
@@ -432,6 +460,7 @@ class _$IsPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
   }) {
     return isPasswordObscure?.call(this);
   }
@@ -445,6 +474,7 @@ class _$IsPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isPasswordObscure != null) {
@@ -518,6 +548,8 @@ class _$IsConfirmPasswordObscureImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
   }) {
     return isConfirmPasswordObscure();
   }
@@ -532,6 +564,8 @@ class _$IsConfirmPasswordObscureImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
   }) {
     return isConfirmPasswordObscure?.call();
   }
@@ -546,6 +580,8 @@ class _$IsConfirmPasswordObscureImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isConfirmPasswordObscure != null) {
@@ -564,6 +600,8 @@ class _$IsConfirmPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
   }) {
     return isConfirmPasswordObscure(this);
   }
@@ -578,6 +616,7 @@ class _$IsConfirmPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
   }) {
     return isConfirmPasswordObscure?.call(this);
   }
@@ -591,6 +630,7 @@ class _$IsConfirmPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isConfirmPasswordObscure != null) {
@@ -664,6 +704,8 @@ class _$IsConfirmNewPasswordObscureImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
   }) {
     return isConfirmNewPasswordObscure();
   }
@@ -678,6 +720,8 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
   }) {
     return isConfirmNewPasswordObscure?.call();
   }
@@ -692,6 +736,8 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isConfirmNewPasswordObscure != null) {
@@ -710,6 +756,8 @@ class _$IsConfirmNewPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
   }) {
     return isConfirmNewPasswordObscure(this);
   }
@@ -724,6 +772,7 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
   }) {
     return isConfirmNewPasswordObscure?.call(this);
   }
@@ -737,6 +786,7 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isConfirmNewPasswordObscure != null) {
@@ -835,6 +885,8 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
   }) {
     return isRemember(isRememberMe);
   }
@@ -849,6 +901,8 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
   }) {
     return isRemember?.call(isRememberMe);
   }
@@ -863,6 +917,8 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isRemember != null) {
@@ -881,6 +937,8 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
   }) {
     return isRemember(this);
   }
@@ -895,6 +953,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
   }) {
     return isRemember?.call(this);
   }
@@ -908,6 +967,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
     required TResult orElse(),
   }) {
     if (isRemember != null) {
@@ -931,11 +991,218 @@ abstract class _IsRemember implements SignInEvent {
 }
 
 /// @nodoc
+abstract class _$$ForgetPasswordOtpSubmitImplCopyWith<$Res> {
+  factory _$$ForgetPasswordOtpSubmitImplCopyWith(
+          _$ForgetPasswordOtpSubmitImpl value,
+          $Res Function(_$ForgetPasswordOtpSubmitImpl) then) =
+      __$$ForgetPasswordOtpSubmitImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String forgetPasswordMail, BuildContext context});
+}
+
+/// @nodoc
+class __$$ForgetPasswordOtpSubmitImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$ForgetPasswordOtpSubmitImpl>
+    implements _$$ForgetPasswordOtpSubmitImplCopyWith<$Res> {
+  __$$ForgetPasswordOtpSubmitImplCopyWithImpl(
+      _$ForgetPasswordOtpSubmitImpl _value,
+      $Res Function(_$ForgetPasswordOtpSubmitImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forgetPasswordMail = null,
+    Object? context = null,
+  }) {
+    return _then(_$ForgetPasswordOtpSubmitImpl(
+      forgetPasswordMail: null == forgetPasswordMail
+          ? _value.forgetPasswordMail
+          : forgetPasswordMail // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ForgetPasswordOtpSubmitImpl
+    with DiagnosticableTreeMixin
+    implements _ForgetPasswordOtpSubmit {
+  const _$ForgetPasswordOtpSubmitImpl(
+      {required this.forgetPasswordMail, required this.context});
+
+  @override
+  final String forgetPasswordMail;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInEvent.forgetPasswordOtpSubmit(forgetPasswordMail: $forgetPasswordMail, context: $context)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInEvent.forgetPasswordOtpSubmit'))
+      ..add(DiagnosticsProperty('forgetPasswordMail', forgetPasswordMail))
+      ..add(DiagnosticsProperty('context', context));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ForgetPasswordOtpSubmitImpl &&
+            (identical(other.forgetPasswordMail, forgetPasswordMail) ||
+                other.forgetPasswordMail == forgetPasswordMail) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, forgetPasswordMail, context);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForgetPasswordOtpSubmitImplCopyWith<_$ForgetPasswordOtpSubmitImpl>
+      get copyWith => __$$ForgetPasswordOtpSubmitImplCopyWithImpl<
+          _$ForgetPasswordOtpSubmitImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String userEmail, String userPassword, BuildContext context)
+        signInDataSubmit,
+    required TResult Function() isPasswordObscure,
+    required TResult Function() isConfirmPasswordObscure,
+    required TResult Function() isConfirmNewPasswordObscure,
+    required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
+  }) {
+    return forgetPasswordOtpSubmit(forgetPasswordMail, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult? Function()? isPasswordObscure,
+    TResult? Function()? isConfirmPasswordObscure,
+    TResult? Function()? isConfirmNewPasswordObscure,
+    TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
+  }) {
+    return forgetPasswordOtpSubmit?.call(forgetPasswordMail, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult Function()? isPasswordObscure,
+    TResult Function()? isConfirmPasswordObscure,
+    TResult Function()? isConfirmNewPasswordObscure,
+    TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
+    required TResult orElse(),
+  }) {
+    if (forgetPasswordOtpSubmit != null) {
+      return forgetPasswordOtpSubmit(forgetPasswordMail, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignInDataSubmit value) signInDataSubmit,
+    required TResult Function(_IsPasswordObscure value) isPasswordObscure,
+    required TResult Function(_IsConfirmPasswordObscure value)
+        isConfirmPasswordObscure,
+    required TResult Function(_IsConfirmNewPasswordObscure value)
+        isConfirmNewPasswordObscure,
+    required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
+  }) {
+    return forgetPasswordOtpSubmit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult? Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult? Function(_IsConfirmPasswordObscure value)?
+        isConfirmPasswordObscure,
+    TResult? Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+  }) {
+    return forgetPasswordOtpSubmit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult Function(_IsConfirmPasswordObscure value)? isConfirmPasswordObscure,
+    TResult Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    required TResult orElse(),
+  }) {
+    if (forgetPasswordOtpSubmit != null) {
+      return forgetPasswordOtpSubmit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ForgetPasswordOtpSubmit implements SignInEvent {
+  const factory _ForgetPasswordOtpSubmit(
+      {required final String forgetPasswordMail,
+      required final BuildContext context}) = _$ForgetPasswordOtpSubmitImpl;
+
+  String get forgetPasswordMail;
+  BuildContext get context;
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ForgetPasswordOtpSubmitImplCopyWith<_$ForgetPasswordOtpSubmitImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SignInState {
   bool get isRemember => throw _privateConstructorUsedError;
   bool get isPasswordObscure => throw _privateConstructorUsedError;
   bool get isNewPasswordObscure => throw _privateConstructorUsedError;
   bool get isConfirmNewPasswordObscure => throw _privateConstructorUsedError;
+  String get forgetPasswordMail => throw _privateConstructorUsedError;
   SignInStatus get signInStatus => throw _privateConstructorUsedError;
   SignInResponse get signInResponse => throw _privateConstructorUsedError;
 
@@ -957,6 +1224,7 @@ abstract class $SignInStateCopyWith<$Res> {
       bool isPasswordObscure,
       bool isNewPasswordObscure,
       bool isConfirmNewPasswordObscure,
+      String forgetPasswordMail,
       SignInStatus signInStatus,
       SignInResponse signInResponse});
 }
@@ -980,6 +1248,7 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
     Object? isPasswordObscure = null,
     Object? isNewPasswordObscure = null,
     Object? isConfirmNewPasswordObscure = null,
+    Object? forgetPasswordMail = null,
     Object? signInStatus = null,
     Object? signInResponse = null,
   }) {
@@ -1000,6 +1269,10 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
           ? _value.isConfirmNewPasswordObscure
           : isConfirmNewPasswordObscure // ignore: cast_nullable_to_non_nullable
               as bool,
+      forgetPasswordMail: null == forgetPasswordMail
+          ? _value.forgetPasswordMail
+          : forgetPasswordMail // ignore: cast_nullable_to_non_nullable
+              as String,
       signInStatus: null == signInStatus
           ? _value.signInStatus
           : signInStatus // ignore: cast_nullable_to_non_nullable
@@ -1025,6 +1298,7 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       bool isPasswordObscure,
       bool isNewPasswordObscure,
       bool isConfirmNewPasswordObscure,
+      String forgetPasswordMail,
       SignInStatus signInStatus,
       SignInResponse signInResponse});
 }
@@ -1046,6 +1320,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
     Object? isPasswordObscure = null,
     Object? isNewPasswordObscure = null,
     Object? isConfirmNewPasswordObscure = null,
+    Object? forgetPasswordMail = null,
     Object? signInStatus = null,
     Object? signInResponse = null,
   }) {
@@ -1066,6 +1341,10 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.isConfirmNewPasswordObscure
           : isConfirmNewPasswordObscure // ignore: cast_nullable_to_non_nullable
               as bool,
+      forgetPasswordMail: null == forgetPasswordMail
+          ? _value.forgetPasswordMail
+          : forgetPasswordMail // ignore: cast_nullable_to_non_nullable
+              as String,
       signInStatus: null == signInStatus
           ? _value.signInStatus
           : signInStatus // ignore: cast_nullable_to_non_nullable
@@ -1086,6 +1365,7 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
       this.isPasswordObscure = true,
       this.isNewPasswordObscure = true,
       this.isConfirmNewPasswordObscure = true,
+      this.forgetPasswordMail = "",
       this.signInStatus = SignInStatus.initial,
       this.signInResponse = const SignInResponse()});
 
@@ -1103,6 +1383,9 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
   final bool isConfirmNewPasswordObscure;
   @override
   @JsonKey()
+  final String forgetPasswordMail;
+  @override
+  @JsonKey()
   final SignInStatus signInStatus;
   @override
   @JsonKey()
@@ -1110,7 +1393,7 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInState(isRemember: $isRemember, isPasswordObscure: $isPasswordObscure, isNewPasswordObscure: $isNewPasswordObscure, isConfirmNewPasswordObscure: $isConfirmNewPasswordObscure, signInStatus: $signInStatus, signInResponse: $signInResponse)';
+    return 'SignInState(isRemember: $isRemember, isPasswordObscure: $isPasswordObscure, isNewPasswordObscure: $isNewPasswordObscure, isConfirmNewPasswordObscure: $isConfirmNewPasswordObscure, forgetPasswordMail: $forgetPasswordMail, signInStatus: $signInStatus, signInResponse: $signInResponse)';
   }
 
   @override
@@ -1123,6 +1406,7 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
       ..add(DiagnosticsProperty('isNewPasswordObscure', isNewPasswordObscure))
       ..add(DiagnosticsProperty(
           'isConfirmNewPasswordObscure', isConfirmNewPasswordObscure))
+      ..add(DiagnosticsProperty('forgetPasswordMail', forgetPasswordMail))
       ..add(DiagnosticsProperty('signInStatus', signInStatus))
       ..add(DiagnosticsProperty('signInResponse', signInResponse));
   }
@@ -1142,6 +1426,8 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
                     isConfirmNewPasswordObscure) ||
                 other.isConfirmNewPasswordObscure ==
                     isConfirmNewPasswordObscure) &&
+            (identical(other.forgetPasswordMail, forgetPasswordMail) ||
+                other.forgetPasswordMail == forgetPasswordMail) &&
             (identical(other.signInStatus, signInStatus) ||
                 other.signInStatus == signInStatus) &&
             (identical(other.signInResponse, signInResponse) ||
@@ -1155,6 +1441,7 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
       isPasswordObscure,
       isNewPasswordObscure,
       isConfirmNewPasswordObscure,
+      forgetPasswordMail,
       signInStatus,
       signInResponse);
 
@@ -1173,6 +1460,7 @@ abstract class _SignInState implements SignInState {
       final bool isPasswordObscure,
       final bool isNewPasswordObscure,
       final bool isConfirmNewPasswordObscure,
+      final String forgetPasswordMail,
       final SignInStatus signInStatus,
       final SignInResponse signInResponse}) = _$SignInStateImpl;
 
@@ -1184,6 +1472,8 @@ abstract class _SignInState implements SignInState {
   bool get isNewPasswordObscure;
   @override
   bool get isConfirmNewPasswordObscure;
+  @override
+  String get forgetPasswordMail;
   @override
   SignInStatus get signInStatus;
   @override
