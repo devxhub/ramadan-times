@@ -366,71 +366,76 @@ class CalendarPageState extends State<CalendarPage> {
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 24),
                       padding:
-                          const EdgeInsets.only(top: 48, left: 24, right: 24),
+                          const EdgeInsets.only(top: 20, left: 24, right: 24),
                       decoration: BoxDecoration(
                           color: const Color(0xfff7f5ff),
                           borderRadius: BorderRadius.circular(48)),
                       child: Column(
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 24, vertical: 6),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(24)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  "assets/images/Design-2.png",
-                                  height: 60,
-                                  width: 32,
-                                ),
-                                const SizedBox(
-                                  width: 24,
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context)?.hijriDate ??
-                                          "",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge!
-                                          .copyWith(
-                                            fontSize:
-                                                isLargeScreen ? 13.sp : 16.sp,
-                                            color: Colors.black87,
-                                          ),
-                                    ),
-                                    Text(
-                                      "${engToBn(hijriDate.hDay.toString(), context)} ${hijriMonthLocal(hijriDate.longMonthName, context)} ${engToBn(hijriDate.hYear.toString(), context)}",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge!
-                                          .copyWith(
-                                            height: 1.4,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize:
-                                                isLargeScreen ? 11.sp : 13.sp,
-                                            color: const Color(0xff75718B),
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
                           Expanded(
                             child: ListView(
                               children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(24)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/Design-2.png",
+                                        height: 60,
+                                        width: 32,
+                                      ),
+                                      const SizedBox(
+                                        width: 24,
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            AppLocalizations.of(context)
+                                                    ?.hijriDate ??
+                                                "",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                                  fontSize: isLargeScreen
+                                                      ? 13.sp
+                                                      : 16.sp,
+                                                  color: Colors.black87,
+                                                ),
+                                          ),
+                                          Text(
+                                            "${engToBn(hijriDate.hDay.toString(), context)} ${hijriMonthLocal(hijriDate.longMonthName, context)} ${engToBn(hijriDate.hYear.toString(), context)}",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                                  height: 1.4,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: isLargeScreen
+                                                      ? 11.sp
+                                                      : 13.sp,
+                                                  color:
+                                                      const Color(0xff75718B),
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 12,
+                                ),
                                 Text(
                                   AppLocalizations.of(context)?.schedule ?? "",
                                   style: Theme.of(context)
