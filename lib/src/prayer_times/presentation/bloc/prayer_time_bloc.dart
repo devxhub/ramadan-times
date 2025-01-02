@@ -219,6 +219,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
             emit(
               state.copyWith(
                 userCoordinator: userCoordinator,
+                selectedCountry: Country(
+                  name: currentCountry,
+                ),
+                selectedDistrict:currentCountry.toLowerCase()=='bangladesh'? District(
+                  name: currentCity
+                ):null,
                 prayerTimeStatus: PrayerTimeStatus.success,
               ),
             );
@@ -348,7 +354,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
           ),
         );
       }
-    } else {
+    }
+    else {
       prayerBloc.add(PrayerTimeEvent.prayerTimesDataLoaded(
         latitude: coordinator.userLat ?? 23.7115253,
         longitude: coordinator.userLng ?? 90.4111451,
@@ -361,6 +368,12 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       emit(
         state.copyWith(
           userCoordinator: coordinator,
+          selectedCountry: Country(
+            name: userCountry,
+          ),
+          selectedDistrict:userCountry.toLowerCase()=='bangladesh'? District(
+              name: userCity
+          ):null,
           prayerTimeStatus: PrayerTimeStatus.failure,
         ),
       );
@@ -372,8 +385,8 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('currentLatitude', lat);
     await prefs.setDouble('currentLongitude', lng);
-    await prefs.setString('currentCity', country);
-    await prefs.setString('currentCountry', city);
+    await prefs.setString('currentCity',city );
+    await prefs.setString('currentCountry',country );
     await prefs.setString('isoCountryCode', countryCode);
   }
 
@@ -481,8 +494,7 @@ class PrayerTimeBloc extends Bloc<PrayerTimeEvent, PrayerTimeState> {
       state.copyWith(
           userCoordinator: event.userCoordinator,
           prayerTimeStatus: PrayerTimeStatus.success,
-          selectedCountry: null,
-          selectedDistrict: null),
+      ),
     );
     event.context.goNamed("schedule");
   }
