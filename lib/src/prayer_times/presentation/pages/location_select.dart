@@ -28,7 +28,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
   @override
   void initState() {
     context.read<LocationCubit>().loadData();
-    context.read<PrayerTimeBloc>().add(PrayerTimeEvent.clearSelectedLocation());
+   // context.read<PrayerTimeBloc>().add(PrayerTimeEvent.clearSelectedLocation());
     super.initState();
   }
 
@@ -44,6 +44,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
         builder: (context, prayerTimeState) {
           final countryList = prayerTimeState.countryResponse.countries ?? [];
           filterCountryList = prayerTimeState.countryResponse.countries ?? [];
+          countryEditingController.text = prayerTimeState.selectedCountry?.name ?? '';
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 32.w),
             child: Column(
@@ -59,19 +60,20 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                   optionsViewBuilder: (context, onSelected, options) {
                     return Container(
                       height: 300.w,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
                         child: DecoratedBox(
-                          decoration:
-                              BoxDecoration(color: Colors.white, boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              blurRadius: 6,
-                              offset: Offset(0, 2),
-                            ),
-                          ]),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 6,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
                           child: ListView.builder(
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
@@ -80,36 +82,33 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                               final option = options.elementAt(index);
                               return option.name == 'No results found'
                                   ? Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .noResultsFound,
-                                          style: TextStyle(
-                                              color: Colors.grey,
-                                              fontSize: 16.sp),
-                                        ),
-                                      ],
-                                    )
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context)!.noResultsFound,
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 16.sp,
+                                    ),
+                                  ),
+                                ],
+                              )
                                   : ListTile(
-                                      title: Text(option.name ?? ''),
-                                      onTap: () {
-                                        FocusManager.instance.primaryFocus
-                                            ?.unfocus();
-                                        context
-                                            .read<CountryCubit>()
-                                            .selectedCountry(option.name ?? '');
-                                        context.read<PrayerTimeBloc>().add(
-                                              PrayerTimeEvent.selectCountry(
-                                                context: context,
-                                                country: option,
-                                              ),
-                                            );
-                                      },
-                                    );
+                                title: Text(option.name ?? ''),
+                                onTap: () {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  context
+                                      .read<CountryCubit>()
+                                      .selectedCountry(option.name ?? '');
+                                  context.read<PrayerTimeBloc>().add(
+                                    PrayerTimeEvent.selectCountry(
+                                      context: context,
+                                      country: option,
+                                    ),
+                                  );
+                                },
+                              );
                             },
                           ),
                         ),
@@ -125,8 +124,7 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
 
                     // Exact matches: names that start with the search query
                     final exactMatches = filterCountryList.where((location) =>
-                        location.name?.toLowerCase().startsWith(query) ??
-                        false);
+                    location.name?.toLowerCase().startsWith(query) ?? false);
 
                     // Combine exact matches first, followed by partial matches
                     final filteredSkateParksData = [
@@ -138,44 +136,44 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                         ? [Country(name: 'No results found')]
                         : filteredSkateParksData;
                   },
-                  fieldViewBuilder: (context, textEditingController,
-                          textSearchFocus, function) =>
+                  fieldViewBuilder: (context, textEditingController, textSearchFocus, function) =>
                       BlocBuilder<CountryCubit, String>(
-                    builder: (context, country) {
-                      textEditingController.text = country;
-                      return TextFormField(
-                        focusNode: textSearchFocus,
-                        onTapOutside: (PointerDownEvent event) {
-                          FocusManager.instance.primaryFocus?.unfocus();
-                          textEditingController.clear();
+                        builder: (context, country) {
+                          // Set the initial value to the selected country's name
+                          textEditingController.text =
+                              prayerTimeState.selectedCountry?.name ?? 'Bangladesh';
+
+                          return TextFormField(
+                            focusNode: textSearchFocus,
+
+                            onTapOutside: (PointerDownEvent event) {
+                              FocusManager.instance.primaryFocus?.unfocus();
+                              textEditingController.clear();
+                            },
+                            onChanged: (value) {
+                              // if (prayerTimeState.selectedCountry?.name?.isNotEmpty == true) {
+                              //   context
+                              //       .read<PrayerTimeBloc>()
+                              //       .add(PrayerTimeEvent.clearSelectedLocation());
+                              // }
+                            },
+                            autofillHints: filterCountryList
+                                .map((skatepark) => skatepark.name ?? '')
+                                .toList(),
+                            enableSuggestions: true,
+                            controller: textEditingController,
+                            decoration: InputDecoration(
+                              labelText: AppLocalizations.of(context)!.selectACountry,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.r), // Circular border
+                              ),
+                            ),
+                          );
                         },
-                        onChanged: (value) {
-                          if (prayerTimeState
-                                  .selectedCountry?.name?.isNotEmpty ==
-                              true) {
-                            context
-                                .read<PrayerTimeBloc>()
-                                .add(PrayerTimeEvent.clearSelectedLocation());
-                          }
-                        },
-                        autofillHints: filterCountryList
-                            .map((skatepark) => skatepark.name ?? '')
-                            .toList(),
-                        enableSuggestions: true,
-                        controller: textEditingController,
-                        decoration: InputDecoration(
-                          labelText:
-                              AppLocalizations.of(context)!.selectACountry,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.circular(12.r), // Circular border
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                      ),
                 ),
+
                 if (prayerTimeState.selectedCountry?.name
                         ?.toString()
                         .toLowerCase() ==
@@ -305,7 +303,8 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                     textSearchFocus, function) =>
                                 BlocBuilder<CityCubit, String>(
                               builder: (context, city) {
-                                textEditingController.text = city;
+                                textEditingController.text = prayerTimeState.selectedDistrict?.name ?? 'Comilla';
+
                                 return TextFormField(
                                   focusNode: textSearchFocus,
                                   onTapOutside: (PointerDownEvent event) {
@@ -314,12 +313,12 @@ class _UserLocationSelectState extends State<UserLocationSelect> {
                                     textEditingController.clear();
                                   },
                                   onChanged: (value) {
-                                    if (prayerTimeState.selectedDistrict?.name
-                                            ?.isNotEmpty ==
-                                        true) {
-                                      context.read<PrayerTimeBloc>().add(
-                                          PrayerTimeEvent.clearSelectedCity());
-                                    }
+                                    // if (prayerTimeState.selectedDistrict?.name
+                                    //         ?.isNotEmpty ==
+                                    //     true) {
+                                    //   context.read<PrayerTimeBloc>().add(
+                                    //       PrayerTimeEvent.clearSelectedCity());
+                                    // }
                                   },
                                   autofillHints: data
                                       .map((skatepark) => skatepark.name ?? '')
