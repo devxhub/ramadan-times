@@ -383,4 +383,7 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get pleaseEnterAValidEmailAddress => 'Anna kelvollinen sähköpostiosoite';
+
+  @override
+  String get pleaseEnterYourConfirmPassword => 'Please enter your confirm password';
 }

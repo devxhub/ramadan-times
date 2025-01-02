@@ -28,6 +28,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             await _isConfirmNewPasswordObscure(event, emit),
         isRemember: (event) async => await _isRemember(event, emit),
         signInDataSubmit: (event) async => await _signInDataSubmit(event, emit),
+        updateContainerHeight: (event) async =>
+            await _updateContainerHeight(event, emit),
       );
     });
   }
@@ -100,5 +102,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
       emit(state.copyWith(signInStatus: SignInStatus.failure));
     }
+  }
+
+  _updateContainerHeight(
+      _UpdateContainerHeight event, Emitter<SignInState> emit) {
+    emit(state.copyWith(containerHeight: event.containerHeight));
   }
 }

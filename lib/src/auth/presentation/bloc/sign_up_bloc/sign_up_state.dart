@@ -7,6 +7,8 @@ enum PrayerStatus { initial, success, failure, inProgress }
 @Freezed()
 class SignUpState with _$SignUpState {
   const factory SignUpState({
-    @Default(false) bool isRemember,
+    @Default(true) bool isPasswordObscure,
+    @Default(true) bool isConfirmNewPasswordObscure,
+    @Default(500) double containerHeight,
   }) = _SignUpState;
 }

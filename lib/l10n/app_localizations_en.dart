@@ -385,7 +385,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signUpButton => 'Sign Up';
 
   @override
-  String get alreadyHaveAccount => 'Don\'t have an account?';
+  String get alreadyHaveAccount => 'Already have an account?';
 
   @override
   String get signIn => 'Sign in';
@@ -401,4 +401,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseEnterAValidEmailAddress => 'Please enter a valid email address';
+
+  @override
+  String get pleaseEnterYourConfirmPassword => 'Please enter your confirm password';
 }

@@ -165,7 +165,12 @@ class _SplashPageState extends State<SplashPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      context.pushNamed("sign_in_page");
+                      context.push(
+                        '/sign_in_page',
+                        extra: {
+                          'showBackButton': true,
+                        },
+                      );
                     },
                     child: Text(
                       'Sign in',

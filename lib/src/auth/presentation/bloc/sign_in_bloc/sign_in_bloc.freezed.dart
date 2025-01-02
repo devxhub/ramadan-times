@@ -25,6 +25,7 @@ mixin _$SignInEvent {
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$SignInEvent {
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$SignInEvent {
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,8 @@ mixin _$SignInEvent {
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +75,7 @@ mixin _$SignInEvent {
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +86,7 @@ mixin _$SignInEvent {
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -216,6 +223,7 @@ class _$SignInDataSubmitImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
   }) {
     return signInDataSubmit(userEmail, userPassword, context);
   }
@@ -230,6 +238,7 @@ class _$SignInDataSubmitImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
     return signInDataSubmit?.call(userEmail, userPassword, context);
   }
@@ -244,6 +253,7 @@ class _$SignInDataSubmitImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (signInDataSubmit != null) {
@@ -262,6 +272,8 @@ class _$SignInDataSubmitImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
   }) {
     return signInDataSubmit(this);
   }
@@ -276,6 +288,7 @@ class _$SignInDataSubmitImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
   }) {
     return signInDataSubmit?.call(this);
   }
@@ -289,6 +302,7 @@ class _$SignInDataSubmitImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (signInDataSubmit != null) {
@@ -372,6 +386,7 @@ class _$IsPasswordObscureImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
   }) {
     return isPasswordObscure();
   }
@@ -386,6 +401,7 @@ class _$IsPasswordObscureImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
     return isPasswordObscure?.call();
   }
@@ -400,6 +416,7 @@ class _$IsPasswordObscureImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isPasswordObscure != null) {
@@ -418,6 +435,8 @@ class _$IsPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
   }) {
     return isPasswordObscure(this);
   }
@@ -432,6 +451,7 @@ class _$IsPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
   }) {
     return isPasswordObscure?.call(this);
   }
@@ -445,6 +465,7 @@ class _$IsPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isPasswordObscure != null) {
@@ -518,6 +539,7 @@ class _$IsConfirmPasswordObscureImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
   }) {
     return isConfirmPasswordObscure();
   }
@@ -532,6 +554,7 @@ class _$IsConfirmPasswordObscureImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
     return isConfirmPasswordObscure?.call();
   }
@@ -546,6 +569,7 @@ class _$IsConfirmPasswordObscureImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isConfirmPasswordObscure != null) {
@@ -564,6 +588,8 @@ class _$IsConfirmPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
   }) {
     return isConfirmPasswordObscure(this);
   }
@@ -578,6 +604,7 @@ class _$IsConfirmPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
   }) {
     return isConfirmPasswordObscure?.call(this);
   }
@@ -591,6 +618,7 @@ class _$IsConfirmPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isConfirmPasswordObscure != null) {
@@ -664,6 +692,7 @@ class _$IsConfirmNewPasswordObscureImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
   }) {
     return isConfirmNewPasswordObscure();
   }
@@ -678,6 +707,7 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
     return isConfirmNewPasswordObscure?.call();
   }
@@ -692,6 +722,7 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isConfirmNewPasswordObscure != null) {
@@ -710,6 +741,8 @@ class _$IsConfirmNewPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
   }) {
     return isConfirmNewPasswordObscure(this);
   }
@@ -724,6 +757,7 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
   }) {
     return isConfirmNewPasswordObscure?.call(this);
   }
@@ -737,6 +771,7 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isConfirmNewPasswordObscure != null) {
@@ -835,6 +870,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
   }) {
     return isRemember(isRememberMe);
   }
@@ -849,6 +885,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
     return isRemember?.call(isRememberMe);
   }
@@ -863,6 +900,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult Function()? isConfirmPasswordObscure,
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isRemember != null) {
@@ -881,6 +919,8 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
   }) {
     return isRemember(this);
   }
@@ -895,6 +935,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
   }) {
     return isRemember?.call(this);
   }
@@ -908,6 +949,7 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
     required TResult orElse(),
   }) {
     if (isRemember != null) {
@@ -931,6 +973,196 @@ abstract class _IsRemember implements SignInEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdateContainerHeightImplCopyWith<$Res> {
+  factory _$$UpdateContainerHeightImplCopyWith(
+          _$UpdateContainerHeightImpl value,
+          $Res Function(_$UpdateContainerHeightImpl) then) =
+      __$$UpdateContainerHeightImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double containerHeight});
+}
+
+/// @nodoc
+class __$$UpdateContainerHeightImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$UpdateContainerHeightImpl>
+    implements _$$UpdateContainerHeightImplCopyWith<$Res> {
+  __$$UpdateContainerHeightImplCopyWithImpl(_$UpdateContainerHeightImpl _value,
+      $Res Function(_$UpdateContainerHeightImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? containerHeight = null,
+  }) {
+    return _then(_$UpdateContainerHeightImpl(
+      containerHeight: null == containerHeight
+          ? _value.containerHeight
+          : containerHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateContainerHeightImpl
+    with DiagnosticableTreeMixin
+    implements _UpdateContainerHeight {
+  const _$UpdateContainerHeightImpl({required this.containerHeight});
+
+  @override
+  final double containerHeight;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInEvent.updateContainerHeight(containerHeight: $containerHeight)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInEvent.updateContainerHeight'))
+      ..add(DiagnosticsProperty('containerHeight', containerHeight));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateContainerHeightImpl &&
+            (identical(other.containerHeight, containerHeight) ||
+                other.containerHeight == containerHeight));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, containerHeight);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateContainerHeightImplCopyWith<_$UpdateContainerHeightImpl>
+      get copyWith => __$$UpdateContainerHeightImplCopyWithImpl<
+          _$UpdateContainerHeightImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String userEmail, String userPassword, BuildContext context)
+        signInDataSubmit,
+    required TResult Function() isPasswordObscure,
+    required TResult Function() isConfirmPasswordObscure,
+    required TResult Function() isConfirmNewPasswordObscure,
+    required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(double containerHeight) updateContainerHeight,
+  }) {
+    return updateContainerHeight(containerHeight);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult? Function()? isPasswordObscure,
+    TResult? Function()? isConfirmPasswordObscure,
+    TResult? Function()? isConfirmNewPasswordObscure,
+    TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(double containerHeight)? updateContainerHeight,
+  }) {
+    return updateContainerHeight?.call(containerHeight);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult Function()? isPasswordObscure,
+    TResult Function()? isConfirmPasswordObscure,
+    TResult Function()? isConfirmNewPasswordObscure,
+    TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(double containerHeight)? updateContainerHeight,
+    required TResult orElse(),
+  }) {
+    if (updateContainerHeight != null) {
+      return updateContainerHeight(containerHeight);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignInDataSubmit value) signInDataSubmit,
+    required TResult Function(_IsPasswordObscure value) isPasswordObscure,
+    required TResult Function(_IsConfirmPasswordObscure value)
+        isConfirmPasswordObscure,
+    required TResult Function(_IsConfirmNewPasswordObscure value)
+        isConfirmNewPasswordObscure,
+    required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_UpdateContainerHeight value)
+        updateContainerHeight,
+  }) {
+    return updateContainerHeight(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult? Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult? Function(_IsConfirmPasswordObscure value)?
+        isConfirmPasswordObscure,
+    TResult? Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_UpdateContainerHeight value)? updateContainerHeight,
+  }) {
+    return updateContainerHeight?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult Function(_IsConfirmPasswordObscure value)? isConfirmPasswordObscure,
+    TResult Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_UpdateContainerHeight value)? updateContainerHeight,
+    required TResult orElse(),
+  }) {
+    if (updateContainerHeight != null) {
+      return updateContainerHeight(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateContainerHeight implements SignInEvent {
+  const factory _UpdateContainerHeight(
+      {required final double containerHeight}) = _$UpdateContainerHeightImpl;
+
+  double get containerHeight;
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateContainerHeightImplCopyWith<_$UpdateContainerHeightImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SignInState {
   bool get isRemember => throw _privateConstructorUsedError;
   bool get isPasswordObscure => throw _privateConstructorUsedError;
@@ -938,6 +1170,7 @@ mixin _$SignInState {
   bool get isConfirmNewPasswordObscure => throw _privateConstructorUsedError;
   SignInStatus get signInStatus => throw _privateConstructorUsedError;
   SignInResponse get signInResponse => throw _privateConstructorUsedError;
+  double get containerHeight => throw _privateConstructorUsedError;
 
   /// Create a copy of SignInState
   /// with the given fields replaced by the non-null parameter values.
@@ -958,7 +1191,8 @@ abstract class $SignInStateCopyWith<$Res> {
       bool isNewPasswordObscure,
       bool isConfirmNewPasswordObscure,
       SignInStatus signInStatus,
-      SignInResponse signInResponse});
+      SignInResponse signInResponse,
+      double containerHeight});
 }
 
 /// @nodoc
@@ -982,6 +1216,7 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
     Object? isConfirmNewPasswordObscure = null,
     Object? signInStatus = null,
     Object? signInResponse = null,
+    Object? containerHeight = null,
   }) {
     return _then(_value.copyWith(
       isRemember: null == isRemember
@@ -1008,6 +1243,10 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
           ? _value.signInResponse
           : signInResponse // ignore: cast_nullable_to_non_nullable
               as SignInResponse,
+      containerHeight: null == containerHeight
+          ? _value.containerHeight
+          : containerHeight // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -1026,7 +1265,8 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       bool isNewPasswordObscure,
       bool isConfirmNewPasswordObscure,
       SignInStatus signInStatus,
-      SignInResponse signInResponse});
+      SignInResponse signInResponse,
+      double containerHeight});
 }
 
 /// @nodoc
@@ -1048,6 +1288,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
     Object? isConfirmNewPasswordObscure = null,
     Object? signInStatus = null,
     Object? signInResponse = null,
+    Object? containerHeight = null,
   }) {
     return _then(_$SignInStateImpl(
       isRemember: null == isRemember
@@ -1074,6 +1315,10 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.signInResponse
           : signInResponse // ignore: cast_nullable_to_non_nullable
               as SignInResponse,
+      containerHeight: null == containerHeight
+          ? _value.containerHeight
+          : containerHeight // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -1087,7 +1332,8 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
       this.isNewPasswordObscure = true,
       this.isConfirmNewPasswordObscure = true,
       this.signInStatus = SignInStatus.initial,
-      this.signInResponse = const SignInResponse()});
+      this.signInResponse = const SignInResponse(),
+      this.containerHeight = 434});
 
   @override
   @JsonKey()
@@ -1107,10 +1353,13 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
   @override
   @JsonKey()
   final SignInResponse signInResponse;
+  @override
+  @JsonKey()
+  final double containerHeight;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignInState(isRemember: $isRemember, isPasswordObscure: $isPasswordObscure, isNewPasswordObscure: $isNewPasswordObscure, isConfirmNewPasswordObscure: $isConfirmNewPasswordObscure, signInStatus: $signInStatus, signInResponse: $signInResponse)';
+    return 'SignInState(isRemember: $isRemember, isPasswordObscure: $isPasswordObscure, isNewPasswordObscure: $isNewPasswordObscure, isConfirmNewPasswordObscure: $isConfirmNewPasswordObscure, signInStatus: $signInStatus, signInResponse: $signInResponse, containerHeight: $containerHeight)';
   }
 
   @override
@@ -1124,7 +1373,8 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
       ..add(DiagnosticsProperty(
           'isConfirmNewPasswordObscure', isConfirmNewPasswordObscure))
       ..add(DiagnosticsProperty('signInStatus', signInStatus))
-      ..add(DiagnosticsProperty('signInResponse', signInResponse));
+      ..add(DiagnosticsProperty('signInResponse', signInResponse))
+      ..add(DiagnosticsProperty('containerHeight', containerHeight));
   }
 
   @override
@@ -1145,7 +1395,9 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
             (identical(other.signInStatus, signInStatus) ||
                 other.signInStatus == signInStatus) &&
             (identical(other.signInResponse, signInResponse) ||
-                other.signInResponse == signInResponse));
+                other.signInResponse == signInResponse) &&
+            (identical(other.containerHeight, containerHeight) ||
+                other.containerHeight == containerHeight));
   }
 
   @override
@@ -1156,7 +1408,8 @@ class _$SignInStateImpl with DiagnosticableTreeMixin implements _SignInState {
       isNewPasswordObscure,
       isConfirmNewPasswordObscure,
       signInStatus,
-      signInResponse);
+      signInResponse,
+      containerHeight);
 
   /// Create a copy of SignInState
   /// with the given fields replaced by the non-null parameter values.
@@ -1174,7 +1427,8 @@ abstract class _SignInState implements SignInState {
       final bool isNewPasswordObscure,
       final bool isConfirmNewPasswordObscure,
       final SignInStatus signInStatus,
-      final SignInResponse signInResponse}) = _$SignInStateImpl;
+      final SignInResponse signInResponse,
+      final double containerHeight}) = _$SignInStateImpl;
 
   @override
   bool get isRemember;
@@ -1188,6 +1442,8 @@ abstract class _SignInState implements SignInState {
   SignInStatus get signInStatus;
   @override
   SignInResponse get signInResponse;
+  @override
+  double get containerHeight;
 
   /// Create a copy of SignInState
   /// with the given fields replaced by the non-null parameter values.
