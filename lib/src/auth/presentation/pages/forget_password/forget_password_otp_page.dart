@@ -202,6 +202,7 @@ class _ForgetPasswordOtpPageState extends State<ForgetPasswordOtpPage> {
                                               ),
                                               onPressed: state.forgetPasswordOtp.length == 6
                                                   ? () {
+                                                context.read<SignInBloc>().add(SignInEvent.forgetPasswordOtpSubmit(forgetPasswordMail: state.forgetPasswordMail, context: context));
                                                 // Add your OTP submission logic here
                                                 print("OTP Submitted: ${state.forgetPasswordOtp}");
                                               }

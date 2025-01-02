@@ -28,10 +28,14 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             await _isConfirmNewPasswordObscure(event, emit),
         isRemember: (event) async => await _isRemember(event, emit),
         signInDataSubmit: (event) async => await _signInDataSubmit(event, emit),
-        forgetPasswordOtpSubmit: (event) async =>
-        await _forgetPasswordOtpSubmit(event, emit),
+        forgetPasswordEmailSubmit: (event) async =>
+        await _forgetPasswordEmailSubmit(event, emit),
       forgetPasswordOtpOnChanged: (event) async =>
         await _forgetPasswordOtpOnChanged(event, emit),
+        forgetPasswordOtpSubmit: (event) async =>
+        await _forgetPasswordOtpSubmit(event, emit),
+        resetPassword: (event) async =>
+        await _resetPassword(event, emit),
         updateContainerHeight: (event) async =>
             await _updateContainerHeight(event, emit),
       );
@@ -112,15 +116,110 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     }
   }
 
-  _forgetPasswordOtpSubmit(
-      _ForgetPasswordOtpSubmit event, Emitter<SignInState> emit) async {
+  _forgetPasswordEmailSubmit(
+      _ForgetPasswordEmailSubmit event, Emitter<SignInState> emit) async {
     emit(state.copyWith(
         signInStatus: SignInStatus.inProgress
     ));
     try {
       event.context.pushNamed("forget_password_otp_page");
       emit(state.copyWith(
+        forgetPasswordOtp: '',
           forgetPasswordMail: event.forgetPasswordMail,
+          signInStatus: SignInStatus.success
+      ));
+    } on DioException catch (e) {
+      dynamic responseData = e.response?.data;
+      String errorMessage = '';
+
+      if (responseData is String) {
+        errorMessage = responseData;
+      } else if (responseData is Map<String, dynamic> &&
+          responseData.containsKey("message")) {
+        if (responseData["message"] is String) {
+          errorMessage = responseData["message"];
+        } else if (responseData["message"] is Map<String, dynamic>) {
+          Map<String, dynamic> errorMap = responseData["message"];
+          errorMessage = errorMap.values.join('\n');
+        }
+      }
+
+      errorMessage = errorMessage.isNotEmpty
+          ? errorMessage
+          : 'An unexpected error occurred';
+      // ScaffoldMessenger.of(event.context).showSnackBar(
+      //   SnackBar(
+      //     content: Text(errorMessage),
+      //     backgroundColor: Colors.red,
+      //   ),
+      // );
+      // await Fluttertoast.showToast(
+      //   webPosition: "center",
+      //   msg: errorMessage,
+      // );
+
+      emit(state.copyWith(
+          signInStatus: SignInStatus.failure
+      ));
+    }
+  }
+  _forgetPasswordOtpSubmit(
+      _ForgetPasswordOtpSubmit event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(
+        signInStatus: SignInStatus.inProgress
+    ));
+    try {
+      event.context.pushNamed("reset_password_page");
+      emit(state.copyWith(
+        forgetPasswordOtp: '',
+          signInStatus: SignInStatus.success
+      ));
+    } on DioException catch (e) {
+      dynamic responseData = e.response?.data;
+      String errorMessage = '';
+
+      if (responseData is String) {
+        errorMessage = responseData;
+      } else if (responseData is Map<String, dynamic> &&
+          responseData.containsKey("message")) {
+        if (responseData["message"] is String) {
+          errorMessage = responseData["message"];
+        } else if (responseData["message"] is Map<String, dynamic>) {
+          Map<String, dynamic> errorMap = responseData["message"];
+          errorMessage = errorMap.values.join('\n');
+        }
+      }
+
+      errorMessage = errorMessage.isNotEmpty
+          ? errorMessage
+          : 'An unexpected error occurred';
+      // ScaffoldMessenger.of(event.context).showSnackBar(
+      //   SnackBar(
+      //     content: Text(errorMessage),
+      //     backgroundColor: Colors.red,
+      //   ),
+      // );
+      // await Fluttertoast.showToast(
+      //   webPosition: "center",
+      //   msg: errorMessage,
+      // );
+
+      emit(state.copyWith(
+          signInStatus: SignInStatus.failure
+      ));
+    }
+  }
+  _resetPassword(
+      _ResetPassword event, Emitter<SignInState> emit) async {
+
+    emit(state.copyWith(
+        signInStatus: SignInStatus.inProgress
+    ));
+    try {
+      // final resp=await signInRepository.resetPassword(email: state.forgetPasswordMail, password: state.forgetPasswordOtp);
+      event.context.goNamed("sign_in_page");
+      emit(state.copyWith(
+        forgetPasswordMail: '',
           signInStatus: SignInStatus.success
       ));
     } on DioException catch (e) {

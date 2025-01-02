@@ -215,12 +215,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                                         onPressed: () {
                                           if (formKey.currentState!
                                               .validate()) {
-                                            context.goNamed("schedule");
-                                            // context.read<SignInBloc>().add(
-                                            //     SignInEvent.signInDataSubmit(
-                                            //         userEmail: emailController.text,
-                                            //         userPassword: passwordController.text,
-                                            //         context: context));
+                                            context.read<SignInBloc>().add(SignInEvent.resetPassword(forgetPasswordMail: state.forgetPasswordMail, password: passwordController.text, context: context));
                                           }
                                         },
                                         child: Center(

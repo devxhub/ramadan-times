@@ -125,6 +125,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                     prefixIcon: Icon(
                                       Icons.email_rounded,
                                     ),
+                                    autoValidateMode: AutovalidateMode.onUserInteraction,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return AppLocalizations.of(context)!
@@ -236,16 +237,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        context.pushNamed(
-                                            "forget_password_otp_page");
-                                        // if (formKey.currentState!.validate()) {
-                                        //   context.goNamed("schedule");
-                                        //   // context.read<SignInBloc>().add(
-                                        //   //     SignInEvent.signInDataSubmit(
-                                        //   //         userEmail: emailController.text,
-                                        //   //         userPassword: passwordController.text,
-                                        //   //         context: context));
-                                        // }
+                                        // context.pushNamed(
+                                        //     "forget_password_otp_page");
+                                        if (formKey.currentState!.validate()) {
+                                          context.read<SignInBloc>().add(
+                                              SignInEvent.forgetPasswordEmailSubmit(forgetPasswordMail: emailController.text, context: context));
+                                        }
                                       },
                                       child: Center(
                                         child: state.signInStatus ==

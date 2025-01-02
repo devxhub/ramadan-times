@@ -147,6 +147,7 @@ class _SignInPageState extends State<SignInPage> {
                                       prefixIcon: Icon(
                                         Icons.email_rounded,
                                       ),
+                                      autoValidateMode: AutovalidateMode.onUserInteraction,
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
                                           return AppLocalizations.of(context)!
@@ -188,6 +189,7 @@ class _SignInPageState extends State<SignInPage> {
                                           ),
                                         ),
                                       ),
+                                      autoValidateMode: AutovalidateMode.onUserInteraction,
                                       obscureText: state.isPasswordObscure,
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
