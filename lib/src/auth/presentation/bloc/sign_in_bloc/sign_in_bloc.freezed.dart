@@ -26,7 +26,12 @@ mixin _$SignInEvent {
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) =>
@@ -41,7 +46,12 @@ mixin _$SignInEvent {
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) =>
@@ -56,7 +66,12 @@ mixin _$SignInEvent {
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -71,8 +86,11 @@ mixin _$SignInEvent {
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) =>
@@ -86,7 +104,10 @@ mixin _$SignInEvent {
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) =>
@@ -99,7 +120,10 @@ mixin _$SignInEvent {
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -239,7 +263,12 @@ class _$SignInDataSubmitImpl
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -257,7 +286,12 @@ class _$SignInDataSubmitImpl
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -275,7 +309,12 @@ class _$SignInDataSubmitImpl
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -296,8 +335,11 @@ class _$SignInDataSubmitImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -314,7 +356,10 @@ class _$SignInDataSubmitImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -330,7 +375,10 @@ class _$SignInDataSubmitImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -417,7 +465,12 @@ class _$IsPasswordObscureImpl
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -435,7 +488,12 @@ class _$IsPasswordObscureImpl
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -453,7 +511,12 @@ class _$IsPasswordObscureImpl
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -474,8 +537,11 @@ class _$IsPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -492,7 +558,10 @@ class _$IsPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -508,7 +577,10 @@ class _$IsPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -585,7 +657,12 @@ class _$IsConfirmPasswordObscureImpl
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -603,7 +680,12 @@ class _$IsConfirmPasswordObscureImpl
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -621,7 +703,12 @@ class _$IsConfirmPasswordObscureImpl
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -642,8 +729,11 @@ class _$IsConfirmPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -660,7 +750,10 @@ class _$IsConfirmPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -676,7 +769,10 @@ class _$IsConfirmPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -753,7 +849,12 @@ class _$IsConfirmNewPasswordObscureImpl
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -771,7 +872,12 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -789,7 +895,12 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -810,8 +921,11 @@ class _$IsConfirmNewPasswordObscureImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -828,7 +942,10 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -844,7 +961,10 @@ class _$IsConfirmNewPasswordObscureImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -946,7 +1066,12 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -964,7 +1089,12 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -982,7 +1112,12 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -1003,8 +1138,11 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -1021,7 +1159,10 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -1037,7 +1178,10 @@ class _$IsRememberImpl with DiagnosticableTreeMixin implements _IsRemember {
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -1060,6 +1204,249 @@ abstract class _IsRemember implements SignInEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IsRememberImplCopyWith<_$IsRememberImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ForgetPasswordEmailSubmitImplCopyWith<$Res> {
+  factory _$$ForgetPasswordEmailSubmitImplCopyWith(
+          _$ForgetPasswordEmailSubmitImpl value,
+          $Res Function(_$ForgetPasswordEmailSubmitImpl) then) =
+      __$$ForgetPasswordEmailSubmitImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String forgetPasswordMail, BuildContext context});
+}
+
+/// @nodoc
+class __$$ForgetPasswordEmailSubmitImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$ForgetPasswordEmailSubmitImpl>
+    implements _$$ForgetPasswordEmailSubmitImplCopyWith<$Res> {
+  __$$ForgetPasswordEmailSubmitImplCopyWithImpl(
+      _$ForgetPasswordEmailSubmitImpl _value,
+      $Res Function(_$ForgetPasswordEmailSubmitImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forgetPasswordMail = null,
+    Object? context = null,
+  }) {
+    return _then(_$ForgetPasswordEmailSubmitImpl(
+      forgetPasswordMail: null == forgetPasswordMail
+          ? _value.forgetPasswordMail
+          : forgetPasswordMail // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ForgetPasswordEmailSubmitImpl
+    with DiagnosticableTreeMixin
+    implements _ForgetPasswordEmailSubmit {
+  const _$ForgetPasswordEmailSubmitImpl(
+      {required this.forgetPasswordMail, required this.context});
+
+  @override
+  final String forgetPasswordMail;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInEvent.forgetPasswordEmailSubmit(forgetPasswordMail: $forgetPasswordMail, context: $context)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'SignInEvent.forgetPasswordEmailSubmit'))
+      ..add(DiagnosticsProperty('forgetPasswordMail', forgetPasswordMail))
+      ..add(DiagnosticsProperty('context', context));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ForgetPasswordEmailSubmitImpl &&
+            (identical(other.forgetPasswordMail, forgetPasswordMail) ||
+                other.forgetPasswordMail == forgetPasswordMail) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, forgetPasswordMail, context);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForgetPasswordEmailSubmitImplCopyWith<_$ForgetPasswordEmailSubmitImpl>
+      get copyWith => __$$ForgetPasswordEmailSubmitImplCopyWithImpl<
+          _$ForgetPasswordEmailSubmitImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String userEmail, String userPassword, BuildContext context)
+        signInDataSubmit,
+    required TResult Function() isPasswordObscure,
+    required TResult Function() isConfirmPasswordObscure,
+    required TResult Function() isConfirmNewPasswordObscure,
+    required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
+    required TResult Function(String forgetPasswordOtp, BuildContext context)
+        forgetPasswordOtpOnChanged,
+  }) {
+    return forgetPasswordEmailSubmit(forgetPasswordMail, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult? Function()? isPasswordObscure,
+    TResult? Function()? isConfirmPasswordObscure,
+    TResult? Function()? isConfirmNewPasswordObscure,
+    TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
+    TResult? Function(String forgetPasswordOtp, BuildContext context)?
+        forgetPasswordOtpOnChanged,
+  }) {
+    return forgetPasswordEmailSubmit?.call(forgetPasswordMail, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult Function()? isPasswordObscure,
+    TResult Function()? isConfirmPasswordObscure,
+    TResult Function()? isConfirmNewPasswordObscure,
+    TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
+    TResult Function(String forgetPasswordOtp, BuildContext context)?
+        forgetPasswordOtpOnChanged,
+    required TResult orElse(),
+  }) {
+    if (forgetPasswordEmailSubmit != null) {
+      return forgetPasswordEmailSubmit(forgetPasswordMail, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignInDataSubmit value) signInDataSubmit,
+    required TResult Function(_IsPasswordObscure value) isPasswordObscure,
+    required TResult Function(_IsConfirmPasswordObscure value)
+        isConfirmPasswordObscure,
+    required TResult Function(_IsConfirmNewPasswordObscure value)
+        isConfirmNewPasswordObscure,
+    required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
+    required TResult Function(_ForgetPasswordOtpOnChanged value)
+        forgetPasswordOtpOnChanged,
+  }) {
+    return forgetPasswordEmailSubmit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult? Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult? Function(_IsConfirmPasswordObscure value)?
+        isConfirmPasswordObscure,
+    TResult? Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
+    TResult? Function(_ForgetPasswordOtpOnChanged value)?
+        forgetPasswordOtpOnChanged,
+  }) {
+    return forgetPasswordEmailSubmit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult Function(_IsConfirmPasswordObscure value)? isConfirmPasswordObscure,
+    TResult Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
+    TResult Function(_ForgetPasswordOtpOnChanged value)?
+        forgetPasswordOtpOnChanged,
+    required TResult orElse(),
+  }) {
+    if (forgetPasswordEmailSubmit != null) {
+      return forgetPasswordEmailSubmit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ForgetPasswordEmailSubmit implements SignInEvent {
+  const factory _ForgetPasswordEmailSubmit(
+      {required final String forgetPasswordMail,
+      required final BuildContext context}) = _$ForgetPasswordEmailSubmitImpl;
+
+  String get forgetPasswordMail;
+  BuildContext get context;
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ForgetPasswordEmailSubmitImplCopyWith<_$ForgetPasswordEmailSubmitImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1162,7 +1549,12 @@ class _$ForgetPasswordOtpSubmitImpl
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -1180,7 +1572,12 @@ class _$ForgetPasswordOtpSubmitImpl
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -1198,7 +1595,12 @@ class _$ForgetPasswordOtpSubmitImpl
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -1219,8 +1621,11 @@ class _$ForgetPasswordOtpSubmitImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -1237,7 +1642,10 @@ class _$ForgetPasswordOtpSubmitImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -1253,7 +1661,10 @@ class _$ForgetPasswordOtpSubmitImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -1278,6 +1689,260 @@ abstract class _ForgetPasswordOtpSubmit implements SignInEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForgetPasswordOtpSubmitImplCopyWith<_$ForgetPasswordOtpSubmitImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResetPasswordImplCopyWith<$Res> {
+  factory _$$ResetPasswordImplCopyWith(
+          _$ResetPasswordImpl value, $Res Function(_$ResetPasswordImpl) then) =
+      __$$ResetPasswordImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String forgetPasswordMail, String password, BuildContext context});
+}
+
+/// @nodoc
+class __$$ResetPasswordImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$ResetPasswordImpl>
+    implements _$$ResetPasswordImplCopyWith<$Res> {
+  __$$ResetPasswordImplCopyWithImpl(
+      _$ResetPasswordImpl _value, $Res Function(_$ResetPasswordImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forgetPasswordMail = null,
+    Object? password = null,
+    Object? context = null,
+  }) {
+    return _then(_$ResetPasswordImpl(
+      forgetPasswordMail: null == forgetPasswordMail
+          ? _value.forgetPasswordMail
+          : forgetPasswordMail // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ResetPasswordImpl
+    with DiagnosticableTreeMixin
+    implements _ResetPassword {
+  const _$ResetPasswordImpl(
+      {required this.forgetPasswordMail,
+      required this.password,
+      required this.context});
+
+  @override
+  final String forgetPasswordMail;
+  @override
+  final String password;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInEvent.resetPassword(forgetPasswordMail: $forgetPasswordMail, password: $password, context: $context)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInEvent.resetPassword'))
+      ..add(DiagnosticsProperty('forgetPasswordMail', forgetPasswordMail))
+      ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('context', context));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResetPasswordImpl &&
+            (identical(other.forgetPasswordMail, forgetPasswordMail) ||
+                other.forgetPasswordMail == forgetPasswordMail) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, forgetPasswordMail, password, context);
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResetPasswordImplCopyWith<_$ResetPasswordImpl> get copyWith =>
+      __$$ResetPasswordImplCopyWithImpl<_$ResetPasswordImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String userEmail, String userPassword, BuildContext context)
+        signInDataSubmit,
+    required TResult Function() isPasswordObscure,
+    required TResult Function() isConfirmPasswordObscure,
+    required TResult Function() isConfirmNewPasswordObscure,
+    required TResult Function(bool isRememberMe) isRemember,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
+    required TResult Function(String forgetPasswordOtp, BuildContext context)
+        forgetPasswordOtpOnChanged,
+  }) {
+    return resetPassword(forgetPasswordMail, password, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult? Function()? isPasswordObscure,
+    TResult? Function()? isConfirmPasswordObscure,
+    TResult? Function()? isConfirmNewPasswordObscure,
+    TResult? Function(bool isRememberMe)? isRemember,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
+    TResult? Function(String forgetPasswordOtp, BuildContext context)?
+        forgetPasswordOtpOnChanged,
+  }) {
+    return resetPassword?.call(forgetPasswordMail, password, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String userEmail, String userPassword, BuildContext context)?
+        signInDataSubmit,
+    TResult Function()? isPasswordObscure,
+    TResult Function()? isConfirmPasswordObscure,
+    TResult Function()? isConfirmNewPasswordObscure,
+    TResult Function(bool isRememberMe)? isRemember,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
+    TResult Function(String forgetPasswordOtp, BuildContext context)?
+        forgetPasswordOtpOnChanged,
+    required TResult orElse(),
+  }) {
+    if (resetPassword != null) {
+      return resetPassword(forgetPasswordMail, password, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignInDataSubmit value) signInDataSubmit,
+    required TResult Function(_IsPasswordObscure value) isPasswordObscure,
+    required TResult Function(_IsConfirmPasswordObscure value)
+        isConfirmPasswordObscure,
+    required TResult Function(_IsConfirmNewPasswordObscure value)
+        isConfirmNewPasswordObscure,
+    required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
+    required TResult Function(_ForgetPasswordOtpSubmit value)
+        forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
+    required TResult Function(_ForgetPasswordOtpOnChanged value)
+        forgetPasswordOtpOnChanged,
+  }) {
+    return resetPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult? Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult? Function(_IsConfirmPasswordObscure value)?
+        isConfirmPasswordObscure,
+    TResult? Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
+    TResult? Function(_ForgetPasswordOtpOnChanged value)?
+        forgetPasswordOtpOnChanged,
+  }) {
+    return resetPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignInDataSubmit value)? signInDataSubmit,
+    TResult Function(_IsPasswordObscure value)? isPasswordObscure,
+    TResult Function(_IsConfirmPasswordObscure value)? isConfirmPasswordObscure,
+    TResult Function(_IsConfirmNewPasswordObscure value)?
+        isConfirmNewPasswordObscure,
+    TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
+    TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
+    TResult Function(_ForgetPasswordOtpOnChanged value)?
+        forgetPasswordOtpOnChanged,
+    required TResult orElse(),
+  }) {
+    if (resetPassword != null) {
+      return resetPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetPassword implements SignInEvent {
+  const factory _ResetPassword(
+      {required final String forgetPasswordMail,
+      required final String password,
+      required final BuildContext context}) = _$ResetPasswordImpl;
+
+  String get forgetPasswordMail;
+  String get password;
+  BuildContext get context;
+
+  /// Create a copy of SignInEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ResetPasswordImplCopyWith<_$ResetPasswordImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1381,7 +2046,12 @@ class _$ForgetPasswordOtpOnChangedImpl
     required TResult Function() isConfirmNewPasswordObscure,
     required TResult Function(bool isRememberMe) isRemember,
     required TResult Function(String forgetPasswordMail, BuildContext context)
+        forgetPasswordEmailSubmit,
+    required TResult Function(String forgetPasswordMail, BuildContext context)
         forgetPasswordOtpSubmit,
+    required TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)
+        resetPassword,
     required TResult Function(String forgetPasswordOtp, BuildContext context)
         forgetPasswordOtpOnChanged,
   }) {
@@ -1399,7 +2069,12 @@ class _$ForgetPasswordOtpOnChangedImpl
     TResult? Function()? isConfirmNewPasswordObscure,
     TResult? Function(bool isRememberMe)? isRemember,
     TResult? Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult? Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult? Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult? Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -1417,7 +2092,12 @@ class _$ForgetPasswordOtpOnChangedImpl
     TResult Function()? isConfirmNewPasswordObscure,
     TResult Function(bool isRememberMe)? isRemember,
     TResult Function(String forgetPasswordMail, BuildContext context)?
+        forgetPasswordEmailSubmit,
+    TResult Function(String forgetPasswordMail, BuildContext context)?
         forgetPasswordOtpSubmit,
+    TResult Function(
+            String forgetPasswordMail, String password, BuildContext context)?
+        resetPassword,
     TResult Function(String forgetPasswordOtp, BuildContext context)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
@@ -1438,8 +2118,11 @@ class _$ForgetPasswordOtpOnChangedImpl
     required TResult Function(_IsConfirmNewPasswordObscure value)
         isConfirmNewPasswordObscure,
     required TResult Function(_IsRemember value) isRemember,
+    required TResult Function(_ForgetPasswordEmailSubmit value)
+        forgetPasswordEmailSubmit,
     required TResult Function(_ForgetPasswordOtpSubmit value)
         forgetPasswordOtpSubmit,
+    required TResult Function(_ResetPassword value) resetPassword,
     required TResult Function(_ForgetPasswordOtpOnChanged value)
         forgetPasswordOtpOnChanged,
   }) {
@@ -1456,7 +2139,10 @@ class _$ForgetPasswordOtpOnChangedImpl
     TResult? Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult? Function(_IsRemember value)? isRemember,
+    TResult? Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult? Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult? Function(_ResetPassword value)? resetPassword,
     TResult? Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
   }) {
@@ -1472,7 +2158,10 @@ class _$ForgetPasswordOtpOnChangedImpl
     TResult Function(_IsConfirmNewPasswordObscure value)?
         isConfirmNewPasswordObscure,
     TResult Function(_IsRemember value)? isRemember,
+    TResult Function(_ForgetPasswordEmailSubmit value)?
+        forgetPasswordEmailSubmit,
     TResult Function(_ForgetPasswordOtpSubmit value)? forgetPasswordOtpSubmit,
+    TResult Function(_ResetPassword value)? resetPassword,
     TResult Function(_ForgetPasswordOtpOnChanged value)?
         forgetPasswordOtpOnChanged,
     required TResult orElse(),
