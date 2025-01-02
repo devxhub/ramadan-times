@@ -91,6 +91,11 @@ class _SignInPageState extends State<SignInPage> {
           body: SafeArea(
             child: LayoutBuilder(builder: (context, constraints) {
               return SingleChildScrollView(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context)
+                      .viewInsets
+                      .bottom, // Adjust for keyboard
+                ),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     minHeight: constraints.maxHeight,
@@ -100,7 +105,6 @@ class _SignInPageState extends State<SignInPage> {
                       children: [
                         Expanded(child: Container()),
                         Container(
-                          height: state.containerHeight.h,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
@@ -113,237 +117,227 @@ class _SignInPageState extends State<SignInPage> {
                             child: Form(
                               key: formKey,
                               child: SizedBox(
-                                height: 390.h,
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SizedBox(
-                                      height: 16.h,
-                                    ),
-                                    Text(
-                                      'Welcome!',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.bold,
+                                height: 434.h,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      SizedBox(
+                                        height: 16.h,
                                       ),
-                                    ),
-                                    SizedBox(height: 8.h),
-                                    Text(
-                                      'Sign in to continue!',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 16.sp,
-                                          color: Color(0xff75718B)),
-                                    ),
-                                    SizedBox(height: 40.h),
-                                    CustomTextField(
-                                      editingController: emailController,
-                                      focusNode: _emailFocusNode,
-                                      labelText: 'Your Email',
-                                      hintText: 'Enter your email',
-                                      prefixIcon: Icon(
-                                        Icons.email_rounded,
-                                      ),
-                                      autoValidateMode: AutovalidateMode.onUserInteraction,
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return AppLocalizations.of(context)!
-                                              .pleaseEnterYourEmailAddress;
-                                        }
-                                        // Email validation using regex
-                                        final emailRegex = RegExp(
-                                            r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
-                                        if (!emailRegex.hasMatch(value)) {
-                                          return AppLocalizations.of(context)!
-                                              .pleaseEnterYourEmailAddress;
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                    SizedBox(height: 16.h),
-                                    CustomTextField(
-                                      editingController: passwordController,
-                                      focusNode: _passwordFocusNode,
-                                      labelText: 'Password',
-                                      hintText: 'Enter your password',
-                                      prefixIcon: Icon(
-                                        Icons.lock_rounded,
-                                      ),
-                                      suffixIcon: GestureDetector(
-                                        onTap: () {
-                                          context.read<SignInBloc>().add(
-                                              SignInEvent.isPasswordObscure());
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.only(top: 5.h),
-                                          child: Icon(
-                                            size: 17.sp,
-                                            fill: 1,
-                                            state.isPasswordObscure == true
-                                                ? Icons.visibility_off
-                                                : Icons.visibility,
-                                            color: HexColor("#75718B"),
-                                          ),
+                                      Text(
+                                        'Welcome!',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 24.sp,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      autoValidateMode: AutovalidateMode.onUserInteraction,
-                                      obscureText: state.isPasswordObscure,
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return AppLocalizations.of(context)!
-                                              .pleaseEnterYourPassword;
-                                        } else if (value.length < 8) {
-                                          return AppLocalizations.of(context)!
-                                              .passwordMustBeAtLeast8Characters;
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                    SizedBox(height: 16.h),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Checkbox(
-                                                activeColor:
-                                                    HexColor("#75718B"),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(2
-                                                          .r), // Set border radius
-                                                  side: BorderSide(
-                                                    color: HexColor(
-                                                        "#75718B"), // Customize border color
-                                                    width: 2.0
-                                                        .w, // Set border width
+                                      SizedBox(height: 8.h),
+                                      Text(
+                                        'Sign in to continue!',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 16.sp,
+                                            color: Color(0xff75718B)),
+                                      ),
+                                      SizedBox(height: 40.h),
+                                      CustomTextField(
+                                        editingController: emailController,
+                                        focusNode: _emailFocusNode,
+                                        labelText: 'Your Email',
+                                        hintText: 'Enter your email',
+                                        prefixIcon: Icon(
+                                          Icons.email_rounded,
+                                        ),
+                                        autoValidateMode: AutovalidateMode.onUserInteraction,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return AppLocalizations.of(context)!
+                                                .pleaseEnterYourEmailAddress;
+                                          }
+                                          // Email validation using regex
+                                          final emailRegex = RegExp(
+                                              r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+                                          if (!emailRegex.hasMatch(value)) {
+                                            return AppLocalizations.of(context)!
+                                                .pleaseEnterYourEmailAddress;
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      SizedBox(height: 16.h),
+                                      CustomTextField(
+                                        editingController: passwordController,
+                                        focusNode: _passwordFocusNode,
+                                        labelText: 'Password',
+                                        hintText: 'Enter your password',
+                                        prefixIcon: Icon(
+                                          Icons.lock_rounded,
+                                        ),
+                                        suffixIcon: GestureDetector(
+                                          onTap: () {
+                                            context.read<SignInBloc>().add(
+                                                SignInEvent.isPasswordObscure());
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.only(top: 5.h),
+                                            child: Icon(
+                                              size: 17.sp,
+                                              fill: 1,
+                                              state.isPasswordObscure == true
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                              color: HexColor("#75718B"),
+                                            ),
+                                          ),
+                                        ),
+                                        obscureText: state.isPasswordObscure,
+                                        autoValidateMode: AutovalidateMode.onUserInteraction,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return AppLocalizations.of(context)!
+                                                .pleaseEnterYourPassword;
+                                          } else if (value.length < 8) {
+                                            return AppLocalizations.of(context)!
+                                                .passwordMustBeAtLeast8Characters;
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      SizedBox(height: 16.h),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Checkbox(
+                                                  activeColor:
+                                                      HexColor("#75718B"),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(2
+                                                            .r), // Set border radius
+                                                    side: BorderSide(
+                                                      color: HexColor(
+                                                          "#75718B"), // Customize border color
+                                                      width: 2.0
+                                                          .w, // Set border width
+                                                    ),
                                                   ),
+                                                  value: state.isRemember,
+                                                  onChanged: (value) {
+                                                    context
+                                                        .read<SignInBloc>()
+                                                        .add(SignInEvent
+                                                            .isRemember(
+                                                                isRememberMe:
+                                                                    value ??
+                                                                        false));
+                                                  }),
+                                              Text(
+                                                'Remember me',
+                                                style: TextStyle(
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: HexColor("#75718B"),
                                                 ),
-                                                value: state.isRemember,
-                                                onChanged: (value) {
-                                                  context
-                                                      .read<SignInBloc>()
-                                                      .add(SignInEvent
-                                                          .isRemember(
-                                                              isRememberMe:
-                                                                  value ??
-                                                                      false));
-                                                }),
-                                            Text(
-                                              'Remember me',
+                                              ),
+                                            ],
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              context.pushNamed(
+                                                  "forgot_password_page");
+                                            },
+                                            child: Text(
+                                              'Forgot password?',
                                               style: TextStyle(
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.w500,
                                                 color: HexColor("#75718B"),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            context.pushNamed(
-                                                "forgot_password_page");
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 16.h),
+                                      SizedBox(
+                                        height: 40.h,
+                                        width: double.maxFinite,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: HexColor("#6348EB"),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(100.r),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            if (formKey.currentState!
+                                                .validate()) {
+                                              context.goNamed("schedule");
+                                              // context.read<SignInBloc>().add(
+                                              //     SignInEvent.signInDataSubmit(
+                                              //         userEmail: emailController.text,
+                                              //         userPassword: passwordController.text,
+                                              //         context: context));
+                                            } else {
+                                            }
                                           },
-                                          child: Text(
-                                            'Forgot password?',
+                                          child: Center(
+                                            child: state.signInStatus ==
+                                                    SignInStatus.inProgress
+                                                ? SizedBox(
+                                                    height: 16.h,
+                                                    width: 16.w,
+                                                    child:
+                                                        CircularProgressIndicator
+                                                            .adaptive())
+                                                : Text(
+                                                    'Sign In',
+                                                    style: TextStyle(
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.white),
+                                                  ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 16.h),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Don't have an account?",
                                             style: TextStyle(
                                               fontSize: 14.sp,
                                               fontWeight: FontWeight.w500,
                                               color: HexColor("#75718B"),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 16.h),
-                                    SizedBox(
-                                      height: 40.h,
-                                      width: double.maxFinite,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: HexColor("#6348EB"),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(100.r),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          if (formKey.currentState!
-                                              .validate()) {
-                                            context.goNamed("schedule");
-                                            // context.read<SignInBloc>().add(
-                                            //     SignInEvent.signInDataSubmit(
-                                            //         userEmail: emailController.text,
-                                            //         userPassword: passwordController.text,
-                                            //         context: context));
-                                            context.read<SignInBloc>().add(
-                                                  SignInEvent
-                                                      .updateContainerHeight(
-                                                    containerHeight: 467,
-                                                  ),
-                                                );
-                                          } else {
-                                            context.read<SignInBloc>().add(
-                                                  SignInEvent
-                                                      .updateContainerHeight(
-                                                    containerHeight: 467,
-                                                  ),
-                                                );
-                                          }
-                                        },
-                                        child: Center(
-                                          child: state.signInStatus ==
-                                                  SignInStatus.inProgress
-                                              ? SizedBox(
-                                                  height: 16.h,
-                                                  width: 16.w,
-                                                  child:
-                                                      CircularProgressIndicator
-                                                          .adaptive())
-                                              : Text(
-                                                  'Sign In',
-                                                  style: TextStyle(
-                                                      fontSize: 14.sp,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: Colors.white),
-                                                ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 16.h),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Don't have an account?",
-                                          style: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: HexColor("#75718B"),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            context.go('/sign_up_page');
-                                          },
-                                          child: Text(
-                                            ' Sign Up',
-                                            style: TextStyle(
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w700,
-                                              color: Colors.black,
+                                          InkWell(
+                                            onTap: () {
+                                              context.go('/sign_up_page');
+                                            },
+                                            child: Text(
+                                              ' Sign Up',
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.black,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -91,49 +91,51 @@ class _CustomPinCodeFieldState extends State<CustomPinCodeField> {
                       );
                     }
                   },
-                  child: TextFormField(
-                    controller: _controllers[index],
-                    focusNode: _focusNodes[index],
-                    textAlign: TextAlign.center,
-                    maxLength: 1,
-                    showCursor: true,
-                    decoration: InputDecoration(
-                      counterText: "",
-                      border: InputBorder.none,
-                      hintText: _controllers[index].text.isEmpty && !isSelected
-                          ? "-" // Dash when the field is empty and not focused
-                          : "", // No hint text if the field is focused or filled
-                      hintStyle: TextStyle(
-                        color: Colors.grey.shade400,
+                  child: Center(
+                    child: TextFormField(
+                      controller: _controllers[index],
+                      focusNode: _focusNodes[index],
+                      textAlign: TextAlign.center,
+                      maxLength: 1,
+                      showCursor: true,
+                      decoration: InputDecoration(
+                        counterText: "",
+                        border: InputBorder.none,
+                        hintText: _controllers[index].text.isEmpty && !isSelected
+                            ? "-" // Dash when the field is empty and not focused
+                            : "", // No hint text if the field is focused or filled
+                        hintStyle: TextStyle(
+                          color: Colors.grey.shade400,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
-                    ),
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    onChanged: (value) {
-                      if (value.isNotEmpty) {
-                        // Automatically move to the next field if input is provided
-                        if (index < 5) {
-                          FocusScope.of(context)
-                              .requestFocus(_focusNodes[index + 1]);
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      onChanged: (value) {
+                        if (value.isNotEmpty) {
+                          // Automatically move to the next field if input is provided
+                          if (index < 5) {
+                            FocusScope.of(context)
+                                .requestFocus(_focusNodes[index + 1]);
+                          }
                         }
-                      }
-                      // Emit state after input
-                      context.read<SignInBloc>().add(
-                        SignInEvent.forgetPasswordOtpOnChanged(
-                          forgetPasswordOtp: getPinCode(),
-                          context: context,
-                        ),
-                      );
-                    },
+                        // Emit state after input
+                        context.read<SignInBloc>().add(
+                          SignInEvent.forgetPasswordOtpOnChanged(
+                            forgetPasswordOtp: getPinCode(),
+                            context: context,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
