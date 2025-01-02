@@ -26,7 +26,7 @@ class SignUpRepository {
     print("Payload: {name: $name, email: $email, password: $password}");
     print("Response: $response");
 
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 3));
 
     return SignUpResponse.fromJson(response);
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -275,14 +276,23 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                             );
                                       }
                                     },
-                                    child: Text(
-                                      localization.signUpButton,
-                                      style: GoogleFonts.dmSans(
-                                        fontSize: 14.sp,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
+                                    child: state.signUpStatus ==
+                                            SignUpStatus.inProgress
+                                        ? SizedBox(
+                                            height: 16.h,
+                                            width: 16.w,
+                                            child: SpinKitThreeBounce(
+                                              color: Colors.black,
+                                            ),
+                                          )
+                                        : Text(
+                                            localization.signUpButton,
+                                            style: GoogleFonts.dmSans(
+                                              fontSize: 14.sp,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
                                   ),
                                   Gap(16.h),
                                   Row(

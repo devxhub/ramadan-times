@@ -76,6 +76,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       name: event.name,
       password: event.password,
     );
+
+    emit(state.copyWith(signUpStatus: SignUpStatus.inProgress));
     if (response.success == true) {
       Fluttertoast.showToast(
         msg: 'Sign Up successful, please login',
@@ -89,12 +91,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           'showBackButton': false,
         },
       );
+      emit(state.copyWith(signUpStatus: SignUpStatus.success));
     } else {
       Fluttertoast.showToast(
         msg: response.message ?? 'Sign up failed',
         backgroundColor: Colors.black,
         webPosition: 'bottom',
       );
+      emit(state.copyWith(signUpStatus: SignUpStatus.success));
     }
   }
 
