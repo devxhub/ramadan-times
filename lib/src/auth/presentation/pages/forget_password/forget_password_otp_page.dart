@@ -193,21 +193,19 @@ class _ForgetPasswordOtpPageState extends State<ForgetPasswordOtpPage> {
                                             width: double.maxFinite,
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                backgroundColor: HexColor("#6348EB"),
+                                                backgroundColor: state.forgetPasswordOtp.length == 6
+                                                    ? HexColor("#6348EB") // Enabled color
+                                                    : HexColor("#C4C4C4"), // Disabled color
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(100.r),
                                                 ),
                                               ),
-                                              onPressed: () {
-                                                if (formKey.currentState!.validate()) {
-
-                                                  // context.read<SignInBloc>().add(
-                                                  //     SignInEvent.signInDataSubmit(
-                                                  //         userEmail: emailController.text,
-                                                  //         userPassword: passwordController.text,
-                                                  //         context: context));
-                                                }
-                                              },
+                                              onPressed: state.forgetPasswordOtp.length == 6
+                                                  ? () {
+                                                // Add your OTP submission logic here
+                                                print("OTP Submitted: ${state.forgetPasswordOtp}");
+                                              }
+                                                  : null,
                                               child: Center(
                                                 child: state.signInStatus ==
                                                     SignInStatus.inProgress

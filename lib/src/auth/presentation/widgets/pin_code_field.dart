@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:muslimtimespro/src/auth/presentation/bloc/sign_in_bloc/sign_in_bloc.dart';
 
 class CustomPinCodeField extends StatefulWidget {
   const CustomPinCodeField({Key? key}) : super(key: key);
@@ -35,9 +36,11 @@ class _CustomPinCodeFieldState extends State<CustomPinCodeField> {
       });
     }
   }
+
   String getPinCode() {
     return _controllers.map((controller) => controller.text).join();
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -47,7 +50,7 @@ class _CustomPinCodeFieldState extends State<CustomPinCodeField> {
           final bool isSelected = _selectedIndex == index;
 
           return Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 2.0.w),
+            padding: EdgeInsets.symmetric(horizontal: 2.0.w),
             child: Container(
               width: 46.w,
               height: 46.h,
@@ -69,15 +72,23 @@ class _CustomPinCodeFieldState extends State<CustomPinCodeField> {
                 ),
               ),
               child: Center(
-                child:KeyboardListener(
+                child: KeyboardListener(
                   focusNode: FocusNode(),
-                  onKeyEvent: (event)  {
-                    if (event.runtimeType == KeyDownEvent &&
-                        event.logicalKey == LogicalKeyboardKey.backspace &&
-                        _controllers[index].text.isEmpty &&
-                        index > 0) {
-                      _controllers[index - 1].clear();
-                      FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
+                  onKeyEvent: (event) {
+                    if (event is KeyDownEvent &&
+                        event.logicalKey == LogicalKeyboardKey.backspace) {
+                      if (_controllers[index].text.isEmpty && index > 0) {
+                        _controllers[index - 1].clear();
+                        FocusScope.of(context)
+                            .requestFocus(_focusNodes[index - 1]);
+                      }
+                      // Emit state after backspace
+                      context.read<SignInBloc>().add(
+                        SignInEvent.forgetPasswordOtpOnChanged(
+                          forgetPasswordOtp: getPinCode(),
+                          context: context,
+                        ),
+                      );
                     }
                   },
                   child: TextFormField(
@@ -111,9 +122,17 @@ class _CustomPinCodeFieldState extends State<CustomPinCodeField> {
                       if (value.isNotEmpty) {
                         // Automatically move to the next field if input is provided
                         if (index < 5) {
-                          FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
+                          FocusScope.of(context)
+                              .requestFocus(_focusNodes[index + 1]);
                         }
                       }
+                      // Emit state after input
+                      context.read<SignInBloc>().add(
+                        SignInEvent.forgetPasswordOtpOnChanged(
+                          forgetPasswordOtp: getPinCode(),
+                          context: context,
+                        ),
+                      );
                     },
                   ),
                 ),

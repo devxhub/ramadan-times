@@ -14,4 +14,5 @@ class SignInEvent with _$SignInEvent {
   const factory SignInEvent.isRemember({required bool isRememberMe}) =
       _IsRemember;
   const factory SignInEvent.forgetPasswordOtpSubmit({required String forgetPasswordMail,required BuildContext context}) = _ForgetPasswordOtpSubmit;
+  const factory SignInEvent.forgetPasswordOtpOnChanged({required String forgetPasswordOtp,required BuildContext context}) = _ForgetPasswordOtpOnChanged;
 }
