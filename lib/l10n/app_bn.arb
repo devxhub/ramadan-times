@@ -144,6 +144,26 @@
    "countryIsNotFoundInTheList": "তালিকায় দেশটি পাওয়া যায়নি!",
    "passwordMustBeAtLeast8Characters":"পাসওয়ার্ড ন্যূনতম ৮ অক্ষরের হতে হবে।",
 "pleaseEnterYourEmailAddress":"দয়া করে,আপনার ইমেল লিখুন",
- "pleaseEnterYourPassword":"দয়া করে,আপনার পাসওয়ার্ড লিখুন"
+ "pleaseEnterYourPassword":"দয়া করে,আপনার পাসওয়ার্ড লিখুন",
+ "signUpTitle": "নিবন্ধন করুন",
+  "gettingStarted": "শুরু করুন",
+  "createAccount": "চালিয়ে যেতে একটি অ্যাকাউন্ট তৈরি করুন!",
+  "nameLabel": "নাম",
+  "nameHint": "আপনার নাম লিখুন",
+  "emailLabel": "আপনার ইমেল",
+  "emailHint": "আপনার ইমেল লিখুন",
+  "passwordLabel": "পাসওয়ার্ড",
+  "passwordHint": "আপনার পাসওয়ার্ড লিখুন",
+  "confirmPasswordLabel": "পাসওয়ার্ড নিশ্চিত করুন",
+  "confirmPasswordHint": "আপনার নিশ্চিত পাসওয়ার্ড লিখুন",
+  "signUpButton": "নিবন্ধন করুন",
+  "alreadyHaveAccount": "আপনার কি অ্যাকাউন্ট আছে?",
+  "signIn": "সাইন ইন করুন",
+  "pleaseEnterYourEmail": "অনুগ্রহ করে আপনার ইমেল ঠিকানা লিখুন",
+  "pleaseEnterYourPassword": "অনুগ্রহ করে আপনার পাসওয়ার্ড লিখুন",
+  "passwordTooShort": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে",
+  "confirmPasswordError": "পাসওয়ার্ড নিশ্চিত পাসওয়ার্ডের সাথে মেলে না",
+  "pleaseEnterAValidEmailAddress": "একটি বৈধ ইমেল ঠিকানা লিখুন"
+
 
 }

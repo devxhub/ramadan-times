@@ -346,5 +346,59 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pleaseEnterYourEmailAddress => 'Please enter your email address';
 
   @override
-  String get pleaseEnterYourPassword => 'Please enter your Password';
+  String get pleaseEnterYourPassword => 'Please enter your password';
+
+  @override
+  String get signUpTitle => 'Sign Up';
+
+  @override
+  String get gettingStarted => 'Getting Started';
+
+  @override
+  String get createAccount => 'Create an account to continue!';
+
+  @override
+  String get nameLabel => 'Name';
+
+  @override
+  String get nameHint => 'Enter your name';
+
+  @override
+  String get emailLabel => 'Your Email';
+
+  @override
+  String get emailHint => 'Enter your email';
+
+  @override
+  String get passwordLabel => 'Password';
+
+  @override
+  String get passwordHint => 'Enter your password';
+
+  @override
+  String get confirmPasswordLabel => 'Confirm Password';
+
+  @override
+  String get confirmPasswordHint => 'Enter your confirm password';
+
+  @override
+  String get signUpButton => 'Sign Up';
+
+  @override
+  String get alreadyHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get signIn => 'Sign in';
+
+  @override
+  String get pleaseEnterYourEmail => 'Please enter your email address';
+
+  @override
+  String get passwordTooShort => 'Password must be at least 8 characters long';
+
+  @override
+  String get confirmPasswordError => 'Confirm password must match the password';
+
+  @override
+  String get pleaseEnterAValidEmailAddress => 'Please enter a valid email address';
 }

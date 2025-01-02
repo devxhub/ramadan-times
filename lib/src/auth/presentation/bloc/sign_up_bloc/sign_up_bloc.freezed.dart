@@ -20,18 +20,21 @@ mixin _$SignUpEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() signWithGoogle,
     required TResult Function() signWithApple,
+    required TResult Function() signWithEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signWithGoogle,
     TResult? Function()? signWithApple,
+    TResult? Function()? signWithEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signWithGoogle,
     TResult Function()? signWithApple,
+    TResult Function()? signWithEmail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SignUpEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignWithGoogle value) signWithGoogle,
     required TResult Function(_SignWithApple value) signWithApple,
+    required TResult Function(_SignWithEmail value) signWithEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignWithGoogle value)? signWithGoogle,
     TResult? Function(_SignWithApple value)? signWithApple,
+    TResult? Function(_SignWithEmail value)? signWithEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignWithGoogle value)? signWithGoogle,
     TResult Function(_SignWithApple value)? signWithApple,
+    TResult Function(_SignWithEmail value)? signWithEmail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$SignWithGoogleImpl
   TResult when<TResult extends Object?>({
     required TResult Function() signWithGoogle,
     required TResult Function() signWithApple,
+    required TResult Function() signWithEmail,
   }) {
     return signWithGoogle();
   }
@@ -137,6 +144,7 @@ class _$SignWithGoogleImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signWithGoogle,
     TResult? Function()? signWithApple,
+    TResult? Function()? signWithEmail,
   }) {
     return signWithGoogle?.call();
   }
@@ -146,6 +154,7 @@ class _$SignWithGoogleImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signWithGoogle,
     TResult Function()? signWithApple,
+    TResult Function()? signWithEmail,
     required TResult orElse(),
   }) {
     if (signWithGoogle != null) {
@@ -159,6 +168,7 @@ class _$SignWithGoogleImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_SignWithGoogle value) signWithGoogle,
     required TResult Function(_SignWithApple value) signWithApple,
+    required TResult Function(_SignWithEmail value) signWithEmail,
   }) {
     return signWithGoogle(this);
   }
@@ -168,6 +178,7 @@ class _$SignWithGoogleImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignWithGoogle value)? signWithGoogle,
     TResult? Function(_SignWithApple value)? signWithApple,
+    TResult? Function(_SignWithEmail value)? signWithEmail,
   }) {
     return signWithGoogle?.call(this);
   }
@@ -177,6 +188,7 @@ class _$SignWithGoogleImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignWithGoogle value)? signWithGoogle,
     TResult Function(_SignWithApple value)? signWithApple,
+    TResult Function(_SignWithEmail value)? signWithEmail,
     required TResult orElse(),
   }) {
     if (signWithGoogle != null) {
@@ -241,6 +253,7 @@ class _$SignWithAppleImpl
   TResult when<TResult extends Object?>({
     required TResult Function() signWithGoogle,
     required TResult Function() signWithApple,
+    required TResult Function() signWithEmail,
   }) {
     return signWithApple();
   }
@@ -250,6 +263,7 @@ class _$SignWithAppleImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? signWithGoogle,
     TResult? Function()? signWithApple,
+    TResult? Function()? signWithEmail,
   }) {
     return signWithApple?.call();
   }
@@ -259,6 +273,7 @@ class _$SignWithAppleImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signWithGoogle,
     TResult Function()? signWithApple,
+    TResult Function()? signWithEmail,
     required TResult orElse(),
   }) {
     if (signWithApple != null) {
@@ -272,6 +287,7 @@ class _$SignWithAppleImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_SignWithGoogle value) signWithGoogle,
     required TResult Function(_SignWithApple value) signWithApple,
+    required TResult Function(_SignWithEmail value) signWithEmail,
   }) {
     return signWithApple(this);
   }
@@ -281,6 +297,7 @@ class _$SignWithAppleImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignWithGoogle value)? signWithGoogle,
     TResult? Function(_SignWithApple value)? signWithApple,
+    TResult? Function(_SignWithEmail value)? signWithEmail,
   }) {
     return signWithApple?.call(this);
   }
@@ -290,6 +307,7 @@ class _$SignWithAppleImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignWithGoogle value)? signWithGoogle,
     TResult Function(_SignWithApple value)? signWithApple,
+    TResult Function(_SignWithEmail value)? signWithEmail,
     required TResult orElse(),
   }) {
     if (signWithApple != null) {
@@ -301,6 +319,125 @@ class _$SignWithAppleImpl
 
 abstract class _SignWithApple implements SignUpEvent {
   const factory _SignWithApple() = _$SignWithAppleImpl;
+}
+
+/// @nodoc
+abstract class _$$SignWithEmailImplCopyWith<$Res> {
+  factory _$$SignWithEmailImplCopyWith(
+          _$SignWithEmailImpl value, $Res Function(_$SignWithEmailImpl) then) =
+      __$$SignWithEmailImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SignWithEmailImplCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$SignWithEmailImpl>
+    implements _$$SignWithEmailImplCopyWith<$Res> {
+  __$$SignWithEmailImplCopyWithImpl(
+      _$SignWithEmailImpl _value, $Res Function(_$SignWithEmailImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignUpEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SignWithEmailImpl
+    with DiagnosticableTreeMixin
+    implements _SignWithEmail {
+  const _$SignWithEmailImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignUpEvent.signWithEmail()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SignUpEvent.signWithEmail'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SignWithEmailImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signWithGoogle,
+    required TResult Function() signWithApple,
+    required TResult Function() signWithEmail,
+  }) {
+    return signWithEmail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? signWithGoogle,
+    TResult? Function()? signWithApple,
+    TResult? Function()? signWithEmail,
+  }) {
+    return signWithEmail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signWithGoogle,
+    TResult Function()? signWithApple,
+    TResult Function()? signWithEmail,
+    required TResult orElse(),
+  }) {
+    if (signWithEmail != null) {
+      return signWithEmail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SignWithGoogle value) signWithGoogle,
+    required TResult Function(_SignWithApple value) signWithApple,
+    required TResult Function(_SignWithEmail value) signWithEmail,
+  }) {
+    return signWithEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SignWithGoogle value)? signWithGoogle,
+    TResult? Function(_SignWithApple value)? signWithApple,
+    TResult? Function(_SignWithEmail value)? signWithEmail,
+  }) {
+    return signWithEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SignWithGoogle value)? signWithGoogle,
+    TResult Function(_SignWithApple value)? signWithApple,
+    TResult Function(_SignWithEmail value)? signWithEmail,
+    required TResult orElse(),
+  }) {
+    if (signWithEmail != null) {
+      return signWithEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignWithEmail implements SignUpEvent {
+  const factory _SignWithEmail() = _$SignWithEmailImpl;
 }
 
 /// @nodoc

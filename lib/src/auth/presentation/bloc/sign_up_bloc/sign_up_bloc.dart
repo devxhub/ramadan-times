@@ -18,6 +18,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       await events.map(
         signWithGoogle: (event) async => await _signInWithGoogle(event, emit),
         signWithApple: (event) async => await _signInWithApple(event, emit),
+        signWithEmail: (event) async => await _signInWithEmail(event, emit),
       );
     });
   }
@@ -59,4 +60,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       }
     }
   }
+
+  _signInWithEmail(_SignWithEmail event, Emitter<SignUpState> emit) {}
 }
