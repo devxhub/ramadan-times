@@ -1113,6 +1113,7 @@ mixin _$SignUpState {
   bool get isPasswordObscure => throw _privateConstructorUsedError;
   bool get isConfirmNewPasswordObscure => throw _privateConstructorUsedError;
   double get containerHeight => throw _privateConstructorUsedError;
+  SignUpStatus get signUpStatus => throw _privateConstructorUsedError;
 
   /// Create a copy of SignUpState
   /// with the given fields replaced by the non-null parameter values.
@@ -1130,7 +1131,8 @@ abstract class $SignUpStateCopyWith<$Res> {
   $Res call(
       {bool isPasswordObscure,
       bool isConfirmNewPasswordObscure,
-      double containerHeight});
+      double containerHeight,
+      SignUpStatus signUpStatus});
 }
 
 /// @nodoc
@@ -1151,6 +1153,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
     Object? isPasswordObscure = null,
     Object? isConfirmNewPasswordObscure = null,
     Object? containerHeight = null,
+    Object? signUpStatus = null,
   }) {
     return _then(_value.copyWith(
       isPasswordObscure: null == isPasswordObscure
@@ -1165,6 +1168,10 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.containerHeight
           : containerHeight // ignore: cast_nullable_to_non_nullable
               as double,
+      signUpStatus: null == signUpStatus
+          ? _value.signUpStatus
+          : signUpStatus // ignore: cast_nullable_to_non_nullable
+              as SignUpStatus,
     ) as $Val);
   }
 }
@@ -1180,7 +1187,8 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
   $Res call(
       {bool isPasswordObscure,
       bool isConfirmNewPasswordObscure,
-      double containerHeight});
+      double containerHeight,
+      SignUpStatus signUpStatus});
 }
 
 /// @nodoc
@@ -1199,6 +1207,7 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
     Object? isPasswordObscure = null,
     Object? isConfirmNewPasswordObscure = null,
     Object? containerHeight = null,
+    Object? signUpStatus = null,
   }) {
     return _then(_$SignUpStateImpl(
       isPasswordObscure: null == isPasswordObscure
@@ -1213,6 +1222,10 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
           ? _value.containerHeight
           : containerHeight // ignore: cast_nullable_to_non_nullable
               as double,
+      signUpStatus: null == signUpStatus
+          ? _value.signUpStatus
+          : signUpStatus // ignore: cast_nullable_to_non_nullable
+              as SignUpStatus,
     ));
   }
 }
@@ -1223,7 +1236,8 @@ class _$SignUpStateImpl with DiagnosticableTreeMixin implements _SignUpState {
   const _$SignUpStateImpl(
       {this.isPasswordObscure = true,
       this.isConfirmNewPasswordObscure = true,
-      this.containerHeight = 500});
+      this.containerHeight = 500,
+      this.signUpStatus = SignUpStatus.initial});
 
   @override
   @JsonKey()
@@ -1234,10 +1248,13 @@ class _$SignUpStateImpl with DiagnosticableTreeMixin implements _SignUpState {
   @override
   @JsonKey()
   final double containerHeight;
+  @override
+  @JsonKey()
+  final SignUpStatus signUpStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignUpState(isPasswordObscure: $isPasswordObscure, isConfirmNewPasswordObscure: $isConfirmNewPasswordObscure, containerHeight: $containerHeight)';
+    return 'SignUpState(isPasswordObscure: $isPasswordObscure, isConfirmNewPasswordObscure: $isConfirmNewPasswordObscure, containerHeight: $containerHeight, signUpStatus: $signUpStatus)';
   }
 
   @override
@@ -1248,7 +1265,8 @@ class _$SignUpStateImpl with DiagnosticableTreeMixin implements _SignUpState {
       ..add(DiagnosticsProperty('isPasswordObscure', isPasswordObscure))
       ..add(DiagnosticsProperty(
           'isConfirmNewPasswordObscure', isConfirmNewPasswordObscure))
-      ..add(DiagnosticsProperty('containerHeight', containerHeight));
+      ..add(DiagnosticsProperty('containerHeight', containerHeight))
+      ..add(DiagnosticsProperty('signUpStatus', signUpStatus));
   }
 
   @override
@@ -1263,12 +1281,14 @@ class _$SignUpStateImpl with DiagnosticableTreeMixin implements _SignUpState {
                 other.isConfirmNewPasswordObscure ==
                     isConfirmNewPasswordObscure) &&
             (identical(other.containerHeight, containerHeight) ||
-                other.containerHeight == containerHeight));
+                other.containerHeight == containerHeight) &&
+            (identical(other.signUpStatus, signUpStatus) ||
+                other.signUpStatus == signUpStatus));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isPasswordObscure,
-      isConfirmNewPasswordObscure, containerHeight);
+      isConfirmNewPasswordObscure, containerHeight, signUpStatus);
 
   /// Create a copy of SignUpState
   /// with the given fields replaced by the non-null parameter values.
@@ -1283,7 +1303,8 @@ abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
       {final bool isPasswordObscure,
       final bool isConfirmNewPasswordObscure,
-      final double containerHeight}) = _$SignUpStateImpl;
+      final double containerHeight,
+      final SignUpStatus signUpStatus}) = _$SignUpStateImpl;
 
   @override
   bool get isPasswordObscure;
@@ -1291,6 +1312,8 @@ abstract class _SignUpState implements SignUpState {
   bool get isConfirmNewPasswordObscure;
   @override
   double get containerHeight;
+  @override
+  SignUpStatus get signUpStatus;
 
   /// Create a copy of SignUpState
   /// with the given fields replaced by the non-null parameter values.

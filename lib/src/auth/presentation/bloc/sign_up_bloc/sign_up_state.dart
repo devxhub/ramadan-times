@@ -1,8 +1,6 @@
 part of 'sign_up_bloc.dart';
 
-enum SignInStatus { initial, success, failure, inProgress }
-
-enum PrayerStatus { initial, success, failure, inProgress }
+enum SignUpStatus { initial, success, failure, inProgress }
 
 @Freezed()
 class SignUpState with _$SignUpState {
@@ -10,5 +8,6 @@ class SignUpState with _$SignUpState {
     @Default(true) bool isPasswordObscure,
     @Default(true) bool isConfirmNewPasswordObscure,
     @Default(500) double containerHeight,
+    @Default(SignUpStatus.initial) SignUpStatus signUpStatus,
   }) = _SignUpState;
 }
