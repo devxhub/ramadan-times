@@ -157,13 +157,16 @@
   "confirmPasswordLabel": "পাসওয়ার্ড নিশ্চিত করুন",
   "confirmPasswordHint": "আপনার নিশ্চিত পাসওয়ার্ড লিখুন",
   "signUpButton": "নিবন্ধন করুন",
-  "alreadyHaveAccount": "আপনার কি অ্যাকাউন্ট আছে?",
+  "alreadyHaveAccount": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
   "signIn": "সাইন ইন করুন",
   "pleaseEnterYourEmail": "অনুগ্রহ করে আপনার ইমেল ঠিকানা লিখুন",
   "pleaseEnterYourPassword": "অনুগ্রহ করে আপনার পাসওয়ার্ড লিখুন",
   "passwordTooShort": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে",
   "confirmPasswordError": "পাসওয়ার্ড নিশ্চিত পাসওয়ার্ডের সাথে মেলে না",
-  "pleaseEnterAValidEmailAddress": "একটি বৈধ ইমেল ঠিকানা লিখুন"
+  "pleaseEnterAValidEmailAddress": "একটি বৈধ ইমেল ঠিকানা লিখুন",
+  "pleaseEnterYourConfirmPassword": "অনুগ্রহ করে আপনার কনফার্ম পাসওয়ার্ড লিখুন"
+
+  
 
 
 }

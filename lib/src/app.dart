@@ -151,11 +151,14 @@ final GoRouter _router = GoRouter(
       },
     ),
     GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
       path: '/sign_in_page',
-      name: "sign_in_page",
       builder: (BuildContext context, GoRouterState state) {
-        return SignInPage();
+        // Retrieve the extra parameter here
+        final Map<String, dynamic>? extras =
+            state.extra as Map<String, dynamic>?;
+        final bool showBackButton = extras?['showBackButton'] ?? false;
+
+        return SignInPage(showBackButton: showBackButton);
       },
     ),
     GoRoute(

@@ -157,13 +157,14 @@
   "confirmPasswordLabel": "Confirm Password",
   "confirmPasswordHint": "Enter your confirm password",
   "signUpButton": "Sign Up",
-  "alreadyHaveAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account?",
   "signIn": "Sign in",
   "pleaseEnterYourEmail": "Please enter your email address",
   "pleaseEnterYourPassword": "Please enter your password",
   "passwordTooShort": "Password must be at least 8 characters long",
   "confirmPasswordError": "Confirm password must match the password",
-  "pleaseEnterAValidEmailAddress": "Please enter a valid email address"
+  "pleaseEnterAValidEmailAddress": "Please enter a valid email address",
+  "pleaseEnterYourConfirmPassword": "Please enter your confirm password"
  
 
 }

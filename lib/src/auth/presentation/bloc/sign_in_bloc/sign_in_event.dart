@@ -13,4 +13,7 @@ class SignInEvent with _$SignInEvent {
       _IsConfirmNewPasswordObscure;
   const factory SignInEvent.isRemember({required bool isRememberMe}) =
       _IsRemember;
+  const factory SignInEvent.updateContainerHeight({
+    required double containerHeight,
+  }) = _UpdateContainerHeight;
 }

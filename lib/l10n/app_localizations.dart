@@ -766,7 +766,7 @@ abstract class AppLocalizations {
   /// No description provided for @alreadyHaveAccount.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t have an account?'**
+  /// **'Already have an account?'**
   String get alreadyHaveAccount;
 
   /// No description provided for @signIn.
@@ -798,6 +798,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter a valid email address'**
   String get pleaseEnterAValidEmailAddress;
+
+  /// No description provided for @pleaseEnterYourConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your confirm password'**
+  String get pleaseEnterYourConfirmPassword;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import '../../../services/dio_client.dart';
 import '../models/sign_up_response.dart';
@@ -16,18 +18,24 @@ class SignUpRepository {
     required String email,
     required String password,
   }) async {
-    const String endpoint = "/api/auth/register";
-    final Map<String, String> payload = {
-      "name": name,
-      "email": email,
-      "password": password,
+    final Map<String, dynamic> response = {
+      "success": true,
+      "message": "User registered successfully!",
     };
 
-    var response = {
-      "success": false,
-      "message": "Unknown error occurred.",
-    };
+    print("Payload: {name: $name, email: $email, password: $password}");
+    print("Response: $response");
+
+    await Future.delayed(Duration(seconds: 1));
+
     return SignUpResponse.fromJson(response);
+
+    // const String endpoint = "/api/auth/register";
+    // final Map<String, String> payload = {
+    //   "name": name,
+    //   "email": email,
+    //   "password": password,
+    // };
     // try {
     //   final Response response = await dioClient.post(
     //     endpoint,

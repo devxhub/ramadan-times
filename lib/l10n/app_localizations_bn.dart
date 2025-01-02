@@ -386,7 +386,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get signUpButton => 'নিবন্ধন করুন';
 
   @override
-  String get alreadyHaveAccount => 'আপনার কি অ্যাকাউন্ট আছে?';
+  String get alreadyHaveAccount => 'ইতিমধ্যে একটি অ্যাকাউন্ট আছে?';
 
   @override
   String get signIn => 'সাইন ইন করুন';
@@ -402,4 +402,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pleaseEnterAValidEmailAddress => 'একটি বৈধ ইমেল ঠিকানা লিখুন';
+
+  @override
+  String get pleaseEnterYourConfirmPassword => 'অনুগ্রহ করে আপনার কনফার্ম পাসওয়ার্ড লিখুন';
 }

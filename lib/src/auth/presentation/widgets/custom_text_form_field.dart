@@ -173,8 +173,8 @@ InputDecoration customInputDecoration({
 }) {
   return InputDecoration(
     contentPadding: EdgeInsets.symmetric(
-      vertical: verticalPadding,
-      horizontal: horizontalPadding,
+      vertical: verticalPadding.h,
+      horizontal: horizontalPadding.w,
     ),
     isDense: false,
     labelText: labelText,
@@ -182,25 +182,25 @@ InputDecoration customInputDecoration({
     border: OutlineInputBorder(
       borderSide: borderSide,
       borderRadius: BorderRadius.all(
-        Radius.circular(borderRadius),
+        Radius.circular(borderRadius.r),
       ),
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: borderSide,
       borderRadius: BorderRadius.all(
-        Radius.circular(borderRadius),
+        Radius.circular(borderRadius.r),
       ),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: borderSide,
       borderRadius: BorderRadius.all(
-        Radius.circular(borderRadius),
+        Radius.circular(borderRadius.r),
       ),
     ),
     errorBorder: OutlineInputBorder(
       borderSide: errorBorderSide,
       borderRadius: BorderRadius.all(
-        Radius.circular(borderRadius),
+        Radius.circular(borderRadius.r),
       ),
     ),
     focusColor: focusColor,
