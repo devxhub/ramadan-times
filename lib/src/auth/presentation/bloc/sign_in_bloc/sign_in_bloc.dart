@@ -30,6 +30,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         signInDataSubmit: (event) async => await _signInDataSubmit(event, emit),
         forgetPasswordOtpSubmit: (event) async =>
         await _forgetPasswordOtpSubmit(event, emit),
+      forgetPasswordOtpOnChanged: (event) async =>
+        await _forgetPasswordOtpOnChanged(event, emit),
         updateContainerHeight: (event) async =>
             await _updateContainerHeight(event, emit),
       );
@@ -38,7 +40,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   _isPasswordObscure(
       _IsPasswordObscure event, Emitter<SignInState> emit) async {
     emit(state.copyWith(isPasswordObscure: !state.isPasswordObscure));
+  } _forgetPasswordOtpOnChanged(
+      _ForgetPasswordOtpOnChanged event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(forgetPasswordOtp: event.forgetPasswordOtp));
   }
+
 
   _isConfirmPasswordObscure(
       _IsConfirmPasswordObscure event, Emitter<SignInState> emit) async {

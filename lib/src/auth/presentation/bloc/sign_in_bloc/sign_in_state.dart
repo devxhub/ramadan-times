@@ -12,6 +12,7 @@ class SignInState with _$SignInState {
     @Default(true) bool isNewPasswordObscure,
     @Default(true) bool isConfirmNewPasswordObscure,
     @Default("") String forgetPasswordMail,
+    @Default("") String forgetPasswordOtp,
     @Default(SignInStatus.initial) SignInStatus signInStatus,
     @Default(SignInResponse()) SignInResponse signInResponse,
     @Default(434) double containerHeight,
