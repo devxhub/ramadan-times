@@ -131,7 +131,7 @@ Future<void>isRememberMe()async{
                                       style: TextStyle(
                                           fontSize: 16.sp, color: Color(0xff75718B)),
                                     ),
-                                    SizedBox(height: 100.h),
+                                    SizedBox(height: 40.h),
                                     CustomTextField(
                                       editingController: emailController,
                                       focusNode: _emailFocusNode,
@@ -224,7 +224,8 @@ Future<void>isRememberMe()async{
                                         ),
                                         GestureDetector(
                                           onTap: (){
-                                            context.pushNamed("forgot_password_page");
+                                            //context.pushNamed("forgot_password_page");
+                                            context.pushNamed("forget_password_otp_page");
                                           },
                                           child: Text(
                                             'Forgot password?',

@@ -31,6 +31,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         await _isRemember(event, emit),
        signInDataSubmit: (event) async =>
         await _signInDataSubmit(event, emit),
+        forgetPasswordOtpSubmit: (event) async =>
+        await _forgetPasswordOtpSubmit(event, emit),
       );
     });
   }
@@ -95,6 +97,56 @@ event.context.goNamed("scheduled");
           backgroundColor: Colors.red,
         ),
       );
+      // await Fluttertoast.showToast(
+      //   webPosition: "center",
+      //   msg: errorMessage,
+      // );
+
+      emit(state.copyWith(
+signInStatus: SignInStatus.failure
+      ));
+    }
+
+
+  }
+  _forgetPasswordOtpSubmit(
+      _ForgetPasswordOtpSubmit event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(
+        signInStatus: SignInStatus.inProgress
+    ));
+    try {
+      event.context.pushNamed("forget_password_otp_page");
+  emit(state.copyWith(
+   forgetPasswordMail: event.forgetPasswordMail,
+      signInStatus: SignInStatus.success
+  ));
+    } on DioException catch (e) {
+
+
+      dynamic responseData = e.response?.data;
+      String errorMessage = '';
+
+      if (responseData is String) {
+        errorMessage = responseData;
+      } else if (responseData is Map<String, dynamic> &&
+          responseData.containsKey("message")) {
+        if (responseData["message"] is String) {
+          errorMessage = responseData["message"];
+        } else if (responseData["message"] is Map<String, dynamic>) {
+          Map<String, dynamic> errorMap = responseData["message"];
+          errorMessage = errorMap.values.join('\n');
+        }
+      }
+
+      errorMessage = errorMessage.isNotEmpty
+          ? errorMessage
+          : 'An unexpected error occurred';
+      // ScaffoldMessenger.of(event.context).showSnackBar(
+      //   SnackBar(
+      //     content: Text(errorMessage),
+      //     backgroundColor: Colors.red,
+      //   ),
+      // );
       // await Fluttertoast.showToast(
       //   webPosition: "center",
       //   msg: errorMessage,

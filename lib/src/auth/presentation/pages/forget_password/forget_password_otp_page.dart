@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:ramadantimes/src/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:ramadantimes/src/auth/presentation/widgets/pin_code_field.dart';
 
 import '../../../../../l10n/app_localizations.dart';
 import '../../bloc/sign_in_bloc/sign_in_bloc.dart';
@@ -84,7 +85,9 @@ class _ForgetPasswordOtpPageState extends State<ForgetPasswordOtpPage> {
             ),
             backgroundColor: Colors.transparent,
           ),
-          body:SafeArea(
+          body:BlocBuilder<SignInBloc,SignInState>(
+  builder: (context, state) {
+    return SafeArea(
             child: LayoutBuilder(
                 builder: (context, constraints) {
                   return SingleChildScrollView(
@@ -135,34 +138,30 @@ class _ForgetPasswordOtpPageState extends State<ForgetPasswordOtpPage> {
                                           style: TextStyle(fontSize: 16.sp, color: Color(0xff75718B)),
                                           children: [
                                             TextSpan(
-                                              text: 'info@devxhub.com',
+                                              text: state.forgetPasswordMail,
                                               style: TextStyle(color: Colors.red),
                                             ),
                                           ],
                                         ),
                                       ),
                                       SizedBox(height: 40.h),
-                                      PinCodeTextField(
-                                        obscureText: true,
-                                        appContext: context,
-                                        length: 6,
-                                        onChanged: (value) {},
-                                        keyboardType: TextInputType.number,
-                                        controller: pinCodeController,
-                                        pinTheme: PinTheme(
-                                          shape: PinCodeFieldShape.box,
-                                          borderRadius: BorderRadius.circular(5),
-                                          fieldHeight: 50,
-                                          fieldWidth: 40,
-                                          activeFillColor: Colors.white, // Background color for active field
-                                          selectedFillColor: Colors.white, // Background color for selected field
-                                          inactiveFillColor: Colors.grey[200]!, // Background for inactive fields
-                                          activeColor: Colors.blue, // Border color when active
-                                          selectedColor: Colors.blue, // Border color when selected
-                                          inactiveColor: Colors.transparent, // No border for inactive fields
-                                        ),
-                                        enableActiveFill: true, // Enables the fill color
-                                      ),
+                                      CustomPinCodeField(),
+                                      // PinCodeTextField(
+                                      //   appContext: context,
+                                      //   length: 6,
+                                      //   controller: pinCodeController,
+                                      //   autoFocus: true,
+                                      //   keyboardType: TextInputType.number,
+                                      //   textStyle: const TextStyle(fontSize: 20),
+                                      //   pinTheme: PinTheme(
+                                      //     shape: PinCodeFieldShape.underline,
+                                      //     fieldWidth: 20,
+                                      //     activeColor: Colors.transparent, // Hide underline for filled fields
+                                      //     inactiveColor: Colors.black, // Underline for empty fields
+                                      //     selectedColor: Colors.black, // Underline for focused field
+                                      //   ),
+                                      //   onChanged: (value) {},
+                                      // ),
 
                                       SizedBox(height: 16.h),
                                       Center(
@@ -241,7 +240,9 @@ class _ForgetPasswordOtpPageState extends State<ForgetPasswordOtpPage> {
                   );
                 }
             ),
-          ),
+          );
+  },
+),
         );
       },
     );

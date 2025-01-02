@@ -143,89 +143,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                         },
                                       ),
                                       SizedBox(height: 16.h),
-                                      // SizedBox(height: 16.h),
-                                      // CustomPasswordTextField(
-                                      //   editingController: passwordController,
-                                      //   focusNode: _passwordFocusNode,
-                                      //   labelText: 'Password',
-                                      //   hintText: 'Enter your password',
-                                      //   prefixIcon: Icon(
-                                      //     Icons.lock_rounded,
-                                      //     color: _passwordFocusNode.hasFocus
-                                      //         ? HexColor("#6348EB")
-                                      //         : Colors.grey,
-                                      //   ),
-                                      //   suffixIcon: GestureDetector(
-                                      //     onTap: () {
-                                      //       context
-                                      //           .read<SignInBloc>()
-                                      //           .add(SignInEvent.isPasswordObscure());
-                                      //     },
-                                      //     child: Icon(
-                                      //       state.isPasswordObscure == true
-                                      //           ? Icons.visibility_off
-                                      //           : Icons.visibility,
-                                      //       color: HexColor("#75718B"),
-                                      //     ),
-                                      //   ),
-                                      //   isObscureText: state.isPasswordObscure,
-                                      //   validator: (value) {
-                                      //     if (value == null || value.isEmpty) {
-                                      //       return AppLocalizations.of(context)!
-                                      //           .pleaseEnterYourPassword;
-                                      //     } else if (value.length < 8) {
-                                      //       return AppLocalizations.of(context)!
-                                      //           .passwordMustBeAtLeast8Characters;
-                                      //     }
-                                      //     return null;
-                                      //   },
-                                      // ),
-                                      // SizedBox(height: 16.h),
-                                      // Row(
-                                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      //   children: [
-                                      //     Row(
-                                      //       children: [
-                                      //         Checkbox(
-                                      //             activeColor: HexColor("#75718B"),
-                                      //             shape: RoundedRectangleBorder(
-                                      //               borderRadius: BorderRadius.circular(
-                                      //                   2.r), // Set border radius
-                                      //               side: BorderSide(
-                                      //                 color: HexColor(
-                                      //                     "#75718B"), // Customize border color
-                                      //                 width: 2.0.w, // Set border width
-                                      //               ),
-                                      //             ),
-                                      //             value: state.isRemember,
-                                      //             onChanged: (value) {
-                                      //               context.read<SignInBloc>().add(
-                                      //                   SignInEvent.isRemember(
-                                      //                       isRememberMe: value ?? false));
-                                      //             }),
-                                      //         Text(
-                                      //           'Remember me',
-                                      //           style: TextStyle(
-                                      //             fontSize: 14.sp,
-                                      //             fontWeight: FontWeight.w500,
-                                      //             color: HexColor("#75718B"),
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     GestureDetector(
-                                      //       child: Text(
-                                      //         'Forgot password?',
-                                      //         style: TextStyle(
-                                      //           fontSize: 14.sp,
-                                      //           fontWeight: FontWeight.w500,
-                                      //           color: HexColor("#75718B"),
-                                      //         ),
-                                      //       ),
-                                      //     ),
-                                      //   ],
-                                      // ),
-                                      // SizedBox(height: 16.h),
                                       SizedBox(
                                         height: 40.h,
                                         width: double.maxFinite,
@@ -237,15 +154,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                             ),
                                           ),
                                           onPressed: () {
-                                            context.pushNamed("forget_password_otp_page");
-                                            // if (formKey.currentState!.validate()) {
-                                            //   context.goNamed("schedule");
-                                            //   // context.read<SignInBloc>().add(
-                                            //   //     SignInEvent.signInDataSubmit(
-                                            //   //         userEmail: emailController.text,
-                                            //   //         userPassword: passwordController.text,
-                                            //   //         context: context));
-                                            // }
+                                           // context.pushNamed("forget_password_otp_page");
+                                            if (formKey.currentState!.validate()) {
+                                              context.read<SignInBloc>().add(
+                                                  SignInEvent.forgetPasswordOtpSubmit(
+                                                     forgetPasswordMail: emailController.text,
+                                                      context: context));
+                                              emailController.clear();
+                                            }
                                           },
                                           child: Center(
                                             child: state.signInStatus ==
