@@ -13,7 +13,8 @@ import 'package:muslimtimespro/src/quran/presentation/pages/quran_ayah_view.dart
 import 'package:quran/quran.dart' as quran;
 import '../../../../l10n/app_localizations.dart';
 import '../../data/repository/quran_utils.dart';
-import '../widget/quran_surah_appbar.dart';
+import '../widget/quran_surah_app_bar.dart';
+import '../widget/quran_surah_search_bar.dart';
 
 class QuranSurahView extends StatefulWidget {
   const QuranSurahView({super.key});
@@ -35,7 +36,6 @@ class _QuranSurahViewState extends State<QuranSurahView> {
   @override
   void initState() {
     _searchController.addListener(_onSearchChanged);
-
     context.read<QuranBloc>().add(QuranDataLoadEvent(context: context));
     super.initState();
   }
@@ -49,163 +49,156 @@ class _QuranSurahViewState extends State<QuranSurahView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            QuranSurahAppBar(searchController: _searchController),
-            Expanded(
-              child: BlocBuilder<QuranBloc, QuranState>(
-                builder: (context, state) {
-                  if (state is QuranLoaded) {
-                    return ListView.separated(
-                      primary: false,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.h, horizontal: 20.w),
-                      itemCount: state.quranSurahList.length,
-                      separatorBuilder: (context, index) => Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 40.w, right: 0.w),
-                            child: Divider(),
-                          ),
-                        ],
-                      ),
-                      itemBuilder: (context, index) {
-                        var surah = state.quranSurahList[index];
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => QuranAyahView(
-                                  surahName: state.languageCode == 'en' ||
-                                          state.languageCode == "fr" ||
-                                          state.languageCode == "pt" ||
-                                          state.languageCode == "id" ||
-                                          state.languageCode == "sw" ||
-                                          state.languageCode == "es"
-                                      ? surah.surahName
-                                      : getSurahName(surah.surahNumber,
-                                          state.languageCode),
-                                  surahAyahNumber:
-                                      quran.getVerseCount(surah.surahNumber),
-                                  surahNumber: surah.surahNumber,
-                                  languageCode: state.languageCode,
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, 40.h),
+        child: QuranSurahAppBar(),
+      ),
+      body: Column(
+        children: [
+          QuranSurahSearchBar(searchController: _searchController),
+          Expanded(
+            child: BlocBuilder<QuranBloc, QuranState>(
+              builder: (context, state) {
+                if (state is QuranLoaded) {
+                  return ListView.separated(
+                    primary: false,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+                    itemCount: state.quranSurahList.length,
+                    separatorBuilder: (context, index) => Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 40.w, right: 0.w),
+                          child: Divider(),
+                        ),
+                      ],
+                    ),
+                    itemBuilder: (context, index) {
+                      var surah = state.quranSurahList[index];
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuranAyahView(
+                                surahName: state.languageCode == 'en' ||
+                                        state.languageCode == "fr" ||
+                                        state.languageCode == "pt" ||
+                                        state.languageCode == "id" ||
+                                        state.languageCode == "sw" ||
+                                        state.languageCode == "es"
+                                    ? surah.surahName
+                                    : getSurahName(
+                                        surah.surahNumber, state.languageCode),
+                                surahAyahNumber:
+                                    quran.getVerseCount(surah.surahNumber),
+                                surahNumber: surah.surahNumber,
+                                languageCode: state.languageCode,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 16.r,
+                              child: Text(
+                                engToBn(surah.surahNumber.toString(), context),
+                                style: TextStyle(
+                                  color: Colors.black,
                                 ),
                               ),
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 16.r,
-                                child: Text(
-                                  engToBn(
-                                      surah.surahNumber.toString(), context),
-                                  style: TextStyle(
-                                    color: Colors.black,
+                            ),
+                            Gap(10.w),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 150.w,
+                                  child: Text(
+                                    getSurahName(
+                                        surah.surahNumber, state.languageCode),
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Gap(10.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 150.w,
-                                    child: Text(
-                                      state.languageCode == 'en' ||
-                                              state.languageCode == "fr" ||
-                                              state.languageCode == "pt" ||
-                                              state.languageCode == "id" ||
-                                              state.languageCode == "sw" ||
-                                              state.languageCode == "es"
-                                          ? surah.surahName
-                                          : getSurahName(surah.surahNumber,
-                                              state.languageCode),
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
+                              ],
+                            ),
+                            Spacer(),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(right: 20.w),
+                                  child: Text(
+                                    quran.getSurahNameArabic(surah.surahNumber),
+                                    style: GoogleFonts.amiriQuran(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.deepPurple,
                                     ),
                                   ),
-                                ],
-                              ),
-                              Spacer(),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 20.w),
-                                    child: Text(
-                                      quran.getSurahNameArabic(
-                                          surah.surahNumber),
-                                      style: GoogleFonts.amiriQuran(
-                                        fontSize: 20.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.deepPurple,
-                                      ),
-                                    ),
-                                  ),
-                                  Gap(5.h),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        checkConnectivityAndPlayAudio(
-                                          surah.surahNumber,
-                                          state.languageCode == 'en' ||
-                                                  state.languageCode == "fr" ||
-                                                  state.languageCode == "pt" ||
-                                                  state.languageCode == "id" ||
-                                                  state.languageCode == "sw" ||
-                                                  state.languageCode == "es"
-                                              ? surah.surahName
-                                              : getSurahName(surah.surahNumber,
-                                                  state.languageCode),
+                                ),
+                                Gap(5.h),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: ElevatedButton.icon(
+                                    onPressed: () {
+                                      checkConnectivityAndPlayAudio(
+                                        surah.surahNumber,
+                                        state.languageCode == 'en' ||
+                                                state.languageCode == "fr" ||
+                                                state.languageCode == "pt" ||
+                                                state.languageCode == "id" ||
+                                                state.languageCode == "sw" ||
+                                                state.languageCode == "es"
+                                            ? surah.surahName
+                                            : getSurahName(surah.surahNumber,
+                                                state.languageCode),
+                                      );
+                                    },
+                                    icon: StreamBuilder<bool>(
+                                      stream: _audioPlayer.playingStream,
+                                      builder: (context, snapshot) {
+                                        final isPlaying =
+                                            _currentlyPlayingSurah ==
+                                                    index + 1 &&
+                                                (snapshot.data ?? false);
+                                        return Icon(
+                                          isPlaying
+                                              ? Icons.pause
+                                              : Icons.play_arrow,
                                         );
                                       },
-                                      icon: StreamBuilder<bool>(
-                                        stream: _audioPlayer.playingStream,
-                                        builder: (context, snapshot) {
-                                          final isPlaying =
-                                              _currentlyPlayingSurah ==
-                                                      index + 1 &&
-                                                  (snapshot.data ?? false);
-                                          return Icon(
-                                            isPlaying
-                                                ? Icons.pause
-                                                : Icons.play_arrow,
-                                          );
-                                        },
-                                      ),
-                                      label: Text(AppLocalizations.of(context)!
-                                          .playSurah),
                                     ),
+                                    label: Text(AppLocalizations.of(context)!
+                                        .playSurah),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  } else {
-                    return Center(
-                      child: SpinKitThreeBounce(
-                        color: Colors.black,
-                      ),
-                    );
-                  }
-                },
-              ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return Center(
+                    child: SpinKitThreeBounce(
+                      color: Colors.black,
+                    ),
+                  );
+                }
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
