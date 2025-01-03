@@ -267,8 +267,10 @@ class CalendarPageState extends State<CalendarPage> {
                           .titleLarge!
                           .copyWith(color: Colors.white, fontSize: 20.sp),
                     ),
-                    firstDay: kFirstDay,
-                    lastDay: kLastDay,
+                    // firstDay: kFirstDay,
+                    // lastDay: kLastDay,
+                    firstDay: DateTime(2000, 1, 1),
+                    lastDay:DateTime(2100, 12, 31),
                     locale: AppLocalizations.of(context)?.localeName,
                     daysOfWeekStyle: DaysOfWeekStyle(
                       dowTextFormatter: (date, locale) {

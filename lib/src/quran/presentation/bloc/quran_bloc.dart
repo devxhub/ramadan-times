@@ -51,12 +51,65 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
           ));
         } else {
           final loadedState = state as QuranLoaded;
-          final filteredList = loadedState.quranSurahList
-              .where((surah) => surah.surahName
+          final langcode = loadedState.languageCode;
+          print("Langcode $langcode");
+
+          List<QuranModel> filteredList;
+
+          switch (langcode.toLowerCase()) {
+            case 'bn':
+              filteredList = loadedState.quranSurahList
+                  .where((surah) => surah.surahBengaliName!
                   .toLowerCase()
                   .contains(event.query.toLowerCase()))
-              .toList();
+                  .toList();
+              break;
+              case "ur":
+              filteredList = loadedState.quranSurahList
+                  .where((surah) => surah.surahUrduName!
+                  .toLowerCase()
+                  .contains(event.query.toLowerCase()))
+                  .toList();
+              break;
+              case "id":
+              filteredList = loadedState.quranSurahList
+                  .where((surah) => surah.surahIndonesianName!
+                  .toLowerCase()
+                  .contains(event.query.toLowerCase()))
+                  .toList();
+              break;
+              case  "fa":
+              filteredList = loadedState.quranSurahList
+                  .where((surah) => surah.surahPersianName!
+                  .toLowerCase()
+                  .contains(event.query.toLowerCase()))
+                  .toList();
+              break;
+              case  "ch":
+              filteredList = loadedState.quranSurahList
+                  .where((surah) => surah.surahChineseName!
+                  .toLowerCase()
+                  .contains(event.query.toLowerCase()))
+                  .toList();
+              break;
+          case 'en':
+            filteredList = loadedState.quranSurahList
+                .where((surah) => surah.surahName
+                .toLowerCase()
+                .contains(event.query.toLowerCase()))
+                .toList();
+            break;
 
+            default:
+              filteredList = loadedState.quranSurahList
+                  .where((surah) => surah.surahName
+                  .toLowerCase()
+                  .contains(event.query.toLowerCase()))
+                  .toList();
+              break;
+          }
+
+          // Emit the final state after the switch case logic
           emit(QuranLoaded(
             quranSurahList: filteredList,
             languageCode: loadedState.languageCode,

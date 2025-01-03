@@ -6,17 +6,17 @@ import 'quran_custom_surah_name.dart';
 String getSurahName(int surahNumber, String languageCode) {
   switch (languageCode) {
     case "en":
-      return quran.getSurahNameEnglish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "bn":
       return getCustomSurahName(surahNumber, languageCode);
     case "fr":
-      return quran.getSurahNameEnglish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "pt":
-      return quran.getSurahNameEnglish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "id":
-      return quran.getSurahNameEnglish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "tr":
-      return quran.getSurahNameTurkish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "ml":
       return getCustomSurahName(surahNumber, languageCode);
     case "fa":
@@ -24,9 +24,9 @@ String getSurahName(int surahNumber, String languageCode) {
     case "ch":
       return getCustomSurahName(surahNumber, languageCode);
     case "sw":
-      return quran.getSurahNameEnglish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "es":
-      return quran.getSurahNameEnglish(surahNumber);
+      return getCustomSurahName(surahNumber, 'en');
     case "ur":
       return getCustomSurahName(surahNumber, languageCode);
     default:
