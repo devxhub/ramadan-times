@@ -35,3 +35,21 @@ class QuranError extends QuranState {
   @override
   List<Object?> get props => [errorMessage];
 }
+
+class QuranAudioLoading extends QuranState {
+  const QuranAudioLoading();
+}
+
+// class QuranSuccce extends QuranState {
+//   final String languageCode;
+//   final String language;
+//   final List<QuranModel> quranSurahList;
+
+//   const QuranLoaded({
+//     required this.languageCode,
+//     required this.language,
+//     required this.quranSurahList,
+//   });
+//   @override
+//   List<Object?> get props => [languageCode, language, quranSurahList];
+// }
