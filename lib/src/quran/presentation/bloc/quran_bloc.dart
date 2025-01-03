@@ -51,17 +51,34 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
           ));
         } else {
           final loadedState = state as QuranLoaded;
-          final filteredList = loadedState.quranSurahList
-              .where((surah) => surah.surahName
-                  .toLowerCase()
-                  .contains(event.query.toLowerCase()))
-              .toList();
+          final langcode=loadedState.languageCode;
+          print("Langcode $langcode");
+          if(langcode.toLowerCase()=='bn'){
+            final filteredList = loadedState.quranSurahList
+                .where((surah) => surah.surahBengaliName!
+                .toLowerCase()
+                .contains(event.query.toLowerCase()))
+                .toList();
+            emit(QuranLoaded(
+              quranSurahList: filteredList,
+              languageCode: loadedState.languageCode,
+              language: loadedState.language,
+            ));
+          }else{
+            final filteredList = loadedState.quranSurahList
+                .where((surah) => surah.surahName
+                .toLowerCase()
+                .contains(event.query.toLowerCase()))
+                .toList();
+            emit(QuranLoaded(
+              quranSurahList: filteredList,
+              languageCode: loadedState.languageCode,
+              language: loadedState.language,
+            ));
+          }
 
-          emit(QuranLoaded(
-            quranSurahList: filteredList,
-            languageCode: loadedState.languageCode,
-            language: loadedState.language,
-          ));
+
+
         }
       }
     });

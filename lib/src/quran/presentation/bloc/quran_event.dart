@@ -31,6 +31,7 @@ class QuranLanguageChangeEvent extends QuranEvent {
 class QuranSearchEvent extends QuranEvent {
   final String query;
 
+
   const QuranSearchEvent(this.query);
 
   @override
