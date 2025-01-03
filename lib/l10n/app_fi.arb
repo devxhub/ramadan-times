@@ -120,6 +120,8 @@
   "cancel": "Peruuta",
   "playAyah": "Toista ayah",
   "playSurah": "Toista sura",
+  "pauseAyah": "Tauko Ayah",
+  "pauseSurah": "Tauko Surah",
   "onInternetConnection": "Ei internet-yhteyttä. Kytke internet päälle",
   "translation": "Käännös",
   "transliteration": "Transliteraatio",

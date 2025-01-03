@@ -10,7 +10,7 @@ abstract class QuranEvent extends Equatable {
 class QuranDataLoadEvent extends QuranEvent {
   final BuildContext context;
 
-  QuranDataLoadEvent({required this.context});
+  const QuranDataLoadEvent({required this.context});
 }
 
 class QuranLanguageChangeEvent extends QuranEvent {
@@ -35,4 +35,35 @@ class QuranSearchEvent extends QuranEvent {
 
   @override
   List<Object?> get props => [query];
+}
+
+class QuranAudioLoadEvent extends QuranEvent {
+  final Duration? audioDuration;
+  final Duration? currentPosition;
+  final bool isAudioLoaded;
+
+  const QuranAudioLoadEvent({
+    this.audioDuration,
+    this.currentPosition,
+    this.isAudioLoaded = false,
+  });
+
+  @override
+  List<Object?> get props => [audioDuration, currentPosition, isAudioLoaded];
+}
+
+class QuranAudioPositionUpdateEvent extends QuranEvent {
+  final Duration currentPosition;
+
+  const QuranAudioPositionUpdateEvent(this.currentPosition);
+
+  @override
+  List<Object?> get props => [currentPosition];
+}
+
+class QuranAudioCompleteEvent extends QuranEvent {
+  const QuranAudioCompleteEvent();
+
+  @override
+  List<Object?> get props => [];
 }

@@ -1,4 +1,4 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,12 +40,18 @@ class _QuranAyahViewState extends State<QuranAyahView> {
 
   void _playAudio(String url, int ayahNumber) async {
     try {
+      _showAudioBottomSheet(ayahNumber);
       if (_currentlyPlayingAyah == ayahNumber && _audioPlayer.playing) {
         await _audioPlayer.pause();
+        setState(() {
+          _currentlyPlayingAyah = null;
+        });
       } else {
         await _audioPlayer.setUrl(url);
         _audioPlayer.play();
-        _showAudioBottomSheet(ayahNumber);
+        setState(() {
+          _currentlyPlayingAyah = ayahNumber;
+        });
       }
     } catch (e) {
       if (kDebugMode) {
@@ -57,19 +63,14 @@ class _QuranAyahViewState extends State<QuranAyahView> {
   void _showAudioBottomSheet(int ayahNumber) {
     showModalBottomSheet(
       context: context,
+      isDismissible: false,
+      enableDrag: false,
       builder: (context) {
         return Padding(
           padding: EdgeInsets.all(16.0.w),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "${AppLocalizations.of(context)!.nowPlaying}: ${AppLocalizations.of(context)!.ayah} ${engToBn(ayahNumber.toString(), context)}",
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
               StreamBuilder<Duration?>(
                 stream: _audioPlayer.durationStream,
                 builder: (context, snapshot) {
@@ -80,6 +81,25 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                       final position = positionSnapshot.data ?? Duration.zero;
                       return Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "${AppLocalizations.of(context)!.nowPlaying}: ${AppLocalizations.of(context)!.ayah} ${engToBn(ayahNumber.toString(), context)}",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  _audioPlayer.stop();
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ),
                           Slider(
                             value: position.inSeconds.toDouble(),
                             max: duration.inSeconds.toDouble(),
@@ -116,6 +136,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                       } else {
                         _audioPlayer.play();
                       }
+                      setState(() {});
                     },
                   );
                 },
@@ -287,8 +308,17 @@ class _QuranAyahViewState extends State<QuranAyahView> {
                                   );
                                 },
                               ),
-                              label:
-                                  Text(AppLocalizations.of(context)!.playAyah),
+                              label: StreamBuilder<bool>(
+                                stream: _audioPlayer.playingStream,
+                                builder: (context, snapshot) {
+                                  final isPlaying =
+                                      _currentlyPlayingAyah == index + 1 &&
+                                          (snapshot.data ?? false);
+                                  return Text(isPlaying
+                                      ? AppLocalizations.of(context)!.pauseAyah
+                                      : AppLocalizations.of(context)!.playAyah);
+                                },
+                              ),
                             ),
                           ),
                         ],
@@ -305,9 +335,7 @@ class _QuranAyahViewState extends State<QuranAyahView> {
   }
 
   void checkConnectivityAndPlayAudio(int index) async {
-    var connectivityResult = await Connectivity().checkConnectivity();
-
-    if (connectivityResult == ConnectivityResult.none) {
+    if (!await hasInternetAccess()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.onInternetConnection),
@@ -319,6 +347,15 @@ class _QuranAyahViewState extends State<QuranAyahView> {
         quran.getAudioURLByVerse(widget.surahNumber, index + 1),
         index + 1,
       );
+    }
+  }
+
+  Future<bool> hasInternetAccess() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } catch (_) {
+      return false;
     }
   }
 }

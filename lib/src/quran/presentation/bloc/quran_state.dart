@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'quran_bloc.dart';
 
 abstract class QuranState extends Equatable {
@@ -34,4 +36,22 @@ class QuranError extends QuranState {
 
   @override
   List<Object?> get props => [errorMessage];
+}
+
+class QuranAudioLoading extends QuranState {
+  const QuranAudioLoading();
+}
+
+class QuranAudioSuccess extends QuranState {
+  Duration? audioDuration;
+  Duration? currentPosition;
+  bool? isAudioLoaded;
+
+  QuranAudioSuccess(
+    this.audioDuration,
+    this.currentPosition,
+    this.isAudioLoaded,
+  );
+  @override
+  List<Object?> get props => [audioDuration, currentPosition, isAudioLoaded];
 }

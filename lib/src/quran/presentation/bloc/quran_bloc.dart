@@ -65,5 +65,42 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
         }
       }
     });
+    on<QuranAudioLoadEvent>((event, emit) {
+      if (state is QuranAudioSuccess) {
+        final currentState = state as QuranAudioSuccess;
+        emit(
+          QuranAudioSuccess(
+            event.audioDuration ?? currentState.audioDuration,
+            event.currentPosition ?? currentState.currentPosition,
+            event.isAudioLoaded,
+          ),
+        );
+      }
+    });
+
+    on<QuranAudioPositionUpdateEvent>((event, emit) {
+      if (state is QuranAudioSuccess) {
+        final currentState = state as QuranAudioSuccess;
+        emit(
+          QuranAudioSuccess(
+            currentState.audioDuration,
+            event.currentPosition,
+            currentState.isAudioLoaded,
+          ),
+        );
+      }
+    });
+
+    on<QuranAudioCompleteEvent>((event, emit) {
+      if (state is QuranAudioSuccess) {
+        emit(
+          QuranAudioSuccess(
+            Duration.zero,
+            Duration.zero,
+            false,
+          ),
+        );
+      }
+    });
   }
 }
