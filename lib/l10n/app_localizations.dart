@@ -553,6 +553,18 @@ abstract class AppLocalizations {
   /// **'Play Surah'**
   String get playSurah;
 
+  /// No description provided for @pauseAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause Ayah'**
+  String get pauseAyah;
+
+  /// No description provided for @pauseSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause Surah'**
+  String get pauseSurah;
+
   /// No description provided for @onInternetConnection.
   ///
   /// In en, this message translates to:

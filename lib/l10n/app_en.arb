@@ -120,6 +120,8 @@
     "cancel":"Cancel",
     "playAyah":"Play Ayah",
     "playSurah":"Play Surah",
+    "pauseAyah":"Pause Ayah",
+    "pauseSurah":"Pause Surah",
     "onInternetConnection":"No internet connection. Please turn on internet",
     "translation":"Translation", 
     "transliteration":"Transliteration", 

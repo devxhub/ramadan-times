@@ -1,4 +1,4 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,15 +82,8 @@ class _QuranSurahViewState extends State<QuranSurahView> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => QuranAyahView(
-                                surahName: state.languageCode == 'en' ||
-                                        state.languageCode == "fr" ||
-                                        state.languageCode == "pt" ||
-                                        state.languageCode == "id" ||
-                                        state.languageCode == "sw" ||
-                                        state.languageCode == "es"
-                                    ? surah.surahName
-                                    : getSurahName(
-                                        surah.surahNumber, state.languageCode),
+                                surahName: getSurahName(
+                                    surah.surahNumber, state.languageCode),
                                 surahAyahNumber:
                                     quran.getVerseCount(surah.surahNumber),
                                 surahNumber: surah.surahNumber,
@@ -152,15 +145,8 @@ class _QuranSurahViewState extends State<QuranSurahView> {
                                     onPressed: () {
                                       checkConnectivityAndPlayAudio(
                                         surah.surahNumber,
-                                        state.languageCode == 'en' ||
-                                                state.languageCode == "fr" ||
-                                                state.languageCode == "pt" ||
-                                                state.languageCode == "id" ||
-                                                state.languageCode == "sw" ||
-                                                state.languageCode == "es"
-                                            ? surah.surahName
-                                            : getSurahName(surah.surahNumber,
-                                                state.languageCode),
+                                        getSurahName(surah.surahNumber,
+                                            state.languageCode),
                                       );
                                     },
                                     icon: StreamBuilder<bool>(
@@ -177,8 +163,21 @@ class _QuranSurahViewState extends State<QuranSurahView> {
                                         );
                                       },
                                     ),
-                                    label: Text(AppLocalizations.of(context)!
-                                        .playSurah),
+                                    label: StreamBuilder<bool>(
+                                        stream: _audioPlayer.playingStream,
+                                        builder: (context, snapshot) {
+                                          final isPlaying =
+                                              _currentlyPlayingSurah ==
+                                                      index + 1 &&
+                                                  (snapshot.data ?? false);
+                                          return Text(
+                                            isPlaying
+                                                ? AppLocalizations.of(context)!
+                                                    .pauseSurah
+                                                : AppLocalizations.of(context)!
+                                                    .playSurah,
+                                          );
+                                        }),
                                   ),
                                 ),
                               ],
@@ -203,13 +202,20 @@ class _QuranSurahViewState extends State<QuranSurahView> {
     );
   }
 
-  void checkConnectivityAndPlayAudio(int surahNumber, String surahName) async {
-    var connectivityResult = await Connectivity().checkConnectivity();
+  Future<bool> hasInternetAccess() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } catch (_) {
+      return false;
+    }
+  }
 
-    if (connectivityResult == ConnectivityResult.none) {
+  void checkConnectivityAndPlayAudio(int surahNumber, String surahName) async {
+    if (!await hasInternetAccess()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('No internet connection. Please turn on internet'),
+          content: Text(AppLocalizations.of(context)!.onInternetConnection),
           backgroundColor: Colors.red,
         ),
       );
@@ -230,112 +236,86 @@ class _QuranSurahViewState extends State<QuranSurahView> {
   void _showAudioBottomSheet(String surahName) {
     showModalBottomSheet(
       context: context,
-      isDismissible: false, // Prevent dismissing the bottom sheet
-      enableDrag: false, // Prevent dragging to dismiss
+      isDismissible: false,
+      enableDrag: false,
       builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-            bool isAudioLoaded = false;
-            Duration? audioDuration;
-            Duration currentPosition = Duration.zero;
-
-            _audioPlayer.playerStateStream.listen((state) {
-              print("Player state: ${state.processingState}");
-              if (state.processingState == ProcessingState.ready) {
-                setState(() {
-                  isAudioLoaded = true;
-                });
-              }
-            });
-
-            // Listen for changes in the duration
-            _audioPlayer.durationStream.listen((duration) {
-              if (duration != null) {
-                setState(() {
-                  audioDuration = duration;
-                });
-              }
-            });
-
-            // Listen for changes in the current playback position
-            _audioPlayer.positionStream.listen((position) {
-              setState(() {
-                currentPosition = position;
-              });
-            });
-
-            return Padding(
-              padding: EdgeInsets.all(16.0.w),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        surahName,
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.close),
-                        onPressed: () {
-                          _audioPlayer.stop();
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  ),
-                  if (!isAudioLoaded)
-                    Center(
-                      child: SpinKitThreeBounce(
-                        color: Colors.black,
-                      ),
-                    ),
-                  if (isAudioLoaded && audioDuration != null)
-                    Column(
-                      children: [
-                        Slider(
-                          value: currentPosition.inSeconds.toDouble(),
-                          max: audioDuration!.inSeconds.toDouble(),
-                          onChanged: (value) {
-                            _audioPlayer.seek(Duration(seconds: value.toInt()));
-                          },
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(_formatDuration(currentPosition)),
-                            Text(_formatDuration(audioDuration!)),
-                          ],
-                        ),
-                        StreamBuilder<bool>(
-                          stream: _audioPlayer.playingStream,
-                          builder: (context, snapshot) {
-                            final isPlaying = snapshot.data ?? false;
-                            return IconButton(
-                              icon: Icon(
-                                isPlaying ? Icons.pause : Icons.play_arrow,
-                                size: 36.sp,
+        return Padding(
+          padding: EdgeInsets.all(16.0.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              StreamBuilder<Duration?>(
+                stream: _audioPlayer.durationStream,
+                builder: (context, snapshot) {
+                  final duration = snapshot.data ?? Duration.zero;
+                  return StreamBuilder<Duration>(
+                    stream: _audioPlayer.positionStream,
+                    builder: (context, positionSnapshot) {
+                      final position = positionSnapshot.data ?? Duration.zero;
+                      return Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                surahName,
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                              onPressed: () {
-                                if (isPlaying) {
-                                  _audioPlayer.pause();
-                                } else {
-                                  _audioPlayer.play();
-                                }
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                ],
+                              IconButton(
+                                icon: Icon(Icons.close),
+                                onPressed: () {
+                                  _audioPlayer.stop();
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ),
+                          Slider(
+                            value: position.inSeconds.toDouble(),
+                            max: duration.inSeconds.toDouble(),
+                            onChanged: (value) {
+                              _audioPlayer
+                                  .seek(Duration(seconds: value.toInt()));
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(_formatDuration(position)),
+                              Text(_formatDuration(duration)),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
-            );
-          },
+              StreamBuilder<bool>(
+                stream: _audioPlayer.playingStream,
+                builder: (context, snapshot) {
+                  final isPlaying = snapshot.data ?? false;
+                  return IconButton(
+                    icon: Icon(
+                      isPlaying ? Icons.pause : Icons.play_arrow,
+                      size: 36.sp,
+                    ),
+                    onPressed: () {
+                      if (isPlaying) {
+                        _audioPlayer.pause();
+                      } else {
+                        _audioPlayer.play();
+                      }
+                      setState(() {});
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
         );
       },
     );
@@ -343,20 +323,23 @@ class _QuranSurahViewState extends State<QuranSurahView> {
 
   void _playAudio(String url, int surahNumber, String surahName) async {
     try {
-      _currentlyPlayingSurah = surahNumber;
       _showAudioBottomSheet(surahName);
-      await _audioPlayer.setUrl(url);
-      _audioPlayer.play();
+      if (_currentlyPlayingSurah == surahNumber && _audioPlayer.playing) {
+        await _audioPlayer.pause();
+        setState(() {
+          _currentlyPlayingSurah = null;
+        });
+      } else {
+        await _audioPlayer.setUrl(url);
+        _audioPlayer.play();
+        setState(() {
+          _currentlyPlayingSurah = surahNumber;
+        });
+      }
     } catch (e) {
       if (kDebugMode) {
         print("Error playing audio: $e");
       }
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to load audio. Please try again.'),
-          backgroundColor: Colors.red,
-        ),
-      );
     }
   }
 }

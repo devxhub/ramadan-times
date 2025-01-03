@@ -120,6 +120,8 @@
    "cancel": "বাতিল",
    "playAyah": "আয়াত চালান",
    "playSurah": "সূরা চালান",
+   "pauseAyah": "আয়াত বিরতি",
+  "pauseSurah": "সূরা বিরতি",
    "onInternetConnection": "ইন্টারনেট সংযোগ নেই। দয়া করে ইন্টারনেট চালু করুন",
    "translation": "অনুবাদ",
    "transliteration": "উচ্চারণ",

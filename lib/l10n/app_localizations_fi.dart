@@ -262,6 +262,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get playSurah => 'Toista sura';
 
   @override
+  String get pauseAyah => 'Tauko Ayah';
+
+  @override
+  String get pauseSurah => 'Tauko Surah';
+
+  @override
   String get onInternetConnection => 'Ei internet-yhteyttä. Kytke internet päälle';
 
   @override

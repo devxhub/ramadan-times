@@ -280,6 +280,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get playSurah => 'Play Surah';
 
   @override
+  String get pauseAyah => 'Pause Ayah';
+
+  @override
+  String get pauseSurah => 'Pause Surah';
+
+  @override
   String get onInternetConnection => 'No internet connection. Please turn on internet';
 
   @override

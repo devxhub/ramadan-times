@@ -281,6 +281,12 @@ class AppLocalizationsBn extends AppLocalizations {
   String get playSurah => 'সূরা চালান';
 
   @override
+  String get pauseAyah => 'আয়াত বিরতি';
+
+  @override
+  String get pauseSurah => 'সূরা বিরতি';
+
+  @override
   String get onInternetConnection => 'ইন্টারনেট সংযোগ নেই। দয়া করে ইন্টারনেট চালু করুন';
 
   @override
