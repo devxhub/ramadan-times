@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -92,7 +94,7 @@ class _SplashPageState extends State<SplashPage> {
                     onPressed: () {
                       context
                           .read<SignUpBloc>()
-                          .add(SignUpEvent.signWithGoogle());
+                          .add(SignUpEvent.signWithGoogle(context: context));
                     },
                     icon: Image(image: AssetImage('assets/images/Google.png')),
                     label: Text(
@@ -106,27 +108,35 @@ class _SplashPageState extends State<SplashPage> {
                   ),
                 ),
               ),
-              Gap(12.h),
               // Sign up With Apple
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      context
-                          .read<SignUpBloc>()
-                          .add(SignUpEvent.signWithApple());
-                    },
-                    icon: Icon(Icons.apple),
-                    label: Text('Sign Up with Apple'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+
+              Platform.isIOS ? Gap(12.h) : SizedBox.shrink(),
+              Platform.isIOS
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 10.w, right: 15.w),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            context.read<SignUpBloc>().add(
+                                SignUpEvent.signWithApple(context: context));
+                          },
+                          icon: Icon(
+                            Icons.apple,
+                            size: 25.sp,
+                          ),
+                          label: Padding(
+                            padding: EdgeInsets.only(left: 8.w),
+                            child: Text('Sign Up with Apple'),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            foregroundColor: Colors.white,
+                          ),
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink(),
               Gap(12.h),
               // Sign up With Email
               Padding(
@@ -140,6 +150,7 @@ class _SplashPageState extends State<SplashPage> {
                     icon: Icon(
                       Icons.email,
                       color: Colors.white,
+                      size: 20.sp,
                     ),
                     label: Text(
                       'Sign Up with Email',

@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SignUpEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -30,8 +30,8 @@ mixin _$SignUpEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -42,8 +42,8 @@ mixin _$SignUpEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -115,6 +115,8 @@ abstract class _$$SignWithGoogleImplCopyWith<$Res> {
   factory _$$SignWithGoogleImplCopyWith(_$SignWithGoogleImpl value,
           $Res Function(_$SignWithGoogleImpl) then) =
       __$$SignWithGoogleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -127,6 +129,18 @@ class __$$SignWithGoogleImplCopyWithImpl<$Res>
 
   /// Create a copy of SignUpEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$SignWithGoogleImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
@@ -134,33 +148,49 @@ class __$$SignWithGoogleImplCopyWithImpl<$Res>
 class _$SignWithGoogleImpl
     with DiagnosticableTreeMixin
     implements _SignWithGoogle {
-  const _$SignWithGoogleImpl();
+  const _$SignWithGoogleImpl({required this.context});
+
+  @override
+  final BuildContext context;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignUpEvent.signWithGoogle()';
+    return 'SignUpEvent.signWithGoogle(context: $context)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'SignUpEvent.signWithGoogle'));
+    properties
+      ..add(DiagnosticsProperty('type', 'SignUpEvent.signWithGoogle'))
+      ..add(DiagnosticsProperty('context', context));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignWithGoogleImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SignWithGoogleImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  /// Create a copy of SignUpEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignWithGoogleImplCopyWith<_$SignWithGoogleImpl> get copyWith =>
+      __$$SignWithGoogleImplCopyWithImpl<_$SignWithGoogleImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -168,14 +198,14 @@ class _$SignWithGoogleImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function(double containerHeight) updateContainerHeight,
   }) {
-    return signWithGoogle();
+    return signWithGoogle(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -183,14 +213,14 @@ class _$SignWithGoogleImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
-    return signWithGoogle?.call();
+    return signWithGoogle?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -200,7 +230,7 @@ class _$SignWithGoogleImpl
     required TResult orElse(),
   }) {
     if (signWithGoogle != null) {
-      return signWithGoogle();
+      return signWithGoogle(context);
     }
     return orElse();
   }
@@ -253,7 +283,16 @@ class _$SignWithGoogleImpl
 }
 
 abstract class _SignWithGoogle implements SignUpEvent {
-  const factory _SignWithGoogle() = _$SignWithGoogleImpl;
+  const factory _SignWithGoogle({required final BuildContext context}) =
+      _$SignWithGoogleImpl;
+
+  BuildContext get context;
+
+  /// Create a copy of SignUpEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SignWithGoogleImplCopyWith<_$SignWithGoogleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -261,6 +300,8 @@ abstract class _$$SignWithAppleImplCopyWith<$Res> {
   factory _$$SignWithAppleImplCopyWith(
           _$SignWithAppleImpl value, $Res Function(_$SignWithAppleImpl) then) =
       __$$SignWithAppleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -273,6 +314,18 @@ class __$$SignWithAppleImplCopyWithImpl<$Res>
 
   /// Create a copy of SignUpEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$SignWithAppleImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
@@ -280,33 +333,48 @@ class __$$SignWithAppleImplCopyWithImpl<$Res>
 class _$SignWithAppleImpl
     with DiagnosticableTreeMixin
     implements _SignWithApple {
-  const _$SignWithAppleImpl();
+  const _$SignWithAppleImpl({required this.context});
+
+  @override
+  final BuildContext context;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SignUpEvent.signWithApple()';
+    return 'SignUpEvent.signWithApple(context: $context)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'SignUpEvent.signWithApple'));
+    properties
+      ..add(DiagnosticsProperty('type', 'SignUpEvent.signWithApple'))
+      ..add(DiagnosticsProperty('context', context));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignWithAppleImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SignWithAppleImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  /// Create a copy of SignUpEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignWithAppleImplCopyWith<_$SignWithAppleImpl> get copyWith =>
+      __$$SignWithAppleImplCopyWithImpl<_$SignWithAppleImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -314,14 +382,14 @@ class _$SignWithAppleImpl
     required TResult Function() isConfirmPasswordObscure,
     required TResult Function(double containerHeight) updateContainerHeight,
   }) {
-    return signWithApple();
+    return signWithApple(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -329,14 +397,14 @@ class _$SignWithAppleImpl
     TResult? Function()? isConfirmPasswordObscure,
     TResult? Function(double containerHeight)? updateContainerHeight,
   }) {
-    return signWithApple?.call();
+    return signWithApple?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -346,7 +414,7 @@ class _$SignWithAppleImpl
     required TResult orElse(),
   }) {
     if (signWithApple != null) {
-      return signWithApple();
+      return signWithApple(context);
     }
     return orElse();
   }
@@ -399,7 +467,16 @@ class _$SignWithAppleImpl
 }
 
 abstract class _SignWithApple implements SignUpEvent {
-  const factory _SignWithApple() = _$SignWithAppleImpl;
+  const factory _SignWithApple({required final BuildContext context}) =
+      _$SignWithAppleImpl;
+
+  BuildContext get context;
+
+  /// Create a copy of SignUpEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SignWithAppleImplCopyWith<_$SignWithAppleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -512,8 +589,8 @@ class _$SignWithEmailImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -527,8 +604,8 @@ class _$SignWithEmailImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -542,8 +619,8 @@ class _$SignWithEmailImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -674,8 +751,8 @@ class _$IsPasswordObscureImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -689,8 +766,8 @@ class _$IsPasswordObscureImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -704,8 +781,8 @@ class _$IsPasswordObscureImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -824,8 +901,8 @@ class _$IsConfirmPasswordObscureImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -839,8 +916,8 @@ class _$IsConfirmPasswordObscureImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -854,8 +931,8 @@ class _$IsConfirmPasswordObscureImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -1002,8 +1079,8 @@ class _$UpdateContainerHeightImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signWithGoogle,
-    required TResult Function() signWithApple,
+    required TResult Function(BuildContext context) signWithGoogle,
+    required TResult Function(BuildContext context) signWithApple,
     required TResult Function(
             String name, String email, String password, BuildContext context)
         signWithEmail,
@@ -1017,8 +1094,8 @@ class _$UpdateContainerHeightImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signWithGoogle,
-    TResult? Function()? signWithApple,
+    TResult? Function(BuildContext context)? signWithGoogle,
+    TResult? Function(BuildContext context)? signWithApple,
     TResult? Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,
@@ -1032,8 +1109,8 @@ class _$UpdateContainerHeightImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signWithGoogle,
-    TResult Function()? signWithApple,
+    TResult Function(BuildContext context)? signWithGoogle,
+    TResult Function(BuildContext context)? signWithApple,
     TResult Function(
             String name, String email, String password, BuildContext context)?
         signWithEmail,

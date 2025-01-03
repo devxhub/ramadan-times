@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-
 import '../../../data/models/sign_up_response.dart';
 import '../../../data/respositories/sign_up_repository.dart';
 part 'sign_up_event.dart';
@@ -42,6 +43,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           print(
               'Google sign-in successful: ${googleUser.email} ${googleUser.photoUrl} ${googleUser.displayName}');
         }
+        event.context.go("/");
+        Fluttertoast.showToast(
+          msg: 'Sign in successful, ${googleUser.displayName}',
+          backgroundColor: Colors.black,
+          webPosition: 'bottom',
+        );
       }
     } catch (e) {
       if (kDebugMode) {
@@ -63,6 +70,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         print(
             'Apple sign-in successful: ${credential.email} ${credential.givenName}${credential.familyName}');
       }
+      event.context.go("/");
+      Fluttertoast.showToast(
+        msg: 'Sign in successful',
+        backgroundColor: Colors.black,
+        webPosition: 'bottom',
+      );
     } catch (e) {
       if (kDebugMode) {
         print('Apple sign-in failed: $e');
@@ -84,7 +97,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         backgroundColor: Colors.black,
         webPosition: 'bottom',
       );
-      // ignore: use_build_context_synchronously
       event.context.pushReplacement(
         '/sign_in_page',
         extra: {

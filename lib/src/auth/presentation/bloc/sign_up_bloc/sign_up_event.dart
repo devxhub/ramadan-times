@@ -2,8 +2,10 @@ part of 'sign_up_bloc.dart';
 
 @freezed
 class SignUpEvent with _$SignUpEvent {
-  const factory SignUpEvent.signWithGoogle() = _SignWithGoogle;
-  const factory SignUpEvent.signWithApple() = _SignWithApple;
+  const factory SignUpEvent.signWithGoogle({required BuildContext context}) =
+      _SignWithGoogle;
+  const factory SignUpEvent.signWithApple({required BuildContext context}) =
+      _SignWithApple;
   const factory SignUpEvent.signWithEmail({
     required String name,
     required String email,

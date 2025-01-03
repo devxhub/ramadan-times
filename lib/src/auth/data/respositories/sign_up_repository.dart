@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import '../../../services/dio_client.dart';
 import '../models/sign_up_response.dart';
 
@@ -23,8 +22,10 @@ class SignUpRepository {
       "message": "User registered successfully!",
     };
 
-    print("Payload: {name: $name, email: $email, password: $password}");
-    print("Response: $response");
+    if (kDebugMode) {
+      print("Payload: {name: $name, email: $email, password: $password}");
+      print("Response: $response");
+    }
 
     await Future.delayed(Duration(seconds: 3));
 

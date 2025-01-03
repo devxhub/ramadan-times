@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import '../../../services/dio_client.dart';
-import 'package:http/http.dart' as http;
 import '../models/sign_in_response.dart';
 
 class SignInRepository {
@@ -25,7 +24,7 @@ class SignInRepository {
       return loginResponse;
     } catch (e) {
       if (kDebugMode) {
-        print("Errror is $e");
+        print("Error is $e");
       }
       rethrow;
     }
