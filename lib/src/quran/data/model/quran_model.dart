@@ -3,6 +3,9 @@ class QuranModel {
   final int surahAyahNumber;
   final String surahName;
   final String? surahArabicName;
+  final String? surahEnglishName;
+  final String? surahFrenchName;
+
   final String? surahSpanishName;
   final String? surahSwedishName;
   final String? surahChineseName;
@@ -18,6 +21,9 @@ class QuranModel {
     required this.surahAyahNumber,
     required this.surahName,
     this.surahArabicName,
+    this.surahEnglishName,
+    this.surahFrenchName,
+
     this.surahSpanishName,
     this.surahSwedishName,
     this.surahChineseName,

@@ -16,7 +16,7 @@ String getSurahName(int surahNumber, String languageCode) {
     case "id":
       return getCustomSurahName(surahNumber, 'en');
     case "tr":
-      return getCustomSurahName(surahNumber, languageCode);
+      return getCustomSurahName(surahNumber, 'en');
     case "ml":
       return getCustomSurahName(surahNumber, languageCode);
     case "fa":
